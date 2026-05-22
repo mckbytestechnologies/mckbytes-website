@@ -1,0 +1,83 @@
+{% extends 'dashboard/base_admin.html' %}
+
+{% block page_title %}Tags{% endblock %}
+
+{% block content %}
+<div class="data-table">
+    <div style="padding: 15px; background: #f8f9fa; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between;">
+        <h3>Tags</h3>
+        <button onclick="openTagModal()" class="btn btn-primary">+ Add Tag</button>
+    </div>
+    
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr><th>Name</th><th>Slug</th><th>Posts</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+                {% for tag in tags %}
+                <tr>
+                    <td>{{ tag.name }}</td>
+                    <td>{{ tag.slug }}</td>
+                    <td>{{ tag.post_count }}</td>
+                    <td>
+                        <button onclick="editTag('{{ tag.id }}', '{{ tag.name }}')" class="btn btn-primary btn-sm" style="padding: 4px 10px;">Edit</button>
+                        <button onclick="deleteTag('{{ tag.id }}', '{{ tag.name }}')" class="btn btn-danger btn-sm" style="padding: 4px 10px;">Delete</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" style="text-align: center;">No tags found</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="tagModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:12px; padding:25px; width:90%; max-width:400px;">
+        <h3 id="modalTitle">Add Tag</h3>
+        <form method="POST" id="tagForm" action="{% url 'dashboard:tag_create' %}">
+            {% csrf_token %}
+            <input type="text" name="name" id="tagName" class="form-control" style="width:100%; padding:10px; margin:15px 0;" placeholder="Tag Name" required>
+            <div style="display:flex; gap:10px; justify-content:flex-end;">
+                <button type="button" onclick="closeTagModal()" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openTagModal() {
+        document.getElementById('modalTitle').innerText = 'Add Tag';
+        document.getElementById('tagForm').action = "{% url 'dashboard:tag_create' %}";
+        document.getElementById('tagName').value = '';
+        document.getElementById('tagModal').style.display = 'flex';
+    }
+    
+    function closeTagModal() {
+        document.getElementById('tagModal').style.display = 'none';
+    }
+    
+    function editTag(id, name) {
+        document.getElementById('modalTitle').innerText = 'Edit Tag';
+        document.getElementById('tagForm').action = `/dashboard/tags/${id}/edit/`;
+        document.getElementById('tagName').value = name;
+        document.getElementById('tagModal').style.display = 'flex';
+    }
+    
+    function deleteTag(id, name) {
+        if(confirm(`Delete tag "${name}"? This will remove the tag from all posts.`)) {
+            window.location.href = `/dashboard/tags/${id}/delete/`;
+        }
+    }
+    
+    window.onclick = function(event) {
+        const modal = document.getElementById('tagModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

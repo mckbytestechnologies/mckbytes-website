@@ -1,0 +1,94 @@
+{% extends 'dashboard/base_admin.html' %}
+
+{% block page_title %}Job Categories{% endblock %}
+
+{% block content %}
+<div class="data-table">
+    <div class="table-header">
+        <h3><i class="fas fa-folder-open"></i> Job Categories</h3>
+        <button onclick="openCategoryModal()" class="btn btn-primary"><i class="fas fa-plus"></i> Add Category</button>
+    </div>
+    
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr><th>Name</th><th>Slug</th><th>Icon</th><th>Jobs</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+                {% for cat in categories %}
+                <tr>
+                    <td><strong>{{ cat.name }}</strong></td>
+                    <td>{{ cat.slug }}</code></td>
+                    <td>{% if cat.icon %}<i class="{{ cat.icon }}"></i> {{ cat.icon }}{% else %}-{% endif %}</td>
+                    <td>{{ cat.job_count }}</td>
+                    <td>
+                        <button onclick="editCategory('{{ cat.id }}', '{{ cat.name }}', '{{ cat.icon|escapejs }}')" class="btn btn-primary btn-sm" style="padding: 4px 10px;"><i class="fas fa-edit"></i> Edit</button>
+                        <button onclick="deleteCategory('{{ cat.id }}', '{{ cat.name }}')" class="btn btn-danger btn-sm" style="padding: 4px 10px;"><i class="fas fa-trash"></i> Delete</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5" style="text-align: center;">No job categories found</td>^</tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="categoryModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:12px; padding:25px; width:90%; max-width:450px;">
+        <h3 id="modalTitle">Add Category</h3>
+        <form method="POST" id="categoryForm" action="{% url 'dashboard:job_category_create' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Category Name</label>
+                <input type="text" name="name" id="categoryName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Icon (Font Awesome class)</label>
+                <input type="text" name="icon" id="categoryIcon" class="form-control" placeholder="fas fa-code">
+                <small class="help-text">e.g., fas fa-code, fas fa-palette, fas fa-chart-line</small>
+            </div>
+            <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:20px;">
+                <button type="button" onclick="closeCategoryModal()" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openCategoryModal() {
+        document.getElementById('modalTitle').innerText = 'Add Category';
+        document.getElementById('categoryForm').action = "{% url 'dashboard:job_category_create' %}";
+        document.getElementById('categoryName').value = '';
+        document.getElementById('categoryIcon').value = '';
+        document.getElementById('categoryModal').style.display = 'flex';
+    }
+    
+    function closeCategoryModal() {
+        document.getElementById('categoryModal').style.display = 'none';
+    }
+    
+    function editCategory(id, name, icon) {
+        document.getElementById('modalTitle').innerText = 'Edit Category';
+        document.getElementById('categoryForm').action = `/dashboard/job-categories/${id}/edit/`;
+        document.getElementById('categoryName').value = name;
+        document.getElementById('categoryIcon').value = icon;
+        document.getElementById('categoryModal').style.display = 'flex';
+    }
+    
+    function deleteCategory(id, name) {
+        if(confirm(`Delete category "${name}"? This will remove the category from all jobs.`)) {
+            window.location.href = `/dashboard/job-categories/${id}/delete/`;
+        }
+    }
+    
+    window.onclick = function(event) {
+        const modal = document.getElementById('categoryModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

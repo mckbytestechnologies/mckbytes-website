@@ -1,0 +1,26 @@
+{% extends 'dashboard/base_admin.html' %}
+
+{% block page_title %}{% if category %}Edit Category{% else %}Add Category{% endif %}{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 500px;">
+    <h2>{% if category %}Edit Category{% else %}Add New Category{% endif %}</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Category Name *</label>
+            <input type="text" name="name" class="form-control" value="{{ category.name|default:'' }}" required>
+        </div>
+        <div class="form-group">
+            <label>Icon (Font Awesome class)</label>
+            <input type="text" name="icon" class="form-control" value="{{ category.icon|default:'' }}" placeholder="fas fa-code">
+            <small>e.g., fas fa-code, fas fa-palette, fas fa-chart-line</small>
+        </div>
+        <div style="display: flex; gap: 15px; margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'dashboard:job_category_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

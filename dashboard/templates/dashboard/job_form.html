@@ -1,0 +1,121 @@
+{% extends 'dashboard/base_admin.html' %}
+{% load static %}
+
+{% block page_title %}{% if is_edit %}Edit Job{% else %}Create New Job{% endif %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .form-group textarea {
+        font-family: monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        min-height: 120px;
+    }
+    .help-text {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 1000px;">
+    <h2 style="margin-bottom: 25px;">{% if is_edit %}Edit Job{% else %}Create New Job Posting{% endif %}</h2>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Job Title *</label>
+                <input type="text" name="title" class="form-control" value="{{ job.title|default:'' }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Category</label>
+                <select name="category" class="form-control">
+                    <option value="">-- Select Category --</option>
+                    {% for cat in categories %}
+                    <option value="{{ cat.id }}" {% if job.category.id == cat.id %}selected{% endif %}>{{ cat.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Job Type</label>
+                <select name="job_type" class="form-control">
+                    <option value="full_time" {% if job.job_type == 'full_time' %}selected{% endif %}>Full-time</option>
+                    <option value="contract" {% if job.job_type == 'contract' %}selected{% endif %}>Contract</option>
+                    <option value="part_time" {% if job.job_type == 'part_time' %}selected{% endif %}>Part-time</option>
+                    <option value="internship" {% if job.job_type == 'internship' %}selected{% endif %}>Internship</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Min Experience</label>
+                <input type="text" name="min_experience" class="form-control" value="{{ job.min_experience|default:'' }}" placeholder="e.g., 1+ years, 3-5 years" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" name="location" class="form-control" value="{{ job.location|default:'Remote · Global' }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Salary Range (Optional)</label>
+                <input type="text" name="salary_range" class="form-control" value="{{ job.salary_range|default:'' }}" placeholder="e.g., ₹3-5 LPA">
+            </div>
+            
+            <div class="form-group">
+                <label>Job Icon</label>
+                {% if job.icon %}
+                <div style="margin-bottom: 10px;">
+                    <img src="{{ job.icon.url }}" style="max-width: 80px; border-radius: 8px;">
+                </div>
+                {% endif %}
+                <input type="file" name="icon" class="form-control" accept="image/*">
+            </div>
+            
+            <div class="form-group">
+                <label style="display: flex; align-items: center; gap: 15px;">
+                    <input type="checkbox" name="is_active" {% if job.is_active %}checked{% endif %}>
+                    <span>Active (visible on website)</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+                    <input type="checkbox" name="featured" {% if job.featured %}checked{% endif %}>
+                    <span>Featured (highlight on careers page)</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Job Description</label>
+            <textarea name="description" class="form-control" rows="5" required>{{ job.description|default:'' }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Responsibilities (one per line)</label>
+            <textarea name="responsibilities" class="form-control" rows="6" placeholder="Lead marketing campaigns&#10;Analyze performance data&#10;Manage client relationships" required>{{ job.responsibilities|default:'' }}</textarea>
+            <div class="help-text">Enter each responsibility on a new line</div>
+        </div>
+        
+        <div class="form-group">
+            <label>Requirements (one per line)</label>
+            <textarea name="requirements" class="form-control" rows="6" placeholder="3+ years of experience&#10;Strong communication skills&#10;Bachelor's degree" required>{{ job.requirements|default:'' }}</textarea>
+            <div class="help-text">Enter each requirement on a new line</div>
+        </div>
+        
+        <div class="form-group">
+            <label>Benefits (one per line) - Optional</label>
+            <textarea name="benefits" class="form-control" rows="4" placeholder="Remote work&#10;Health insurance&#10;Learning budget">{{ job.benefits|default:'' }}</textarea>
+            <div class="help-text">Enter each benefit on a new line</div>
+        </div>
+        
+        <div style="display: flex; gap: 15px; margin-top: 25px;">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {% if is_edit %}Update{% else %}Create{% endif %} Job</button>
+            <a href="{% url 'dashboard:job_list' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

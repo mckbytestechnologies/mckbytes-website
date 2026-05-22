@@ -1,0 +1,1213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>MCKBytes — Header Navigation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --brand:#C8102E; --brand-2:#ff3b5c;
+  --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45;
+  --muted:#6b6c78; --line:#e8e9ee;
+  --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#f0f1f5;
+  --shadow-nav:0 2px 0 rgba(15,17,26,.06),0 8px 32px -8px rgba(15,17,26,.12);
+  --shadow-drop:0 24px 60px -10px rgba(15,17,26,.14),0 4px 16px rgba(15,17,26,.06);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --nav-h:68px;
+  --container:1320px;
+  --gutter:clamp(20px,4vw,48px);
+}
+[data-theme="dark"] {
+  --ink:#f0f0f5; --ink-2:#c8c9d2; --ink-3:#9a9baa; --muted:#6b6c78;
+  --line:rgba(255,255,255,.09); --paper:#0d0e14; --paper-2:#13141c; --paper-3:#1a1b26;
+  --shadow-nav:0 2px 0 rgba(0,0,0,.3),0 8px 32px -8px rgba(0,0,0,.4);
+  --shadow-drop:0 24px 60px -10px rgba(0,0,0,.55),0 4px 16px rgba(0,0,0,.3);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Sora",system-ui,sans-serif;
+  font-size:1rem; line-height:1.5;
+  color:var(--ink); background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--nav-h);
+  overflow-x:hidden;
+  transition:background .4s var(--ease),color .4s var(--ease);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+img{display:block;max-width:100%;height:auto}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+
+/* ═══════════════════════════════════════
+   NAV SHELL
+═══════════════════════════════════════ */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:200;
+  height:var(--nav-h);
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+  transition:background .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.nav.scrolled{box-shadow:var(--shadow-nav)}
+[data-theme="dark"] .nav{background:var(--paper-2)}
+
+.nav__inner{
+  display:flex;align-items:center;height:100%;
+  gap:0;
+}
+
+/* ─── Brand ─── */
+.nav__brand{
+  display:inline-flex;align-items:center;gap:10px;
+  flex-shrink:0;margin-right:8px;
+  font-family:"Sora",sans-serif;font-weight:800;font-size:1.12rem;letter-spacing:-.02em;
+}
+.nav__brand img{height:34px;width:auto;transition:filter .35s var(--ease)}
+[data-theme="dark"] .nav__brand img{filter:brightness(0) invert(1)}
+
+/* ─── Primary links ─── */
+.nav__menu{
+  display:flex;align-items:stretch;
+  flex:1;margin-left:8px;gap:0;
+  height:100%;
+}
+
+.nav__item{
+  position:relative;display:flex;align-items:stretch;
+}
+
+.nav__trigger{
+  display:inline-flex;align-items:center;gap:5px;
+  height:100%;
+  padding:0 15px;
+  font-size:.875rem;font-weight:500;
+  color:var(--ink-3);
+  white-space:nowrap;
+  background:transparent;border:0;cursor:pointer;
+  position:relative;
+  transition:color .22s var(--ease);
+}
+.nav__trigger:hover{color:var(--ink)}
+.nav__trigger::after{
+  content:"";
+  position:absolute;left:15px;right:15px;bottom:0;
+  height:2px;border-radius:2px 2px 0 0;
+  transform:scaleX(0);transform-origin:center;
+  transition:transform .3s var(--ease);
+}
+.nav__item:hover .nav__trigger::after,
+.nav__item.open .nav__trigger::after{transform:scaleX(1)}
+.nav__item:hover .nav__trigger,
+.nav__item.open .nav__trigger{color:var(--ink)}
+
+.nav__caret{
+  width:14px;height:14px;flex-shrink:0;
+  transition:transform .3s var(--ease);
+  opacity:.5;
+}
+.nav__item:hover .nav__caret,
+.nav__item.open .nav__caret{transform:rotate(180deg);opacity:.9}
+
+/* ─── Right cluster ─── */
+.nav__right{
+  display:flex;align-items:center;gap:12px;
+  margin-left:auto;flex-shrink:0;padding-left:16px;
+}
+.nav__contact{
+  display:flex;flex-direction:column;gap:0;
+  font-size:.73rem;line-height:1.35;text-align:right;
+  color:var(--muted);
+}
+.nav__contact a{color:var(--ink-2);font-weight:600;font-size:.73rem;transition:color .2s}
+.nav__contact a:hover{color:var(--brand)}
+
+.btn-quote{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:.56rem 1.2rem;
+  font-family:"Sora",sans-serif;font-weight:700;font-size:.82rem;
+  letter-spacing:.01em;text-transform:uppercase;
+  color:#fff;
+  background:var(--brand);
+  border:2px solid var(--brand);
+  border-radius:6px;
+  white-space:nowrap;
+  transition:background .25s,border-color .25s,transform .25s,box-shadow .25s;
+  box-shadow:0 4px 14px rgba(200,16,46,.28);
+}
+.btn-quote:hover{background:#a8001f;border-color:#a8001f;transform:translateY(-1px);box-shadow:0 8px 20px rgba(200,16,46,.38)}
+
+/* Theme toggle - hidden on mobile */
+.theme-btn{
+  width:36px;height:36px;border-radius:8px;
+  border:1px solid var(--line);background:var(--paper-3);
+  display:grid;place-items:center;
+  transition:background .25s,border-color .25s;font-size:15px;
+}
+.theme-btn:hover{background:var(--paper-2)}
+
+/* Mobile menu button */
+.nav__hamburger{
+  display:none;width:40px;height:40px;border-radius:8px;
+  border:1px solid var(--line);background:var(--paper);
+  align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.nav__hamburger svg{width:20px;height:20px}
+
+/* Hide theme button on mobile */
+@media (max-width: 1040px) {
+  .theme-btn {
+    display: none;
+  }
+}
+
+@media(max-width:1040px){
+  .nav__menu{display:none}
+  .nav__hamburger{display:inline-flex}
+}
+@media(max-width:720px){
+  .nav__contact{display:none}
+}
+@media(max-width:480px){
+  :root{--nav-h:60px}
+  .nav__brand img{height:28px}
+  .btn-quote{padding:.45rem 1rem;font-size:.72rem}
+}
+
+/* ═══════════════════════════════════════
+   MEGA DROPDOWN
+═══════════════════════════════════════ */
+.mega{
+  position:fixed;
+  top:var(--nav-h);
+  left:0;right:0;
+  background:var(--paper);
+  border-top:2px solid var(--brand);
+  box-shadow:var(--shadow-drop);
+  z-index:199;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(-8px);
+  transition:opacity .28s var(--ease), transform .32s var(--ease-out), visibility .28s;
+}
+.nav__item:hover .mega,
+.nav__item.open .mega{
+  opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+}
+[data-theme="dark"] .mega{background:var(--paper-2)}
+
+.mega__inner{
+  padding:32px var(--gutter) 36px;
+  max-width:var(--container);
+  margin:0 auto;
+}
+
+.mega__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+}
+@media(max-width:1100px){.mega__grid{grid-template-columns:repeat(2,1fr)}}
+
+.mega__col{
+  padding:22px 24px 26px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  transition:background .25s;
+}
+.mega__col:nth-child(4n){border-right:0}
+.mega__col:nth-last-child(-n+4){border-bottom:0}
+@media(max-width:1100px){
+  .mega__col:nth-child(2n){border-right:0}
+  .mega__col:nth-last-child(-n+2){border-bottom:0}
+  .mega__col:nth-child(odd):not(:nth-last-child(-n+2)){border-bottom:1px solid var(--line)}
+  .mega__col:nth-child(even):not(:nth-last-child(-n+2)){border-bottom:1px solid var(--line)}
+}
+
+.mega__group-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.mega__group-icon{
+  width:42px;height:42px;border-radius:10px;
+  display:grid;place-items:center;flex-shrink:0;
+}
+.mega__group-icon svg{width:22px;height:22px}
+.mega__group-icon--orange{background:linear-gradient(135deg,#ff8c42,#f97316);color:#fff}
+.mega__group-icon--purple{background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff}
+.mega__group-icon--teal{background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff}
+.mega__group-icon--yellow{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.mega__group-icon--blue{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff}
+.mega__group-icon--red{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}
+.mega__group-icon--green{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff}
+.mega__group-icon--pink{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff}
+.mega__group-icon--indigo{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff}
+.mega__group-icon--brand{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+.mega__group-icon--slate{background:linear-gradient(135deg,#64748b,#475569);color:#fff}
+
+.mega__group-title{
+  font-family:"Sora",sans-serif;font-weight:700;font-size:.98rem;
+  color:var(--ink);letter-spacing:-.015em;
+}
+.mega__links{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:1px;
+}
+.mega__link{
+  display:block;
+  padding:6px 8px;
+  font-size:.845rem;
+  font-weight:500;
+  color:var(--ink-2);
+  border-radius:6px;
+  transition:color .18s,background .18s,padding-left .2s var(--ease);
+}
+.mega__link:hover{
+  color:var(--brand);
+  background:var(--paper-2);
+  padding-left:14px;
+}
+[data-theme="dark"] .mega__link:hover{background:rgba(255,255,255,.06)}
+
+.mega__footer{
+  margin-top:20px;
+  padding:14px 20px;
+  background:linear-gradient(135deg,rgba(200,16,46,.05),rgba(10,132,255,.04));
+  border:1px solid var(--line);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  flex-wrap:wrap;
+}
+.mega__footer-text{font-size:.84rem;color:var(--muted)}
+.mega__footer-cta{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.84rem;font-weight:700;color:var(--brand);
+  transition:gap .25s var(--ease);
+}
+.mega__footer-cta:hover{gap:11px}
+
+/* Production specific grid */
+.nav__item .mega__production-grid {
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav__item .mega__production-col {
+  flex: 1;
+  min-width: 280px;
+  border-right: 1px solid var(--line);
+}
+.nav__item .mega__production-col:last-child { border-right: 0; }
+@media (max-width: 800px) {
+  .nav__item .mega__production-grid { flex-direction: column; max-width: 500px; }
+  .nav__item .mega__production-col { border-right: 0; border-bottom: 1px solid var(--line); }
+  .nav__item .mega__production-col:last-child { border-bottom: 0; }
+}
+
+/* ═══════════════════════════════════════
+   MOBILE DRAWER - FIXED AND RESPONSIVE
+═══════════════════════════════════════ */
+.drawer{
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  z-index:1000;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(4px);
+  visibility:hidden;
+  opacity:0;
+  transition:visibility .3s var(--ease), opacity .3s var(--ease);
+}
+.drawer.open{
+  visibility:visible;
+  opacity:1;
+}
+.drawer__panel{
+  position:absolute;
+  top:0; right:0; bottom:0;
+  width:min(85%, 380px);
+  background:var(--paper);
+  box-shadow:-8px 0 32px rgba(0,0,0,0.2);
+  padding:20px 20px 32px;
+  overflow-y:auto;
+  transform:translateX(100%);
+  transition:transform .35s var(--ease-out);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.drawer.open .drawer__panel{
+  transform:translateX(0);
+}
+[data-theme="dark"] .drawer__panel{background:var(--paper-2);}
+.drawer__close{
+  align-self:flex-end;
+  width:42px; height:42px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:var(--paper-2);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  margin-bottom:16px;
+  font-size:20px;
+}
+.drawer__close:hover{background:var(--paper-3);}
+.drawer__group{
+  border-bottom:1px solid var(--line);
+}
+.drawer__group > button{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  padding:14px 8px;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--ink);
+  background:transparent;
+  cursor:pointer;
+}
+.drawer__group > button svg{
+  width:14px;
+  height:14px;
+  transition:transform .3s var(--ease);
+}
+.drawer__group.open > button svg{
+  transform:rotate(180deg);
+}
+.drawer__sub{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .35s var(--ease-out);
+}
+.drawer__group.open .drawer__sub{
+  grid-template-rows:1fr;
+}
+.drawer__sub > div{
+  overflow:hidden;
+}
+.drawer__sub-section{
+  padding:8px 12px 16px 20px;
+}
+.drawer__sub-section h5{
+  font-size:.7rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--brand);
+  margin-bottom:10px;
+  font-family:"JetBrains Mono",monospace;
+}
+.drawer__sub a{
+  display:block;
+  padding:8px 0;
+  font-size:.9rem;
+  font-weight:500;
+  color:var(--ink-2);
+  transition:color .2s, padding-left .2s;
+}
+.drawer__sub a:hover{
+  color:var(--brand);
+  padding-left:6px;
+}
+.drawer-footer{
+  margin-top:24px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.drawer-footer .btn-quote{
+  justify-content:center;
+  width:100%;
+}
+.drawer-contact{
+  font-size:.85rem;
+  color:var(--muted);
+  text-align:center;
+  padding:8px 0;
+}
+.drawer-contact a{
+  color:var(--ink);
+  font-weight:600;
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+
+    <!-- Brand -->
+    <a href="{% url 'core:home' %}" class="nav__brand" aria-label="MCKBytes home">
+      <img src="{% static 'img/LOGO/logo.png' %}" alt="MCKBytes">
+    </a>
+
+    <!-- Primary nav items -->
+    <nav class="nav__menu" aria-label="Primary navigation">
+
+      <!-- ── DIGITAL MARKETING ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">
+          Digital Marketing
+          <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" role="region" aria-label="Digital Marketing submenu">
+          <div class="mega__inner">
+            <div class="mega__grid">
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span>
+                  <span class="mega__group-title">Digital Marketing</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:digital_marketing' %}" class="mega__link">Digital Marketing</a></li>
+                  <li><a href="{% url 'core:creative_agency' %}" class="mega__link">Creative Advertising</a></li>
+                  <li><a href="{% url 'core:email_marketing' %}" class="mega__link">Email Marketing</a></li>
+                  <li><a href="{% url 'core:b2b_marketing' %}" class="mega__link">B2B Marketing</a></li>
+                  <li><a href="{% url 'core:b2b_lead_generation' %}" class="mega__link">B2B Lead Generation</a></li>
+                  <li><a href="{% url 'core:orm_services' %}" class="mega__link">Online Reputation Management</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l7 17 2.5-7L20 10 3 3z"/></svg></span><span class="mega__group-title">Brand Performance</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:performance_marketing' %}" class="mega__link">Performance Marketing</a></li>
+                  <li><a href="{% url 'core:ppc_services' %}" class="mega__link">PPC Services</a></li>
+                  <li><a href="{% url 'core:media_buying' %}" class="mega__link">Media Buying</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3v-7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg></span><span class="mega__group-title">Social Media Marketing</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:social_media_marketing' %}" class="mega__link">Social Media Marketing</a></li>
+                  <li><a href="{% url 'core:instagram_marketing' %}" class="mega__link">Instagram Marketing</a></li>
+                  <li><a href="{% url 'core:facebook_marketing' %}" class="mega__link">Facebook Marketing</a></li>
+                  <li><a href="{% url 'core:linkedin_marketing' %}" class="mega__link">LinkedIn Marketing</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="mega__group-title">Consulting</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:cmo_on_demand' %}" class="mega__link">CMO On Demand</a></li>
+                  <li><a href="{% url 'core:image_consulting' %}" class="mega__link">Image Consultant</a></li>
+                  <li><a href="{% url 'core:marketing_consulting' %}" class="mega__link">Marketing Consultant</a></li>
+                  <li><a href="{% url 'core:database_services' %}" class="mega__link">Database</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="mega__group-title">Search Engine Optimization</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:ppc_marketing' %}" class="mega__link">Pay Per Click Marketing</a></li>
+                  <li><a href="{% url 'core:seo_services' %}" class="mega__link">SEO - Services</a></li>
+                  <li><a href="{% url 'core:seo_audit' %}" class="mega__link">SEO Audit Services</a></li>
+                  <li><a href="{% url 'core:ai_seo' %}" class="mega__link">AI SEO</a></li>
+                  <li><a href="{% url 'core:social_media_optimization' %}" class="mega__link">Social Media Optimization</a></li>
+                  <li><a href="{% url 'core:local_seo' %}" class="mega__link">Local SEO</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">Not sure which service fits? Our team will map the right strategy.</span>
+              <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="mega__footer-cta">Get a free consultation <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DESIGN ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">Design<svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__grid">
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg></span><span class="mega__group-title">Brand Design</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:brand_identity' %}" class="mega__link">Brand Identity</a></li>
+                  <li><a href="{% url 'core:brand_strategy' %}" class="mega__link">Brand Strategy and Positioning</a></li>
+                  <li><a href="{% url 'core:corporate_branding' %}" class="mega__link">Corporate Branding</a></li>
+                  <li><a href="{% url 'core:logo_design' %}" class="mega__link">Logo Design</a></li>
+                  <li><a href="{% url 'core:marketing_collaterals' %}" class="mega__link">Marketing Collaterals</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L7 19"/></svg></span><span class="mega__group-title">UI UX Design</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:mobile_app_ui' %}" class="mega__link">Mobile app</a></li>
+                  <li><a href="{% url 'core:ui_ux_design' %}" class="mega__link">UI UX design</a></li>
+                  <li><a href="{% url 'core:web_ui_ux' %}" class="mega__link">Web UI UX Design</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">Looking for end-to-end brand identity? We handle it all.</span>
+              <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="mega__footer-cta">Talk to a designer <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CONTENT ── -->
+<div class="nav__item" data-nav-item>
+  <button class="nav__trigger" aria-expanded="false">
+    Content
+    <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6l4 4 4-4"/>
+    </svg>
+  </button>
+
+  <div class="mega">
+    <div class="mega__inner">
+
+      <div class="mega__grid">
+
+        <!-- Content Writing -->
+                <div class="mega__col">
+                  <div class="mega__group-head">
+                    <span class="mega__group-icon mega__group-icon--green">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M3 21l3-1 11-11-2-2L4 18l-1 3z"/>
+                      </svg>
+                    </span>
+
+                    <span class="mega__group-title">Content Marketing</span>
+                  </div>
+
+                  <ul class="mega__links">
+                    <li>
+                      <a href="{% url 'core:content_writing' %}" class="mega__link">
+                        Content Writing
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{% url 'core:guest_posting' %}" class="mega__link">
+                        Guest Posting
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{% url 'core:press_release' %}" class="mega__link">
+                        Press Release
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="mega__col">
+                  <div class="mega__group-head">
+                    <span class="mega__group-icon mega__group-icon--yellow">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 4h16v16H4z"/>
+                        <path d="M8 8h8"/>
+                        <path d="M8 12h8"/>
+                        <path d="M8 16h5"/>
+                      </svg>
+                    </span>
+
+                    <span class="mega__group-title">Enterprise Content</span>
+                  </div>
+
+                  <ul class="mega__links">
+                    <li>
+                      <a href="{% url 'core:account_based_marketing' %}" class="mega__link">
+                        Account Based Marketing
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{% url 'core:employer_branding' %}" class="mega__link">
+                        Employer Branding
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{% url 'core:inbound_marketing' %}" class="mega__link">
+                        Inbound Marketing
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{% url 'core:product_marketing' %}" class="mega__link">
+                        Product Marketing
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+
+              <div class="mega__footer">
+                <span class="mega__footer-text">
+                  From strategy to publishing — we manage your complete content growth ecosystem.
+                </span>
+
+                <a href="{% url 'core:content_writing' %}" class="mega__footer-cta">
+                  Explore content services <span>→</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      <!-- ── PRODUCTION ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">Production<svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__production-grid">
+              <div class="mega__production-col mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/></svg></span><span class="mega__group-title">Video Production</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:video_production' %}" class="mega__link">Video Production</a></li>
+                  <li><a href="{% url 'core:corporate_video' %}" class="mega__link">Corporate Video</a></li>
+                  <li><a href="{% url 'core:podcast_production' %}" class="mega__link">Podcast Production</a></li>
+                  <li><a href="{% url 'core:explainer_video' %}" class="mega__link">Explainer Video</a></li>
+                  <li><a href="{% url 'core:video_editing' %}" class="mega__link">Video Editing Services</a></li>
+                  <li><a href="{% url 'core:animation_video' %}" class="mega__link">Animation Video</a></li>
+                </ul>
+              </div>
+              <div class="mega__production-col mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8l6 4-6 4z"/></svg></span><span class="mega__group-title">Photography</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:corporate_photography' %}" class="mega__link">Corporate Photography</a></li>
+                  <li><a href="{% url 'core:ecommerce_photography' %}" class="mega__link">Ecommerce Photography</a></li>
+                  <li><a href="{% url 'core:food_photography' %}" class="mega__link">Food Photography</a></li>
+                  <li><a href="{% url 'core:fashion_photography' %}" class="mega__link">Fashion Photography</a></li>
+                  <li><a href="{% url 'core:architectural_photography' %}" class="mega__link">Architectural Photography</a></li>
+                  <li><a href="{% url 'core:event_photography' %}" class="mega__link">Event Photography</a></li>
+                  <li><a href="{% url 'core:drone_photography' %}" class="mega__link">Drone Photography</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">End-to-end production services for brands, businesses, and creators.</span>
+              <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="mega__footer-cta">Start a project <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── TECHNOLOGY ── -->
+<div class="nav__item" data-nav-item>
+
+  <button class="nav__trigger" aria-expanded="false">
+    Technology
+    <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6l4 4 4-4"/>
+    </svg>
+  </button>
+
+  <div class="mega">
+    <div class="mega__inner">
+
+      <div class="mega__grid">
+
+        <!-- WEBSITE DEVELOPMENT -->
+        <div class="mega__col">
+
+          <div class="mega__group-head">
+            <span class="mega__group-icon mega__group-icon--orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+            </span>
+
+            <span class="mega__group-title">
+              Website Development
+            </span>
+          </div>
+
+          <ul class="mega__links">
+
+            <li>
+              <a href="{% url 'core:web_app_development' %}" class="mega__link">
+                Website Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:custom_web_application_development' %}" class="mega__link">
+                Custom Web Application
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:full_stack' %}" class="mega__link">
+                Full Stack Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:cloud_consulting_company_in_vellore' %}" class="mega__link">
+                Cloud Consulting
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- MOBILE APP -->
+        <div class="mega__col">
+
+          <div class="mega__group-head">
+            <span class="mega__group-icon mega__group-icon--purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="6" y="2" width="12" height="20" rx="2.5"/>
+                <path d="M10 18h4"/>
+              </svg>
+            </span>
+
+            <span class="mega__group-title">
+              Mobile App Development
+            </span>
+          </div>
+
+          <ul class="mega__links">
+
+            <li>
+              <a href="{% url 'core:mobile_app_development' %}" class="mega__link">
+                Mobile App Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:android_app_development' %}" class="mega__link">
+                Android App Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:ios_app_development' %}" class="mega__link">
+                iOS App Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:flutter_app_development' %}" class="mega__link">
+                Flutter App Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:hybrid_app_development' %}" class="mega__link">
+                Hybrid App Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:cross_platform_app_development' %}" class="mega__link">
+                Cross Platform Apps
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- TECHNOLOGIES -->
+        <div class="mega__col">
+
+          <div class="mega__group-head">
+            <span class="mega__group-icon mega__group-icon--teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+              </svg>
+            </span>
+
+            <span class="mega__group-title">
+              Technologies
+            </span>
+          </div>
+
+          <ul class="mega__links">
+
+            <li>
+              <a href="{% url 'core:angularjs_development' %}" class="mega__link">
+                AngularJS Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:artificial_intelligence_development' %}" class="mega__link">
+                Artificial Intelligence
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:web_app_development' %}" class="mega__link">
+                Web App Development
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:custom_web_application_development' %}" class="mega__link">
+                Custom Web Applications
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:full_stack' %}" class="mega__link">
+                Full Stack Solutions
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- CLOUD + INNOVATION -->
+        <div class="mega__col">
+
+          <div class="mega__group-head">
+            <span class="mega__group-icon mega__group-icon--yellow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </span>
+
+            <span class="mega__group-title">
+              Innovative Technologies
+            </span>
+          </div>
+
+          <ul class="mega__links">
+
+            <li>
+              <a href="{% url 'core:artificial_intelligence_development' %}" class="mega__link">
+                Artificial Intelligence
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:block_chain_development' %}" class="mega__link">
+                Blockchain Solutions
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:iot_application_development' %}" class="mega__link">
+                IoT Applications
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:automation_services' %}" class="mega__link">
+                Automation Solutions
+              </a>
+            </li>
+
+          </ul>
+
+          <!-- CLOUD -->
+          <div class="mega__group-head" style="margin-top:20px;padding-top:16px;border-top:1px dashed var(--line)">
+
+            <span class="mega__group-icon mega__group-icon--blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 17a4 4 0 0 1 .5-7.95A6 6 0 0 1 16 8a4.5 4.5 0 0 1 4 7"/>
+                <path d="M12 13v8m0-8l-3 3m3-3l3 3"/>
+              </svg>
+            </span>
+
+            <span class="mega__group-title">
+              Cloud Services
+            </span>
+
+          </div>
+
+          <ul class="mega__links">
+
+            <li>
+              <a href="{% url 'core:cloud_consulting_company_in_vellore' %}" class="mega__link">
+                Cloud Consulting
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:aws_company' %}" class="mega__link">
+                AWS Managed Services
+              </a>
+            </li>
+
+          
+
+            <li>
+              <a href="{% url 'core:google_cloud' %}" class="mega__link">
+                Google Cloud Services
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="mega__footer">
+
+        <span class="mega__footer-text">
+          Need a custom technology solution? Connect with our expert engineering team.
+        </span>
+
+        <a href="" class="mega__footer-cta">
+          Schedule a tech consultation <span>→</span>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+      <!-- ── RESOURCES ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">Resources<svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__grid">
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M12 12v4"/></svg></span><span class="mega__group-title">About Us</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:about_us' %}" class="mega__link">Our Story</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5a2 2 0 0 1 2-2h11v18H5a2 2 0 0 1-2-2V5z"/><path d="M16 3v18M8 7h4M8 11h4"/></svg></span><span class="mega__group-title">Blog & Insights</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'blog:post_list' %}" class="mega__link">All Articles</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8a3 3 0 0 1 3-3h11v14a3 3 0 0 1-3 3H5z"/></svg></span><span class="mega__group-title">Case Studies</span></div>
+                <ul class="mega__links">
+                  <li><a href="{% url 'core:portfolio' %}" class="mega__link">All Case Studies</a></li>
+                  <li><a href="{% url 'core:careers' %}" class="mega__link">Careers</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--slate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="mega__group-title">Legal</span></div>
+                <ul class="mega__links">
+                  <li>
+                    <a href="{% url 'core:privacy_policy' %}" class="mega__link">
+                      Privacy Policy
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="{% url 'core:teams' %}" class="mega__link">
+                      Terms & Conditions
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">Can't find what you're looking for?</span>
+              <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="mega__footer-cta">Contact us directly <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Right cluster -->
+    <div class="nav__right">
+      <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="btn-quote">Schedule a Call</a>
+      <button class="theme-btn" id="themeSwitcher" aria-label="Toggle dark mode"><span id="themeIcon">☀</span></button>
+      <button class="nav__hamburger" id="menuBtn" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER (updated with URL tags) -->
+<div class="drawer" id="drawer">
+  <div class="drawer__panel">
+    <button class="drawer__close" id="drawerClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18L18 6"/></svg></button>
+    
+    <div class="drawer__group" data-drawer-group>
+      <button>Digital Marketing <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub">
+        <div>
+          <div class="drawer__sub-section">
+            <h5>Core Services</h5>
+            <a href="{% url 'core:digital_marketing' %}">Digital Marketing</a>
+            <a href="{% url 'core:creative_agency' %}">Creative Advertising</a>
+            <a href="{% url 'core:email_marketing' %}">Email Marketing</a>
+            <a href="{% url 'core:performance_marketing' %}">Performance Marketing</a>
+            <a href="{% url 'core:social_media_marketing' %}">Social Media Marketing</a>
+            <a href="{% url 'core:seo_services' %}">SEO Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="drawer__group" data-drawer-group>
+      <button>Design <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub">
+        <div>
+          <div class="drawer__sub-section">
+            <a href="{% url 'core:brand_identity' %}">Brand Identity</a>
+            <a href="{% url 'core:logo_design' %}">Logo Design</a>
+            <a href="{% url 'core:ui_ux_design' %}">UI/UX Design</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="drawer__group" data-drawer-group>
+      <button>Content <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub">
+        <div>
+          <div class="drawer__sub-section">
+            <a href="#">Content Writing</a>
+            <a href="{% url 'core:video_production' %}">Video Production</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="drawer__group" data-drawer-group>
+      <button>Technology <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub">
+        <div>
+          <div class="drawer__sub-section">
+            <a href="#">Web Development</a>
+            <a href="#">App Development</a>
+            <a href="#">Cloud Services</a>
+            <a href="#">Artificial Intelligence</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="drawer__group" data-drawer-group>
+      <button>Production <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub">
+        <div>
+          <div class="drawer__sub-section">
+            <a href="{% url 'core:video_production' %}">Video Production</a>
+            <a href="{% url 'core:corporate_photography' %}">Corporate Photography</a>
+            <a href="{% url 'core:explainer_video' %}">Explainer Video</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="drawer__group" data-drawer-group>
+      <button>Resources <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub">
+        <div>
+          <div class="drawer__sub-section">
+            <a href="{% url 'core:about_us' %}">About Us</a>
+            <a href="{% url 'core:blog' %}">Blog</a>
+            <a href="{% url 'core:portfolio' %}">Case Studies</a>
+            <a href="{% url 'core:careers' %}">Careers</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:.8rem;color:var(--muted)">Sales: <a href="tel:+919008504821" style="color:var(--ink);font-weight:600">+91 9008504821</a></div>
+      <div style="font-size:.8rem;color:var(--muted)">Careers: <a href="tel:+918296906211" style="color:var(--ink);font-weight:600">+91 8296906211</a></div>
+      <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="btn-quote" style="justify-content:center;margin-top:8px">GET QUOTE</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Theme switcher
+(function(){
+  const root=document.documentElement, btn=document.getElementById('themeSwitcher'), icon=document.getElementById('themeIcon');
+  const saved=localStorage.getItem('mck-theme');
+  if(saved){root.setAttribute('data-theme',saved);icon.textContent=saved==='dark'?'☾':'☀';}
+  if(btn) btn.addEventListener('click',()=>{const next=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',next);icon.textContent=next==='dark'?'☾':'☀';localStorage.setItem('mck-theme',next);});
+})();
+
+// Scroll effect
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>{if(navEl)navEl.classList.toggle('scrolled',window.scrollY>8);},{passive:true});
+
+// Desktop mega menu toggle
+document.querySelectorAll('.nav__item').forEach(item=>{
+  const trigger=item.querySelector('.nav__trigger');
+  if(trigger){
+    trigger.addEventListener('click',(e)=>{e.preventDefault();item.classList.toggle('open');});
+    item.addEventListener('mouseleave',()=>{item.classList.remove('open');});
+  }
+});
+
+// MOBILE DRAWER - Fixed opening/closing
+const drawer=document.getElementById('drawer');
+const menuBtn=document.getElementById('menuBtn');
+const drawerClose=document.getElementById('drawerClose');
+
+function openDrawer(){
+  if(drawer){
+    drawer.style.display='block';
+    drawer.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+}
+function closeDrawer(){
+  if(drawer){
+    drawer.classList.remove('open');
+    setTimeout(()=>{drawer.style.display='none';document.body.style.overflow='';},350);
+  }
+}
+if(menuBtn) menuBtn.addEventListener('click',openDrawer);
+if(drawerClose) drawerClose.addEventListener('click',closeDrawer);
+if(drawer) drawer.addEventListener('click',(e)=>{if(e.target===drawer)closeDrawer();});
+
+// Close drawer when clicking any link inside
+drawer?.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeDrawer));
+
+// Mobile drawer accordion groups
+document.querySelectorAll('[data-drawer-group] > button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const group=btn.parentElement;
+    group.classList.toggle('open');
+  });
+});
+
+// Ensure drawer is hidden initially
+if(drawer) drawer.style.display='none';
+</script>
+</body>
+</html>

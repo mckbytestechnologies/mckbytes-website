@@ -1,0 +1,100 @@
+{% extends 'dashboard/base_admin.html' %}
+{% load static %}
+
+{% block page_title %}Application Details{% endblock %}
+
+{% block content %}
+<div class="data-table">
+    <div style="padding: 25px;">
+        <div style="margin-bottom: 20px;">
+            <a href="{% url 'dashboard:job_application_list' %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Applications</a>
+            <a href="{% url 'dashboard:job_application_delete' application.id %}" class="btn btn-danger" onclick="return confirm('Delete this application?')"><i class="fas fa-trash"></i> Delete</a>
+        </div>
+        
+        <!-- Status Update Form -->
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+            <h3><i class="fas fa-tasks"></i> Update Status</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <div style="display: flex; gap: 15px; align-items: flex-end;">
+                    <div style="flex: 1;">
+                        <label>Current Status</label>
+                        <select name="status" class="form-control">
+                            <option value="pending" {% if application.status == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="reviewed" {% if application.status == 'reviewed' %}selected{% endif %}>Reviewed</option>
+                            <option value="shortlisted" {% if application.status == 'shortlisted' %}selected{% endif %}>Shortlisted</option>
+                            <option value="rejected" {% if application.status == 'rejected' %}selected{% endif %}>Rejected</option>
+                            <option value="hired" {% if application.status == 'hired' %}selected{% endif %}>Hired</option>
+                        </select>
+                    </div>
+                    <div style="flex: 2;">
+                        <label>Notes</label>
+                        <input type="text" name="notes" class="form-control" value="{{ application.notes }}" placeholder="Add internal notes...">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Update Status</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Application Details -->
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+            <h3><i class="fas fa-briefcase"></i> Job Information</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div><strong>Position:</strong> {{ application.job.title }}</div>
+                <div><strong>Department:</strong> {{ application.job.department.name|default:"-" }}</div>
+                <div><strong>Job Type:</strong> {{ application.job.get_job_type_display }}</div>
+                <div><strong>Location:</strong> {{ application.job.location }}</div>
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+            <h3><i class="fas fa-user"></i> Personal Information</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div><strong>Full Name:</strong> {{ application.first_name }} {{ application.last_name }}</div>
+                <div><strong>Email:</strong> <a href="mailto:{{ application.email }}">{{ application.email }}</a></div>
+                <div><strong>Phone:</strong> {{ application.phone }}</div>
+                <div><strong>Location:</strong> {{ application.location }}</div>
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+            <h3><i class="fas fa-chart-line"></i> Professional Information</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div><strong>Years Experience:</strong> {{ application.years_experience }}</div>
+                <div><strong>Current Company:</strong> {{ application.current_company|default:"-" }}</div>
+                <div><strong>Current Role:</strong> {{ application.current_role|default:"-" }}</div>
+                <div><strong>Source:</strong> {{ application.source|default:"-" }}</div>
+                <div><strong>LinkedIn:</strong> {% if application.linkedin_url %}<a href="{{ application.linkedin_url }}" target="_blank">{{ application.linkedin_url|truncatechars:30 }}</a>{% else %}-{% endif %}</div>
+                <div><strong>Portfolio:</strong> {% if application.portfolio_url %}<a href="{{ application.portfolio_url }}" target="_blank">{{ application.portfolio_url|truncatechars:30 }}</a>{% else %}-{% endif %}</div>
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+            <h3><i class="fas fa-file-alt"></i> Cover Letter</h3>
+            <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0;">
+                {{ application.cover_letter|linebreaks }}
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+            <h3><i class="fas fa-paperclip"></i> Attachments</h3>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                {% if application.resume %}
+                <a href="{{ application.resume.url }}" class="btn btn-primary" target="_blank"><i class="fas fa-download"></i> Download Resume</a>
+                {% endif %}
+                {% if application.additional_file %}
+                <a href="{{ application.additional_file.url }}" class="btn btn-secondary" target="_blank"><i class="fas fa-download"></i> Download Additional File</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px;">
+            <h3><i class="fas fa-clock"></i> Timeline</h3>
+            <div><strong>Applied on:</strong> {{ application.created_at|date:"F d, Y H:i:s" }}</div>
+            <div><strong>Last Updated:</strong> {{ application.updated_at|date:"F d, Y H:i:s" }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

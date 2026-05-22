@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mckbytes Technologies{% endblock %}</title>
+    
+    <!-- Your CSS files -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- Include your header -->
+{% include 'core/header.html' %}
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- Include your footer -->
+{% include 'core/footer.html' %}
+
+<!-- Your JS files -->
+<script src="{% static 'js/main.js' %}"></script>
+
+{% block extra_js %}{% endblock %}
+</body>
+</html>

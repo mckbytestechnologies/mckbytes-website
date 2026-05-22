@@ -1,0 +1,70 @@
+{% extends 'dashboard/base_admin.html' %}
+{% load static %}
+
+{% block page_title %}Job Postings{% endblock %}
+
+{% block content %}
+<div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="stat-card"><h3>Total Jobs</h3><div class="number">{{ total_jobs }}</div></div>
+    <div class="stat-card"><h3>Active Jobs</h3><div class="number">{{ active_jobs }}</div></div>
+    <div class="stat-card"><h3>Inactive Jobs</h3><div class="number">{{ inactive_jobs }}</div></div>
+</div>
+
+<div class="data-table">
+    <div class="table-header">
+        <h3><i class="fas fa-briefcase"></i> All Job Postings</h3>
+        <div style="display: flex; gap: 10px;">
+            <a href="?status=active" class="btn btn-success btn-sm">Active</a>
+            <a href="?status=inactive" class="btn btn-warning btn-sm">Inactive</a>
+            <a href="{% url 'dashboard:job_create' %}" class="btn btn-primary"><i class="fas fa-plus"></i> New Job</a>
+        </div>
+    </div>
+    
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Applications</th>
+                    <th>Status</th>
+                    <th>Posted</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td><strong>{{ job.title }}</strong></td>
+                    <td>{{ job.category.name|default:"-" }}</td>
+                    <td><span class="badge badge-info">{{ job.get_job_type_display }}</span></td>
+                    <td>{{ job.location|truncatechars:30 }}</td>
+                    <td><a href="{% url 'dashboard:job_application_list' %}?job={{ job.id }}" class="badge badge-primary" style="background:#0a84ff;">{{ job.applications.count }} apps</a></td>
+                    <td>{% if job.is_active %}<span class="badge badge-success">Active</span>{% else %}<span class="badge badge-warning">Inactive</span>{% endif %}</td>
+                    <td>{{ job.created_at|date:"M d, Y" }}</td>
+                    <td>
+                        <a href="{% url 'dashboard:job_edit' job.id %}" class="btn btn-primary btn-sm" style="padding: 4px 10px;"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="{% url 'dashboard:job_toggle_status' job.id %}" class="btn btn-{% if job.is_active %}warning{% else %}success{% endif %} btn-sm" style="padding: 4px 10px;">
+                            {% if job.is_active %}<i class="fas fa-eye-slash"></i> Deactivate{% else %}<i class="fas fa-eye"></i> Activate{% endif %}
+                        </a>
+                        <a href="{% url 'dashboard:job_delete' job.id %}" class="btn btn-danger btn-sm" style="padding: 4px 10px;" onclick="return confirm('Delete this job?')"><i class="fas fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="8" style="text-align: center;">No job postings found</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% if jobs.has_other_pages %}
+    <div class="pagination">
+        {% if jobs.has_previous %}<a href="?page={{ jobs.previous_page_number }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}">← Previous</a>{% endif %}
+        <span class="current">Page {{ jobs.number }} of {{ jobs.paginator.num_pages }}</span>
+        {% if jobs.has_next %}<a href="?page={{ jobs.next_page_number }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}">Next →</a>{% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

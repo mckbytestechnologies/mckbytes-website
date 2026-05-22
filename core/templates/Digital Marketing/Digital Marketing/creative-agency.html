@@ -1,0 +1,994 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative Advertising Agency in Vellore — BrandStory</title>
+  <meta name="description" content="BrandStory is a creative advertising agency in Vellore building brand identity, campaigns, print, OOH, digital and TV advertising that gets noticed." />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ════════════════════════════════════════════
+       LIGHT-THEME TOKENS (default)
+    ════════════════════════════════════════════ */
+    :root{
+      --brand:#C8102E; --brand-2:#ff3b5c; --brand-soft:rgba(200,16,46,.08);
+      --accent:#0a84ff; --accent-2:#30d158; --gold:#f59e0b;
+      --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45; --muted:#6b6c78;
+      --line:#e8e9ee; --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#eef0f4;
+      --ivory:#faf8f3;
+
+      /* Sticky note paper colours (light theme — pastel) */
+      --note-yellow:#fffbe6;
+      --note-pink:#fde8eb;
+      --note-blue:#e6f4ff;
+      --note-text:#0b0b10;
+      --note-author-bg:#0b0b10;
+      --note-tape:rgba(15,17,26,.12);
+      --note-divider:rgba(15,17,26,.25);
+
+      /* Poster (kept dark in both themes — it's a printed mockup) */
+      --poster-paper:#ffffff;
+      --poster-shadow:0 30px 80px -20px rgba(15,17,26,.3), 0 8px 24px rgba(15,17,26,.12);
+
+      /* Comic strip panel border colour (auto-inverts via --ink) */
+      --panel-border:var(--ink);
+      --panel-shadow-color:var(--ink);
+
+      /* Marquee & footer bands stay dark in both themes — already use #0b0b14 */
+
+      --r:16px; --r-lg:22px; --r-xl:32px;
+      --fs-display: clamp(2.6rem, 6vw + 1rem, 6rem);
+      --fs-h1: clamp(2rem, 3.2vw + 1rem, 3.4rem);
+      --fs-h2: clamp(1.6rem, 1.5vw + 1rem, 2.4rem);
+      --container:1280px; --gut:clamp(20px, 4vw, 48px);
+      --sy:clamp(72px, 8.5vw, 130px);
+      --ease:cubic-bezier(.22,.61,.36,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+      --t:.38s var(--ease);
+    }
+
+    /* ════════════════════════════════════════════
+       DARK-THEME TOKENS  (this is the fix)
+    ════════════════════════════════════════════ */
+    [data-theme="dark"]{
+      --ink:#f0f0f5; --ink-2:#c8c9d2; --ink-3:#9a9baa;
+      --muted:#7a7b88;
+      --line:rgba(255,255,255,.10);
+      --paper:#0d0e14;
+      --paper-2:#14151e;
+      --paper-3:#1c1d28;
+      --ivory:#14151e;          /* ivory becomes deep gray in dark */
+      --brand-soft:rgba(200,16,46,.18);
+
+      /* Sticky notes — keep the warm/cool feel but dark-tinted */
+      --note-yellow:#2b2614;
+      --note-pink:#2a161c;
+      --note-blue:#11202d;
+      --note-text:#f0f0f5;
+      --note-author-bg:rgba(255,255,255,.12);
+      --note-tape:rgba(255,255,255,.12);
+      --note-divider:rgba(255,255,255,.18);
+
+      /* Poster — slightly darker frame so it doesn't blow out */
+      --poster-paper:#1c1d28;
+      --poster-shadow:0 30px 80px -20px rgba(0,0,0,.6), 0 8px 24px rgba(0,0,0,.4);
+
+      /* Comic panel border becomes a soft white in dark, with red shadow */
+      --panel-border:rgba(255,255,255,.18);
+      --panel-shadow-color:rgba(255,255,255,.18);
+    }
+
+    /* Local scope */
+    .ca-page *,.ca-page *::before,.ca-page *::after{box-sizing:border-box}
+    .ca-page{
+      font-family:"Sora",system-ui,-apple-system,sans-serif;
+      font-size:1.1rem;line-height:1.65;color:var(--ink);
+      background:var(--paper);
+      -webkit-font-smoothing:antialiased;overflow-x:hidden;
+      transition:background .4s var(--ease),color .4s var(--ease);
+    }
+    .ca-page h1,.ca-page h2,.ca-page h3,.ca-page h4{
+      font-family:"Sora";font-weight:700;letter-spacing:-.03em;line-height:1.06;margin:0 0 .4em;color:var(--ink);
+      transition:color .4s var(--ease);
+    }
+    .ca-page p{margin:0 0 1em;color:var(--ink-3);transition:color .4s var(--ease)}
+    .ca-page a{color:inherit;text-decoration:none}
+    .ca-page button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+    .ca-container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gut)}
+    .ca-section{padding:var(--sy) 0}
+    .ca-eyebrow{
+      display:inline-flex;align-items:center;gap:.5rem;
+      font-family:"JetBrains Mono",monospace;font-size:.78rem;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500;
+    }
+    .ca-eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+
+    /* Buttons */
+    .ca-btn{
+      --bg:var(--ink);--fg:var(--paper);
+      display:inline-flex;align-items:center;gap:.55rem;
+      padding:.92rem 1.5rem;border-radius:999px;
+      background:var(--bg);color:var(--fg);
+      font-weight:600;font-size:.95rem;
+      transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);
+      white-space:nowrap;position:relative;isolation:isolate;overflow:hidden;
+    }
+    .ca-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease)}
+    .ca-btn:hover::before{transform:translateX(100%)}
+    .ca-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,17,26,.18)}
+    .ca-btn .arrow{transition:transform .3s var(--ease)}
+    .ca-btn:hover .arrow{transform:translateX(4px)}
+    .ca-btn--primary{--bg:var(--brand);--fg:#fff;box-shadow:0 8px 22px rgba(200,16,46,.3)}
+    .ca-btn--primary:hover{--bg:#a8001f}
+    .ca-btn--ghost{--bg:transparent;--fg:var(--ink);border:1px solid var(--line);padding:calc(.92rem - 1px) calc(1.5rem - 1px)}
+    .ca-btn--ghost:hover{--bg:var(--paper-2)}
+    .ca-btn--light{--bg:rgba(255,255,255,.08);--fg:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
+    .ca-btn--light:hover{--bg:rgba(255,255,255,.16)}
+
+    /* ════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════ */
+    .ca-hero{
+      position:relative;
+      padding: clamp(40px,5vw,80px) 0 clamp(60px,7vw,110px);
+      background: var(--ivory);
+      overflow:hidden; isolation:isolate;
+      transition: background .4s var(--ease);
+    }
+    .ca-hero::before{
+      content:""; position:absolute; inset:0; z-index:0;
+      background:
+        radial-gradient(800px 500px at 90% 0%, rgba(200,16,46,.08), transparent 60%),
+        radial-gradient(700px 480px at 0% 100%, rgba(245,158,11,.10), transparent 60%);
+    }
+    [data-theme="dark"] .ca-hero::before{
+      background:
+        radial-gradient(800px 500px at 90% 0%, rgba(200,16,46,.18), transparent 60%),
+        radial-gradient(700px 480px at 0% 100%, rgba(245,158,11,.14), transparent 60%);
+    }
+    .ca-hero::after{
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background-image: radial-gradient(rgba(15,17,26,.08) 1px, transparent 1px);
+      background-size: 22px 22px;
+      mask-image: radial-gradient(ellipse at 50% 30%, #000 40%, transparent 85%);
+    }
+    [data-theme="dark"] .ca-hero::after{
+      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+    }
+
+    .ca-hero__inner{
+      position:relative; z-index:1;
+      display:grid; grid-template-columns: 1.1fr .9fr;
+      gap: clamp(36px,5vw,80px);
+      align-items:center;
+    }
+    @media(max-width:980px){.ca-hero__inner{grid-template-columns:1fr;gap:60px}}
+
+    .ca-hero__tag{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 14px 7px 8px;border-radius:999px;
+      background:var(--paper);border:1px solid var(--line);
+      color:var(--ink-2);font-size:.82rem;font-weight:600;
+      margin-bottom:22px;
+      box-shadow: 0 4px 12px rgba(15,17,26,.04);
+      transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+    }
+    .ca-hero__tag::before{
+      content:""; width:22px; height:22px; border-radius:50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+    .ca-hero h1{
+      font-family: "Playfair Display", "Sora", serif;
+      font-weight: 900;
+      font-size: var(--fs-display);
+      letter-spacing: -.025em;
+      line-height: .98;
+      margin: 0 0 24px;
+    }
+    .ca-hero h1 em{
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight:700;
+      color: var(--brand);
+    }
+    .ca-hero h1 u{
+      text-decoration: none;
+      background: linear-gradient(180deg, transparent 65%, rgba(245,158,11,.35) 65%, rgba(245,158,11,.35) 92%, transparent 92%);
+      padding: 0 6px;
+    }
+    [data-theme="dark"] .ca-hero h1 u{
+      background: linear-gradient(180deg, transparent 65%, rgba(245,158,11,.4) 65%, rgba(245,158,11,.4) 92%, transparent 92%);
+    }
+    .ca-hero__lead{
+      font-size: 1.16rem; line-height: 1.65;
+      color: var(--ink-3); max-width: 50ch;
+      margin-bottom: 32px;
+    }
+    .ca-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px}
+    .ca-hero__signature{
+      display:flex; gap:24px; flex-wrap:wrap; align-items:center;
+      padding-top:24px; border-top:1px solid var(--line);
+      max-width:540px;
+      transition: border-color .4s var(--ease);
+    }
+    .ca-hero__signature-script{
+      font-family: "Caveat", cursive;
+      font-weight:700;
+      font-size: 1.5rem;
+      color: var(--brand);
+      transform: rotate(-2deg);
+    }
+    .ca-hero__signature-text{color:var(--ink-3);font-size:.92rem;line-height:1.45;transition:color .4s var(--ease)}
+    .ca-hero__signature-text b{color:var(--ink);font-weight:700;display:block}
+
+    /* Poster mockup */
+    .ca-poster{
+      position:relative;
+      aspect-ratio: 3/4;
+      width: 100%; max-width: 460px; margin: 0 auto;
+      background: var(--poster-paper);
+      padding: 18px;
+      box-shadow: var(--poster-shadow);
+      transform: rotate(-2deg);
+      transition: transform .5s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+    }
+    .ca-poster:hover{transform:rotate(0)}
+    .ca-poster__inner{
+      width:100%; height:100%;
+      background: linear-gradient(160deg, #0b0b14 0%, var(--brand) 100%);
+      padding: 32px 26px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      position:relative; overflow:hidden;
+    }
+    .ca-poster__inner::before{
+      content:""; position:absolute; inset:0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events:none;
+    }
+    .ca-poster__inner::after{
+      content:""; position:absolute;
+      top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,59,92,.5), transparent 70%);
+      filter:blur(40px);
+    }
+    .ca-poster__brand{
+      position:relative;z-index:1;
+      font-family:"JetBrains Mono",monospace;
+      font-size:.74rem; letter-spacing:.14em; text-transform:uppercase;
+      color: rgba(255,255,255,.6); font-weight:500;
+    }
+    .ca-poster__big{
+      position:relative;z-index:1;
+      font-family:"Playfair Display", serif;
+      font-weight:900; color:#fff;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height:.92; letter-spacing:-.02em;
+    }
+    .ca-poster__big em{
+      font-style:italic;
+      background: linear-gradient(120deg, #fff, var(--gold));
+      -webkit-background-clip:text; background-clip:text;color:transparent;
+    }
+    .ca-poster__big small{
+      display:block;
+      font-size:.4em;font-weight:500;font-family:"Sora";
+      font-style:normal;
+      letter-spacing:0;line-height:1.4;
+      color: rgba(255,255,255,.78);
+      margin-top:14px;
+    }
+    .ca-poster__foot{
+      position:relative;z-index:1;
+      display:flex;justify-content:space-between;align-items:flex-end;
+      color:#fff;
+    }
+    .ca-poster__foot b{
+      font-family:"Caveat",cursive;font-weight:700;font-size:1.4rem;
+      color:var(--gold);
+    }
+    .ca-poster__foot span{
+      font-family:"JetBrains Mono",monospace;
+      font-size:.72rem;letter-spacing:.12em;
+      color: rgba(255,255,255,.6);
+    }
+    .ca-poster__tape{
+      position:absolute;
+      width:60px;height:18px;
+      background: rgba(245,158,11,.55);
+      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+      transform:rotate(-12deg);
+      top:-6px;left:30px;z-index:2;
+    }
+    .ca-poster__tape--r{top:auto;bottom:-6px;left:auto;right:30px;transform:rotate(8deg)}
+
+    .ca-award{
+      position:absolute;
+      bottom:18%; right:-26px; z-index:5;
+      width:96px;height:96px;border-radius:50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:#fff;
+      display:grid;place-items:center;text-align:center;
+      box-shadow: 0 20px 40px -10px rgba(200,16,46,.45);
+      animation: spin 25s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .ca-award b{
+      display:block;font-family:"Playfair Display",serif;font-weight:900;
+      font-size:1.15rem;line-height:1;letter-spacing:-.02em;
+    }
+    .ca-award span{display:block;font-size:.62rem;font-family:"JetBrains Mono",monospace;letter-spacing:.1em;margin-top:2px;text-transform:uppercase}
+
+    /* ════════════════════════════════════════════
+       MARQUEE (stays dark in both themes — intentional)
+    ════════════════════════════════════════════ */
+    .ca-marquee{
+      background:#0b0b14;color:#fff;
+      padding: 22px 0;
+      border-block:1px solid rgba(255,255,255,.06);
+      overflow:hidden;
+    }
+    .ca-marquee__track{display:flex;gap:48px;align-items:center;width:max-content;animation: marqScroll 30s linear infinite}
+    @keyframes marqScroll{to{transform:translateX(-50%)}}
+    .ca-marquee__word{font-family:"Playfair Display",serif;font-weight:900;font-style:italic;font-size: clamp(1.8rem, 3vw + 1rem, 3rem);letter-spacing:-.025em;white-space:nowrap;color:#fff}
+    .ca-marquee__word--outline{-webkit-text-stroke: 1.5px #fff;color:transparent}
+    .ca-marquee__dot{width:14px;height:14px;border-radius:50%;background:var(--brand);box-shadow: 0 0 16px var(--brand-2);flex-shrink:0}
+
+    /* ════════════════════════════════════════════
+       MAGAZINE TOC
+    ════════════════════════════════════════════ */
+    .ca-toc{padding:var(--sy) 0;background:var(--paper);transition:background .4s var(--ease)}
+    .ca-toc__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end; margin-bottom:48px}
+    @media(max-width:780px){.ca-toc__head{grid-template-columns:1fr}}
+    .ca-toc__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:14ch;margin:.4em 0 0}
+    .ca-toc__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-toc__head p{color:var(--muted);font-size:1.02rem;max-width:46ch;margin:0}
+    .ca-toc__masthead{
+      display:flex;justify-content:space-between;align-items:end;
+      padding-bottom:14px; border-bottom: 3px solid var(--ink);
+      margin-bottom:6px;
+      transition: border-color .4s var(--ease);
+    }
+    .ca-toc__masthead span{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+    .ca-toc__masthead b{font-family:"Playfair Display",serif;font-weight:900;font-style:italic;font-size:1.6rem;letter-spacing:-.01em;color:var(--ink)}
+
+    .ca-toc__list{display:flex;flex-direction:column}
+    .ca-toc__row{
+      display:grid;grid-template-columns: 80px 1fr auto;gap: 20px;
+      align-items:baseline;padding: 22px 0;
+      border-bottom: 1px dashed var(--line);
+      cursor:default;
+      transition: padding .35s var(--ease), color .35s, border-color .4s var(--ease);
+      position:relative;
+    }
+    [data-theme="dark"] .ca-toc__row{border-bottom-color: rgba(255,255,255,.12)}
+    .ca-toc__row:hover{padding-left:14px}
+    .ca-toc__row::before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:50%;background:var(--brand);opacity:0;transform:translateY(-50%);transition:opacity .3s}
+    .ca-toc__row:hover::before{opacity:1}
+    .ca-toc__num{font-family:"Playfair Display",serif;font-weight:900;font-style:italic;font-size:2rem;letter-spacing:-.03em;color:var(--brand);line-height:1}
+    .ca-toc__name{font-family:"Playfair Display",serif;font-weight:700;font-size: clamp(1.2rem, 1vw + 1rem, 1.6rem);letter-spacing:-.02em; color:var(--ink)}
+    .ca-toc__name small{display:block;font-family:"Sora",sans-serif;font-weight:500;font-size:.92rem;color:var(--ink-3);margin-top:6px;letter-spacing:0}
+    .ca-toc__page{font-family:"JetBrains Mono",monospace;font-size:.88rem;color:var(--muted);letter-spacing:.04em}
+    .ca-toc__page::before{content:"p.";font-weight:600;color:var(--ink-2);margin-right:4px}
+
+    /* ════════════════════════════════════════════
+       MANIFESTO
+    ════════════════════════════════════════════ */
+    .ca-manifesto{padding:var(--sy) 0;background:var(--ivory);transition:background .4s var(--ease)}
+    .ca-manifesto__head{text-align:center;margin-bottom:48px}
+    .ca-manifesto__head .ca-eyebrow{margin-bottom:16px}
+    .ca-manifesto__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:20ch;margin:.3em auto 0;letter-spacing:-.025em}
+    .ca-manifesto__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-manifesto__rule{
+      border-top: 1px solid var(--line);
+      border-bottom: 4px double var(--line);
+      padding: 6px 0; margin-bottom: 32px;
+      display:flex; justify-content:space-between; align-items:center;
+      transition: border-color .4s var(--ease);
+    }
+    [data-theme="dark"] .ca-manifesto__rule{
+      border-top-color: rgba(255,255,255,.2);
+      border-bottom-color: rgba(255,255,255,.2);
+    }
+    .ca-manifesto__rule span{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+    .ca-manifesto__rule b{font-family:"Caveat",cursive;font-weight:700;font-size:1.3rem;color:var(--brand)}
+    .ca-manifesto__body{
+      column-count:3;column-gap: clamp(20px, 3vw, 40px);
+      column-rule: 1px dashed var(--line);
+      max-width: 1000px; margin: 0 auto;
+      transition: column-rule-color .4s var(--ease);
+    }
+    [data-theme="dark"] .ca-manifesto__body{column-rule-color: rgba(255,255,255,.12)}
+    @media(max-width:880px){.ca-manifesto__body{column-count:2}}
+    @media(max-width:520px){.ca-manifesto__body{column-count:1}}
+    .ca-manifesto__body p{font-size:1.02rem;line-height:1.75;color:var(--ink-2);text-align:justify;hyphens:auto;orphans:3;widows:3}
+    .ca-manifesto__body p:first-of-type::first-letter{font-family:"Playfair Display",serif;font-weight:900;font-size:5rem;line-height:.82;float:left;padding: 5px 14px 0 0;color:var(--brand)}
+    .ca-manifesto__pull{font-family:"Playfair Display",serif;font-style:italic;font-weight:700;font-size:1.35rem;line-height:1.35;color:var(--ink);padding: 14px 0 14px 18px;border-left: 3px solid var(--brand);margin: 14px 0;break-inside: avoid}
+
+    /* ════════════════════════════════════════════
+       COLOR SWATCH DISCIPLINES
+    ════════════════════════════════════════════ */
+    .ca-disc{padding:var(--sy) 0;background:var(--paper);transition:background .4s var(--ease)}
+    .ca-disc__head{text-align:center;margin-bottom:48px}
+    .ca-disc__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .ca-disc__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-disc__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+    .ca-swatch__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    @media(max-width:980px){.ca-swatch__grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.ca-swatch__grid{grid-template-columns:1fr}}
+
+    .ca-swatch{
+      position:relative;aspect-ratio: 4/5;border-radius:8px;overflow:hidden;
+      cursor:default;
+      transition: transform .5s var(--ease-out), box-shadow .5s;
+      display:flex;flex-direction:column;justify-content:space-between;
+      color:#fff;padding: 22px;
+    }
+    .ca-swatch:hover{transform:translateY(-6px);box-shadow:0 28px 60px -18px rgba(15,17,26,.28)}
+    .ca-swatch::after{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 85%);
+    }
+    .ca-swatch__code{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.08em;color:rgba(255,255,255,.7);text-transform:uppercase;position:relative;z-index:1}
+    .ca-swatch__name{position:relative;z-index:1}
+    .ca-swatch__name b{display:block;font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(1.5rem,1.5vw + 1rem,2rem);letter-spacing:-.02em;line-height:1;color:#fff;margin-bottom:8px}
+    .ca-swatch__name span{display:block;font-size:.86rem;color:rgba(255,255,255,.78);line-height:1.45;max-width:24ch}
+    .ca-swatch__chip{position:absolute; bottom: -16px; left: 22px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.95);border:2px solid var(--paper);box-shadow: 0 6px 16px rgba(0,0,0,.18);z-index:2;transition: border-color .4s var(--ease)}
+
+    .ca-swatch--red{background:linear-gradient(135deg, var(--brand) 0%, #6e0a1c 100%)}
+    .ca-swatch--ink{background:linear-gradient(135deg, #1a1b22 0%, #0b0b14 100%)}
+    .ca-swatch--gold{background:linear-gradient(135deg, var(--gold) 0%, #c4760a 100%)}
+    .ca-swatch--blue{background:linear-gradient(135deg, var(--accent) 0%, #1f4dff 100%)}
+    .ca-swatch--coral{background:linear-gradient(135deg, var(--brand-2) 0%, #c8102e 100%)}
+    .ca-swatch--green{background:linear-gradient(135deg, var(--accent-2) 0%, #16a34a 100%)}
+    .ca-swatch--purple{background:linear-gradient(135deg, #b985ff 0%, #8b5cf6 100%)}
+    .ca-swatch--teal{background:linear-gradient(135deg, #5dd5cc 0%, #2bb3aa 100%)}
+
+    /* ════════════════════════════════════════════
+       STORYBOARD PROCESS
+    ════════════════════════════════════════════ */
+    .ca-story{padding:var(--sy) 0;background:var(--ivory);transition:background .4s var(--ease)}
+    .ca-story__head{text-align:center;margin-bottom:48px}
+    .ca-story__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .ca-story__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-story__head p{color:var(--muted);max-width:58ch;margin:1em auto 0}
+
+    .ca-board{display:grid;grid-template-columns: repeat(5, 1fr);gap: 16px}
+    @media(max-width:1024px){.ca-board{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.ca-board{grid-template-columns:1fr}}
+
+    .ca-panel{
+      position:relative;
+      background:var(--paper);
+      border: 2px solid var(--panel-border);
+      border-radius:10px;
+      padding: 18px 18px 22px;
+      box-shadow: 4px 4px 0 0 var(--panel-shadow-color);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+    }
+    .ca-panel:hover{transform:translate(-2px,-2px);box-shadow: 7px 7px 0 0 var(--brand)}
+    .ca-panel__viewport{aspect-ratio: 5/4;border-radius:4px;margin-bottom:16px;position:relative;overflow:hidden;display:grid;place-items:center}
+    .ca-panel:nth-child(1) .ca-panel__viewport{background:linear-gradient(135deg, var(--brand) 0%, #6e0a1c 100%)}
+    .ca-panel:nth-child(2) .ca-panel__viewport{background:linear-gradient(135deg, var(--gold) 0%, #c4760a 100%)}
+    .ca-panel:nth-child(3) .ca-panel__viewport{background:linear-gradient(135deg, var(--accent) 0%, #1f4dff 100%)}
+    .ca-panel:nth-child(4) .ca-panel__viewport{background:linear-gradient(135deg, var(--accent-2) 0%, #16a34a 100%)}
+    .ca-panel:nth-child(5) .ca-panel__viewport{background:linear-gradient(135deg, #b985ff 0%, #8b5cf6 100%)}
+    .ca-panel__viewport::after{content:""; position:absolute;inset:0;background-image:linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px);background-size: 18px 18px}
+    .ca-panel__num{position:relative; z-index:1;font-family:"Playfair Display",serif;font-weight:900;font-style:italic;font-size: 4.4rem;color:#fff;letter-spacing:-.05em;line-height:.85;text-shadow: 4px 4px 0 rgba(0,0,0,.18)}
+    .ca-panel__badge{
+      position:absolute; top:14px; right:14px; z-index:2;
+      font-family:"Caveat",cursive;font-weight:700;font-size:1.1rem;color:#fff;
+      transform:rotate(8deg);padding: 2px 10px;
+      background:var(--ink);border-radius:4px;
+      transition: background .4s var(--ease), color .4s var(--ease);
+    }
+    [data-theme="dark"] .ca-panel__badge{background:#fff;color:#0b0b10}
+    .ca-panel h4{font-family:"Playfair Display",serif;font-weight:700;font-size:1.15rem;margin:0 0 6px;letter-spacing:-.015em}
+    .ca-panel p{font-size:.86rem;color:var(--ink-3);margin:0;line-height:1.5}
+
+    /* ════════════════════════════════════════════
+       INDUSTRIES MOSAIC
+    ════════════════════════════════════════════ */
+    .ca-ind{padding:var(--sy) 0;background:var(--paper);transition:background .4s var(--ease)}
+    .ca-ind__head{text-align:center;margin-bottom:48px}
+    .ca-ind__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .ca-ind__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-ind__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+    .ca-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows: 100px;gap: 12px}
+    @media(max-width:880px){.ca-mosaic{grid-template-columns:repeat(6,1fr)}}
+    @media(max-width:520px){.ca-mosaic{grid-template-columns:repeat(2,1fr)}}
+
+    .ca-tile{
+      position:relative;border-radius:14px;overflow:hidden;
+      background:var(--paper-2);border:1px solid var(--line);
+      padding: 18px 20px;
+      display:flex;flex-direction:column;justify-content:space-between;
+      transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .4s;
+    }
+    .ca-tile:hover{transform:translateY(-4px);box-shadow:0 18px 38px -14px rgba(15,17,26,.14);border-color:rgba(200,16,46,.3);background:var(--paper)}
+    .ca-tile--dark{background: linear-gradient(160deg, #0b0b14 0%, #1a1b22 100%);color:#fff; border-color:transparent}
+    .ca-tile--dark:hover{background:linear-gradient(160deg, #1a1b22, #0b0b14);border-color:transparent}
+    .{background: linear-gradient(160deg, var(--brand) 0%, #6e0a1c 100%);color:#fff;border-color:transparent}
+    .{background: linear-gradient(160deg, var(--gold) 0%, #c4760a 100%);color:#fff;border-color:transparent}
+    .ca-tile__num{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:600;letter-spacing:.08em;color:var(--brand)}
+    .ca-tile--dark .ca-tile__num,. .ca-tile__num,. .ca-tile__num{color:rgba(255,255,255,.7)}
+    .ca-tile h4{font-family:"Playfair Display",serif;font-weight:700;font-size:1.1rem;margin:0;letter-spacing:-.015em}
+    .ca-tile--dark h4,. h4,. h4{color:#fff}
+    .ca-tile small{display:block;font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.4}
+    .ca-tile--dark small,. small,. small{color:rgba(255,255,255,.72)}
+
+    .ca-tile--s1{grid-column:span 3;grid-row:span 2}
+    .ca-tile--s2{grid-column:span 4;grid-row:span 1}
+    .ca-tile--s3{grid-column:span 5;grid-row:span 2}
+    .ca-tile--s4{grid-column:span 4;grid-row:span 1}
+    .ca-tile--s5{grid-column:span 3;grid-row:span 1}
+    .ca-tile--s6{grid-column:span 4;grid-row:span 2}
+    .ca-tile--s7{grid-column:span 5;grid-row:span 1}
+    .ca-tile--s8{grid-column:span 3;grid-row:span 1}
+    @media(max-width:880px){
+      .ca-tile--s1,.ca-tile--s6{grid-column:span 3;grid-row:span 2}
+      .ca-tile--s2,.ca-tile--s3,.ca-tile--s4,.ca-tile--s5,.ca-tile--s7,.ca-tile--s8{grid-column:span 3;grid-row:span 1}
+    }
+    @media(max-width:520px){.ca-tile{grid-column:span 1 !important;grid-row:span 1 !important}}
+
+    /* ════════════════════════════════════════════
+       DIFFERENTIATORS
+    ════════════════════════════════════════════ */
+    .ca-diff{padding:var(--sy) 0;background:var(--ivory);transition:background .4s var(--ease)}
+    .ca-diff__head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:36px}
+    .ca-diff__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:20ch;margin:.3em 0 0}
+    .ca-diff__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-diff__head p{color:var(--muted);max-width:40ch;margin:0;font-size:1rem}
+
+    .ca-diff__list{display:flex;flex-direction:column}
+    .ca-diff__row{
+      position:relative;
+      display:grid;grid-template-columns: 96px 1fr 1.4fr auto;
+      gap: clamp(16px,2vw,30px);
+      align-items:center;
+      padding: 26px 6px;
+      border-top: 1px solid var(--line);
+      transition: padding .35s var(--ease), border-color .4s var(--ease);
+    }
+    [data-theme="dark"] .ca-diff__row{border-top-color: rgba(255,255,255,.12)}
+    .ca-diff__row:last-child{border-bottom: 1px solid var(--line)}
+    [data-theme="dark"] .ca-diff__row:last-child{border-bottom-color: rgba(255,255,255,.12)}
+    .ca-diff__row:hover{padding-left:20px}
+    @media(max-width:780px){.ca-diff__row{grid-template-columns:60px 1fr;gap:14px}.ca-diff__row > *:nth-child(3),.ca-diff__row > *:nth-child(4){grid-column:1 / -1}}
+    .ca-diff__num{font-family:"Playfair Display",serif;font-weight:900;font-style:italic;font-size:clamp(2.4rem,3vw,3.6rem);color:var(--brand);letter-spacing:-.04em;line-height:1}
+    .ca-diff__title{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(1.2rem,1vw + 1rem,1.6rem);color:var(--ink);letter-spacing:-.02em}
+    .ca-diff__desc{font-size:1rem;color:var(--ink-3);line-height:1.6;margin:0;max-width:50ch}
+    .ca-diff__cta{display:inline-flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);font-weight:600;white-space:nowrap}
+    .ca-diff__cta .arrow{transition:transform .35s var(--ease)}
+    .ca-diff__row:hover .ca-diff__cta .arrow{transform:translateX(4px)}
+
+    /* ════════════════════════════════════════════
+       STICKY NOTE TESTIMONIALS  (theme-aware paper)
+    ════════════════════════════════════════════ */
+    .ca-testi{padding:var(--sy) 0;background:var(--paper);transition:background .4s var(--ease)}
+    .ca-testi__head{text-align:center;margin-bottom:54px}
+    .ca-testi__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .ca-testi__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-testi__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+    .ca-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    @media(max-width:900px){.ca-notes{grid-template-columns:1fr}}
+
+    .ca-note{
+      position:relative;
+      padding: 36px 30px 32px;
+      background: var(--note-yellow);
+      color: var(--note-text);
+      border-radius: 4px;
+      box-shadow: 0 14px 30px -10px rgba(15,17,26,.18), 0 4px 10px rgba(15,17,26,.06);
+      transition: transform .45s var(--ease-out), background .4s var(--ease), color .4s var(--ease);
+    }
+    .ca-note:nth-child(1){background:var(--note-yellow);transform:rotate(-2deg)}
+    .ca-note:nth-child(2){background:var(--note-pink);transform:rotate(1.5deg)}
+    .ca-note:nth-child(3){background:var(--note-blue);transform:rotate(-1deg)}
+    .ca-note:hover{transform:rotate(0) translateY(-6px) scale(1.02);z-index:5}
+    .ca-note::before{
+      content:""; position:absolute;top:-8px; left:50%; transform:translateX(-50%) rotate(-4deg);
+      width:80px; height:18px;
+      background: var(--note-tape);border-radius:2px;
+      box-shadow: 0 2px 6px rgba(15,17,26,.08);
+      transition: background .4s var(--ease);
+    }
+    .ca-note blockquote{
+      font-family:"Caveat",cursive;font-weight:500;
+      font-size: 1.32rem;line-height:1.4;
+      color: var(--note-text);margin: 0 0 20px;
+      transition: color .4s var(--ease);
+    }
+    .ca-note__author{
+      display:flex;align-items:center;gap:10px;
+      padding-top:16px;
+      border-top: 1px dashed var(--note-divider);
+      transition: border-color .4s var(--ease);
+    }
+    .ca-note__avatar{
+      width:38px;height:38px;border-radius:50%;
+      background: var(--note-author-bg);color:#fff;
+      display:grid;place-items:center;
+      font-weight:700;font-size:.78rem;font-family:"Sora";
+      transition: background .4s var(--ease);
+    }
+    .ca-note__author b{display:block;font-size:.86rem;font-weight:700;color: var(--note-text);transition: color .4s var(--ease)}
+    .ca-note__author span{display:block;font-size:.74rem;color:var(--ink-3);transition: color .4s var(--ease)}
+    [data-theme="dark"] .ca-note__author span{color: rgba(255,255,255,.6)}
+
+    /* ════════════════════════════════════════════
+       FAQ
+    ════════════════════════════════════════════ */
+    .ca-faq{padding:var(--sy) 0;background:var(--ivory);transition:background .4s var(--ease)}
+    .ca-faq__head{text-align:center;margin-bottom:48px}
+    .ca-faq__head h2{font-family:"Playfair Display",serif;font-weight:900;font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .ca-faq__head h2 em{font-style:italic;color:var(--brand)}
+    .ca-faq__head p{color:var(--muted);max-width:50ch;margin:1em auto 0}
+
+    .ca-faq__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    @media(max-width:780px){.ca-faq__grid{grid-template-columns:1fr}}
+    .ca-faq__card{
+      padding: 28px 28px 26px;
+      background:var(--paper);border:1px solid var(--line);
+      border-radius:14px;
+      transition: transform .35s var(--ease),box-shadow .35s,border-color .35s,background .4s var(--ease);
+    }
+    .ca-faq__card:hover{transform:translateY(-3px);box-shadow:0 16px 34px -14px rgba(15,17,26,.12);border-color:rgba(200,16,46,.3)}
+    .ca-faq__card .ca-eyebrow{font-size:.7rem;margin-bottom:12px}
+    .ca-faq__card h4{font-family:"Playfair Display",serif;font-weight:700;font-size:1.15rem;margin:0 0 12px;letter-spacing:-.015em}
+    .ca-faq__card p{font-size:.96rem;color:var(--ink-3);line-height:1.65;margin:0}
+
+    /* ════════════════════════════════════════════
+       FINAL CTA  (stays gradient — looks great both modes)
+    ════════════════════════════════════════════ */
+    .ca-cta{padding: clamp(60px,8vw,120px) 0;background:var(--paper);transition:background .4s var(--ease)}
+    .ca-cta__shell{
+      position:relative;
+      background: linear-gradient(135deg, #0b0b14 0%, #1a0e16 50%, var(--brand) 130%);
+      border-radius: clamp(24px,3vw,36px);
+      padding: clamp(50px,7vw,90px) clamp(28px,5vw,72px);
+      margin: 0 var(--gut);
+      color:#fff;overflow:hidden;text-align:center;
+    }
+    .ca-cta__shell::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 90% 0%, rgba(255,59,92,.3), transparent 40%),radial-gradient(circle at 0% 100%, rgba(245,158,11,.2), transparent 40%)}
+    .ca-cta__shell::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);background-size: 60px 60px;mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%)}
+    .ca-cta__shell > *{position:relative;z-index:1}
+    .ca-cta__stamp{display:inline-flex;align-items:center;gap:10px;padding:8px 16px; border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:.78rem;font-weight:600;font-family:"JetBrains Mono",monospace;letter-spacing:.1em;margin-bottom:24px}
+    .ca-cta__stamp::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brand-2);box-shadow:0 0 12px var(--brand-2)}
+    .ca-cta h2{font-family:"Playfair Display",serif;font-weight:900;color:#fff;font-size: clamp(2.4rem,5vw + 1rem,4.6rem);max-width:22ch;margin:.1em auto;letter-spacing:-.025em;line-height:1}
+    .ca-cta h2 em{font-style:italic;background:linear-gradient(120deg,var(--brand-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .ca-cta p{color:rgba(255,255,255,.86);max-width:54ch;margin:24px auto 32px;font-size:1.06rem}
+    .ca-cta__actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .ca-cta__signoff{margin-top:36px;font-family:"Caveat",cursive;font-weight:700;font-size:1.5rem;color:var(--gold);transform:rotate(-2deg);display:inline-block}
+
+    /* Reveal */
+    .ca-reveal{opacity:0;transform:translateY(16px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+    .ca-reveal.in{opacity:1;transform:none}
+    .ca-reveal--1{transition-delay:.08s}
+    .ca-reveal--2{transition-delay:.16s}
+    .ca-reveal--3{transition-delay:.24s}
+    @media (prefers-reduced-motion: reduce){.ca-reveal{opacity:1;transform:none;transition:none}}
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ================= HEADER (Django include) ================= -->
+  {% include 'include/header.html' %}
+
+
+  <!-- ================= PAGE CONTENT ================= -->
+
+  <div class="ca-page">
+
+    <!-- ─────────── HERO ─────────── -->
+    <section class="ca-hero">
+      <div class="ca-container ca-hero__inner">
+        <div>
+          <span class="ca-hero__tag ca-reveal">Creative Advertising · Vellore</span>
+          <h1 class="ca-reveal ca-reveal--1">
+            We make ads<br>
+            people <em>actually</em><br>
+            <u>remember.</u>
+          </h1>
+          <p class="ca-hero__lead ca-reveal ca-reveal--2">
+            Welcome to Mckbytes Technologies, a leading creative advertising agency dedicated to transforming your brand vision into compelling realities. With years of expertise and a passion for innovation, we specialize in crafting unique advertising solutions that resonate with your audience, elevate your brand presence, and drive measurable results.
+          </p>
+          <div class="ca-hero__cta ca-reveal ca-reveal--2">
+            <a href="#cta" class="ca-btn ca-btn--primary">Start a campaign <span class="arrow">→</span></a>
+            <a href="#disciplines" class="ca-btn ca-btn--ghost">See what we do</a>
+          </div>
+          <div class="ca-hero__signature ca-reveal ca-reveal--3">
+            <span class="ca-hero__signature-script">★ Award-winning team</span>
+            <div class="ca-hero__signature-text">
+              <b>120+ campaigns shipped</b>
+              for D2C, hospitality &amp; B2B brands
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-poster ca-reveal ca-reveal--2" aria-hidden="true">
+          <span class="ca-poster__tape"></span>
+          <span class="ca-poster__tape ca-poster__tape--r"></span>
+          <div class="ca-poster__inner">
+            <span class="ca-poster__brand">Mckbytes · Issue 042</span>
+            <div class="ca-poster__big">
+              Big <em>ideas.</em><br>
+              Bigger <em>impact.</em>
+              <small>Creative advertising for brands that can't afford to be forgotten.</small>
+            </div>
+            <div class="ca-poster__foot">
+              <b>~ Hand-crafted in Vellore</b>
+              <span>Volume 01</span>
+            </div>
+          </div>
+          <div class="ca-award">
+            <div>
+              <b>Award</b>
+              <span>Winners 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="ca-marquee" aria-hidden="true">
+      <div class="ca-marquee__track">
+        <span class="ca-marquee__word">Brand strategy</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Logo &amp; identity</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word">Creative campaigns</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Digital marketing</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word">Content &amp; multimedia</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Website design</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word">Outdoor &amp; event</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Packaging design</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word">Brand strategy</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Logo &amp; identity</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word">Creative campaigns</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Digital marketing</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word">Content &amp; multimedia</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Website design</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word">Outdoor &amp; event</span>
+        <span class="ca-marquee__dot"></span>
+        <span class="ca-marquee__word ca-marquee__word--outline">Packaging design</span>
+        <span class="ca-marquee__dot"></span>
+      </div>
+    </section>
+
+    <!-- TOC -->
+    <section class="ca-section ca-toc" id="services">
+      <div class="ca-container">
+        <header class="ca-toc__head ca-reveal">
+          <div>
+            <span class="ca-eyebrow">Services</span>
+            <h2>The full <em>creative</em> menu.</h2>
+          </div>
+          <p>At Mckbytes Technologies, our comprehensive suite of services is designed to cover every aspect of creative advertising and branding. We deliver end-to-end solutions that ensure your message reaches the right audience through the right channels.</p>
+        </header>
+        <div class="ca-toc__masthead ca-reveal">
+          <span>Table of Contents</span>
+          <b>The Studio Index</b>
+          <span>Vol. 042 · 2025</span>
+        </div>
+        <div class="ca-toc__list ca-reveal">
+          <div class="ca-toc__row"><span class="ca-toc__num">01</span><span class="ca-toc__name">Brand Strategy &amp; Development <small>Define core values, voice, and positioning with thorough market research and competitor analysis.</small></span><span class="ca-toc__page">012</span></div>
+          <div class="ca-toc__row"><span class="ca-toc__num">02</span><span class="ca-toc__name">Logo &amp; Visual Identity Design <small>Memorable logos, color schemes, typography that embody your brand's personality.</small></span><span class="ca-toc__page">024</span></div>
+          <div class="ca-toc__row"><span class="ca-toc__num">03</span><span class="ca-toc__name">Creative Campaign Development <small>Innovative campaigns across TV, radio, print, digital, and social media.</small></span><span class="ca-toc__page">038</span></div>
+          <div class="ca-toc__row"><span class="ca-toc__num">04</span><span class="ca-toc__name">Digital Marketing &amp; Social Media <small>SEO, PPC, social management, content marketing to increase visibility and leads.</small></span><span class="ca-toc__page">052</span></div>
+          <div class="ca-toc__row"><span class="ca-toc__num">05</span><span class="ca-toc__name">Content &amp; Multimedia Production <small>Videos, animations, infographics, photography that tell your brand story.</small></span><span class="ca-toc__page">068</span></div>
+          <div class="ca-toc__row"><span class="ca-toc__num">06</span><span class="ca-toc__name">Website Design &amp; Development <small>User-friendly, responsive websites optimized for desktop and mobile.</small></span><span class="ca-toc__page">082</span></div>
+          <div class="ca-toc__row"><span class="ca-toc__num">07</span><span class="ca-toc__name">Outdoor &amp; Event Advertising <small>Billboards, event branding, product launches, exhibitions to maximize outreach.</small></span><span class="ca-toc__page">096</span></div>
+          <div class="ca-toc__row"><span class="ca-toc__num">08</span><span class="ca-toc__name">Packaging Design <small>Attractive, functional packaging that stands out on shelves and communicates brand essence.</small></span><span class="ca-toc__page">110</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="ca-section ca-manifesto" id="about">
+      <div class="ca-container">
+        <header class="ca-manifesto__head ca-reveal">
+          <span class="ca-eyebrow">Our point of view</span>
+          <h2>Most ads <em>fail.</em> Here's why ours don't.</h2>
+        </header>
+        <div class="ca-manifesto__rule ca-reveal">
+          <span>The Mckbytes Manifesto</span>
+          <b>Issue No. 042</b>
+          <span>Vellore · India</span>
+        </div>
+        <div class="ca-manifesto__body ca-reveal ca-reveal--1">
+          <p>At Mckbytes Technologies, we understand that in today's fast-paced digital landscape, standing out requires more than just good ideas — it demands strategic thinking, artistic excellence, and a deep understanding of market trends. Our team of seasoned professionals collaborates closely with clients to develop customized campaigns that align with their brand identity and business goals.</p>
+          <p class="ca-manifesto__pull">"A successful campaign begins with a solid foundation. We craft compelling brand narratives that resonate with your target demographic and drive measurable results."</p>
+          <p>We start every project with a question no algorithm can answer: <em>why should anyone care?</em> Because attention isn't earned by frequency, it's earned by relevance. By tension. By saying something the rest of the market is too scared to say.</p>
+          <p>Our team is small on purpose. Senior strategists, senior designers, senior writers — no juniors hiding behind a presentation deck. Every campaign is owned by people who've built brands, shipped films, and watched ads on hoardings they themselves designed.</p>
+          <p>If you want safe, predictable, on-brief work — you'll find plenty of agencies that deliver that. If you want work that earns the right to be seen, that builds equity over time, that your audience actually shares — that's what we make.</p>
+          <p>This is Mckbytes Technologies. We make ads people remember. Not because we're loud, but because we have something to say.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCIPLINES -->
+    <section class="ca-section ca-disc" id="disciplines">
+      <div class="ca-container">
+        <header class="ca-disc__head ca-reveal">
+          <span class="ca-eyebrow">Creative disciplines</span>
+          <h2>The <em>palette</em> we work with.</h2>
+          <p>Eight creative disciplines — every one of them practised in-house, every one of them led by a specialist.</p>
+        </header>
+        <div class="ca-swatch__grid ca-reveal">
+          <div class="ca-swatch ca-swatch--red"><span class="ca-swatch__code">01 · DEFINE</span><div class="ca-swatch__name"><b>Brand Strategy</b><span>Positioning, architecture, voice, market research.</span></div><span class="ca-swatch__chip"></span></div>
+          <div class="ca-swatch ca-swatch--ink"><span class="ca-swatch__code">02 · DESIGN</span><div class="ca-swatch__name"><b>Visual Identity</b><span>Logo, color schemes, typography, design systems.</span></div><span class="ca-swatch__chip"></span></div>
+          <div class="ca-swatch ca-swatch--gold"><span class="ca-swatch__code">03 · CAPTIVATE</span><div class="ca-swatch__name"><b>Creative Campaigns</b><span>Multi-channel concepts, captivating visuals, compelling messaging.</span></div><span class="ca-swatch__chip"></span></div>
+          <div class="ca-swatch ca-swatch--blue"><span class="ca-swatch__code">04 · CONVERT</span><div class="ca-swatch__name"><b>Digital Marketing</b><span>SEO, PPC, social media management, content marketing.</span></div><span class="ca-swatch__chip"></span></div>
+          <div class="ca-swatch ca-swatch--coral"><span class="ca-swatch__code">05 · CREATE</span><div class="ca-swatch__name"><b>Multimedia &amp; Content</b><span>Videos, animations, infographics, photography.</span></div><span class="ca-swatch__chip"></span></div>
+          <div class="ca-swatch ca-swatch--purple"><span class="ca-swatch__code">06 · BUILD</span><div class="ca-swatch__name"><b>Web &amp; Digital</b><span>Responsive websites, UX/UI, conversion optimization.</span></div><span class="ca-swatch__chip"></span></div>
+          <div class="ca-swatch ca-swatch--green"><span class="ca-swatch__code">07 · AMPLIFY</span><div class="ca-swatch__name"><b>OOH &amp; Events</b><span>Billboards, event branding, product launches, exhibitions.</span></div><span class="ca-swatch__chip"></span></div>
+          <div class="ca-swatch ca-swatch--teal"><span class="ca-swatch__code">08 · EXPERIENCE</span><div class="ca-swatch__name"><b>Packaging Design</b><span>Shelf-standing design, functional and attractive packaging.</span></div><span class="ca-swatch__chip"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORYBOARD PROCESS -->
+    <section class="ca-section ca-story" id="process">
+      <div class="ca-container">
+        <header class="ca-story__head ca-reveal">
+          <span class="ca-eyebrow">Our process</span>
+          <h2>Five panels. One <em>great</em> campaign.</h2>
+          <p>Success in advertising hinges on a well-structured process. We follow a proven methodology that ensures clarity, efficiency, and outstanding results at every stage.</p>
+        </header>
+        <div class="ca-board ca-reveal">
+          <div class="ca-panel"><div class="ca-panel__viewport"><span class="ca-panel__badge">Panel 01</span><span class="ca-panel__num">1</span></div><h4>Consultation &amp; Analysis</h4><p>Detailed discussion to understand your business, goals, target audience, and expectations.</p></div>
+          <div class="ca-panel"><div class="ca-panel__viewport"><span class="ca-panel__badge">Panel 02</span><span class="ca-panel__num">2</span></div><h4>Research &amp; Strategy</h4><p>Comprehensive market research, competitor analysis, and consumer behavior insights.</p></div>
+          <div class="ca-panel"><div class="ca-panel__viewport"><span class="ca-panel__badge">Panel 03</span><span class="ca-panel__num">3</span></div><h4>Concept &amp; Design</h4><p>Brainstorming ideas and developing initial concepts, drafts and prototypes for your review.</p></div>
+          <div class="ca-panel"><div class="ca-panel__viewport"><span class="ca-panel__badge">Panel 04</span><span class="ca-panel__num">4</span></div><h4>Production &amp; Implementation</h4><p>Content creation followed by campaign launch across selected channels.</p></div>
+          <div class="ca-panel"><div class="ca-panel__viewport"><span class="ca-panel__badge">Panel 05</span><span class="ca-panel__num">5</span></div><h4>Monitor &amp; Optimize</h4><p>Track metrics, analyze results, optimize strategies to maximize ROI.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="ca-section ca-ind">
+      <div class="ca-container">
+        <header class="ca-ind__head ca-reveal">
+          <span class="ca-eyebrow">Who we work with</span>
+          <h2>Brands across <em>eight</em> categories.</h2>
+          <p>From challenger D2C to legacy enterprise — we've crafted creative for ambitious brands across every category we love.</p>
+        </header>
+        <div class="ca-mosaic ca-reveal">
+          <div class="ca-tile ca-tile--s1 ca-tile--dark"><span class="ca-tile__num">01 · Startups &amp; D2C</span><div><h4>Startups &amp; D2C</h4><small>Establishing presence and building memorable brand identities from the ground up.</small></div></div>
+          <div class="ca-tile ca-tile--s2"><span class="ca-tile__num">02</span><h4>Hospitality &amp; Travel<small>Hotels, restaurants, destinations, and experiences.</small></h4></div>
+          <div class="ca-tile ca-tile--s3 "><span class="ca-tile__num">03 · Featured</span><div><h4>Real Estate &amp; Infrastructure</h4><small>Pre-launch campaigns, brochure design, project storytelling — luxury and mid-market both.</small></div></div>
+          <div class="ca-tile ca-tile--s4"><span class="ca-tile__num">04</span><h4>Healthcare &amp; Wellness<small>Hospitals, clinics, diagnostics, pharma.</small></h4></div>
+          <div class="ca-tile ca-tile--s5"><span class="ca-tile__num">05</span><h4>Education &amp; EdTech<small>Schools, universities, online learning platforms.</small></h4></div>
+          <div class="ca-tile ca-tile--s6 "><span class="ca-tile__num">06 · Featured</span><div><h4>Fashion &amp; Lifestyle</h4><small>Editorial campaigns, lookbook design, lifestyle photography for fashion houses.</small></div></div>
+          <div class="ca-tile ca-tile--s7"><span class="ca-tile__num">07</span><h4>F&amp;B and FMCG<small>Packaging, trade marketing, consumer campaigns.</small></h4></div>
+          <div class="ca-tile ca-tile--s8"><span class="ca-tile__num">08</span><h4>B2B &amp; Enterprise<small>Brand refresh, lead generation, corporate communications.</small></h4></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENTIATORS -->
+    <section class="ca-section ca-diff">
+      <div class="ca-container">
+        <header class="ca-diff__head ca-reveal">
+          <div>
+            <span class="ca-eyebrow">Why Mckbytes</span>
+            <h2>The reasons clients <em>stay</em>.</h2>
+          </div>
+          <p>Choosing the right partner for your advertising needs is crucial. Here's why Mckbytes Technologies stands out as a top creative agency.</p>
+        </header>
+        <div class="ca-diff__list ca-reveal">
+          <div class="ca-diff__row"><span class="ca-diff__num">01</span><span class="ca-diff__title">Expertise &amp; Experience</span><p class="ca-diff__desc">With years of industry experience, our team has a deep understanding of diverse markets and innovative advertising techniques.</p><a href="#cta" class="ca-diff__cta">Meet the team <span class="arrow">→</span></a></div>
+          <div class="ca-diff__row"><span class="ca-diff__num">02</span><span class="ca-diff__title">Creative Excellence</span><p class="ca-diff__desc">Creativity is at the heart of everything we do. Our designers, writers, and strategists craft original ideas that make your brand memorable.</p><a href="#cta" class="ca-diff__cta">Our work <span class="arrow">→</span></a></div>
+          <div class="ca-diff__row"><span class="ca-diff__num">03</span><span class="ca-diff__title">Client-Centric &amp; Data-Driven</span><p class="ca-diff__desc">Your satisfaction is our priority. We work closely with you, leveraging analytics to develop strategies grounded in data.</p><a href="#cta" class="ca-diff__cta">Disciplines <span class="arrow">→</span></a></div>
+          <div class="ca-diff__row"><span class="ca-diff__num">04</span><span class="ca-diff__title">End-to-End Solutions</span><p class="ca-diff__desc">As a full-service agency, we handle all aspects of advertising and branding under one roof — guaranteed consistency and synergy.</p><a href="#cta" class="ca-diff__cta">How we work <span class="arrow">→</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="ca-section ca-testi">
+      <div class="ca-container">
+        <header class="ca-testi__head ca-reveal">
+          <span class="ca-eyebrow">Kind words</span>
+          <h2>From the people we make <em>work for</em>.</h2>
+          <p>Our portfolio showcases successful campaigns and satisfied clients who have achieved their marketing objectives with our help.</p>
+        </header>
+        <div class="ca-notes">
+          <article class="ca-note ca-reveal">
+            <blockquote>"Mckbytes didn't just deliver a campaign — they delivered a brand identity we could own. The strategy was sharp, the visuals stunning, and the team was genuinely invested in our success from day one."</blockquote>
+            <div class="ca-note__author"><div class="ca-note__avatar">AR</div><div><b>Aisha Rahman</b><span>VP Brand · Helix Co.</span></div></div>
+          </article>
+          <article class="ca-note ca-reveal ca-reveal--1">
+            <blockquote>"We needed a complete brand overhaul. Mckbytes walked in with three distinct concepts. Six months later, our engagement is up 150% and our new identity is the most awarded work we've ever commissioned."</blockquote>
+            <div class="ca-note__author"><div class="ca-note__avatar" style="background:var(--brand)">DK</div><div><b>Daniel Kwan</b><span>Founder · Atlas Studio</span></div></div>
+          </article>
+          <article class="ca-note ca-reveal ca-reveal--2">
+            <blockquote>"Their ability to blend creative excellence with digital strategy is unmatched. The campaigns they've built for us have consistently outperformed targets. Stop looking. Hire them."</blockquote>
+            <div class="ca-note__author"><div class="ca-note__avatar" style="background:var(--accent)">SP</div><div><b>Sofia Pereira</b><span>CMO · NimbusAI</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="ca-section ca-faq" id="faqs">
+      <div class="ca-container">
+        <header class="ca-faq__head ca-reveal">
+          <span class="ca-eyebrow">Common questions</span>
+          <h2>Things teams <em>usually</em> want to know.</h2>
+          <p>Have something specific in mind? Drop us a line and we'll reply within one business day.</p>
+        </header>
+        <div class="ca-faq__grid">
+          <div class="ca-faq__card ca-reveal"><span class="ca-eyebrow">Engagement</span><h4>How do projects typically start?</h4><p>With a detailed consultation to understand your business, goals, and target audience. We listen, ask questions, then come back with a tailored strategy and proposal.</p></div>
+          <div class="ca-faq__card ca-reveal ca-reveal--1"><span class="ca-eyebrow">Pricing</span><h4>How do you price campaigns?</h4><p>Project-based for one-off campaigns, monthly retainer for ongoing work. Pricing depends on scope — we share a real number before you ever commit.</p></div>
+          <div class="ca-faq__card ca-reveal"><span class="ca-eyebrow">Timelines</span><h4>How long does a campaign take?</h4><p>A single-channel campaign: 3–4 weeks from brief to live. Integrated multi-channel campaigns: 6–10 weeks. Strategy &amp; brand identity work: 4–8 weeks.</p></div>
+          <div class="ca-faq__card ca-reveal ca-reveal--1"><span class="ca-eyebrow">Ownership</span><h4>Who owns the creative output?</h4><p>You do — fully and forever. All creative assets, source files, copy and master files are yours from delivery onwards.</p></div>
+          <div class="ca-faq__card ca-reveal"><span class="ca-eyebrow">Industries</span><h4>Which industries do you specialise in?</h4><p>D2C, hospitality, real estate, healthcare, education, fashion, F&amp;B, and B2B SaaS. If your category isn't here, ask — we may still be a great fit.</p></div>
+          <div class="ca-faq__card ca-reveal ca-reveal--1"><span class="ca-eyebrow">Edits</span><h4>How many rounds of revisions are included?</h4><p>Two rounds on every deliverable, with one round of minor tweaks at final stage.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="ca-section ca-cta" id="cta">
+      <div class="ca-cta__shell ca-reveal">
+        <span class="ca-cta__stamp">★ NOW BOOKING · Q4 2025</span>
+        <h2>Got a brief?<br>Let's make something <em>unforgettable.</em></h2>
+        <p>Whether you need a compelling campaign, a complete brand overhaul, or a digital marketing strategy, we are here to help you succeed. Send us a quick note about your brand and your goal. We'll come back in 24 hours with three big ideas, a timeline, and the team we'd assign — no slide decks, no friction.</p>
+        <div class="ca-cta__actions">
+          <a href="mailto:info@mckbytes.com" class="ca-btn" style="--bg:#f80202;--fg:#0b0b10">info@mckbytes.com</a>
+          <a href="{% url 'core:contact' %}" class="ca-btn ca-btn--light">Book a call <span class="arrow">→</span></a>
+        </div>
+        <span class="ca-cta__signoff">~ Transform your brand with us</span>
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- ================= FOOTER (Django include) ================= -->
+  {% include 'include/footer.html' %}
+
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.ca-reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

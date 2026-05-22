@@ -1,0 +1,1425 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Production Company in Bangalore — BrandStory</title>
+  <meta name="description" content="BrandStory is a premium video production company in Bangalore — corporate videos, brand films, ads, animation, and post-production handled end-to-end." />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#C8102E; --brand-2:#ff3b5c; --brand-soft:rgba(200,16,46,.08);
+      --accent:#0a84ff; --accent-2:#30d158; --gold:#f59e0b;
+      --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45; --muted:#6b6c78;
+      --line:#e8e9ee; --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#eef0f4;
+      --r:16px; --r-lg:22px; --r-xl:32px;
+      --fs-display: clamp(2.4rem, 5vw + 1rem, 5rem);
+      --fs-h1: clamp(2rem, 3.2vw + 1rem, 3.4rem);
+      --fs-h2: clamp(1.6rem, 1.5vw + 1rem, 2.4rem);
+      --container:1240px; --gut:clamp(20px, 4vw, 48px);
+      --sy:clamp(72px, 8.5vw, 130px);
+      --ease:cubic-bezier(.22,.61,.36,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+      --t:.38s var(--ease);
+    }
+
+    /* Local resets / utilities (won't conflict with /css/style.css header/footer) */
+    .vp-page *,.vp-page *::before,.vp-page *::after{box-sizing:border-box}
+    .vp-page{
+      font-family:"Sora",system-ui,-apple-system,sans-serif;
+      font-size:1.1rem;line-height:1.65;color:var(--ink);background:#fff;
+      -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    }
+    .vp-page h1,.vp-page h2,.vp-page h3,.vp-page h4{font-family:"Sora";font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:0 0 .4em;color:var(--ink)}
+    .vp-page p{margin:0 0 1em;color:var(--ink-3)}
+    .vp-page a{color:inherit;text-decoration:none}
+    .vp-page button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+    .vp-container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gut)}
+    .vp-section{padding:var(--sy) 0}
+    .vp-eyebrow{
+      display:inline-flex;align-items:center;gap:.5rem;
+      font-family:"JetBrains Mono",monospace;font-size:.78rem;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500;
+    }
+    .vp-eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+
+    /* Buttons */
+    .vp-btn{
+      --bg:var(--ink); --fg:#fff;
+      display:inline-flex;align-items:center;gap:.55rem;
+      padding:.92rem 1.5rem;border-radius:999px;
+      background:var(--bg);color:var(--fg);
+      font-weight:600;font-size:.95rem;
+      transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);
+      white-space:nowrap;position:relative;isolation:isolate;overflow:hidden;
+    }
+    .vp-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease)}
+    .vp-btn:hover::before{transform:translateX(100%)}
+    .vp-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,17,26,.18)}
+    .vp-btn .arrow{transition:transform .3s var(--ease)}
+    .vp-btn:hover .arrow{transform:translateX(4px)}
+    .vp-btn--primary{--bg:var(--brand);--fg:#fff;box-shadow:0 8px 22px rgba(200,16,46,.3)}
+    .vp-btn--primary:hover{--bg:#a8001f}
+    .vp-btn--ghost{--bg:transparent;--fg:var(--ink);border:1px solid var(--line);padding:calc(.92rem - 1px) calc(1.5rem - 1px)}
+    .vp-btn--ghost:hover{--bg:var(--paper-2)}
+    .vp-btn--light{--bg:rgba(255,255,255,.08);--fg:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
+    .vp-btn--light:hover{--bg:rgba(255,255,255,.16)}
+
+    /* =========================================================
+       ─── HERO  — Cinematic video player mockup
+       ========================================================= */
+    .vp-hero{
+      position:relative;
+      padding: clamp(40px,5vw,80px) 0 clamp(60px,7vw,110px);
+      background: var(--paper);
+      overflow:hidden; isolation:isolate;
+    }
+    .vp-hero::before{
+      content:""; position:absolute; inset:0; z-index:0;
+      background:
+        radial-gradient(700px 480px at 90% 0%, rgba(200,16,46,.10), transparent 60%),
+        radial-gradient(700px 480px at 5% 110%, rgba(10,132,255,.08), transparent 60%);
+    }
+    .vp-hero__grid{
+      position:absolute;inset:0;z-index:0;pointer-events:none;
+      background-image:
+        linear-gradient(to right, rgba(15,17,26,.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,17,26,.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at 50% 30%, #000 50%, transparent 85%);
+    }
+    .vp-hero__inner{
+      position:relative;z-index:1;
+      display:grid;grid-template-columns:1.05fr .95fr;
+      gap:clamp(36px,5vw,72px);align-items:center;
+    }
+    @media(max-width:980px){.vp-hero__inner{grid-template-columns:1fr;gap:60px}}
+
+    .vp-hero__chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 14px 6px 8px;border-radius:999px;
+      background:linear-gradient(120deg,rgba(200,16,46,.12),rgba(200,16,46,.04));
+      border:1px solid rgba(200,16,46,.25);
+      color:var(--brand);font-size:.82rem;font-weight:600;
+      margin-bottom:22px;
+    }
+    .vp-hero__chip svg{width:16px;height:16px}
+
+    .vp-hero h1{font-size:var(--fs-display);letter-spacing:-.045em;line-height:1.02;margin:0 0 22px}
+    .vp-hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--brand) 0%, #ff5872 60%, var(--brand-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .vp-hero__lead{font-size:1.14rem;line-height:1.65;color:var(--ink-3);max-width:54ch;margin-bottom:30px}
+    .vp-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+
+    .vp-hero__metas{
+      display:flex;gap:24px 40px;flex-wrap:wrap;
+      padding-top:24px;border-top:1px solid var(--line);
+    }
+    .vp-hero__meta b{display:block;font-family:"Sora";font-weight:800;font-size:1.6rem;letter-spacing:-.04em;color:var(--ink);line-height:1}
+    .vp-hero__meta span{font-size:.86rem;color:var(--muted)}
+
+    /* Cinematic video player */
+    .vp-player{
+      position:relative;
+      aspect-ratio: 4/3;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow: 0 30px 80px -20px rgba(15,17,26,.4), 0 8px 24px rgba(200,16,46,.18);
+      background: linear-gradient(160deg, #1a0e16 0%, #0b0b14 100%);
+    }
+    .vp-player::before{
+      content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(255,59,92,.4), transparent 50%),
+        radial-gradient(circle at 30% 70%, rgba(10,132,255,.3), transparent 50%);
+    }
+    .vp-player::after{
+      content:""; position:absolute; inset:0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+    }
+    .vp-player__play{
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:88px; height:88px; border-radius:50%;
+      background:rgba(255,255,255,.95);
+      display:grid; place-items:center;
+      box-shadow: 0 18px 40px rgba(0,0,0,.3);
+      cursor:pointer;
+      transition: transform .3s var(--ease), background .3s;
+      z-index:2;
+    }
+    .vp-player__play::before{
+      content:""; position:absolute; inset:-6px; border-radius:50%;
+      border:2px solid rgba(255,255,255,.3);
+      animation: ringPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes ringPulse{
+      0%,100%{opacity:.4;transform:scale(1)}
+      50%{opacity:0;transform:scale(1.35)}
+    }
+    .vp-player__play:hover{transform:translate(-50%,-50%) scale(1.08);background:#fff}
+    .vp-player__play svg{width:34px;height:34px;color:var(--brand);margin-left:5px}
+
+    .vp-player__title{
+      position:absolute; bottom:0; left:0; right:0;
+      padding: 26px 24px;
+      background: linear-gradient(0deg, rgba(0,0,0,.65) 0%, transparent 100%);
+      color:#fff; z-index:2;
+    }
+    .vp-player__title b{display:block;font-size:1.04rem;font-weight:700;letter-spacing:-.01em}
+    .vp-player__title span{display:block;font-size:.82rem;color:rgba(255,255,255,.7);margin-top:2px}
+    .vp-player__time{
+      position:absolute;top:18px;right:18px;z-index:2;
+      background:rgba(0,0,0,.55); backdrop-filter:blur(8px);
+      color:#fff;font-family:"JetBrains Mono",monospace;
+      font-size:.74rem; padding: 5px 10px; border-radius:6px;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .vp-player__live{
+      position:absolute;top:18px;left:18px;z-index:2;
+      display:inline-flex; align-items:center; gap:6px;
+      padding: 5px 10px; border-radius:6px;
+      background:rgba(200,16,46,.95);color:#fff;
+      font-family:"JetBrains Mono",monospace; font-size:.7rem; font-weight:700;
+      letter-spacing:.06em;
+    }
+    .vp-player__live::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;animation:dotPulse 2s infinite}
+    @keyframes dotPulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+    /* Floating mini thumbnails */
+    .vp-thumb{
+      position:absolute; z-index:3;
+      width:120px;
+      background:#fff;
+      border-radius:12px;
+      padding:8px; box-shadow:0 18px 40px -10px rgba(0,0,0,.22);
+      border:1px solid var(--line);
+      animation: thumbFloat 7s ease-in-out infinite;
+    }
+    @keyframes thumbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .vp-thumb--tl{top:-18px;left:-22px;animation-delay:-2s}
+    .vp-thumb--br{bottom:-18px;right:-22px;animation-delay:-4s}
+    .vp-thumb__pic{
+      height:60px; border-radius:7px;
+      background: linear-gradient(135deg, var(--brand), #6e0a1c);
+      position:relative;overflow:hidden;
+      margin-bottom:6px;
+    }
+    .vp-thumb--br .vp-thumb__pic{background:linear-gradient(135deg,#0a84ff,#1f4dff)}
+    .vp-thumb__pic::after{
+      content:""; position:absolute; inset:0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .vp-thumb__pic-icon{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.92);
+      display:grid;place-items:center;
+    }
+    .vp-thumb__pic-icon svg{width:11px;height:11px;color:var(--brand);margin-left:1px}
+    .vp-thumb b{display:block;font-size:.74rem;color:#0b0b10;font-weight:700;line-height:1.2}
+    .vp-thumb span{display:block;font-size:.66rem;color:#888;line-height:1.15;margin-top:2px}
+
+    /* =========================================================
+       ─── LOGO STRIP
+       ========================================================= */
+    .vp-logos{
+      background:var(--paper-2);
+      padding: 28px 0;
+      border-block:1px solid var(--line);
+      overflow:hidden;
+    }
+    .vp-logos__inner{
+      display:flex;align-items:center;gap:36px;flex-wrap:wrap;
+      justify-content:center;
+    }
+    .vp-logos__label{
+      font-family:"JetBrains Mono",monospace;font-size:.74rem;
+      letter-spacing:.18em;text-transform:uppercase;
+      color:var(--muted);font-weight:500;white-space:nowrap;
+    }
+    .vp-logos__items{
+      display:flex;align-items:center;gap:36px;flex-wrap:wrap;
+    }
+    .vp-logos__items b{
+      font-family:"Sora";font-weight:700;font-size:1.1rem;
+      color:var(--muted);letter-spacing:-.01em;
+      transition:color .3s;
+    }
+    .vp-logos__items b:hover{color:var(--ink)}
+
+    /* =========================================================
+       ─── 3 PILLARS  — Marketing / Education / Engagement
+       ========================================================= */
+    .vp-pillars{padding:var(--sy) 0;background:var(--paper)}
+    .vp-pillars__head{
+      display:grid; grid-template-columns: 1fr 1fr; gap:40px;
+      align-items:end;margin-bottom:52px;
+    }
+    @media(max-width:780px){.vp-pillars__head{grid-template-columns:1fr}}
+    .vp-pillars__head h2{font-size:var(--fs-h1);max-width:18ch;margin:.3em 0 0}
+    .vp-pillars__head p{color:var(--muted);max-width:48ch;margin:0;font-size:1.02rem}
+
+    .vp-pillars__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:880px){.vp-pillars__grid{grid-template-columns:1fr}}
+    .vp-pillar{
+      position:relative;
+      padding: 36px 32px;
+      background:var(--paper-2);
+      border:1px solid var(--line);
+      border-radius:22px;
+      transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .4s;
+      overflow:hidden;
+    }
+    .vp-pillar:hover{
+      transform:translateY(-6px);
+      background:var(--paper);
+      box-shadow:0 24px 50px -16px rgba(15,17,26,.15);
+      border-color:rgba(200,16,46,.3);
+    }
+    .vp-pillar__num{
+      font-family:"Sora";font-weight:800;
+      font-size: clamp(3rem,4vw,4.4rem);
+      letter-spacing:-.05em; line-height:1;
+      background:linear-gradient(120deg,rgba(200,16,46,.18),transparent);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      margin-bottom:12px;
+      display:block;
+    }
+    .vp-pillar__icon{
+      position:absolute;top:32px;right:32px;
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      display:grid;place-items:center;color:#fff;
+      box-shadow:0 8px 20px -6px rgba(200,16,46,.4);
+      transition:transform .4s var(--ease);
+    }
+    .vp-pillar:hover .vp-pillar__icon{transform:rotate(-8deg) scale(1.06)}
+    .vp-pillar__icon svg{width:20px;height:20px}
+    .vp-pillar h3{font-size:1.3rem;margin:0 0 10px;letter-spacing:-.02em}
+    .vp-pillar p{font-size:.96rem;color:var(--ink-3);margin:0;line-height:1.6}
+
+    /* =========================================================
+       ─── PORTFOLIO BENTO  — varied tile sizes with play overlays
+       ========================================================= */
+    .vp-portfolio{padding:var(--sy) 0;background:var(--paper-2)}
+    .vp-portfolio__head{text-align:center;margin-bottom:48px}
+    .vp-portfolio__head h2{font-size:var(--fs-h1);max-width:24ch;margin:.4em auto 0}
+    .vp-portfolio__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+    .vp-bento{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      grid-auto-rows:160px;
+      gap:14px;
+    }
+    @media(max-width:1024px){.vp-bento{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:680px){.vp-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}}
+
+    .vp-tile{
+      position:relative;
+      border-radius:18px;
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform .5s var(--ease-out), box-shadow .5s;
+      background:#0b0b14;
+    }
+    .vp-tile:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 24px 50px -16px rgba(0,0,0,.4)}
+
+    .vp-tile__bg{
+      position:absolute;inset:0;
+      background-size:cover;background-position:center;
+      transition: transform .8s var(--ease-out), filter .4s;
+    }
+    .vp-tile:hover .vp-tile__bg{transform:scale(1.06);filter:brightness(.7)}
+    .vp-tile__bg::after{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.78) 100%);
+    }
+
+    /* Gradient placeholders for tiles (no images needed) */
+    .vp-tile:nth-child(1) .vp-tile__bg{background:linear-gradient(135deg,#c8102e 0%,#6e0a1c 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(2) .vp-tile__bg{background:linear-gradient(135deg,#0a84ff 0%,#1f4dff 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(3) .vp-tile__bg{background:linear-gradient(135deg,#ff8c42 0%,#ff5e1a 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(4) .vp-tile__bg{background:linear-gradient(135deg,#b985ff 0%,#8b5cf6 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(5) .vp-tile__bg{background:linear-gradient(135deg,#30d158 0%,#16a34a 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(6) .vp-tile__bg{background:linear-gradient(135deg,#5dd5cc 0%,#2bb3aa 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(7) .vp-tile__bg{background:linear-gradient(135deg,#ff5872 0%,#c8102e 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(8) .vp-tile__bg{background:linear-gradient(135deg,#22d3ee 0%,#0a84ff 50%,#0b0b14 100%)}
+    .vp-tile:nth-child(9) .vp-tile__bg{background:linear-gradient(135deg,#ffcf5c 0%,#e8a93c 50%,#0b0b14 100%)}
+
+    .vp-tile__bg-grid{
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+    }
+
+    .vp-tile__play{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.85);
+      width:54px;height:54px;border-radius:50%;
+      background:rgba(255,255,255,.95);
+      display:grid;place-items:center;
+      opacity:0;transition: opacity .4s, transform .4s var(--ease);
+      box-shadow:0 12px 28px rgba(0,0,0,.4);
+      z-index:2;
+    }
+    .vp-tile:hover .vp-tile__play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    .vp-tile__play svg{width:20px;height:20px;color:var(--brand);margin-left:3px}
+
+    .vp-tile__info{
+      position:absolute; bottom:0; left:0; right:0;
+      padding:18px 20px;color:#fff;z-index:2;
+    }
+    .vp-tile__tag{
+      display:inline-block;font-size:.66rem;font-weight:700;
+      padding:3px 9px;border-radius:999px;
+      background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+      color:#fff;letter-spacing:.06em;text-transform:uppercase;
+      margin-bottom:8px;font-family:"JetBrains Mono",monospace;
+      backdrop-filter:blur(6px);
+    }
+    .vp-tile__info b{display:block;font-size:1rem;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-.01em}
+    .vp-tile__info span{display:block;font-size:.74rem;color:rgba(255,255,255,.65);margin-top:2px}
+
+    /* Tile spans */
+    .vp-tile--xl{grid-column:span 4;grid-row:span 2}
+    .vp-tile--lg{grid-column:span 2;grid-row:span 2}
+    .vp-tile--md{grid-column:span 2}
+    .vp-tile--sm{grid-column:span 2}
+    @media(max-width:1024px){
+      .vp-tile--xl{grid-column:span 4;grid-row:span 2}
+      .vp-tile--lg{grid-column:span 2;grid-row:span 2}
+      .vp-tile--md,.vp-tile--sm{grid-column:span 2}
+    }
+    @media(max-width:680px){
+      .vp-tile--xl,.vp-tile--lg{grid-column:span 2;grid-row:span 2}
+      .vp-tile--md,.vp-tile--sm{grid-column:span 1;grid-row:span 1}
+    }
+
+    .vp-tile__info b{font-size:1rem}
+    .vp-tile--xl .vp-tile__info b{font-size:1.3rem;letter-spacing:-.02em}
+    .vp-tile--xl .vp-tile__info{padding:26px 28px}
+    .vp-tile--lg .vp-tile__info b{font-size:1.15rem}
+
+    /* =========================================================
+       ─── CAPABILITIES  — 6 card grid
+       ========================================================= */
+    .vp-cap{padding:var(--sy) 0;background:var(--paper)}
+    .vp-cap__head{text-align:center;margin-bottom:48px}
+    .vp-cap__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .vp-cap__head p{color:var(--muted);max-width:60ch;margin:1em auto 0}
+    .vp-cap__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:880px){.vp-cap__grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.vp-cap__grid{grid-template-columns:1fr}}
+
+    .vp-cap__card{
+      padding:30px 28px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:18px;
+      transition:transform .4s var(--ease),box-shadow .4s,border-color .4s,background .4s;
+      position:relative;overflow:hidden;
+    }
+    .vp-cap__card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -16px rgba(15,17,26,.14);border-color:rgba(200,16,46,.3);background:var(--paper-2)}
+    .vp-cap__icon{
+      width:48px;height:48px;border-radius:12px;
+      background:linear-gradient(135deg,rgba(200,16,46,.12),rgba(200,16,46,.04));
+      border:1px solid rgba(200,16,46,.2);
+      color:var(--brand);display:grid;place-items:center;
+      margin-bottom:18px;
+      transition:transform .4s var(--ease);
+    }
+    .vp-cap__card:hover .vp-cap__icon{transform:rotate(-6deg) scale(1.05);background:var(--brand);color:#fff;border-color:var(--brand)}
+    .vp-cap__icon svg{width:22px;height:22px}
+    .vp-cap__card h3{font-size:1.12rem;margin:0 0 8px;letter-spacing:-.015em}
+    .vp-cap__card p{font-size:.92rem;color:var(--ink-3);margin:0;line-height:1.55}
+
+    /* =========================================================
+       ─── TABBED PROCESS  — 4 production phases
+       ========================================================= */
+    .vp-process{padding:var(--sy) 0;background:var(--paper-2)}
+    .vp-process__head{text-align:center;margin-bottom:36px}
+    .vp-process__head h2{font-size:var(--fs-h1);max-width:24ch;margin:.4em auto 0}
+    .vp-process__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+    .vp-tabs{
+      display:flex;flex-wrap:wrap;gap:6px;
+      padding:6px;border-radius:999px;
+      background:var(--paper);border:1px solid var(--line);
+      margin:0 auto 36px;width:max-content;max-width:100%;
+      justify-content:center;
+    }
+    .vp-tabs__btn{
+      padding:11px 22px;border-radius:999px;
+      font-weight:600;font-size:.9rem;color:var(--ink-3);
+      transition: background .25s var(--ease), color .25s var(--ease);
+      white-space:nowrap;
+    }
+    .vp-tabs__btn:hover{color:var(--ink)}
+    .vp-tabs__btn.is-active{
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#fff;
+      box-shadow:0 6px 16px -4px rgba(200,16,46,.4);
+    }
+    .vp-tabs__wrap{display:flex;justify-content:center}
+
+    .vp-phase{display:none}
+    .vp-phase.is-active{display:grid;animation:fade .4s var(--ease-out)}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    .vp-phase{
+      grid-template-columns: 1fr 1.4fr;
+      gap:clamp(30px,5vw,60px);
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:clamp(28px,4vw,48px);
+      align-items:start;
+    }
+    @media(max-width:880px){.vp-phase{grid-template-columns:1fr}}
+
+    .vp-phase__visual{
+      position:relative;
+      aspect-ratio:1/1;
+      background:linear-gradient(160deg,#0b0b14,#1a0e16);
+      border-radius:18px;
+      overflow:hidden;
+      display:grid;place-items:center;
+    }
+    .vp-phase__visual::before{
+      content:""; position:absolute; inset:0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+    }
+    .vp-phase__visual::after{
+      content:""; position:absolute;
+      top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,59,92,.4),transparent 70%);
+      filter:blur(40px);
+    }
+    .vp-phase__num{
+      position:relative; z-index:1;
+      font-family:"Sora";font-weight:800;
+      font-size: clamp(5rem,8vw,9rem);
+      letter-spacing:-.06em; line-height:.9;
+      background: linear-gradient(180deg,#fff 0%, rgba(255,255,255,.4) 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .vp-phase__visual-label{
+      position:absolute;bottom:24px;left:24px;right:24px; z-index:1;
+      font-family:"JetBrains Mono",monospace;font-size:.74rem;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:rgba(255,255,255,.65);font-weight:500;
+    }
+
+    .vp-phase__copy h3{font-size:1.7rem;margin:0 0 14px;letter-spacing:-.025em}
+    .vp-phase__copy > p{font-size:1.02rem;color:var(--ink-3);margin:0 0 22px;line-height:1.65}
+    .vp-phase__checklist{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    .vp-phase__checklist li{
+      display:flex;gap:12px;align-items:flex-start;
+      font-size:.96rem;color:var(--ink-2);
+    }
+    .vp-phase__checklist li svg{
+      width:22px;height:22px;flex-shrink:0;
+      padding:4px;border-radius:50%;
+      background:rgba(200,16,46,.1);color:var(--brand);
+      border:1px solid rgba(200,16,46,.2);margin-top:1px;
+    }
+
+    /* =========================================================
+       ─── VIDEO TYPES CLOUD  — colored pill grid
+       ========================================================= */
+    .vp-types{padding:var(--sy) 0;background:var(--paper)}
+    .vp-types__head{text-align:center;margin-bottom:48px}
+    .vp-types__head h2{font-size:var(--fs-h1);max-width:24ch;margin:.4em auto 0}
+    .vp-types__head p{color:var(--muted);max-width:60ch;margin:1em auto 0}
+
+    .vp-types__cloud{
+      display:flex;flex-wrap:wrap;
+      gap:10px; justify-content:center;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .vp-pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding: 11px 18px;
+      border-radius:999px;
+      background:var(--paper-2);
+      border:1px solid var(--line);
+      font-size:.92rem;font-weight:600;color:var(--ink-2);
+      transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s;
+      cursor:default;
+    }
+    .vp-pill:hover{transform:translateY(-2px);background:var(--brand);color:#fff;border-color:var(--brand)}
+    .vp-pill svg{width:14px;height:14px;color:var(--brand);transition:color .3s}
+    .vp-pill:hover svg{color:#fff}
+
+    /* Variant — featured pills */
+    .vp-pill--feat{background:#0b0b14;border-color:transparent;color:#fff}
+    .vp-pill--feat svg{color:#fff}
+    .vp-pill--feat:hover{background:var(--brand)}
+
+    /* =========================================================
+       ─── INDUSTRIES — 3 column with thin separators
+       ========================================================= */
+    .vp-ind{padding:var(--sy) 0;background:var(--paper-2)}
+    .vp-ind__head{text-align:center;margin-bottom:52px}
+    .vp-ind__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .vp-ind__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+    .vp-ind__grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:0;border-top:1px solid var(--line);
+    }
+    @media(max-width:880px){.vp-ind__grid{grid-template-columns:1fr}}
+
+    .vp-ind__item{
+      padding:30px 28px;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      transition: background .35s;
+      position:relative;
+    }
+    .vp-ind__item:hover{background:var(--paper)}
+    .vp-ind__item:nth-child(3n){border-right:0}
+    @media(max-width:880px){.vp-ind__item{border-right:0!important}}
+
+    .vp-ind__num{
+      display:inline-block;
+      font-family:"JetBrains Mono",monospace;
+      font-size:.74rem;font-weight:600;
+      color:var(--brand);letter-spacing:.06em;
+      margin-bottom:12px;
+    }
+    .vp-ind__item h4{font-size:1.1rem;margin:0 0 6px;letter-spacing:-.015em}
+    .vp-ind__item p{font-size:.92rem;color:var(--ink-3);margin:0;line-height:1.55}
+
+    /* =========================================================
+       ─── WHY CHOOSE  — 3-up feature cards
+       ========================================================= */
+    .vp-why{padding:var(--sy) 0;background:var(--paper)}
+    .vp-why__head{text-align:center;margin-bottom:48px}
+    .vp-why__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .vp-why__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+    .vp-why__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:880px){.vp-why__grid{grid-template-columns:1fr}}
+    .vp-why__card{
+      padding:36px 32px;
+      background: linear-gradient(160deg,var(--paper-2),var(--paper-3));
+      border:1px solid var(--line);
+      border-radius:22px;
+      transition:transform .4s var(--ease),box-shadow .4s,border-color .4s,background .4s;
+      position:relative;overflow:hidden;
+    }
+    .vp-why__card:hover{
+      transform:translateY(-5px);
+      background:linear-gradient(160deg, #0b0b14, #1a1b22);
+      border-color:transparent;
+      box-shadow:0 24px 50px -18px rgba(0,0,0,.4);
+    }
+    .vp-why__card:hover h3,
+    .vp-why__card:hover p{color:#fff}
+    .vp-why__card:hover p{color:rgba(255,255,255,.75)}
+    .vp-why__card:hover::after{
+      content:"";position:absolute;top:-60px;right:-60px;
+      width:200px;height:200px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,59,92,.4),transparent 70%);
+      filter:blur(40px);
+    }
+
+    .vp-why__icon{
+      width:54px;height:54px;border-radius:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      display:grid;place-items:center;color:var(--brand);
+      margin-bottom:20px;
+      transition:transform .4s var(--ease),background .4s,color .4s;
+    }
+    .vp-why__card:hover .vp-why__icon{transform:rotate(-6deg) scale(1.05);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border-color:transparent}
+    .vp-why__icon svg{width:24px;height:24px}
+    .vp-why__card h3{font-size:1.3rem;margin:0 0 12px;letter-spacing:-.02em;transition:color .4s}
+    .vp-why__card p{font-size:.96rem;color:var(--ink-3);margin:0;line-height:1.6;transition:color .4s}
+
+    /* =========================================================
+       ─── FAQ  — clean expandable
+       ========================================================= */
+    .vp-faq{padding:var(--sy) 0;background:var(--paper-2)}
+    .vp-faq__head{text-align:center;margin-bottom:48px}
+    .vp-faq__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .vp-faq__list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+    .vp-faq__item{
+      background:var(--paper);border:1px solid var(--line);
+      border-radius:16px; overflow:hidden;
+      transition: border-color .35s, background .35s;
+    }
+    .vp-faq__item.is-open{border-color:rgba(200,16,46,.35)}
+    .vp-faq__btn{
+      width:100%;padding:22px 26px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;text-align:left;
+      font-size:1.04rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;
+      cursor:pointer;
+    }
+    .vp-faq__toggle{
+      width:32px;height:32px;border-radius:50%;
+      background:var(--paper-2);border:1px solid var(--line);
+      display:grid;place-items:center;flex-shrink:0;
+      transition: background .3s, border-color .3s, transform .35s var(--ease);
+    }
+    .vp-faq__toggle svg{width:13px;height:13px;color:var(--ink-3);transition:transform .35s var(--ease)}
+    .vp-faq__item.is-open .vp-faq__toggle{background:var(--brand);border-color:var(--brand)}
+    .vp-faq__item.is-open .vp-faq__toggle svg{color:#fff;transform:rotate(180deg)}
+    .vp-faq__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease-out)}
+    .vp-faq__item.is-open .vp-faq__panel{grid-template-rows:1fr}
+    .vp-faq__panel > div{overflow:hidden}
+    .vp-faq__panel p{padding:0 26px 24px;margin:0;color:var(--ink-3);font-size:.96rem;line-height:1.7;max-width:60ch}
+
+    /* =========================================================
+       ─── CTA  — Cinematic film band
+       ========================================================= */
+    .vp-cta{padding: clamp(60px,8vw,120px) 0;background:var(--paper)}
+    .vp-cta__shell{
+      position:relative;
+      background: linear-gradient(135deg, #0b0b14 0%, #1a0e16 50%, var(--brand) 130%);
+      border-radius:clamp(24px,3vw,36px);
+      padding: clamp(40px,6vw,72px) clamp(28px,5vw,72px);
+      margin: 0 var(--gut);
+      color:#fff; overflow:hidden;
+      display:grid;grid-template-columns:1.5fr .5fr;
+      gap:40px;align-items:center;
+    }
+    @media(max-width:900px){.vp-cta__shell{grid-template-columns:1fr}}
+    .vp-cta__shell::after{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(circle at 90% 0%, rgba(255,59,92,.3), transparent 40%),radial-gradient(circle at 0% 100%, rgba(10,132,255,.15), transparent 40%);
+    }
+    .vp-cta__shell::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+    }
+    .vp-cta__shell > *{position:relative;z-index:1}
+    .vp-cta h2{color:#fff;font-size:var(--fs-h1);max-width:22ch;margin:.2em 0;letter-spacing:-.035em}
+    .vp-cta p{color:rgba(255,255,255,.84);max-width:54ch;margin:.5em 0 0;font-size:1.04rem}
+    .vp-cta__actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+    @media(max-width:900px){.vp-cta__actions{justify-content:flex-start}}
+
+    /* Reveal */
+    .vp-reveal{opacity:0;transform:translateY(16px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+    .vp-reveal.in{opacity:1;transform:none}
+    .vp-reveal--1{transition-delay:.08s}
+    .vp-reveal--2{transition-delay:.16s}
+    .vp-reveal--3{transition-delay:.24s}
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation:none !important;transition:none !important}
+      .vp-reveal{opacity:1;transform:none}
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  {% include 'include/header.html' %}
+
+
+  <!-- ================= PAGE CONTENT ================= -->
+
+<div class="vp-page">
+
+    <!-- ─────────── HERO ─────────── -->
+    <section class="vp-hero">
+      <div class="vp-hero__grid"></div>
+      <div class="vp-container vp-hero__inner">
+        <div>
+          <span class="vp-hero__chip vp-reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg>
+            Explainer Video Production · Vellore
+          </span>
+          <h1 class="vp-reveal vp-reveal--1">
+            Explain your product in <em>seconds</em>, not <em>pages</em>.
+          </h1>
+          <p class="vp-hero__lead vp-reveal vp-reveal--2">
+            Mckbytes Technologies is a Vellore-based explainer video company creating high-impact animated and live-action videos that simplify complex ideas, drive conversions, and boost customer understanding. From scriptwriting through animation to final delivery — we turn your message into a memorable visual story.
+          </p>
+          <div class="vp-hero__cta vp-reveal vp-reveal--2">
+            <a href="#cta" class="vp-btn vp-btn--primary">Book a meeting <span class="arrow">→</span></a>
+            <a href="#portfolio" class="vp-btn vp-btn--ghost">See our work</a>
+          </div>
+          <div class="vp-hero__metas vp-reveal vp-reveal--3">
+            <div class="vp-hero__meta"><b>200+</b><span>Explainer videos delivered</span></div>
+            <div class="vp-hero__meta"><b>150+</b><span>SaaS & tech clients</span></div>
+            <div class="vp-hero__meta"><b>+48%</b><span>Average conversion lift</span></div>
+          </div>
+        </div>
+
+        <div class="vp-player vp-reveal vp-reveal--2" aria-hidden="true">
+          <span class="vp-player__live">● Now playing</span>
+          <span class="vp-player__time">01:48 / 02:15</span>
+          <button class="vp-player__play" type="button" aria-label="Play explainer video">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
+          </button>
+          <div class="vp-player__title">
+            <b>Product Explainer · CloudScale</b>
+            <span>How our platform transforms data management</span>
+          </div>
+
+          <div class="vp-thumb vp-thumb--tl">
+            <div class="vp-thumb__pic">
+              <span class="vp-thumb__pic-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
+              </span>
+            </div>
+            <b>2D Animation</b>
+            <span>SaaS product explainer</span>
+          </div>
+          <div class="vp-thumb vp-thumb--br">
+            <div class="vp-thumb__pic">
+              <span class="vp-thumb__pic-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
+              </span>
+            </div>
+            <b>3D Motion Graphics</b>
+            <span>Tech platform demo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── LOGO STRIP ─────────── -->
+    <section class="vp-logos">
+      <div class="vp-container vp-logos__inner">
+        <span class="vp-logos__label">Trusted for explainer videos by</span>
+        <div class="vp-logos__items">
+          <b>Zoho</b>
+          <b>Freshworks</b>
+          <b>Chargebee</b>
+          <b>Unacademy</b>
+          <b>Byju's</b>
+          <b>Razorpay</b>
+          <b>Ola</b>
+          <b>Swiggy</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 3 PILLARS — Why Explainer Videos ─────────── -->
+    <section class="vp-section vp-pillars">
+      <div class="vp-container">
+        <header class="vp-pillars__head vp-reveal">
+          <div>
+            <span class="vp-eyebrow">Why explainer videos</span>
+            <h2>Explainer videos aren't animations — they're your best salesperson.</h2>
+          </div>
+          <p>Whether you're launching a product, explaining a service, or training users, explainer videos communicate complex ideas faster and more memorably than any other format. Here are the three reasons our clients invest in them.</p>
+        </header>
+
+        <div class="vp-pillars__grid">
+          <article class="vp-pillar vp-reveal">
+            <span class="vp-pillar__num">01</span>
+            <div class="vp-pillar__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7v16L3 13z"/><path d="M11 5v14"/></svg>
+            </div>
+            <h3>Simplify Complexity</h3>
+            <p>Turn complicated products, services, or concepts into simple, engaging visual stories that anyone can understand in under 90 seconds.</p>
+          </article>
+          <article class="vp-pillar vp-reveal vp-reveal--1">
+            <div class="vp-pillar__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11v6c0 2 4 3 6 3s6-1 6-3v-6"/></svg>
+            </div>
+            <h3>Drive Conversions</h3>
+            <p>Websites with explainer videos see conversion rates increase by up to 80%. A well-crafted video on your landing page is your most effective sales tool.</p>
+          </article>
+          <article class="vp-pillar vp-reveal vp-reveal--2">
+            <div class="vp-pillar__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.3-6.95L21 6"/></svg>
+            </div>
+            <h3>Boost Retention</h3>
+            <p>Viewers retain 95% of a message when watched via video, compared to just 10% when reading text. Your message sticks when it's visual.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── PORTFOLIO BENTO ─────────── -->
+    <section class="vp-section vp-portfolio" id="portfolio">
+      <div class="vp-container">
+        <header class="vp-portfolio__head vp-reveal">
+          <span class="vp-eyebrow">Selected work</span>
+          <h2>Our explainer video portfolio.</h2>
+          <p>A look at recent explainer productions across 2D animation, 3D motion graphics, whiteboard, and live-action styles — each video engineered to drive conversions.</p>
+        </header>
+
+        <div class="vp-bento">
+          <article class="vp-tile vp-tile--xl vp-reveal">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">2D Animation · 2024</span>
+              <b>Zoho CRM</b>
+              <span>Product explainer · 2.3M views</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--lg vp-reveal vp-reveal--1">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">3D Motion · 2024</span>
+              <b>Freshworks</b>
+              <span>Platform demo · 48% conversion lift</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--md vp-reveal vp-reveal--2">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">Whiteboard</span>
+              <b>Unacademy</b>
+              <span>Educational explainer</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--md vp-reveal">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">Live Action</span>
+              <b>Razorpay</b>
+              <span>Payment gateway explainer</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--md vp-reveal vp-reveal--1">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">2D Animation</span>
+              <b>Chargebee</b>
+              <span>SaaS subscription explainer</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--md vp-reveal vp-reveal--2">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">Motion Graphics</span>
+              <b>Byju's</b>
+              <span>EdTech product demo</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--md vp-reveal">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">3D Animation</span>
+              <b>Ola Electric</b>
+              <span>Product feature explainer</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--md vp-reveal vp-reveal--1">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">Whiteboard</span>
+              <b>Swiggy</b>
+              <span>Process explainer</span>
+            </div>
+          </article>
+
+          <article class="vp-tile vp-tile--md vp-reveal vp-reveal--2">
+            <div class="vp-tile__bg"><div class="vp-tile__bg-grid"></div></div>
+            <span class="vp-tile__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></span>
+            <div class="vp-tile__info">
+              <span class="vp-tile__tag">2D Animation</span>
+              <b>CRED</b>
+              <span>App explainer · Viral</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── CAPABILITIES ─────────── -->
+    <section class="vp-section vp-cap">
+      <div class="vp-container">
+        <header class="vp-cap__head vp-reveal">
+          <span class="vp-eyebrow">What we produce</span>
+          <h2>Six explainer video styles. Every need covered.</h2>
+          <p>Whatever your product or message — from 2D animation to 3D motion to live-action — our in-house team handles every stage from script to final render.</p>
+        </header>
+
+        <div class="vp-cap__grid">
+          <article class="vp-cap__card vp-reveal">
+            <div class="vp-cap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></div>
+            <h3>2D Animated Explainers</h3>
+            <p>Custom illustrated characters, scenes, and motion graphics — perfect for simplifying complex ideas with engaging, memorable visuals.</p>
+          </article>
+          <article class="vp-cap__card vp-reveal vp-reveal--1">
+            <div class="vp-cap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg></div>
+            <h3>3D Motion Graphics</h3>
+            <p>High-end 3D product visualizations, technical demos, and cinematic animations — ideal for premium products and technical concepts.</p>
+          </article>
+          <article class="vp-cap__card vp-reveal vp-reveal--2">
+            <div class="vp-cap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.3-6.95"/><path d="M21 3v9h-9"/></svg></div>
+            <h3>Whiteboard Explainers</h3>
+            <p>Hand-drawn animation style that feels personal and educational — perfect for training, educational content, and process explanations.</p>
+          </article>
+          <article class="vp-cap__card vp-reveal">
+            <div class="vp-cap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="9" r="3"/><path d="M22 19v-1a3 3 0 0 0-2-2.8"/></svg></div>
+            <h3>Live-Action Explainers</h3>
+            <p>Professional live-action videos with actors, locations, and product demonstrations — for brands that want a human, authentic connection.</p>
+          </article>
+          <article class="vp-cap__card vp-reveal vp-reveal--1">
+            <div class="vp-cap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L7 19"/></svg></div>
+            <h3>Motion Graphics & Typography</h3>
+            <p>Kinetic typography, logo animations, and data visualizations — perfect for statistic-heavy explanations and brand storytelling.</p>
+          </article>
+          <article class="vp-cap__card vp-reveal vp-reveal--2">
+            <div class="vp-cap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8l6 4-6 4z"/></svg></div>
+            <h3>Screencast & Product Demo</h3>
+            <p>Software walkthroughs, UI demonstrations, and feature tutorials — for SaaS products, mobile apps, and digital platforms.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── TABBED PROCESS ─────────── -->
+    <section class="vp-section vp-process">
+      <div class="vp-container">
+        <header class="vp-process__head vp-reveal">
+          <span class="vp-eyebrow">How we work</span>
+          <h2>Five phases. One seamless explainer video process.</h2>
+          <p>From script through final render, we own every stage of production so you get a video that converts.</p>
+        </header>
+
+        <div class="vp-tabs__wrap vp-reveal">
+          <div class="vp-tabs" role="tablist">
+            <button class="vp-tabs__btn is-active" data-tab="script" type="button">Script</button>
+            <button class="vp-tabs__btn" data-tab="storyboard" type="button">Storyboard</button>
+            <button class="vp-tabs__btn" data-tab="design" type="button">Design</button>
+            <button class="vp-tabs__btn" data-tab="animation" type="button">Animation</button>
+            <button class="vp-tabs__btn" data-tab="audio" type="button">Audio</button>
+          </div>
+        </div>
+
+        <div class="vp-phases">
+          <div class="vp-phase is-active" data-phase="script">
+            <div class="vp-phase__visual">
+              <div class="vp-phase__num">01</div>
+              <div class="vp-phase__visual-label">SCRIPT · WEEK 1</div>
+            </div>
+            <div class="vp-phase__copy">
+              <h3>Crafting the perfect message.</h3>
+              <p>We start with strategy — understanding your product, audience, and key messages — then write a script that explains, persuades, and drives action.</p>
+              <ul class="vp-phase__checklist">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Product & audience discovery</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Key message identification</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Scriptwriting & narrative development</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Script review & approval</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="vp-phase" data-phase="storyboard">
+            <div class="vp-phase__visual">
+              <div class="vp-phase__num">02</div>
+              <div class="vp-phase__visual-label">STORYBOARD · WEEK 2</div>
+            </div>
+            <div class="vp-phase__copy">
+              <h3>Visualizing every scene.</h3>
+              <p>We create frame-by-frame storyboards showing exactly how your video will look and flow — approved by you before animation begins.</p>
+              <ul class="vp-phase__checklist">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Scene-by-scene storyboarding</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Visual style exploration</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Character & environment design</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Storyboard approval</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="vp-phase" data-phase="design">
+            <div class="vp-phase__visual">
+              <div class="vp-phase__num">03</div>
+              <div class="vp-phase__visual-label">DESIGN · WEEK 3</div>
+            </div>
+            <div class="vp-phase__copy">
+              <h3>Bringing characters to life.</h3>
+              <p>Final character designs, background art, color palettes, and style frames — ensuring every visual element is polished before animation.</p>
+              <ul class="vp-phase__checklist">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Character finalization</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Background & environment art</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Color palette & style frames</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Design approval</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="vp-phase" data-phase="animation">
+            <div class="vp-phase__visual">
+              <div class="vp-phase__num">04</div>
+              <div class="vp-phase__visual-label">ANIMATION · WEEK 4–5</div>
+            </div>
+            <div class="vp-phase__copy">
+              <h3>Making it move.</h3>
+              <p>Full animation production — character movement, transitions, effects, and timing — bringing your storyboard to life frame by frame.</p>
+              <ul class="vp-phase__checklist">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Keyframe animation</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Transitions & effects</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Rough cut review</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Animation polish & final cut</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="vp-phase" data-phase="audio">
+            <div class="vp-phase__visual">
+              <div class="vp-phase__num">05</div>
+              <div class="vp-phase__visual-label">AUDIO · WEEK 5–6</div>
+            </div>
+            <div class="vp-phase__copy">
+              <h3>Perfecting the sound.</h3>
+              <p>Voiceover recording, sound design, music composition, and final mix — delivering a professional, polished video ready for your audience.</p>
+              <ul class="vp-phase__checklist">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Professional voiceover recording</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sound design & SFX</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Original music composition</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Final mix & master delivery</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── EXPLAINER VIDEO TYPES CLOUD ─────────── -->
+    <section class="vp-section vp-types">
+      <div class="vp-container">
+        <header class="vp-types__head vp-reveal">
+          <span class="vp-eyebrow">Every style covered</span>
+          <h2>The explainer video styles we produce.</h2>
+          <p>From animated characters to 3D product visualizations — our team covers every explainer style, all under one roof.</p>
+        </header>
+
+        <div class="vp-types__cloud vp-reveal">
+          <span class="vp-pill vp-pill--feat"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> 2D Animated Explainers</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> 3D Motion Graphics</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Whiteboard Explainers</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Live-Action Explainers</span>
+          <span class="vp-pill vp-pill--feat"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Typography & Kinetic Text</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Screencast & Software Demos</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Product Launch Explainers</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> SaaS Demo Videos</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> App Walkthroughs</span>
+          <span class="vp-pill vp-pill--feat"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Training & Tutorial Videos</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Crowdfunding Explainers</span>
+          <span class="vp-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Sales Enablement Videos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── INDUSTRIES ─────────── -->
+    <section class="vp-section vp-ind">
+      <div class="vp-container">
+        <header class="vp-ind__head vp-reveal">
+          <span class="vp-eyebrow">Who we work with</span>
+          <h2>From startups to enterprises — across every sector.</h2>
+          <p>We've produced explainer videos for SaaS companies, product startups, educational platforms, and enterprise organizations across every industry.</p>
+        </header>
+
+        <div class="vp-ind__grid">
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">01</span>
+            <h4>SaaS & Technology</h4>
+            <p>Product demos, platform walkthroughs, and feature explainers for B2B and B2C software companies.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">02</span>
+            <h4>E-commerce & D2C</h4>
+            <p>Product explainers, brand stories, and shopping cart videos that drive conversions.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">03</span>
+            <h4>Healthcare & MedTech</h4>
+            <p>Patient education videos, medical device explainers, and pharma product demos with compliance.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">04</span>
+            <h4>EdTech & Education</h4>
+            <p>Course previews, concept explainers, and student onboarding videos for learning platforms.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">05</span>
+            <h4>Fintech & Banking</h4>
+            <p>Complex financial concepts simplified — investment products, payment systems, and security features.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">06</span>
+            <h4>Manufacturing & Industrials</h4>
+            <p>Process explainers, equipment demonstrations, and B2B capability videos.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">07</span>
+            <h4>Nonprofit & Social Impact</h4>
+            <p>Mission explainers, impact stories, and donation request videos that drive action.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">08</span>
+            <h4>Real Estate & Property</h4>
+            <p>Project walkthroughs, investment explainers, and property showcase videos.</p>
+          </div>
+          <div class="vp-ind__item">
+            <span class="vp-ind__num">09</span>
+            <h4>Startups & Founders</h4>
+            <p>Investor pitch videos, MVP explainers, and brand launch animations that secure funding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── WHY CHOOSE ─────────── -->
+    <section class="vp-section vp-why">
+      <div class="vp-container">
+        <header class="vp-why__head vp-reveal">
+          <span class="vp-eyebrow">Why Mckbytes Technologies</span>
+          <h2>Why companies choose us for explainer videos.</h2>
+          <p>The three reasons our clients keep coming back for every product launch.</p>
+        </header>
+
+        <div class="vp-why__grid">
+          <article class="vp-why__card vp-reveal">
+            <div class="vp-why__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <h3>Script-first approach</h3>
+            <p>Great animation starts with a great script. We spend time getting the message right — because even the best visuals can't save a weak story.</p>
+          </article>
+          <article class="vp-why__card vp-reveal vp-reveal--1">
+            <div class="vp-why__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8l6 4-6 4z"/></svg>
+            </div>
+            <h3>Conversion-focused design</h3>
+            <p>Every visual decision is made with one goal — driving action. Clear CTAs, persuasive pacing, and visuals that support, not distract from, your message.</p>
+          </article>
+          <article class="vp-why__card vp-reveal vp-reveal--2">
+            <div class="vp-why__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7v16L3 13z"/><path d="M11 5v14"/></svg>
+            </div>
+            <h3>Style versatility</h3>
+            <p>2D, 3D, whiteboard, live-action, motion graphics — we do it all. Whatever style fits your brand and message, our team has the expertise to deliver.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── FAQ ─────────── -->
+    <section class="vp-section vp-faq">
+      <div class="vp-container">
+        <header class="vp-faq__head vp-reveal">
+          <span class="vp-eyebrow">Frequently asked</span>
+          <h2>Quick answers about explainer videos.</h2>
+        </header>
+
+        <div class="vp-faq__list">
+          <div class="vp-faq__item is-open" data-faq>
+            <button class="vp-faq__btn" type="button">
+              <span>How long should an explainer video be?</span>
+              <span class="vp-faq__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+            </button>
+            <div class="vp-faq__panel"><div>
+              <p>The optimal length is 60-90 seconds. This is enough time to explain your product's problem, solution, and benefits — while keeping viewer attention. Some complex B2B products may need 2 minutes, but we recommend staying under 90 seconds for maximum retention.</p>
+            </div></div>
+          </div>
+
+          <div class="vp-faq__item" data-faq>
+            <button class="vp-faq__btn" type="button">
+              <span>What's the typical turnaround time?</span>
+              <span class="vp-faq__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+            </button>
+            <div class="vp-faq__panel"><div>
+              <p>A standard 60-90 second explainer video takes 4-6 weeks from script to final delivery — including scriptwriting, storyboarding, design, animation, and audio production. Rush projects can be delivered in 2-3 weeks.</p>
+            </div></div>
+          </div>
+
+          <div class="vp-faq__item" data-faq>
+            <button class="vp-faq__btn" type="button">
+              <span>Which style of explainer works best for my product?</span>
+              <span class="vp-faq__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+            </button>
+            <div class="vp-faq__panel"><div>
+              <p>2D animation works well for most B2B and B2C products. 3D is best for physical products, technical concepts, or premium brands. Whiteboard works for educational content. Live-action is ideal for human-centric stories. We'll recommend the best style for your specific product and audience.</p>
+            </div></div>
+          </div>
+
+          <div class="vp-faq__item" data-faq>
+            <button class="vp-faq__btn" type="button">
+              <span>Do you provide voiceover and music?</span>
+              <span class="vp-faq__toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg></span>
+            </button>
+            <div class="vp-faq__panel"><div>
+              <p>Yes — everything included. Professional voiceover artists (male/female, multiple languages), original music composition or licensed tracks, and full sound design. You approve voice samples before recording.</p>
+            </div></div>
+          </div>
+
+          <div class="vp-faq__item" data-faq>
+            <button class="vp-faq__btn" type="button">
+              <span>Where should we use our explainer video?</span>
+              <span class="vp-faq__toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg></span>
+            </button>
+            <div class="vp-faq__panel"><div>
+              <p>Homepage hero section, product landing pages, email campaigns, social media ads, YouTube pre-roll, sales presentations, and trade show booths. We deliver multiple versions (horizontal, vertical, square) for every platform.</p>
+            </div></div>
+          </div>
+
+          <div class="vp-faq__item" data-faq>
+            <button class="vp-faq__btn" type="button">
+              <span>Can you update the video later if our product changes?</span>
+              <span class="vp-faq__toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg></span>
+            </button>
+            <div class="vp-faq__panel"><div>
+              <p>Yes — we keep source files and can make updates for new features, pricing changes, or rebrands. Most updates can be delivered in 1-2 weeks.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── CTA ─────────── -->
+    <section class="vp-section vp-cta" id="cta">
+      <div class="vp-cta__shell vp-reveal">
+        <div>
+          <span class="vp-eyebrow" style="color:#ffd1d8">Explain your product visually</span>
+          <h2>Let's create a video that converts viewers into customers.</h2>
+          <p>Tell us about your product and we'll come back within one business day with a script concept, style recommendation, and transparent quote — no hard sell, just honest advice.</p>
+        </div>
+        <div class="vp-cta__actions">
+         <a href="{% url 'core:contact' %}" class="vp-btn" style="--bg:#f80505;--fg:#0b0b10">Book a meeting</a>
+          <a href="#portfolio" class="vp-btn vp-btn--light">See explainer portfolio <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+  {% include 'include/footer.html' %}
+
+
+
+  <!-- ================= INCLUDE SCRIPT ================= -->
+
+  <script>
+
+    // HEADER LOAD
+    fetch('/include/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+        initHeader();
+      });
+
+
+    // FOOTER LOAD
+    fetch('/include/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+
+
+
+
+    // HEADER FUNCTIONS
+    function initHeader(){
+
+      const nav = document.getElementById('nav');
+      if(nav){
+        const onScroll = () => {
+          nav.classList.toggle('nav--scrolled', window.scrollY > 10);
+        };
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+      }
+
+      const menuBtn = document.getElementById('menuBtn');
+      const drawer = document.getElementById('drawer');
+      const drawerClose = document.getElementById('drawerClose');
+
+      if(menuBtn && drawer){
+        menuBtn.addEventListener('click', () => { drawer.classList.add('open'); });
+      }
+      if(drawerClose && drawer){
+        drawerClose.addEventListener('click', () => { drawer.classList.remove('open'); });
+      }
+
+      const navItems = document.querySelectorAll('.nav__item--has-menu');
+      navItems.forEach(item => {
+        const trigger = item.querySelector('.nav__link');
+        const panel = item.querySelector('.nav__panel');
+        if(!trigger || !panel) return;
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          panel.classList.toggle('open');
+        });
+      });
+
+    }
+
+
+    // PAGE INTERACTIONS
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.vp-reveal').forEach(el => io.observe(el));
+
+    // Process tabs
+    document.querySelectorAll('.vp-tabs__btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const target = btn.dataset.tab;
+        document.querySelectorAll('.vp-tabs__btn').forEach(b => b.classList.toggle('is-active', b === btn));
+        document.querySelectorAll('.vp-phase').forEach(p => p.classList.toggle('is-active', p.dataset.phase === target));
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('[data-faq]').forEach(item=>{
+      const btn = item.querySelector('.vp-faq__btn');
+      btn.addEventListener('click', ()=>{
+        const open = item.classList.contains('is-open');
+        document.querySelectorAll('[data-faq].is-open').forEach(i=> i.classList.remove('is-open'));
+        if (!open) item.classList.add('is-open');
+      });
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% extends 'dashboard/base_admin.html' %}
+{% load static %}
+
+{% block page_title %}Job Applications{% endblock %}
+
+{% block content %}
+<div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="stat-card"><h3>Total</h3><div class="number">{{ total_applications }}</div></div>
+    <div class="stat-card"><h3>Pending</h3><div class="number">{{ pending_count }}</div></div>
+    <div class="stat-card"><h3>Shortlisted</h3><div class="number">{{ shortlisted_count }}</div></div>
+    <div class="stat-card"><h3>Hired</h3><div class="number">{{ hired_count }}</div></div>
+</div>
+
+<div class="data-table">
+    <div class="table-header">
+        <h3><i class="fas fa-users"></i> All Applications</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <form method="GET" style="display: flex; gap: 10px;">
+                <select name="job" class="form-control" style="width: auto;" onchange="this.form.submit()">
+                    <option value="">All Jobs</option>
+                    {% for job in jobs %}
+                    <option value="{{ job.id }}" {% if request.GET.job == job.id|stringformat:"s" %}selected{% endif %}>{{ job.title }}</option>
+                    {% endfor %}
+                </select>
+                <select name="status" class="form-control" style="width: auto;" onchange="this.form.submit()">
+                    <option value="">All Status</option>
+                    <option value="pending" {% if request.GET.status == 'pending' %}selected{% endif %}>Pending</option>
+                    <option value="reviewed" {% if request.GET.status == 'reviewed' %}selected{% endif %}>Reviewed</option>
+                    <option value="shortlisted" {% if request.GET.status == 'shortlisted' %}selected{% endif %}>Shortlisted</option>
+                    <option value="rejected" {% if request.GET.status == 'rejected' %}selected{% endif %}>Rejected</option>
+                    <option value="hired" {% if request.GET.status == 'hired' %}selected{% endif %}>Hired</option>
+                </select>
+                <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request.GET.search }}">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+    </div>
+    
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Experience</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Applied</th>
+                    <th>Resume</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td><strong>{{ app.first_name }} {{ app.last_name }}</strong><br><small style="color:var(--muted)">{{ app.email }}</small></td>
+                    <td>{{ app.job.title }}<br><small>{{ app.job.get_job_type_display }}</small></td>
+                    <td>{{ app.years_experience }}</span></td>
+                    <td>{{ app.location|truncatechars:20 }}</span></td>
+                    <td><span class="badge {% if app.status == 'pending' %}badge-warning{% elif app.status == 'shortlisted' %}badge-success{% elif app.status == 'hired' %}badge-success{% elif app.status == 'rejected' %}badge-danger{% else %}badge-info{% endif %}">{{ app.get_status_display }}</span></td>
+                    <td>{{ app.created_at|date:"M d, Y" }}</span></td>
+                    <td>
+                        {% if app.resume %}
+                        <a href="{{ app.resume.url }}" target="_blank" class="btn btn-primary btn-sm" style="padding: 4px 8px;"><i class="fas fa-download"></i> View</a>
+                        {% else %}
+                        -
+                        {% endif %}
+                    </span>
+                    <td>
+                        <a href="{% url 'dashboard:job_application_detail' app.id %}" class="btn btn-primary btn-sm" style="padding: 4px 8px;"><i class="fas fa-eye"></i> View</a>
+                        <a href="{% url 'dashboard:job_application_delete' app.id %}" class="btn btn-danger btn-sm" style="padding: 4px 8px;" onclick="return confirm('Delete this application?')"><i class="fas fa-trash"></i> Delete</a>
+                    </span>
+                </tr>
+                {% empty %}
+                <tr><td colspan="8" style="text-align: center;">No applications found</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% if applications.has_other_pages %}
+    <div class="pagination">
+        {% if applications.has_previous %}<a href="?page={{ applications.previous_page_number }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}{% if request.GET.job %}&job={{ request.GET.job }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">← Previous</a>{% endif %}
+        <span class="current">Page {{ applications.number }} of {{ applications.paginator.num_pages }}</span>
+        {% if applications.has_next %}<a href="?page={{ applications.next_page_number }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}{% if request.GET.job %}&job={{ request.GET.job }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">Next →</a>{% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

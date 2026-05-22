@@ -1,0 +1,92 @@
+{% extends 'dashboard/base_admin.html' %}
+{% load static %}
+
+{% block page_title %}{% if is_edit %}Edit Post{% else %}Create New Post{% endif %}{% endblock %}
+
+{% block extra_css %}
+<!-- Use a simple textarea instead of TinyMCE to avoid API key issues -->
+<style>
+    .form-group textarea {
+        font-family: monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 style="margin-bottom: 25px;">{% if is_edit %}Edit Post{% else %}Create New Post{% endif %}</h2>
+    
+    <form method="POST" enctype="multipart/form-data" id="blogForm">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label>Title *</label>
+            <input type="text" name="title" class="form-control" value="{{ post.title|default:'' }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category" class="form-control">
+                <option value="">-- Select Category --</option>
+                {% for cat in categories %}
+                <option value="{{ cat.name }}" {% if post.category.name == cat.name %}selected{% endif %}>{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Tags (comma separated)</label>
+            <input type="text" name="tags" class="form-control" value="{{ current_tags|default:'' }}" placeholder="e.g., Technology, AI, Marketing">
+        </div>
+        
+        <div class="form-group">
+            <label>Excerpt (Short Summary)</label>
+            <textarea name="excerpt" class="form-control" rows="3">{{ post.excerpt|default:'' }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Featured Image</label>
+            {% if post.featured_image %}
+            <div style="margin-bottom: 10px;">
+                <img src="{{ post.featured_image.url }}" style="max-width: 200px; border-radius: 8px;">
+                <br>
+                <small><a href="#" onclick="return false;" style="color: red;">Remove image (coming soon)</a></small>
+            </div>
+            {% endif %}
+            <input type="file" name="featured_image" class="form-control" accept="image/*">
+        </div>
+        
+        <div class="form-group">
+            <label>Content (Body) *</label>
+            <textarea name="body" id="body" class="form-control" rows="20" required style="font-family: monospace; font-size: 14px;">{{ post.body|default:'' }}</textarea>
+            <small class="text-muted">You can use HTML tags for formatting: &lt;strong&gt;, &lt;em&gt;, &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, etc.</small>
+        </div>
+        
+        <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" name="is_published" {% if post.is_published %}checked{% endif %}>
+                <span>Publish immediately</span>
+            </label>
+        </div>
+        
+        <div style="display: flex; gap: 15px; margin-top: 25px;">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {% if is_edit %}Update{% else %}Create{% endif %} Post</button>
+            <a href="{% url 'dashboard:blog_list' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Simple validation to ensure body content is not empty
+    document.getElementById('blogForm').addEventListener('submit', function(e) {
+        const bodyContent = document.getElementById('body').value.trim();
+        if (!bodyContent) {
+            e.preventDefault();
+            alert('Please enter content for your blog post!');
+            return false;
+        }
+    });
+</script>
+{% endblock %}

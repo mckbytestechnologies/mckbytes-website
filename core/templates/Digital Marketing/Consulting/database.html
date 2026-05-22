@@ -1,0 +1,1501 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CMO on Demand — Fractional Marketing Leadership · BrandStory</title>
+  <meta name="description" content="BrandStory's CMO on Demand gives growth-stage companies senior marketing leadership without the full-time cost — strategy, team-building, and execution oversight." />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#C8102E; --brand-2:#ff3b5c; --brand-soft:rgba(200,16,46,.08);
+      --accent:#0a84ff; --accent-2:#30d158; --gold:#f59e0b;
+      --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45; --muted:#6b6c78;
+      --line:#e8e9ee; --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#eef0f4;
+      --r:16px; --r-lg:22px; --r-xl:32px;
+      --fs-display: clamp(2.4rem, 5vw + 1rem, 5rem);
+      --fs-h1: clamp(2rem, 3.2vw + 1rem, 3.4rem);
+      --fs-h2: clamp(1.6rem, 1.5vw + 1rem, 2.4rem);
+      --container:1240px; --gut:clamp(20px, 4vw, 48px);
+      --sy:clamp(72px, 8.5vw, 130px);
+      --ease:cubic-bezier(.22,.61,.36,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+      --t:.38s var(--ease);
+    }
+
+    /* Local scope */
+    .cmo-page *,.cmo-page *::before,.cmo-page *::after{box-sizing:border-box}
+    .cmo-page{
+      font-family:"Sora",system-ui,-apple-system,sans-serif;
+      font-size:1.1rem;line-height:1.65;color:var(--ink);background:#fff;
+      -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    }
+    .cmo-page h1,.cmo-page h2,.cmo-page h3,.cmo-page h4{font-family:"Sora";font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:0 0 .4em;color:var(--ink)}
+    .cmo-page p{margin:0 0 1em;color:var(--ink-3)}
+    .cmo-page a{color:inherit;text-decoration:none}
+    .cmo-page button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+    .cmo-container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gut)}
+    .cmo-section{padding:var(--sy) 0}
+    .cmo-eyebrow{
+      display:inline-flex;align-items:center;gap:.5rem;
+      font-family:"JetBrains Mono",monospace;font-size:.78rem;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500;
+    }
+    .cmo-eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+
+    /* Buttons */
+    .cmo-btn{
+      --bg:var(--ink);--fg:#fff;
+      display:inline-flex;align-items:center;gap:.55rem;
+      padding:.92rem 1.5rem;border-radius:999px;
+      background:var(--bg);color:var(--fg);
+      font-weight:600;font-size:.95rem;
+      transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);
+      white-space:nowrap;position:relative;isolation:isolate;overflow:hidden;
+    }
+    .cmo-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease)}
+    .cmo-btn:hover::before{transform:translateX(100%)}
+    .cmo-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,17,26,.18)}
+    .cmo-btn .arrow{transition:transform .3s var(--ease)}
+    .cmo-btn:hover .arrow{transform:translateX(4px)}
+    .cmo-btn--primary{--bg:var(--brand);--fg:#fff;box-shadow:0 8px 22px rgba(200,16,46,.3)}
+    .cmo-btn--primary:hover{--bg:#a8001f}
+    .cmo-btn--ghost{--bg:transparent;--fg:var(--ink);border:1px solid var(--line);padding:calc(.92rem - 1px) calc(1.5rem - 1px)}
+    .cmo-btn--ghost:hover{--bg:var(--paper-2)}
+    .cmo-btn--light{--bg:rgba(255,255,255,.08);--fg:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
+    .cmo-btn--light:hover{--bg:rgba(255,255,255,.16)}
+
+    /* =========================================================
+       ─── HERO  — Exec calendar / weekly planner mockup
+       ========================================================= */
+    .cmo-hero{
+      position:relative;
+      padding: clamp(40px,5vw,80px) 0 clamp(60px,7vw,110px);
+      background: var(--paper);
+      overflow:hidden;isolation:isolate;
+    }
+    .cmo-hero::before{
+      content:""; position:absolute; inset:0; z-index:0;
+      background:
+        radial-gradient(800px 480px at 90% 5%, rgba(200,16,46,.10), transparent 60%),
+        radial-gradient(700px 480px at 0% 110%, rgba(10,132,255,.08), transparent 60%);
+    }
+    .cmo-hero__grid{
+      position:absolute;inset:0;z-index:0;pointer-events:none;
+      background-image:
+        linear-gradient(to right, rgba(15,17,26,.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,17,26,.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at 50% 30%, #000 50%, transparent 85%);
+    }
+    .cmo-hero__inner{
+      position:relative;z-index:1;
+      display:grid;grid-template-columns:1.05fr .95fr;
+      gap:clamp(36px,5vw,72px);align-items:center;
+    }
+    @media(max-width:980px){.cmo-hero__inner{grid-template-columns:1fr;gap:60px}}
+
+    .cmo-hero__pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:7px 14px;
+      border-radius:999px;
+      background:var(--paper-2);border:1px solid var(--line);
+      font-size:.82rem;font-weight:600;color:var(--ink-3);
+      margin-bottom:22px;
+    }
+    .cmo-hero__pill-dot{
+      width:8px;height:8px;border-radius:50%;background:var(--accent-2);
+      box-shadow:0 0 0 4px rgba(48,209,88,.16);
+      animation:dotPulse 2s ease-in-out infinite;
+    }
+    @keyframes dotPulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .cmo-hero__pill b{color:var(--ink);font-weight:700}
+
+    .cmo-hero h1{font-size:var(--fs-display);letter-spacing:-.045em;line-height:1.02;margin:0 0 22px}
+    .cmo-hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--brand) 0%, #ff5872 60%, var(--brand-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .cmo-hero__lead{font-size:1.16rem;line-height:1.65;color:var(--ink-3);max-width:54ch;margin-bottom:30px}
+    .cmo-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+
+    .cmo-hero__creds{
+      display:flex;gap:24px 40px;flex-wrap:wrap;
+      padding-top:24px;border-top:1px solid var(--line);
+    }
+    .cmo-hero__cred b{display:block;font-family:"Sora";font-weight:800;font-size:1.6rem;letter-spacing:-.04em;color:var(--ink);line-height:1}
+    .cmo-hero__cred span{font-size:.86rem;color:var(--muted)}
+
+    /* Weekly planner mockup */
+    .cmo-planner{
+      position:relative;
+      background:#fff;
+      border-radius:18px;
+      box-shadow: 0 30px 80px -20px rgba(15,17,26,.25), 0 8px 24px rgba(15,17,26,.06);
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+    .cmo-planner__head{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 18px;
+      background:#0b0b14;
+      color:#fff;
+    }
+    .cmo-planner__head b{font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:8px}
+    .cmo-planner__head b::before{
+      content:"";width:22px;height:22px;border-radius:6px;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    }
+    .cmo-planner__nav{
+      display:inline-flex;align-items:center;gap:6px;
+      font-family:"JetBrains Mono",monospace;font-size:.74rem;
+      color:rgba(255,255,255,.6);letter-spacing:.05em;
+    }
+    .cmo-planner__nav b{color:#fff;font-weight:600;font-size:.74rem}
+    .cmo-planner__nav span{
+      width:24px;height:24px;border-radius:6px;
+      background:rgba(255,255,255,.08);
+      display:inline-grid;place-items:center;
+      cursor:pointer;
+    }
+    .cmo-planner__nav span svg{width:11px;height:11px;color:#fff}
+
+    .cmo-planner__days{
+      display:grid;grid-template-columns:repeat(5, 1fr);
+      border-bottom:1px solid var(--line);
+    }
+    .cmo-planner__day{
+      padding:12px 10px; text-align:center;
+      border-right:1px solid var(--line);
+      background:var(--paper-2);
+    }
+    .cmo-planner__day:last-child{border-right:0}
+    .cmo-planner__day-num{
+      display:block;font-family:"Sora";font-weight:800;
+      font-size:1.2rem;color:var(--ink);line-height:1;
+    }
+    .cmo-planner__day-name{
+      display:block;font-size:.7rem;font-weight:600;
+      color:var(--muted);text-transform:uppercase;
+      letter-spacing:.08em;margin-top:4px;
+    }
+    .cmo-planner__day.today .cmo-planner__day-num{color:var(--brand)}
+    .cmo-planner__day.today .cmo-planner__day-name{color:var(--brand)}
+    .cmo-planner__day.today{background:linear-gradient(180deg, rgba(200,16,46,.06), transparent)}
+
+    .cmo-planner__body{
+      padding:14px;background:#fff;
+      display:flex;flex-direction:column;gap:8px;
+      min-height:280px;
+    }
+    .cmo-event{
+      display:grid;grid-template-columns: 60px 1fr;
+      gap:12px;padding:12px 14px;
+      border-radius:10px;
+      border-left:3px solid var(--brand);
+      background:var(--paper-2);
+      transition: transform .3s var(--ease), box-shadow .3s;
+    }
+    .cmo-event:hover{transform:translateX(2px);box-shadow:0 8px 20px -6px rgba(15,17,26,.08)}
+    .cmo-event--blue{border-left-color:var(--accent);background:rgba(10,132,255,.06)}
+    .cmo-event--green{border-left-color:var(--accent-2);background:rgba(48,209,88,.06)}
+    .cmo-event--purple{border-left-color:#8b5cf6;background:rgba(139,92,246,.06)}
+    .cmo-event__time{
+      font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:600;
+      color:var(--ink-3);
+    }
+    .cmo-event__time small{display:block;font-size:.66rem;color:var(--muted);margin-top:2px}
+    .cmo-event__body b{display:block;font-size:.88rem;font-weight:700;color:var(--ink);letter-spacing:-.005em}
+    .cmo-event__body span{display:block;font-size:.72rem;color:var(--muted);margin-top:2px}
+    .cmo-event__tag{
+      display:inline-block;
+      font-size:.62rem;font-weight:700;
+      padding:2px 8px;border-radius:999px;margin-top:6px;
+      background:var(--brand);color:#fff;
+      font-family:"JetBrains Mono",monospace;letter-spacing:.06em;
+    }
+    .cmo-event--blue .cmo-event__tag{background:var(--accent)}
+    .cmo-event--green .cmo-event__tag{background:var(--accent-2)}
+    .cmo-event--purple .cmo-event__tag{background:#8b5cf6}
+
+    /* Floating mini badge */
+    .cmo-flag{
+      position:absolute;
+      top:-14px; right:18px; z-index:5;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;border-radius:999px;
+      background:#0b0b14;color:#fff;
+      font-size:.78rem;font-weight:600;
+      box-shadow:0 14px 30px -10px rgba(0,0,0,.4);
+    }
+    .cmo-flag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand-2);box-shadow:0 0 12px var(--brand-2);animation:dotPulse 2s infinite}
+
+    .cmo-tip{
+      position:absolute;bottom:-18px;left:-12px;
+      background:#fff;border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 14px;
+      display:flex;align-items:center;gap:10px;
+      box-shadow:0 18px 38px -10px rgba(15,17,26,.18);
+      z-index:5;
+    }
+    .cmo-tip__icon{
+      width:34px;height:34px;border-radius:50%;
+      background:linear-gradient(135deg, var(--brand-2), var(--brand));
+      color:#fff; display:grid;place-items:center;
+    }
+    .cmo-tip__icon svg{width:16px;height:16px}
+    .cmo-tip b{display:block;font-size:.8rem;font-weight:700;color:var(--ink);line-height:1.15;white-space:nowrap}
+    .cmo-tip span{display:block;font-size:.7rem;color:var(--muted);line-height:1.15;white-space:nowrap}
+
+    /* =========================================================
+       ─── PRICING / ENGAGEMENT BAND  — header strip
+       ========================================================= */
+    .cmo-band{
+      padding: clamp(28px, 4vw, 50px) 0;
+      background: linear-gradient(160deg, #0b0b14 0%, #1a1b22 50%, #1a0e16 100%);
+      color:#fff;
+      overflow:hidden;position:relative;
+      border-block:1px solid rgba(255,255,255,.06);
+    }
+    .cmo-band::after{
+      content:"";position:absolute;
+      top:-100px;right:-80px;width:300px;height:300px;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,59,92,.3), transparent 70%);
+      filter:blur(50px);pointer-events:none;
+    }
+    .cmo-band__grid{
+      position:relative;z-index:1;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:18px;align-items:center;
+    }
+    @media(max-width:980px){.cmo-band__grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.cmo-band__grid{grid-template-columns:1fr}}
+    .cmo-band__item{padding-right:18px;border-right:1px solid rgba(255,255,255,.1)}
+    .cmo-band__item:last-child{border-right:0}
+    @media(max-width:980px){
+      .cmo-band__item{border-right:0;border-bottom:1px solid rgba(255,255,255,.08);padding:0 0 14px}
+      .cmo-band__item:nth-last-child(-n+2){border-bottom:0;padding-bottom:0}
+    }
+    @media(max-width:520px){
+      .cmo-band__item{border-bottom:1px solid rgba(255,255,255,.08)!important;padding-bottom:14px}
+      .cmo-band__item:last-child{border-bottom:0!important}
+    }
+    .cmo-band__item b{
+      display:block;font-family:"Sora";font-weight:800;
+      font-size:clamp(1.8rem,2vw + 1rem,2.4rem);
+      letter-spacing:-.04em;line-height:1;
+      background: linear-gradient(120deg, #fff, rgba(255,255,255,.55));
+      -webkit-background-clip:text; background-clip:text;color:transparent;
+      margin-bottom:6px;
+    }
+    .cmo-band__item h3{font-size:.96rem;color:#fff;margin:0 0 2px;font-weight:700}
+    .cmo-band__item span{color:rgba(255,255,255,.65);font-size:.84rem}
+
+    /* =========================================================
+       ─── ONBOARDING STACK  — Day-One numbered cards
+       ========================================================= */
+    .cmo-onboard{padding:var(--sy) 0;background:var(--paper)}
+    .cmo-onboard__head{
+      display:grid;grid-template-columns: 1fr 1fr;gap:40px;
+      align-items:end;margin-bottom:48px;
+    }
+    @media(max-width:780px){.cmo-onboard__head{grid-template-columns:1fr}}
+    .cmo-onboard__head h2{font-size:var(--fs-h1);max-width:18ch;margin:.3em 0 0}
+    .cmo-onboard__head p{color:var(--muted);max-width:48ch;margin:0;font-size:1.02rem}
+
+    .cmo-stack{
+      display:flex;flex-direction:column;gap:12px;
+      max-width:1000px;margin:0 auto;
+    }
+    .cmo-stack__row{
+      display:grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: clamp(16px, 2vw, 28px);
+      padding: 24px 28px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:18px;
+      align-items:center;
+      transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .4s;
+      position:relative;
+    }
+    .cmo-stack__row:hover{
+      transform: translateX(6px);
+      box-shadow: 0 18px 38px -16px rgba(15,17,26,.14);
+      border-color:rgba(200,16,46,.3);
+    }
+    @media(max-width:680px){.cmo-stack__row{grid-template-columns:64px 1fr}.cmo-stack__when{grid-column:1 / -1;padding-top:6px}}
+
+    .cmo-stack__num{
+      width:88px;height:88px;border-radius:20px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg, var(--paper-2), var(--paper-3));
+      border:1px solid var(--line);
+      transition: background .4s, transform .4s var(--ease), border-color .4s;
+      position:relative;
+    }
+    .cmo-stack__row:hover .cmo-stack__num{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent}
+    .cmo-stack__row:hover .cmo-stack__num b,
+    .cmo-stack__row:hover .cmo-stack__num span{color:#fff}
+    @media(max-width:680px){.cmo-stack__num{width:64px;height:64px;border-radius:14px}}
+    .cmo-stack__num b{
+      display:block;font-family:"Sora";font-weight:800;
+      font-size: 1.5rem;letter-spacing:-.04em;
+      color:var(--brand);line-height:1;
+      transition:color .4s;
+    }
+    @media(max-width:680px){.cmo-stack__num b{font-size:1.1rem}}
+    .cmo-stack__num span{
+      display:block;font-size:.66rem;font-weight:600;
+      color:var(--muted);letter-spacing:.06em;text-transform:uppercase;
+      margin-top:4px;transition:color .4s;
+    }
+    @media(max-width:680px){.cmo-stack__num span{display:none}}
+
+    .cmo-stack__body h3{font-size:1.18rem;margin:0 0 6px;letter-spacing:-.015em}
+    .cmo-stack__body p{font-size:.96rem;color:var(--ink-3);margin:0;line-height:1.55;max-width:58ch}
+
+    .cmo-stack__when{
+      font-family:"JetBrains Mono",monospace;
+      font-size:.74rem;font-weight:600;
+      color:var(--brand);letter-spacing:.06em;
+      padding: 5px 12px;
+      background:rgba(200,16,46,.08);
+      border-radius:999px;border:1px solid rgba(200,16,46,.18);
+      white-space:nowrap;
+    }
+
+    /* =========================================================
+       ─── FRACTIONAL vs FULL-TIME TABLE
+       ========================================================= */
+    .cmo-compare{padding:var(--sy) 0;background:var(--paper-2)}
+    .cmo-compare__head{text-align:center;margin-bottom:48px}
+    .cmo-compare__head h2{font-size:var(--fs-h1);max-width:24ch;margin:.4em auto 0}
+    .cmo-compare__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+    .cmo-table{
+      width:100%;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+    }
+    .cmo-table__head{
+      display:grid;grid-template-columns: 1.4fr 1fr 1fr;
+      align-items:end;
+      padding:18px 0;
+      background:linear-gradient(180deg, var(--paper-2), transparent);
+      border-bottom:1px solid var(--line);
+    }
+    .cmo-table__head > div{padding: 14px 24px}
+    .cmo-table__head > div:nth-child(2){border-left:1px solid var(--line);border-right:1px solid var(--line)}
+    .cmo-table__th-label{
+      font-family:"JetBrains Mono",monospace;
+      font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--muted);font-weight:500;
+    }
+    .cmo-table__th-name{
+      font-family:"Sora";font-weight:800;
+      font-size:1.15rem;letter-spacing:-.02em;color:var(--ink);
+      margin-top:6px;display:block;
+    }
+    .cmo-table__th--feat{background:linear-gradient(180deg, rgba(200,16,46,.06), transparent)}
+    .cmo-table__th--feat .cmo-table__th-label{color:var(--brand)}
+    .cmo-table__pill{
+      display:inline-block;
+      font-size:.62rem;font-weight:700;
+      padding:3px 10px;border-radius:999px;
+      background:var(--brand);color:#fff;
+      letter-spacing:.06em;
+      font-family:"JetBrains Mono",monospace;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+
+    .cmo-table__row{
+      display:grid;grid-template-columns: 1.4fr 1fr 1fr;
+      align-items:stretch;
+      border-bottom:1px solid var(--line);
+      transition: background .3s;
+    }
+    .cmo-table__row:last-child{border-bottom:0}
+    .cmo-table__row:hover{background:var(--paper-2)}
+    .cmo-table__row > div{padding: 18px 24px;display:flex;align-items:center}
+    .cmo-table__row > div:nth-child(2){border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(200,16,46,.02)}
+    .cmo-table__row > div:nth-child(2) b{color:var(--ink);font-weight:700}
+    .cmo-table__feature{
+      font-weight:600;color:var(--ink);font-size:.98rem;
+      flex-direction:column;align-items:flex-start;gap:2px;
+    }
+    .cmo-table__feature small{color:var(--muted);font-size:.82rem;font-weight:400}
+    .cmo-table__val{font-size:.95rem;color:var(--ink-3)}
+    .cmo-table__val svg{width:18px;height:18px;flex-shrink:0;margin-right:8px}
+    .cmo-table__val--good{color:var(--ink-2);font-weight:600}
+    .cmo-table__val--good svg{color:var(--accent-2)}
+    .cmo-table__val--bad{color:var(--muted)}
+    .cmo-table__val--bad svg{color:var(--brand)}
+
+    @media(max-width:780px){
+      .cmo-table__head,
+      .cmo-table__row{grid-template-columns:1fr}
+      .cmo-table__head > div:nth-child(2),
+      .cmo-table__head > div:nth-child(3),
+      .cmo-table__row > div:nth-child(2),
+      .cmo-table__row > div:nth-child(3){border-left:0;border-right:0;border-top:1px solid var(--line)}
+      .cmo-table__row > div:nth-child(2){background:rgba(200,16,46,.04)}
+      .cmo-table__row > div:nth-child(2)::before,
+      .cmo-table__row > div:nth-child(3)::before{content:attr(data-label);font-family:"JetBrains Mono";font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:auto;flex-shrink:0;padding-right:14px}
+    }
+
+    /* =========================================================
+       ─── QUARTERLY ROADMAP — Gantt-style horizontal timeline
+       ========================================================= */
+    .cmo-roadmap{padding:var(--sy) 0;background:var(--paper)}
+    .cmo-roadmap__head{text-align:center;margin-bottom:54px}
+    .cmo-roadmap__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .cmo-roadmap__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+    .cmo-gantt{
+      background:var(--paper-2);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding: clamp(20px, 3vw, 36px);
+    }
+    .cmo-gantt__quarters{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:2px;margin-bottom:24px;
+      background:var(--line);
+      padding:2px;border-radius:12px;
+    }
+    .cmo-gantt__q{
+      padding:14px;text-align:center;background:var(--paper);
+      transition: background .3s;
+    }
+    .cmo-gantt__q:first-child{border-radius:10px 0 0 10px}
+    .cmo-gantt__q:last-child{border-radius:0 10px 10px 0}
+    .cmo-gantt__q b{display:block;font-family:"JetBrains Mono",monospace;font-size:.78rem;font-weight:600;color:var(--ink);letter-spacing:.08em}
+    .cmo-gantt__q span{display:block;font-size:.74rem;color:var(--muted);margin-top:2px}
+
+    .cmo-gantt__rows{display:flex;flex-direction:column;gap:10px}
+    .cmo-gantt__row{
+      display:grid;grid-template-columns: 220px 1fr;
+      gap:16px;align-items:center;
+    }
+    @media(max-width:780px){.cmo-gantt__row{grid-template-columns:1fr}}
+    .cmo-gantt__label{
+      font-size:.92rem;font-weight:700;color:var(--ink);
+      letter-spacing:-.01em;
+    }
+    .cmo-gantt__label small{
+      display:block;font-size:.78rem;font-weight:500;color:var(--muted);margin-top:2px;
+    }
+    .cmo-gantt__track{
+      position:relative;height:36px;
+      background:var(--paper-3);border-radius:8px;
+      overflow:hidden;
+    }
+    .cmo-gantt__bar{
+      position:absolute;top:6px;bottom:6px;
+      border-radius:6px;
+      display:flex;align-items:center;
+      padding: 0 12px;
+      font-size:.76rem;font-weight:600;color:#fff;
+      letter-spacing:-.005em;
+      white-space:nowrap;
+      box-shadow: 0 4px 12px rgba(15,17,26,.12);
+    }
+    .cmo-gantt__bar--brand{background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+    .cmo-gantt__bar--blue{background:linear-gradient(90deg,var(--accent),#1f4dff)}
+    .cmo-gantt__bar--purple{background:linear-gradient(90deg,#b985ff,#8b5cf6)}
+    .cmo-gantt__bar--gold{background:linear-gradient(90deg,var(--gold),#c4760a)}
+    .cmo-gantt__bar--green{background:linear-gradient(90deg,var(--accent-2),#16a34a)}
+
+    /* =========================================================
+       ─── CMO PROFILE  — Editorial profile card
+       ========================================================= */
+    .cmo-profile{padding:var(--sy) 0;background:var(--paper-2)}
+    .cmo-profile__head{text-align:center;margin-bottom:48px}
+    .cmo-profile__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .cmo-profile__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+    .cmo-profile__card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:0;
+      overflow:hidden;
+      display:grid;grid-template-columns: .9fr 1.4fr;
+      align-items:stretch;
+      box-shadow: 0 30px 80px -28px rgba(15,17,26,.18);
+    }
+    @media(max-width:880px){.cmo-profile__card{grid-template-columns:1fr}}
+
+    .cmo-profile__photo{
+      position:relative;
+      background: linear-gradient(160deg, #0b0b14 0%, var(--brand) 100%);
+      min-height: 460px;
+      overflow:hidden;
+      display:grid;place-items:center;
+    }
+    .cmo-profile__photo::before{
+      content:"";position:absolute;inset:0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 85%);
+    }
+    .cmo-profile__photo::after{
+      content:"";position:absolute;
+      top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,59,92,.35), transparent 70%);
+      filter:blur(50px);
+    }
+    .cmo-profile__avatar{
+      position:relative;z-index:1;
+      width: 160px; height:160px; border-radius:50%;
+      background:#fff;
+      display:grid;place-items:center;
+      font-family:"Sora";font-weight:800;font-size:3.6rem;
+      letter-spacing:-.04em;color:var(--brand);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,.3), 0 0 0 8px rgba(255,255,255,.1);
+    }
+    .cmo-profile__photo-name{
+      position:absolute;bottom:24px;left:24px;right:24px;z-index:1;
+      color:#fff;
+    }
+    .cmo-profile__photo-name span{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.08em;color:rgba(255,255,255,.7);text-transform:uppercase;display:block;margin-bottom:6px}
+    .cmo-profile__photo-name b{font-family:"Sora";font-weight:800;font-size:1.5rem;letter-spacing:-.02em;color:#fff;display:block}
+    .cmo-profile__photo-name em{font-style:normal;color:rgba(255,255,255,.78);font-size:.92rem;display:block;margin-top:2px}
+
+    .cmo-profile__body{
+      padding: clamp(28px,4vw,48px);
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .cmo-profile__body .cmo-eyebrow{margin-bottom:14px}
+    .cmo-profile__body h3{
+      font-size:1.5rem;margin:0 0 16px;letter-spacing:-.02em;
+    }
+    .cmo-profile__body > p{
+      font-size:1rem;line-height:1.65;color:var(--ink-3);
+      max-width:50ch;margin:0 0 24px;
+    }
+    .cmo-profile__cred{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      padding-top:24px;border-top:1px solid var(--line);
+    }
+    @media(max-width:520px){.cmo-profile__cred{grid-template-columns:repeat(2,1fr)}}
+    .cmo-profile__cred-item b{
+      display:block;font-family:"Sora";font-weight:800;
+      font-size:1.4rem;letter-spacing:-.03em;
+      color:var(--ink);line-height:1;
+    }
+    .cmo-profile__cred-item span{
+      display:block;font-size:.82rem;color:var(--muted);margin-top:4px;
+    }
+
+    /* =========================================================
+       ─── USE CASES  — When to hire fractional CMO
+       ========================================================= */
+    .cmo-cases{padding:var(--sy) 0;background:var(--paper)}
+    .cmo-cases__head{text-align:center;margin-bottom:48px}
+    .cmo-cases__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .cmo-cases__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+    .cmo-cases__grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+    }
+    @media(max-width:980px){.cmo-cases__grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.cmo-cases__grid{grid-template-columns:1fr}}
+
+    .cmo-case{
+      padding:32px 26px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:20px;
+      transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .4s;
+      position:relative;
+    }
+    .cmo-case:hover{transform:translateY(-5px);box-shadow:0 22px 48px -18px rgba(15,17,26,.14);border-color:rgba(200,16,46,.3);background:var(--paper-2)}
+    .cmo-case__icon{
+      display:inline-grid;place-items:center;
+      width:48px;height:48px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(200,16,46,.14), rgba(200,16,46,.04));
+      border:1px solid rgba(200,16,46,.22);
+      color:var(--brand);
+      margin-bottom:18px;
+      transition: transform .4s var(--ease), background .4s, color .4s;
+    }
+    .cmo-case:hover .cmo-case__icon{transform:rotate(-6deg) scale(1.06);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border-color:transparent}
+    .cmo-case__icon svg{width:22px;height:22px}
+    .cmo-case h3{font-size:1.08rem;margin:0 0 10px;letter-spacing:-.015em}
+    .cmo-case p{font-size:.92rem;color:var(--ink-3);margin:0;line-height:1.55}
+
+    /* =========================================================
+       ─── CASE-STUDY TESTIMONIALS  — with before/after metrics
+       ========================================================= */
+    .cmo-cs{padding:var(--sy) 0;background:var(--paper-2)}
+    .cmo-cs__head{text-align:center;margin-bottom:48px}
+    .cmo-cs__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .cmo-cs__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+    .cmo-cs__grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:880px){.cmo-cs__grid{grid-template-columns:1fr}}
+
+    .cmo-cs__card{
+      padding: 32px 30px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:22px;
+      transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+    }
+    .cmo-cs__card:hover{transform:translateY(-4px);box-shadow:0 20px 44px -18px rgba(15,17,26,.14);border-color:rgba(200,16,46,.3)}
+    .cmo-cs__head-strip{
+      display:flex;align-items:center;gap:10px;
+      padding-bottom:16px;margin-bottom:20px;
+      border-bottom:1px dashed var(--line);
+    }
+    .cmo-cs__pill{
+      font-size:.72rem;font-weight:700;
+      padding:5px 12px;border-radius:999px;
+      background:var(--paper-2);color:var(--ink-2);
+      border:1px solid var(--line);
+      font-family:"JetBrains Mono",monospace;letter-spacing:.05em;
+    }
+    .cmo-cs__metrics{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:10px;margin-bottom:22px;
+    }
+    .cmo-cs__metric{
+      padding:14px;
+      background: linear-gradient(160deg, var(--paper-2), var(--paper-3));
+      border:1px solid var(--line);
+      border-radius:12px;
+    }
+    .cmo-cs__metric span{display:block;font-size:.66rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+    .cmo-cs__metric b{
+      display:block;font-family:"Sora";font-weight:800;
+      font-size:1.3rem;letter-spacing:-.025em;color:var(--ink);line-height:1;
+    }
+    .cmo-cs__metric u{
+      display:inline-block;text-decoration:none;
+      font-family:"JetBrains Mono",monospace;
+      font-size:.66rem;font-weight:700;color:var(--accent-2);
+      margin-top:4px;
+    }
+    .cmo-cs__card blockquote{
+      font-size:1rem;color:var(--ink-2);line-height:1.6;
+      margin:0 0 22px;font-style:italic;
+    }
+    .cmo-cs__card blockquote::before{
+      content:"\201C";color:var(--brand);
+      font-size:2.4em;line-height:.3;display:block;margin-bottom:.1em;font-style:normal;
+    }
+    .cmo-cs__author{
+      display:flex;align-items:center;gap:12px;
+      padding-top:18px;border-top:1px solid var(--line);
+    }
+    .cmo-cs__avatar{
+      width:44px;height:44px;border-radius:50%;
+      background:linear-gradient(135deg,var(--brand),#3a3b45);
+      display:grid;place-items:center;color:#fff;
+      font-weight:700;font-size:.86rem;font-family:"Sora";flex-shrink:0;
+    }
+    .cmo-cs__author b{display:block;font-size:.96rem;color:var(--ink)}
+    .cmo-cs__author span{font-size:.84rem;color:var(--muted)}
+
+    /* =========================================================
+       ─── CHAT-BUBBLE FAQ
+       ========================================================= */
+    .cmo-chat{padding:var(--sy) 0;background:var(--paper)}
+    .cmo-chat__head{text-align:center;margin-bottom:48px}
+    .cmo-chat__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+    .cmo-chat__head p{color:var(--muted);max-width:50ch;margin:1em auto 0}
+
+    .cmo-chat__feed{
+      max-width:760px;margin:0 auto;
+      display:flex;flex-direction:column;gap:18px;
+    }
+    .cmo-chat__pair{display:flex;flex-direction:column;gap:8px}
+    .cmo-chat__bubble{
+      max-width: 86%;
+      padding: 16px 20px;
+      border-radius:18px;
+      font-size:.98rem;line-height:1.55;
+      display:flex;gap:10px;align-items:flex-start;
+      position:relative;
+    }
+    .cmo-chat__bubble--q{
+      background: var(--paper-2);
+      border:1px solid var(--line);
+      align-self:flex-start;
+      border-radius: 18px 18px 18px 4px;
+      color:var(--ink);
+    }
+    .cmo-chat__bubble--a{
+      background: linear-gradient(160deg, var(--brand) 0%, #8a0e23 100%);
+      color:#fff;
+      align-self:flex-end;
+      border-radius: 18px 18px 4px 18px;
+      box-shadow: 0 10px 24px -10px rgba(200,16,46,.4);
+    }
+    .cmo-chat__bubble--a p{color:rgba(255,255,255,.94);margin:0}
+    .cmo-chat__bubble b{display:block;font-weight:700;font-size:.84rem;margin-bottom:4px;letter-spacing:-.005em}
+    .cmo-chat__bubble--q b{color:var(--brand)}
+    .cmo-chat__bubble--a b{color:rgba(255,255,255,.78)}
+    .cmo-chat__bubble p{margin:0}
+
+    .cmo-chat__avatar{
+      flex-shrink:0; width:32px; height:32px; border-radius:50%;
+      display:grid;place-items:center;
+      font-family:"Sora";font-weight:700;font-size:.76rem;
+    }
+    .cmo-chat__bubble--q .cmo-chat__avatar{background:#0b0b14;color:#fff}
+    .cmo-chat__bubble--a .cmo-chat__avatar{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.22)}
+
+    /* =========================================================
+       ─── BOOKING CTA
+       ========================================================= */
+    .cmo-booking{padding: clamp(60px,8vw,120px) 0;background:var(--paper-2)}
+    .cmo-booking__shell{
+      position:relative;
+      background: linear-gradient(135deg, #0b0b14 0%, #1a1b22 50%, #1a0e16 100%);
+      border-radius: clamp(24px,3vw,36px);
+      padding: clamp(40px,6vw,72px) clamp(28px,5vw,72px);
+      margin: 0 var(--gut);
+      color:#fff;overflow:hidden;
+      display:grid;grid-template-columns: 1.2fr .8fr;
+      gap: clamp(36px,5vw,72px);
+      align-items:center;
+    }
+    @media(max-width:980px){.cmo-booking__shell{grid-template-columns:1fr}}
+    .cmo-booking__shell::after{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background: radial-gradient(circle at 90% 0%, rgba(255,59,92,.3), transparent 40%), radial-gradient(circle at 0% 100%, rgba(10,132,255,.15), transparent 40%);
+    }
+    .cmo-booking__shell::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+    }
+    .cmo-booking__shell > *{position:relative;z-index:1}
+    .cmo-booking__copy .cmo-eyebrow{color:var(--brand-2)}
+    .cmo-booking__copy .cmo-eyebrow::before{background:var(--brand-2)}
+    .cmo-booking__copy h2{color:#fff;font-size:var(--fs-h1);max-width:18ch;margin:.2em 0;letter-spacing:-.035em}
+    .cmo-booking__copy p{color:rgba(255,255,255,.86);max-width:46ch;margin:.5em 0 24px;font-size:1.04rem}
+    .cmo-booking__copy .cmo-btn{margin-top:6px}
+
+    /* Slot picker */
+    .cmo-slots{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      padding:22px;
+      backdrop-filter:blur(10px);
+    }
+    .cmo-slots__head{
+      display:flex;align-items:center;justify-content:space-between;
+      padding-bottom:12px;margin-bottom:14px;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    .cmo-slots__head b{font-size:.92rem;font-weight:700;color:#fff}
+    .cmo-slots__head span{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:rgba(255,255,255,.55);letter-spacing:.06em}
+    .cmo-slots__list{display:flex;flex-direction:column;gap:8px}
+    .cmo-slots__btn{
+      display:flex;align-items:center;justify-content:space-between;
+      padding: 12px 16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:10px;
+      color:#fff;font-size:.92rem;font-weight:600;
+      transition: background .25s, border-color .25s, transform .25s;
+      cursor:pointer;
+    }
+    .cmo-slots__btn:hover{background:rgba(255,59,92,.16);border-color:rgba(255,59,92,.4);transform:translateX(2px)}
+    .cmo-slots__btn small{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:rgba(255,255,255,.6);font-weight:500}
+    .cmo-slots__btn .arrow{transition:transform .3s var(--ease);color:rgba(255,255,255,.5)}
+    .cmo-slots__btn:hover .arrow{transform:translateX(4px);color:#fff}
+
+    /* Reveal */
+    .cmo-reveal{opacity:0;transform:translateY(16px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+    .cmo-reveal.in{opacity:1;transform:none}
+    .cmo-reveal--1{transition-delay:.08s}
+    .cmo-reveal--2{transition-delay:.16s}
+    .cmo-reveal--3{transition-delay:.24s}
+    @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}.cmo-reveal{opacity:1;transform:none}}
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  {% include 'include/header.html' %}
+
+
+  <!-- ================= PAGE CONTENT ================= -->
+
+   <div class="cmo-page">
+
+    <!-- ─────────── HERO ─────────── -->
+    <section class="cmo-hero">
+      <div class="cmo-hero__grid"></div>
+      <div class="cmo-container cmo-hero__inner">
+        <div>
+          <span class="cmo-hero__pill cmo-reveal">
+            <span class="cmo-hero__pill-dot"></span>
+            <b>Data-driven marketing solutions</b> · Enterprise-grade databases
+          </span>
+          <h1 class="cmo-reveal cmo-reveal--1">
+            Precision-targeted databases.<br><em>Turn data into revenue.</em>
+          </h1>
+          <p class="cmo-hero__lead cmo-reveal cmo-reveal--2">
+            Welcome to Mckbytes Technologies - Database Services. Your trusted partner for high-quality, verified B2B and B2C databases in Vellore and beyond. We understand that in today's data-driven marketplace, having accurate, actionable prospect data is the difference between campaigns that convert and budgets that burn. That's why we offer comprehensive database solutions — tailored for sales teams, marketers, and businesses seeking to accelerate growth through precision targeting.
+          </p>
+          <div class="cmo-hero__cta cmo-reveal cmo-reveal--2">
+            <a href="#booking" class="cmo-btn cmo-btn--primary">Request data sample <span class="arrow">→</span></a>
+            <a href="#process" class="cmo-btn cmo-btn--ghost">How it works</a>
+          </div>
+          <div class="cmo-hero__creds cmo-reveal cmo-reveal--3">
+            <div class="cmo-hero__cred"><b>50M+</b><span>Global records</span></div>
+            <div class="cmo-hero__cred"><b>98%</b><span>Data accuracy</span></div>
+            <div class="cmo-hero__cred"><b>24 hrs</b><span>Average turnaround</span></div>
+          </div>
+        </div>
+
+        <!-- Database Dashboard Mockup -->
+        <div class="cmo-planner cmo-reveal cmo-reveal--2" aria-hidden="true">
+    
+
+          <div class="cmo-planner__head">
+            <b>Data Dashboard</b>
+            <span class="cmo-planner__nav">
+              <span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7.5 3l-3 3 3 3"/></svg></span>
+              <b>October 2025</b>
+              <span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 3l3 3-3 3"/></svg></span>
+            </span>
+          </div>
+
+          <div class="cmo-planner__days">
+            <div class="cmo-planner__day"><span class="cmo-planner__day-num">14</span><span class="cmo-planner__day-name">Mon</span></div>
+            <div class="cmo-planner__day today"><span class="cmo-planner__day-num">15</span><span class="cmo-planner__day-name">Tue</span></div>
+            <div class="cmo-planner__day"><span class="cmo-planner__day-num">16</span><span class="cmo-planner__day-name">Wed</span></div>
+            <div class="cmo-planner__day"><span class="cmo-planner__day-num">17</span><span class="cmo-planner__day-name">Thu</span></div>
+            <div class="cmo-planner__day"><span class="cmo-planner__day-num">18</span><span class="cmo-planner__day-name">Fri</span></div>
+          </div>
+
+          <div class="cmo-planner__body">
+            <div class="cmo-event">
+              <div class="cmo-event__time">10:00<small>30 min</small></div>
+              <div class="cmo-event__body">
+                <b>Data Requirements Workshop</b>
+                <span>ICP definition, filtering criteria, volume estimation</span>
+                <span class="cmo-event__tag">REQUIREMENTS</span>
+              </div>
+            </div>
+            <div class="cmo-event cmo-event--blue">
+              <div class="cmo-event__time">14:00<small>60 min</small></div>
+              <div class="cmo-event__body">
+                <b>Database Extraction</b>
+                <span>Query building, source validation, deduplication</span>
+                <span class="cmo-event__tag">EXTRACTION</span>
+              </div>
+            </div>
+            <div class="cmo-event cmo-event--purple">
+              <div class="cmo-event__time">16:30<small>45 min</small></div>
+              <div class="cmo-event__body">
+                <b>Quality Verification</b>
+                <span>Email validation, phone verification, enrichment</span>
+                <span class="cmo-event__tag">VERIFICATION</span>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── SERVICE BAND ─────────── -->
+    <section class="cmo-band">
+      <div class="cmo-container cmo-band__grid">
+        <div class="cmo-band__item">
+          <b>24-48 hrs</b>
+          <h3>Typical delivery</h3>
+          <span>From spec to database</span>
+        </div>
+        <div class="cmo-band__item">
+          <b>50M+</b>
+          <h3>Global records</h3>
+          <span>Across 200+ countries</span>
+        </div>
+        <div class="cmo-band__item">
+          <b>98%</b>
+          <h3>Data accuracy</h3>
+          <span>Guaranteed verification</span>
+        </div>
+        <div class="cmo-band__item">
+          <b>Custom</b>
+          <h3>Tailored extracts</h3>
+          <span>Your criteria, your format</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── DATA DELIVERY PROCESS ─────────── -->
+    <section class="cmo-section cmo-onboard">
+      <div class="cmo-container">
+        <header class="cmo-onboard__head cmo-reveal">
+          <div>
+            <span class="cmo-eyebrow">Our data delivery process</span>
+            <h2>From requirements to verified database.</h2>
+          </div>
+          <p>A transparent, quality-first process. No hidden sources, no stale data. By delivery, you have verified, ready-to-use prospect data that drives real campaigns.</p>
+        </header>
+
+        <div class="cmo-stack">
+          <div class="cmo-stack__row cmo-reveal">
+            <div class="cmo-stack__num"><b>01</b><span>Step 1</span></div>
+            <div class="cmo-stack__body">
+              <h3>Requirements &amp; ICP definition</h3>
+              <p>We begin by understanding your Ideal Customer Profile — industry, company size, geography, job titles, revenue bands, and any other filtering criteria that matters to your sales and marketing teams.</p>
+            </div>
+            <span class="cmo-stack__when">Day 1</span>
+          </div>
+          <div class="cmo-stack__row cmo-reveal">
+            <div class="cmo-stack__num"><b>02</b><span>Step 2</span></div>
+            <div class="cmo-stack__body">
+              <h3>Source identification &amp; query building</h3>
+              <p>We access our network of verified data sources — B2B directories, company registries, professional networks, and proprietary databases — and build precise queries to match your ICP exactly.</p>
+            </div>
+            <span class="cmo-stack__when">Day 1-2</span>
+          </div>
+          <div class="cmo-stack__row cmo-reveal">
+            <div class="cmo-stack__num"><b>03</b><span>Step 3</span></div>
+            <div class="cmo-stack__body">
+              <h3>Data extraction &amp; deduplication</h3>
+              <p>Raw extraction from multiple sources, followed by intelligent deduplication to remove overlaps. You get unique records, not inflated counts with duplicates.</p>
+            </div>
+            <span class="cmo-stack__when">Day 2-3</span>
+          </div>
+          <div class="cmo-stack__row cmo-reveal">
+            <div class="cmo-stack__num"><b>04</b><span>Step 4</span></div>
+            <div class="cmo-stack__body">
+              <h3>Verification &amp; enrichment</h3>
+              <p>Email validation, phone number verification, and data enrichment with missing fields — titles, direct dials, social profiles, technographics, and firmographics.</p>
+            </div>
+            <span class="cmo-stack__when">Day 3-4</span>
+          </div>
+          <div class="cmo-stack__row cmo-reveal">
+            <div class="cmo-stack__num"><b>05</b><span>Step 5</span></div>
+            <div class="cmo-stack__body">
+              <h3>Quality assurance &amp; sample review</h3>
+              <p>We provide a sample of 50-100 records for your review. You verify quality, accuracy, and relevance before we process the full database.</p>
+            </div>
+            <span class="cmo-stack__when">Day 4</span>
+          </div>
+          <div class="cmo-stack__row cmo-reveal">
+            <div class="cmo-stack__num"><b>06</b><span>Step 6</span></div>
+            <div class="cmo-stack__body">
+              <h3>Final delivery &amp; integration support</h3>
+              <p>Clean, verified database delivered in your preferred format — CSV, Excel, or direct CRM integration. Plus documentation on source dates and verification methods.</p>
+            </div>
+            <span class="cmo-stack__when">Day 5-7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── COMPARISON TABLE ─────────── -->
+    <section class="cmo-section cmo-compare" id="compare">
+      <div class="cmo-container">
+        <header class="cmo-compare__head cmo-reveal">
+          <span class="cmo-eyebrow">Why quality data matters</span>
+          <h2>Verified databases vs. generic lists — side by side.</h2>
+          <p>The same investment in data, dramatically different campaign outcomes.</p>
+        </header>
+
+        <div class="cmo-table cmo-reveal">
+          <div class="cmo-table__head">
+            <div>
+              <span class="cmo-table__th-label">Factor</span>
+              <span class="cmo-table__th-name">What you're comparing</span>
+            </div>
+            <div class="cmo-table__th--feat">
+              <span class="cmo-table__th-label">Mckbytes<span class="cmo-table__pill">RECOMMENDED</span></span>
+              <span class="cmo-table__th-name">Verified Database</span>
+            </div>
+            <div>
+              <span class="cmo-table__th-label">Generic</span>
+              <span class="cmo-table__th-name">Scraped/Aggregated Lists</span>
+            </div>
+          </div>
+
+          <div class="cmo-table__row">
+            <div class="cmo-table__feature">Email deliverability <small>Reach your prospects' actual inboxes</small></div>
+            <div class="cmo-table__val cmo-table__val--good" data-label="Mckbytes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><b>85-95%</b></div>
+            <div class="cmo-table__val cmo-table__val--bad" data-label="Generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>40-60%</div>
+          </div>
+
+          <div class="cmo-table__row">
+            <div class="cmo-table__feature">Bounce rate <small>Wasted email credits and sender reputation</small></div>
+            <div class="cmo-table__val cmo-table__val--good" data-label="Mckbytes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><b>&lt;5%</b></div>
+            <div class="cmo-table__val cmo-table__val--bad" data-label="Generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>20-40%+</div>
+          </div>
+
+          <div class="cmo-table__row">
+            <div class="cmo-table__feature">Data freshness <small>When was this data last verified?</small></div>
+            <div class="cmo-table__val cmo-table__val--good" data-label="Mckbytes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><b>0-90 days</b></div>
+            <div class="cmo-table__val cmo-table__val--bad" data-label="Generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>6-24 months+</div>
+          </div>
+
+          <div class="cmo-table__row">
+            <div class="cmo-table__feature">Contact fields <small>What's included per record</small></div>
+            <div class="cmo-table__val cmo-table__val--good" data-label="Mckbytes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><b>15-25+ fields</b></div>
+            <div class="cmo-table__val cmo-table__val--bad" data-label="Generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>3-5 fields</div>
+          </div>
+
+          <div class="cmo-table__row">
+            <div class="cmo-table__feature">Compliance ready <small>GDPR, CAN-SPAM, local regulations</small></div>
+            <div class="cmo-table__val cmo-table__val--good" data-label="Mckbytes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><b>Certified</b></div>
+            <div class="cmo-table__val cmo-table__val--bad" data-label="Generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>Unknown</div>
+          </div>
+
+          <div class="cmo-table__row">
+            <div class="cmo-table__feature">Campaign ROI <small>What your data investment returns</small></div>
+            <div class="cmo-table__val cmo-table__val--good" data-label="Mckbytes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><b>3-5×</b></div>
+            <div class="cmo-table__val cmo-table__val--bad" data-label="Generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>0.5-1×</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── DATABASE TYPES ─────────── -->
+    <section class="cmo-section cmo-roadmap">
+      <div class="cmo-container">
+        <header class="cmo-roadmap__head cmo-reveal">
+          <span class="cmo-eyebrow">Our database categories</span>
+          <h2>Comprehensive data for every use case.</h2>
+          <p>Specialised databases across B2B, B2C, and industry-specific verticals.</p>
+        </header>
+
+        <div class="cmo-gantt cmo-reveal">
+          <div class="cmo-gantt__quarters">
+            <div class="cmo-gantt__q"><b>B2B</b><span>Company & Decision-makers</span></div>
+            <div class="cmo-gantt__q"><b>B2C</b><span>Consumer & Household</span></div>
+            <div class="cmo-gantt__q"><b>Industry</b><span>Vertical-specific</span></div>
+            <div class="cmo-gantt__q"><b>Global</b><span>International</span></div>
+          </div>
+
+          <div class="cmo-gantt__rows">
+            <div class="cmo-gantt__row">
+              <div class="cmo-gantt__label">B2B Decision-Makers<small>C-suite · VPs · Directors · Managers</small></div>
+              <div class="cmo-gantt__track">
+                <span class="cmo-gantt__bar cmo-gantt__bar--brand" style="left:1%;width:98%">30M+ verified business contacts</span>
+              </div>
+            </div>
+            <div class="cmo-gantt__row">
+              <div class="cmo-gantt__label">Company Firmographics<small>Industry · size · revenue · technology stack</small></div>
+              <div class="cmo-gantt__track">
+                <span class="cmo-gantt__bar cmo-gantt__bar--blue" style="left:1%;width:98%">15M+ companies profiled</span>
+              </div>
+            </div>
+            <div class="cmo-gantt__row">
+              <div class="cmo-gantt__label">Consumer Demographics<small>Age · income · location · interests · lifestyle</small></div>
+              <div class="cmo-gantt__track">
+                <span class="cmo-gantt__bar cmo-gantt__bar--purple" style="left:1%;width:98%">20M+ consumer records</span>
+              </div>
+            </div>
+            <div class="cmo-gantt__row">
+              <div class="cmo-gantt__label">Industry Vertical Databases<small>Healthcare · real estate · education · retail · finance</small></div>
+              <div class="cmo-gantt__track">
+                <span class="cmo-gantt__bar cmo-gantt__bar--gold" style="left:1%;width:98%">50+ specialised vertical datasets</span>
+              </div>
+            </div>
+            <div class="cmo-gantt__row">
+              <div class="cmo-gantt__label">Global & Regional Data<small>Asia-Pacific · EMEA · North America · LATAM</small></div>
+              <div class="cmo-gantt__track">
+                <span class="cmo-gantt__bar cmo-gantt__bar--green" style="left:1%;width:98%">200+ countries covered</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── DATA SOURCES & VERIFICATION ─────────── -->
+    <section class="cmo-section cmo-profile">
+      <div class="cmo-container">
+        <header class="cmo-profile__head cmo-reveal">
+          <span class="cmo-eyebrow">Data sources & verification</span>
+          <h2>Where our data comes from — and how we verify it.</h2>
+          <p>Complete transparency about data origin, freshness, and validation methods.</p>
+        </header>
+
+        <div class="cmo-profile__card cmo-reveal">
+          <div class="cmo-profile__photo">
+            <div class="cmo-profile__avatar">DQ</div>
+            <div class="cmo-profile__photo-name">
+              <span>Data Quality & Compliance</span>
+              <b>Enterprise-grade verification</b>
+              <em>Multi-source validation · Real-time cleansing</em>
+            </div>
+          </div>
+          <div class="cmo-profile__body">
+            <span class="cmo-eyebrow">Trusted sources</span>
+            <h3>From premium directories to real-time verification.</h3>
+            <p>Our data is sourced from 50+ premium B2B directories, company registries, professional networks, trade associations, and public records. We never scrape or aggregate from unreliable sources.</p>
+            <p style="margin:0 0 24px">Every record passes through our 7-step verification process: syntax validation, domain verification, mailbox existence checks, phone number validation, deduplication, enrichment, and compliance screening. Mckbytes Technologies ensures you receive only deliverable, compliant, and actionable data — backed by our accuracy guarantee.</p>
+            <div class="cmo-profile__cred">
+              <div class="cmo-profile__cred-item">
+                <b>50+</b>
+                <span>Data sources</span>
+              </div>
+              <div class="cmo-profile__cred-item">
+                <b>7-step</b>
+                <span>Verification process</span>
+              </div>
+              <div class="cmo-profile__cred-item">
+                <b>98%</b>
+                <span>Accuracy guarantee</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── USE CASES ─────────── -->
+    <section class="cmo-section cmo-cases">
+      <div class="cmo-container">
+        <header class="cmo-cases__head cmo-reveal">
+          <span class="cmo-eyebrow">When you need quality data</span>
+          <h2>Five scenarios where our databases drive results.</h2>
+          <p>If any of these sound familiar, our verified databases will transform your outreach.</p>
+        </header>
+
+        <div class="cmo-cases__grid">
+          <article class="cmo-case cmo-reveal">
+            <div class="cmo-case__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+            </div>
+            <h3>Launching an email campaign</h3>
+            <p>You have the offer and the creative, but you need a targeted, verified list of prospects who match your ICP. We deliver ready-to-use, segmented databases for your campaign.</p>
+          </article>
+          <article class="cmo-case cmo-reveal cmo-reveal--1">
+            <div class="cmo-case__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3>Building a sales prospecting list</h3>
+            <p>Your SDRs are wasting hours hunting for contacts. We deliver pre-verified lists of decision-makers — titles, direct dials, and social profiles included.</p>
+          </article>
+          <article class="cmo-case cmo-reveal cmo-reveal--2">
+            <div class="cmo-case__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3>Entering a new geography</h3>
+            <p>You're expanding to a new city, state, or country. We provide region-specific databases with local contacts, cultural context, and compliance verification.</p>
+          </article>
+          <article class="cmo-case cmo-reveal cmo-reveal--3">
+            <div class="cmo-case__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Refreshing stale CRM data</h3>
+            <p>Your existing database is outdated — bounces are high, and outreach is failing. We clean, verify, and enrich your existing contacts with current information.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── CASE STUDIES ─────────── -->
+    <section class="cmo-section cmo-cs">
+      <div class="cmo-container">
+        <header class="cmo-cs__head cmo-reveal">
+          <span class="cmo-eyebrow">Client success stories</span>
+          <h2>Real results from data-driven campaigns.</h2>
+          <p>Anonymised but verified. Measurable impact from quality data.</p>
+        </header>
+
+        <div class="cmo-cs__grid">
+          <article class="cmo-cs__card cmo-reveal">
+            <div class="cmo-cs__head-strip">
+              <span class="cmo-cs__pill">B2B SaaS · Series A</span>
+              <span class="cmo-cs__pill">Database: 25,000 records</span>
+            </div>
+            <div class="cmo-cs__metrics">
+              <div class="cmo-cs__metric">
+                <span>Open rate</span>
+                <b>42%</b>
+                <u>vs 18% industry avg</u>
+              </div>
+              <div class="cmo-cs__metric">
+                <span>Reply rate</span>
+                <b>8.5%</b>
+                <u>3.2× benchmark</u>
+              </div>
+              <div class="cmo-cs__metric">
+                <span>Pipeline</span>
+                <b>₹2.4Cr</b>
+                <u>from single campaign</u>
+              </div>
+            </div>
+            <blockquote>We had tried three other data providers. Mckbytes was the only one where the emails actually landed, the titles were accurate, and the response rates proved the quality. Worth every rupee.</blockquote>
+            <div class="cmo-cs__author">
+              <div class="cmo-cs__avatar">VK</div>
+              <div><b>Vikram Kapoor</b><span>Head of Sales · DataFlow</span></div>
+            </div>
+          </article>
+
+          <article class="cmo-cs__card cmo-reveal cmo-reveal--1">
+            <div class="cmo-cs__head-strip">
+              <span class="cmo-cs__pill">EdTech · Growth-stage</span>
+              <span class="cmo-cs__pill">Database: 50,000 records</span>
+            </div>
+            <div class="cmo-cs__metrics">
+              <div class="cmo-cs__metric">
+                <span>Deliverability</span>
+                <b>94%</b>
+                <u>industry avg 65%</u>
+              </div>
+              <div class="cmo-cs__metric">
+                <span>Conversion</span>
+                <b>3.2%</b>
+                <u>to paid enrollment</u>
+              </div>
+              <div class="cmo-cs__metric">
+                <span>ROI</span>
+                <b>6.8×</b>
+                <u>campaign spend</u>
+              </div>
+            </div>
+            <blockquote>We built our entire lead generation engine around Mckbytes' data. The accuracy is unmatched — we've stopped wasting sales time on wrong numbers and fake emails.</blockquote>
+            <div class="cmo-cs__author">
+              <div class="cmo-cs__avatar" style="background:linear-gradient(135deg,#0a84ff,#1a1b22)">SM</div>
+              <div><b>Shruti Mehta</b><span>CMO · LearnEdge</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── FAQ ─────────── -->
+    <section class="cmo-section cmo-chat">
+      <div class="cmo-container">
+        <header class="cmo-chat__head cmo-reveal">
+          <span class="cmo-eyebrow">Common questions</span>
+          <h2>What clients ask before ordering data.</h2>
+          <p>The conversation we typically have with sales and marketing leaders — written out so you can skip ahead.</p>
+        </header>
+
+        <div class="cmo-chat__feed cmo-reveal">
+          <div class="cmo-chat__pair">
+            <div class="cmo-chat__bubble cmo-chat__bubble--q">
+              <div class="cmo-chat__avatar">C</div>
+              <div>
+                <b>Client</b>
+                <p>Where does your data come from?</p>
+              </div>
+            </div>
+            <div class="cmo-chat__bubble cmo-chat__bubble--a">
+              <div class="cmo-chat__avatar">M</div>
+              <div>
+                <b>Mckbytes</b>
+                <p>We source from 50+ premium B2B directories, company registries, professional networks, trade associations, and verified public records. We never scrape, buy from unknown brokers, or aggregate from unreliable sources. Every source is documented and can be shared upon request.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmo-chat__pair">
+            <div class="cmo-chat__bubble cmo-chat__bubble--q">
+              <div class="cmo-chat__avatar">C</div>
+              <div>
+                <b>Client</b>
+                <p>How fresh is your data? When was it last verified?</p>
+              </div>
+            </div>
+            <div class="cmo-chat__bubble cmo-chat__bubble--a">
+              <div class="cmo-chat__avatar">M</div>
+              <div>
+                <b>Mckbytes</b>
+                <p>Our standard databases are verified every 90 days. Custom extracts are verified at the time of delivery. You receive a verification report showing when each record was last validated and what methods were used.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmo-chat__pair">
+            <div class="cmo-chat__bubble cmo-chat__bubble--q">
+              <div class="cmo-chat__avatar">C</div>
+              <div>
+                <b>Client</b>
+                <p>Do you comply with data privacy regulations?</p>
+              </div>
+            </div>
+            <div class="cmo-chat__bubble cmo-chat__bubble--a">
+              <div class="cmo-chat__avatar">M</div>
+              <div>
+                <b>Mckbytes</b>
+                <p>Yes. Our data is GDPR-compliant, CAN-SPAM ready, and adheres to local data protection laws. We only provide business contact information, never sensitive personal data. Every database comes with compliance documentation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmo-chat__pair">
+            <div class="cmo-chat__bubble cmo-chat__bubble--q">
+              <div class="cmo-chat__avatar">C</div>
+              <div>
+                <b>Client</b>
+                <p>Can I see a sample before purchasing?</p>
+              </div>
+            </div>
+            <div class="cmo-chat__bubble cmo-chat__bubble--a">
+              <div class="cmo-chat__avatar">M</div>
+              <div>
+                <b>Mckbytes</b>
+                <p>Absolutely. We provide a free sample of 50-100 records matching your criteria before any commitment. You verify the quality, accuracy, and relevance before we process the full database.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmo-chat__pair">
+            <div class="cmo-chat__bubble cmo-chat__bubble--q">
+              <div class="cmo-chat__avatar">C</div>
+              <div>
+                <b>Client</b>
+                <p>What formats do you deliver in?</p>
+              </div>
+            </div>
+            <div class="co-chat__bubble cmo-chat__bubble--a">
+              <div class="cmo-chat__avatar">M</div>
+              <div>
+                <b>Mckbytes</b>
+                <p>CSV, Excel, JSON, or direct CRM integration — Salesforce, HubSpot, Zoho, Pipedrive, and others. We adapt to your tech stack, not the other way around.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmo-chat__pair">
+            <div class="cmo-chat__bubble cmo-chat__bubble--q">
+              <div class="cmo-chat__avatar">C</div>
+              <div>
+                <b>Client</b>
+                <p>What if some records bounce after delivery?</p>
+              </div>
+            </div>
+            <div class="cmo-chat__bubble cmo-chat__bubble--a">
+              <div class="cmo-chat__avatar">M</div>
+              <div>
+                <b>Mckbytes</b>
+                <p>We replace any invalid records at no cost. Our accuracy guarantee means you only pay for deliverable, verified contacts. If bounces exceed our stated threshold, we refund or replace — your choice.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── BOOKING CTA ─────────── -->
+    <section class="cmo-section cmo-booking" id="booking">
+      <div class="cmo-booking__shell cmo-reveal">
+        <div class="cmo-booking__copy">
+          <span class="cmo-eyebrow">Start with a sample</span>
+          <h2>Request your free data sample.</h2>
+          <p>Tell us your Ideal Customer Profile — industry, geography, job titles, company size — and we'll deliver 50-100 verified records matching your criteria. No obligation, no commitment. Just proof of quality. Partner with Mckbytes Technologies and power your campaigns with data that actually works.</p>
+          <a href="mailto:info@mckbytes.com" class="cmo-btn" style="--bg:#fd0909;--fg:#0b0b10">info@mckbytes.com</a>
+        </div>
+
+        <div class="cmo-slots">
+          <div class="cmo-slots__head">
+            <b>Data consultation available</b>
+            <span>Mon–Fri · 30 min slots</span>
+          </div>
+          <div class="cmo-slots__list">
+            <button class="cmo-slots__btn" type="button">
+              <span>Tue, Oct 15 · 11:00 AM</span>
+              <small>30 min <span class="arrow">→</span></small>
+            </button>
+            <button class="cmo-slots__btn" type="button">
+              <span>Wed, Oct 16 · 02:30 PM</span>
+              <small>30 min <span class="arrow">→</span></small>
+            </button>
+            <button class="cmo-slots__btn" type="button">
+              <span>Thu, Oct 17 · 10:00 AM</span>
+              <small>30 min <span class="arrow">→</span></small>
+            </button>
+            <button class="cmo-slots__btn" type="button">
+              <span>Fri, Oct 18 · 04:00 PM</span>
+              <small>30 min <span class="arrow">→</span></small>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  {% include 'include/footer.html' %}
+
+
+
+  <!-- ================= INCLUDE SCRIPT ================= -->
+
+  <script>
+
+    // HEADER LOAD
+    fetch('/include/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+        initHeader();
+      });
+
+    // FOOTER LOAD
+    fetch('/include/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+
+
+    // HEADER FUNCTIONS
+    function initHeader(){
+      const nav = document.getElementById('nav');
+      if(nav){
+        const onScroll = () => { nav.classList.toggle('nav--scrolled', window.scrollY > 10); };
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+      }
+      const menuBtn = document.getElementById('menuBtn');
+      const drawer = document.getElementById('drawer');
+      const drawerClose = document.getElementById('drawerClose');
+      if(menuBtn && drawer){ menuBtn.addEventListener('click', () => { drawer.classList.add('open'); }); }
+      if(drawerClose && drawer){ drawerClose.addEventListener('click', () => { drawer.classList.remove('open'); }); }
+      const navItems = document.querySelectorAll('.nav__item--has-menu');
+      navItems.forEach(item => {
+        const trigger = item.querySelector('.nav__link');
+        const panel = item.querySelector('.nav__panel');
+        if(!trigger || !panel) return;
+        trigger.addEventListener('click', (e) => { e.preventDefault(); panel.classList.toggle('open'); });
+      });
+    }
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.cmo-reveal').forEach(el => io.observe(el));
+
+  </script>
+
+</body>
+</html>

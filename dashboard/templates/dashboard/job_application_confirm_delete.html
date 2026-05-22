@@ -1,0 +1,19 @@
+{% extends 'dashboard/base_admin.html' %}
+
+{% block page_title %}Delete Application{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 500px;">
+    <h2>Delete Application</h2>
+    <p>Are you sure you want to delete the application from <strong>{{ application.first_name }} {{ application.last_name }}</strong> for the position <strong>{{ application.job.title }}</strong>?</p>
+    <p>This action cannot be undone.</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div style="display: flex; gap: 15px; margin-top: 20px;">
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'dashboard:job_application_detail' application.id %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
