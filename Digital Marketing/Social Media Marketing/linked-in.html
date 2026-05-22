@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0b0b10" />
+<title>LinkedIn Marketing Agency — MCKBytes</title>
+<meta name="description" content="MCKBytes is a LinkedIn marketing agency for B2B brands — sponsored content, thought leadership, ABM, lead gen forms, and InMail campaigns that book real pipeline." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+:root{
+  --brand:#C8102E; --brand-2:#ff3b5c; --brand-soft:rgba(200,16,46,.08);
+  --accent:#0a84ff; --accent-2:#30d158; --gold:#f59e0b;
+  --li:#0a66c2; --li-2:#004182;
+  --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45; --muted:#6b6c78;
+  --line:#e8e9ee; --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#eef0f4;
+  --r:16px; --r-lg:22px; --r-xl:32px;
+  --fs-display: clamp(2.4rem, 5vw + 1rem, 5rem);
+  --fs-h1: clamp(2rem, 3.2vw + 1rem, 3.4rem);
+  --fs-h2: clamp(1.6rem, 1.5vw + 1rem, 2.4rem);
+  --container:1240px; --gutter:clamp(20px, 4vw, 48px);
+  --section-y:clamp(72px, 8.5vw, 130px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --t:.38s var(--ease); --nav-h:72px;
+}
+[data-theme="dark"]{
+  --ink:#f0f0f5; --ink-2:#c8c9d2; --ink-3:#9a9baa;
+  --muted:#6b6c78; --line:rgba(255,255,255,.1);
+  --paper:#0d0e14; --paper-2:#14151e; --paper-3:#1c1d28;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;padding-top:var(--nav-h);font-family:"Sora",system-ui,-apple-system,sans-serif;font-size:1.1rem;line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{font-family:"Sora";font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:0 0 .4em;color:var(--ink)}
+p{margin:0 0 1em;color:var(--ink-3)}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:var(--section-y) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+
+/* Buttons */
+.btn{--bg:var(--ink);--fg:#fff;display:inline-flex;align-items:center;gap:.55rem;padding:.92rem 1.5rem;border-radius:999px;background:var(--bg);color:var(--fg);font-weight:600;font-size:.95rem;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);white-space:nowrap;position:relative;isolation:isolate;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease)}
+.btn:hover::before{transform:translateX(100%)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,17,26,.18)}
+.btn .arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--primary{--bg:var(--brand);--fg:#fff;box-shadow:0 8px 22px rgba(200,16,46,.3)}
+.btn--primary:hover{--bg:#a8001f}
+.btn--ghost{--bg:transparent;--fg:var(--ink);border:1px solid var(--line);padding:calc(.92rem - 1px) calc(1.5rem - 1px)}
+.btn--ghost:hover{--bg:var(--paper-2)}
+.btn--light{--bg:rgba(255,255,255,.08);--fg:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
+.btn--light:hover{--bg:rgba(255,255,255,.16)}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);transition:background .35s var(--ease)}
+.nav--scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 rgba(15,17,26,.04),0 10px 30px -10px rgba(15,17,26,.12)}
+.nav__inner{display:flex;align-items:center;height:var(--nav-h);gap:clamp(14px,2vw,32px)}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Sora";font-weight:800;font-size:1.1rem;flex-shrink:0}
+.brand img{height:36px;width:auto}
+.nav__links{display:inline-flex;align-items:center;gap:2px;margin-left:auto}
+.nav__item{position:relative;display:flex}
+.nav__link{display:inline-flex;align-items:center;gap:6px;height:var(--nav-h);padding:0 clamp(10px,1.2vw,16px);font-size:.95rem;font-weight:500;color:var(--ink-3);cursor:pointer;position:relative;transition:color .25s var(--ease);white-space:nowrap;background:transparent;border:0}
+.nav__link:hover,.nav__link.is-active{color:var(--ink)}
+.nav__link::after{content:"";position:absolute;left:clamp(10px,1.2vw,16px);right:clamp(10px,1.2vw,16px);bottom:16px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));opacity:0;transform:scaleX(.4);transition:opacity .3s var(--ease),transform .35s var(--ease)}
+.nav__link:hover::after,.nav__link.is-active::after{opacity:1;transform:scaleX(1)}
+.nav__caret{width:11px;height:11px;opacity:.55;flex-shrink:0}
+.nav__cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav__menu{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--paper);align-items:center;justify-content:center}
+.nav__menu svg{width:20px;height:20px}
+@media (max-width:1200px){.nav__link{padding:0 10px;font-size:.9rem}}
+@media (max-width:1080px){.nav__cta .btn--ghost{display:none}}
+@media (max-width:980px){.nav__links{display:none}.nav__menu{display:inline-flex}}
+
+/* =========================================================
+   ─── LI HERO  — LinkedIn post / feed mockup
+   ========================================================= */
+.li-hero{
+  position:relative;
+  padding:clamp(40px,5vw,80px) 0 clamp(60px,7vw,110px);
+  background: var(--paper);
+  overflow:hidden; isolation:isolate;
+}
+.li-hero::before{
+  content:""; position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(700px 480px at 90% 10%, rgba(10,102,194,.12), transparent 60%),
+    radial-gradient(700px 480px at 5% 110%, rgba(200,16,46,.08), transparent 60%);
+}
+.li-hero__inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(36px,5vw,72px);align-items:center;
+}
+@media(max-width:980px){.li-hero__inner{grid-template-columns:1fr;gap:60px}}
+
+.li-hero__chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px 6px 8px;border-radius:999px;
+  background:linear-gradient(120deg,rgba(10,102,194,.12),rgba(10,102,194,.04));
+  border:1px solid rgba(10,102,194,.28);
+  color:var(--li);font-size:.82rem;font-weight:600;
+  margin-bottom:22px;
+}
+.li-hero__chip svg{width:18px;height:18px}
+
+.li-hero h1{font-size:var(--fs-display);letter-spacing:-.045em;line-height:1.02;margin:0 0 22px}
+.li-hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--brand) 0%, #ff5872 60%, var(--brand-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.li-hero__lead{font-size:1.14rem;line-height:1.65;color:var(--ink-3);max-width:54ch;margin-bottom:30px}
+.li-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+
+/* Stack of credibility chips */
+.li-hero__creds{
+  display:flex;align-items:center;gap:18px 28px;
+  flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line);
+}
+.li-hero__creds-item{display:flex;align-items:center;gap:10px}
+.li-hero__creds-item svg{width:22px;height:22px;color:var(--li);flex-shrink:0}
+.li-hero__creds-item span{font-size:.92rem;font-weight:600;color:var(--ink-2)}
+
+/* LinkedIn post mockup */
+.li-feed{
+  position:relative;
+  background:#fff;border-radius:16px;
+  box-shadow: 0 30px 80px -20px rgba(15,17,26,.25), 0 8px 24px rgba(10,102,194,.15);
+  border:1px solid var(--line);overflow:hidden;
+}
+.li-feed__cover{
+  position:relative;
+  height:80px;
+  background: linear-gradient(135deg, var(--li), var(--li-2));
+  overflow:hidden;
+}
+.li-feed__cover::after{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, #000, transparent);
+}
+.li-feed__profile{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:0 18px;margin-top:-30px;position:relative;
+}
+.li-feed__avatar{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),#3a3b45);
+  border:3px solid #fff;
+  display:grid;place-items:center;
+  color:#fff;font-weight:800;font-size:1.2rem;font-family:"Sora";
+  flex-shrink:0;
+  box-shadow: 0 4px 12px rgba(15,17,26,.1);
+}
+.li-feed__name{padding-top:28px}
+.li-feed__name b{display:block;font-size:1rem;color:#0b0b10;font-weight:700;letter-spacing:-.01em}
+.li-feed__name span{display:block;font-size:.78rem;color:#666;line-height:1.4}
+.li-feed__name em{display:inline-flex;align-items:center;gap:4px;font-style:normal;font-size:.7rem;color:#888;margin-top:4px}
+.li-feed__name em::before{content:"🌐";font-size:.9em}
+.li-feed__follow{
+  margin-left:auto;align-self:center;
+  padding:6px 16px;font-size:.82rem;font-weight:700;
+  border-radius:999px;background:var(--li);color:#fff;
+  border:0;cursor:pointer;
+  transition:background .25s;
+}
+.li-feed__follow:hover{background:var(--li-2)}
+
+.li-feed__body{padding:14px 18px}
+.li-feed__body p{font-size:.92rem;color:#0b0b10;line-height:1.55;margin:0 0 12px}
+.li-feed__body p b{color:#0b0b10;font-weight:700}
+.li-feed__tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.li-feed__tag{font-size:.76rem;color:var(--li);font-weight:600}
+.li-feed__visual{
+  height:160px;border-radius:8px;
+  background: linear-gradient(135deg, var(--li) 0%, var(--li-2) 100%);
+  position:relative; overflow:hidden;
+  display:grid;place-items:center;
+}
+.li-feed__visual::after{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.li-feed__visual-text{
+  position:relative;z-index:1;
+  font-family:"Sora";font-size:1.4rem;font-weight:800;
+  color:#fff;text-align:center;letter-spacing:-.025em;line-height:1.15;
+  padding:0 22px;
+}
+.li-feed__visual-text small{display:block;font-size:.72rem;font-weight:600;opacity:.7;margin-top:8px;letter-spacing:.06em}
+
+.li-feed__stats{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 18px 8px;
+  border-bottom:1px solid #ebebef;
+  font-size:.76rem;color:#666;
+}
+.li-feed__reactions{display:flex;align-items:center;margin-right:4px}
+.li-feed__reactions span{
+  width:18px;height:18px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;
+  border:1.5px solid #fff;
+  font-size:9px; margin-left:-4px;
+}
+.li-feed__reactions span:first-child{margin-left:0}
+.li-feed__reactions span:nth-child(1){background:var(--li)}
+.li-feed__reactions span:nth-child(2){background:#df704d}
+.li-feed__reactions span:nth-child(3){background:#df4d8c}
+
+.li-feed__actions{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  padding:6px 8px;
+}
+.li-feed__action{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:8px;
+  font-size:.78rem;font-weight:600;color:#666;
+  border-radius:6px;
+  transition:background .2s;
+}
+.li-feed__action:hover{background:#f3f3f5}
+.li-feed__action svg{width:14px;height:14px}
+
+/* Floating notification cards */
+.li-notif{
+  position:absolute;z-index:3;
+  background:#fff; border:1px solid var(--line);
+  border-radius:14px; padding:10px 14px;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 18px 40px -10px rgba(0,0,0,.18);
+  animation:floatLi 8s ease-in-out infinite;
+}
+@keyframes floatLi{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.li-notif--top{top:-14px;left:-26px;animation-delay:-2s}
+.li-notif--btm{bottom:-14px;right:-26px;animation-delay:-5s}
+.li-notif__icon{
+  width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;flex-shrink:0;
+}
+.li-notif__icon--blue{background:linear-gradient(135deg,var(--li),var(--li-2))}
+.li-notif__icon--green{background:linear-gradient(135deg,#5cd97e,#16a34a)}
+.li-notif__icon svg{width:16px;height:16px}
+.li-notif b{display:block;font-size:.8rem;font-weight:700;color:#0b0b10;line-height:1.15;white-space:nowrap}
+.li-notif span{display:block;font-size:.7rem;color:#888;line-height:1.15;white-space:nowrap}
+
+/* =========================================================
+   ─── AWARDS STRIP  — partner badges
+   ========================================================= */
+.li-strip{
+  background:var(--paper-2);
+  padding: 22px 0;
+  border-block:1px solid var(--line);
+  overflow:hidden;
+}
+.li-strip__inner{
+  display:flex;align-items:center;
+  justify-content:center;gap:36px;flex-wrap:wrap;
+}
+.li-strip__label{
+  font-family:"JetBrains Mono",monospace;font-size:.74rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;
+  white-space:nowrap;
+}
+.li-strip__badges{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.li-strip__badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;
+  background:var(--paper);border:1px solid var(--line);
+  font-size:.82rem;font-weight:600;color:var(--ink-2);
+  transition: transform .3s var(--ease), border-color .3s;
+}
+.li-strip__badge:hover{transform:translateY(-2px);border-color:var(--li)}
+.li-strip__badge svg{width:18px;height:18px;color:var(--li)}
+
+/* =========================================================
+   ─── BAR-CHART COMPARISON  — Why LinkedIn for B2B
+   ========================================================= */
+.li-why{padding:var(--section-y) 0;background:var(--paper)}
+.li-why__inner{
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,5vw,80px);align-items:center;
+}
+@media(max-width:880px){.li-why__inner{grid-template-columns:1fr}}
+.li-why__copy h2{font-size:var(--fs-h1);max-width:18ch;letter-spacing:-.035em;margin:.3em 0}
+.li-why__copy p{color:var(--ink-3);font-size:1.04rem;line-height:1.65;max-width:46ch}
+
+.li-bars{
+  display:flex;flex-direction:column;gap:18px;
+  padding: 26px 28px;
+  background: var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:22px;
+}
+.li-bars__head{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.8rem;font-family:"JetBrains Mono",monospace;
+  letter-spacing:.06em;color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.li-bars__head b{color:var(--ink);font-weight:700}
+
+.li-bar{display:flex;flex-direction:column;gap:6px}
+.li-bar__top{display:flex;justify-content:space-between;align-items:center}
+.li-bar__name{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--ink-2)}
+.li-bar__name i{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;color:#fff;font-style:normal;font-size:.7rem;font-weight:800}
+.li-bar__name i.li{background:var(--li)}
+.li-bar__name i.fb{background:#1877f2}
+.li-bar__name i.ig{background:linear-gradient(135deg,#f58529,#dd2a7b 50%,#8134af 100%)}
+.li-bar__name i.x{background:#0b0b0b}
+.li-bar__name i.yt{background:#ff0000}
+.li-bar__pct{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:.9rem;color:var(--ink)}
+.li-bar__track{
+  height:14px;border-radius:999px;
+  background:var(--paper-3);overflow:hidden;
+  position:relative;
+}
+.li-bar__fill{
+  position:absolute;top:0;left:0;bottom:0;
+  border-radius:999px;
+  transform-origin:left;
+  animation: barGrow 1.4s var(--ease-out) backwards;
+}
+.li-bar:nth-child(1) .li-bar__fill{animation-delay:.1s}
+.li-bar:nth-child(2) .li-bar__fill{animation-delay:.2s}
+.li-bar:nth-child(3) .li-bar__fill{animation-delay:.3s}
+.li-bar:nth-child(4) .li-bar__fill{animation-delay:.4s}
+.li-bar:nth-child(5) .li-bar__fill{animation-delay:.5s}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.li-bar__fill--li{background:linear-gradient(90deg,var(--li),var(--li-2));box-shadow:0 0 0 1px rgba(10,102,194,.2),0 6px 16px -4px rgba(10,102,194,.4)}
+.li-bar__fill--gray{background:linear-gradient(90deg,#c4c5cf,#a4a5af)}
+
+/* =========================================================
+   ─── SERVICE STACK  — vertical staggered service cards
+   ========================================================= */
+.li-services{padding:var(--section-y) 0;background:var(--paper-2)}
+.li-services__head{text-align:center;margin-bottom:48px}
+.li-services__head h2{font-size:var(--fs-h1);max-width:24ch;margin:.4em auto 0}
+.li-services__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+.li-stack{display:flex;flex-direction:column;gap:14px;max-width:980px;margin:0 auto}
+.li-stack__row{
+  display:grid;grid-template-columns: 72px 1fr auto;
+  gap: 24px; align-items:center;
+  padding: 24px 28px;
+  background: var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .4s;
+}
+.li-stack__row:hover{
+  transform:translateX(8px);
+  box-shadow:0 18px 40px -16px rgba(15,17,26,.14);
+  border-color:rgba(10,102,194,.4);
+}
+@media(max-width:680px){.li-stack__row{grid-template-columns:60px 1fr;gap:16px}.li-stack__cta{grid-column:1 / -1;padding-top:8px}}
+
+.li-stack__num{
+  width:72px;height:72px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(10,102,194,.14),rgba(10,102,194,.04));
+  border:1px solid rgba(10,102,194,.22);
+  color:var(--li);display:grid;place-items:center;
+  font-family:"Sora";font-weight:800;font-size:1.5rem;letter-spacing:-.04em;
+  transition: transform .4s var(--ease), background .4s, color .4s;
+}
+.li-stack__row:hover .li-stack__num{background:linear-gradient(135deg,var(--li),var(--li-2));color:#fff;transform:scale(1.05) rotate(-4deg)}
+@media(max-width:680px){.li-stack__num{width:60px;height:60px;font-size:1.2rem}}
+.li-stack__body h3{font-size:1.15rem;margin:0 0 6px;letter-spacing:-.015em}
+.li-stack__body p{font-size:.95rem;color:var(--ink-3);margin:0;line-height:1.55;max-width:60ch}
+.li-stack__cta{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.88rem;font-weight:600;color:var(--li);
+  white-space:nowrap;
+}
+.li-stack__cta .arrow{transition:transform .35s var(--ease)}
+.li-stack__row:hover .li-stack__cta .arrow{transform:translateX(4px)}
+
+/* =========================================================
+   ─── PERSONAS  — 4 decision-maker cards
+   ========================================================= */
+.li-personas{padding:var(--section-y) 0;background:var(--paper)}
+.li-personas__head{text-align:center;margin-bottom:48px}
+.li-personas__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.li-personas__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+.li-personas__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:980px){.li-personas__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.li-personas__grid{grid-template-columns:1fr}}
+
+.li-persona{
+  position:relative;
+  padding:30px 26px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+}
+.li-persona:hover{transform:translateY(-6px);box-shadow:0 22px 48px -18px rgba(15,17,26,.16);border-color:rgba(10,102,194,.35)}
+.li-persona__top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.li-persona__avatar{
+  width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;
+  color:#fff;font-weight:800;font-family:"Sora";font-size:1rem;
+}
+.li-persona--ceo .li-persona__avatar{background:linear-gradient(135deg,var(--brand),#8a0e23)}
+.li-persona--cmo .li-persona__avatar{background:linear-gradient(135deg,#b985ff,#8b5cf6)}
+.li-persona--sales .li-persona__avatar{background:linear-gradient(135deg,#5cd97e,#16a34a)}
+.li-persona--ops .li-persona__avatar{background:linear-gradient(135deg,#ff8c42,#e63956)}
+.li-persona__top b{display:block;font-size:1.04rem;font-weight:700;color:var(--ink);line-height:1.15}
+.li-persona__top span{display:block;font-size:.78rem;color:var(--muted);margin-top:2px}
+.li-persona h4{
+  font-family:"JetBrains Mono",monospace;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brand);font-weight:600;margin:0 0 6px;
+}
+.li-persona p{font-size:.92rem;color:var(--ink-3);line-height:1.55;margin:0 0 14px;min-height:65px}
+.li-persona__tags{display:flex;flex-wrap:wrap;gap:6px}
+.li-persona__tag{font-size:.74rem;font-weight:600;color:var(--li);padding:4px 10px;border-radius:999px;background:rgba(10,102,194,.08);border:1px solid rgba(10,102,194,.16)}
+
+/* =========================================================
+   ─── HORIZONTAL SCROLL PROCESS  — true sideways carousel
+   ========================================================= */
+.li-process{padding:var(--section-y) 0;background:var(--paper-2);overflow:hidden}
+.li-process__head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:30px}
+.li-process__head h2{font-size:var(--fs-h1);max-width:20ch;margin:.4em 0 0}
+.li-process__hint{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",monospace;font-size:.78rem;
+  letter-spacing:.06em;color:var(--muted);
+}
+.li-process__hint svg{width:16px;height:16px}
+
+.li-process__rail{
+  position:relative;
+  display:flex;gap:14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding:8px 4px 28px;
+  scrollbar-width:thin;scrollbar-color:var(--li) var(--paper-3);
+}
+.li-process__rail::-webkit-scrollbar{height:6px}
+.li-process__rail::-webkit-scrollbar-track{background:var(--paper-3);border-radius:999px}
+.li-process__rail::-webkit-scrollbar-thumb{background:var(--li);border-radius:999px}
+
+.li-process__step{
+  scroll-snap-align:start;flex:0 0 320px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:28px 26px;position:relative;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+}
+.li-process__step:hover{transform:translateY(-4px);box-shadow:0 18px 38px -14px rgba(15,17,26,.14);border-color:rgba(10,102,194,.32)}
+.li-process__num{
+  display:inline-grid;place-items:center;
+  width:48px;height:48px;border-radius:14px;
+  background:#0b0b14;color:#fff;
+  font-family:"Sora";font-weight:800;font-size:1.1rem;
+  margin-bottom:18px;
+  position:relative;
+}
+.li-process__num::after{
+  content:""; position:absolute; right:-6px; top:-6px;
+  width:14px; height:14px; border-radius:50%;
+  background:var(--brand-2); border:2px solid #fff;
+  box-shadow:0 4px 10px rgba(200,16,46,.4);
+}
+.li-process__step em{
+  display:inline-block;font-style:normal;
+  font-family:"JetBrains Mono",monospace;font-size:.74rem;
+  letter-spacing:.06em;color:var(--li);
+  font-weight:600; margin-bottom:8px;
+}
+.li-process__step h4{font-size:1.18rem;margin:0 0 10px;letter-spacing:-.015em}
+.li-process__step p{font-size:.94rem;color:var(--ink-3);line-height:1.55;margin:0}
+
+.li-process__progress{
+  height:2px;width:140px;background:var(--paper-3);
+  border-radius:999px;margin-top:-12px;
+  position:relative;overflow:hidden;
+}
+.li-process__progress::after{
+  content:""; position:absolute; inset:0 60% 0 0;
+  background: linear-gradient(90deg,var(--li),var(--li-2));
+  border-radius:inherit;
+}
+
+/* =========================================================
+   ─── ABM WORKFLOW DIAGRAM
+   ========================================================= */
+.li-abm{padding:var(--section-y) 0;background:var(--paper)}
+.li-abm__head{text-align:center;margin-bottom:60px}
+.li-abm__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.li-abm__head p{color:var(--muted);max-width:60ch;margin:1em auto 0}
+
+.li-abm__flow{
+  display:grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap:12px;align-items:stretch;
+  max-width: 1080px; margin: 0 auto;
+}
+@media(max-width:880px){
+  .li-abm__flow{grid-template-columns:1fr;gap:14px}
+  .li-abm__arrow{transform:rotate(90deg);justify-self:center;margin:6px 0}
+}
+
+.li-abm__stage{
+  position:relative;
+  padding:24px 22px;
+  border-radius:16px;
+  text-align:left;
+  color:#fff;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:180px;
+}
+.li-abm__stage--1{background:linear-gradient(160deg,#0b0b14,#1a1b22)}
+.li-abm__stage--2{background:linear-gradient(160deg,var(--li),var(--li-2))}
+.li-abm__stage--3{background:linear-gradient(160deg,#b985ff,#8b5cf6)}
+.li-abm__stage--4{background:linear-gradient(160deg,var(--brand-2),var(--brand))}
+.li-abm__stage span{
+  font-family:"JetBrains Mono",monospace;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+}
+.li-abm__stage b{
+  display:block;font-family:"Sora";font-size:1.1rem;
+  font-weight:700;letter-spacing:-.015em;
+  color:#fff;line-height:1.2;margin:8px 0;
+}
+.li-abm__stage p{font-size:.84rem;color:rgba(255,255,255,.78);margin:0;line-height:1.5}
+.li-abm__stage-icon{
+  position:absolute;top:18px;right:18px;
+  width:32px;height:32px;border-radius:8px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.18);
+  display:grid;place-items:center;color:#fff;
+  backdrop-filter:blur(4px);
+}
+.li-abm__stage-icon svg{width:16px;height:16px}
+
+.li-abm__arrow{
+  align-self:center;display:grid;place-items:center;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--paper-2);border:1px solid var(--line);
+  color:var(--brand);
+  font-weight:800;
+}
+.li-abm__arrow svg{width:18px;height:18px}
+
+/* =========================================================
+   ─── INDUSTRIES MASONRY
+   ========================================================= */
+.li-industries{padding:var(--section-y) 0;background:var(--paper-2)}
+.li-industries__head{text-align:center;margin-bottom:48px}
+.li-industries__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.li-industries__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+.li-industries__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows: 140px;
+  gap:14px;
+}
+@media(max-width:980px){.li-industries__grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}}
+@media(max-width:520px){.li-industries__grid{grid-template-columns:1fr;grid-auto-rows:auto}}
+
+.li-ind{
+  position:relative;
+  padding:22px 24px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+}
+.li-ind:hover{transform:translateY(-4px);box-shadow:0 18px 38px -14px rgba(15,17,26,.14);border-color:rgba(10,102,194,.35)}
+.li-ind--wide{grid-column:span 2}
+.li-ind--dark{background:linear-gradient(160deg,#0b0b14,#1a1b22);color:#fff;border-color:transparent}
+.li-ind--dark::after{
+  content:""; position:absolute;
+  top:-80px;right:-80px;width:200px;height:200px;border-radius:50%;
+  background: radial-gradient(circle,rgba(10,102,194,.4),transparent 70%);
+  filter: blur(40px); pointer-events:none;
+}
+.li-ind--blue{background:linear-gradient(160deg,var(--li),var(--li-2));color:#fff;border-color:transparent}
+.li-ind__icon{
+  position:absolute; top:18px; right:18px;
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(10,102,194,.14),rgba(10,102,194,.04));
+  border:1px solid rgba(10,102,194,.2);
+  color:var(--li);display:grid;place-items:center;
+}
+.li-ind--dark .li-ind__icon,
+.li-ind--blue .li-ind__icon{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.2);color:#fff}
+.li-ind__icon svg{width:18px;height:18px}
+.li-ind h4{font-size:1.06rem;margin:0 0 4px;letter-spacing:-.01em;color:var(--ink)}
+.li-ind--dark h4,.li-ind--blue h4{color:#fff}
+.li-ind p{font-size:.84rem;margin:0;color:var(--muted);line-height:1.45}
+.li-ind--dark p,.li-ind--blue p{color:rgba(255,255,255,.75)}
+
+/* =========================================================
+   ─── BIG BOLD STATS  — display typography
+   ========================================================= */
+.li-bigstats{
+  padding:var(--section-y) 0;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+}
+.li-bigstats__head{text-align:center;margin-bottom:56px}
+.li-bigstats__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+
+.li-bigstats__grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+@media(max-width:880px){.li-bigstats__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.li-bigstats__grid{grid-template-columns:1fr}}
+
+.li-bigstat{
+  padding: clamp(28px,4vw,48px) clamp(22px,3vw,36px);
+  border-right:1px solid var(--line);
+  transition: background .35s;
+}
+.li-bigstat:last-child{border-right:0}
+.li-bigstat:hover{background:var(--paper)}
+@media(max-width:880px){
+  .li-bigstat:nth-child(2){border-right:0}
+  .li-bigstat:nth-child(1),
+  .li-bigstat:nth-child(2){border-bottom:1px solid var(--line)}
+}
+@media(max-width:520px){
+  .li-bigstat{border-right:0!important;border-bottom:1px solid var(--line)}
+  .li-bigstat:last-child{border-bottom:0}
+}
+.li-bigstat b{
+  display:block;
+  font-family:"Sora";font-weight:800;
+  font-size: clamp(3.2rem, 4vw + 1rem, 5rem);
+  letter-spacing:-.05em; line-height:1;
+  background: linear-gradient(120deg, var(--ink) 0%, var(--li) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:14px;
+}
+.li-bigstat h3{font-size:1rem;margin:0 0 4px;letter-spacing:-.01em}
+.li-bigstat span{display:block;font-size:.88rem;color:var(--muted);line-height:1.5}
+
+/* =========================================================
+   ─── NUMBERED Q&A  — vertical list with hover detail
+   ========================================================= */
+.li-faq{padding:var(--section-y) 0;background:var(--paper)}
+.li-faq__head{text-align:center;margin-bottom:56px}
+.li-faq__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.li-faq__head p{color:var(--muted);max-width:50ch;margin:1em auto 0}
+
+.li-faq__list{
+  max-width:880px; margin: 0 auto;
+  display:flex;flex-direction:column;
+}
+.li-faq__item{
+  display:grid;grid-template-columns: 60px 1fr;
+  gap:24px;
+  padding: 26px 0;
+  border-bottom:1px solid var(--line);
+}
+.li-faq__item:last-child{border-bottom:0}
+@media(max-width:520px){.li-faq__item{grid-template-columns:48px 1fr;gap:16px}}
+.li-faq__num{
+  font-family:"Sora";font-weight:800;
+  font-size: 2rem;letter-spacing:-.04em;
+  background: linear-gradient(135deg, var(--li), var(--li-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1;
+}
+.li-faq__body h4{font-size:1.12rem;margin:0 0 8px;letter-spacing:-.015em}
+.li-faq__body p{font-size:.98rem;color:var(--ink-3);line-height:1.65;margin:0;max-width:60ch}
+
+/* =========================================================
+   ─── CTA  — inline email form
+   ========================================================= */
+.li-cta{padding: clamp(60px,8vw,120px) 0;background:var(--paper-2)}
+.li-cta__shell{
+  position:relative;
+  background: linear-gradient(135deg, var(--li) 0%, var(--li-2) 60%, var(--brand) 130%);
+  border-radius:clamp(24px,3vw,36px);
+  padding: clamp(40px,6vw,72px) clamp(28px,5vw,72px);
+  margin: 0 var(--gutter);
+  color:#fff;overflow:hidden;text-align:center;
+}
+.li-cta__shell::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background: radial-gradient(circle at 90% 0%, rgba(255,255,255,.18), transparent 40%), radial-gradient(circle at 0% 100%, rgba(200,16,46,.2), transparent 40%);
+}
+.li-cta__shell::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+}
+.li-cta__shell > *{position:relative;z-index:1}
+.li-cta h2{color:#fff;font-size:var(--fs-h1);max-width:22ch;margin:.2em auto;letter-spacing:-.035em}
+.li-cta p{color:rgba(255,255,255,.86);max-width:58ch;margin:.5em auto 32px;font-size:1.04rem}
+
+.li-cta__form{
+  display:flex;gap:8px;
+  max-width:480px;margin:0 auto;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  padding:6px;
+  backdrop-filter:blur(10px);
+}
+.li-cta__form input{
+  flex:1;
+  padding: 12px 18px;
+  background:transparent;border:0;outline:0;
+  font-family:inherit;font-size:.96rem;color:#fff;
+}
+.li-cta__form input::placeholder{color:rgba(255,255,255,.55)}
+.li-cta__form button{
+  padding: 12px 24px;
+  background:#fff;color:var(--ink);
+  border-radius:999px;
+  font-weight:700;font-size:.92rem;
+  display:inline-flex;align-items:center;gap:6px;
+  transition: background .25s, color .25s, transform .25s;
+  cursor:pointer; flex-shrink:0;
+}
+.li-cta__form button:hover{background:var(--brand);color:#fff;transform:translateY(-1px)}
+@media(max-width:520px){
+  .li-cta__form{flex-direction:column;border-radius:18px}
+  .li-cta__form button{justify-content:center}
+}
+
+/* Footer */
+.footer{margin-top:0;position:relative;background:radial-gradient(900px 360px at 85% 0%, rgba(10,102,194,.18), transparent 60%),linear-gradient(180deg, #0c0d14 0%, #08090f 100%);color:rgba(255,255,255,.72);padding:0 0 24px}
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding:72px 0 40px}
+@media(max-width:780px){.footer__grid{grid-template-columns:1fr 1fr;gap:36px;padding:56px 0 32px}}
+@media(max-width:480px){.footer__grid{grid-template-columns:1fr}}
+.footer__brand .brand img{height:44px;filter:brightness(0) invert(1)}
+.footer__brand p{color:rgba(255,255,255,.62);font-size:.95rem;margin-top:14px;max-width:38ch;line-height:1.6}
+.footer h4{color:rgba(255,255,255,.78);font-family:"JetBrains Mono";font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-weight:500}
+.footer h4::before{content:"";width:14px;height:1px;background:var(--brand-2)}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer ul a{color:rgba(255,255,255,.68);font-size:.95rem;transition:color .25s,padding .25s}
+.footer ul a:hover{color:#fff;padding-left:6px}
+.footer__sub{border-top:1px solid rgba(255,255,255,.08);padding:22px 0 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.55)}
+.footer__legal{display:flex;gap:20px;flex-wrap:wrap}
+.footer__legal a{color:rgba(255,255,255,.6)}.footer__legal a:hover{color:#fff}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal--delay-1{transition-delay:.08s}
+.reveal--delay-2{transition-delay:.16s}
+.reveal--delay-3{transition-delay:.24s}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="brand"><img src="img/LOGO/logo.png" alt="MCKBytes logo"></a>
+    <nav class="nav__links">
+      <div class="nav__item"><button class="nav__link is-active"><span>Digital Marketing</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Design</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Production</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Technology</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Resources</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+    </nav>
+    <div class="nav__cta">
+      <a href="#cta" class="btn btn--primary">Get Quote</a>
+      <button class="nav__menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────────── HERO — LinkedIn feed mockup ─────────── -->
+<section class="li-hero">
+  <div class="container li-hero__inner">
+    <div>
+      <span class="li-hero__chip reveal">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.16 4.16 0 0 1 3.74-2.05c4 0 4.74 2.63 4.74 6.06V21h-4v-5.27c0-1.26-.02-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.79V21h-4V9Z"/></svg>
+        LinkedIn Marketing Partners
+      </span>
+      <h1 class="reveal reveal--delay-1">
+        Reach the C-suite. <em>Win the boardroom.</em>
+      </h1>
+      <p class="li-hero__lead reveal reveal--delay-2">
+        B2B social that earns trust and books pipeline. We design LinkedIn programs that put your brand in front of decision-makers — through sponsored content, thought leadership, ABM, and InMail campaigns that book real meetings.
+      </p>
+      <div class="li-hero__cta reveal reveal--delay-2">
+        <a href="#cta" class="btn btn--primary">Book a strategy call <span class="arrow">→</span></a>
+        <a href="#process" class="btn btn--ghost">See our process</a>
+      </div>
+      <div class="li-hero__creds reveal reveal--delay-3">
+        <div class="li-hero__creds-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span>180+ B2B accounts</span>
+        </div>
+        <div class="li-hero__creds-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span>720+ exec meetings booked</span>
+        </div>
+        <div class="li-hero__creds-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span>4.8× lower CPL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="li-feed reveal reveal--delay-2" aria-hidden="true">
+      <div class="li-feed__cover"></div>
+      <div class="li-feed__profile">
+        <div class="li-feed__avatar">M</div>
+        <div class="li-feed__name">
+          <b>MCKBytes</b>
+          <span>B2B Growth Studio · 24,820 followers</span>
+          <em>Promoted</em>
+        </div>
+        <button class="li-feed__follow">+ Follow</button>
+      </div>
+      <div class="li-feed__body">
+        <p>How we helped a Series B SaaS book <b>87 exec meetings in 90 days</b> using a sequenced LinkedIn ABM program. The playbook is simpler than you'd think →</p>
+        <div class="li-feed__tags">
+          <span class="li-feed__tag">#ABM</span>
+          <span class="li-feed__tag">#B2BMarketing</span>
+          <span class="li-feed__tag">#LinkedInAds</span>
+        </div>
+        <div class="li-feed__visual">
+          <div class="li-feed__visual-text">
+            87 exec meetings.
+            <small>90 days. Single playbook.</small>
+          </div>
+        </div>
+      </div>
+      <div class="li-feed__stats">
+        <div class="li-feed__reactions">
+          <span>👍</span>
+          <span>💡</span>
+          <span>❤️</span>
+        </div>
+        <span>1,248 reactions · 84 comments · 312 reposts</span>
+      </div>
+      <div class="li-feed__actions">
+        <button class="li-feed__action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 11v9M2 11h4v9H2zM18 8h-5l1-5c0-1-1-2-2-2-1 0-1 0-1 1l-3 6v9h11l3-7v-1c0-1-1-1-1-1z"/></svg>Like</button>
+        <button class="li-feed__action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3.3-6.95L21 6"/></svg>Comment</button>
+        <button class="li-feed__action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.3-6.95"/><path d="M21 3v9h-9"/></svg>Repost</button>
+        <button class="li-feed__action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>Send</button>
+      </div>
+
+      <div class="li-notif li-notif--top">
+        <span class="li-notif__icon li-notif__icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>
+        <div><b>+38 leads today</b><span>VP-level &amp; above</span></div>
+      </div>
+      <div class="li-notif li-notif--btm">
+        <span class="li-notif__icon li-notif__icon--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3v-7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg></span>
+        <div><b>InMail reply rate 28%</b><span>vs. 2% on cold email</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── AWARDS / PARTNER STRIP ─────────── -->
+<section class="li-strip">
+  <div class="container li-strip__inner">
+    <span class="li-strip__label">Recognised by</span>
+    <div class="li-strip__badges">
+      <div class="li-strip__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M8 21h8"/></svg>
+        LinkedIn Marketing Partner
+      </div>
+      <div class="li-strip__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Clutch Top B2B Agency 2024
+      </div>
+      <div class="li-strip__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        GDPR &amp; SOC 2 compliant
+      </div>
+      <div class="li-strip__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7v16L3 13z"/></svg>
+        Featured · G2 Grid
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── WHY LINKEDIN — bar chart comparison ─────────── -->
+<section class="li-why">
+  <div class="container li-why__inner">
+    <div class="li-why__copy reveal">
+      <span class="eyebrow">Why LinkedIn</span>
+      <h2>Where your buyers actually decide.</h2>
+      <p>For B2B, LinkedIn isn't another channel — it's the channel. 4 in 5 LinkedIn members drive business decisions, and the platform reaches more senior decision-makers, in context, than any other social network.</p>
+      <p style="margin:0">Share of decision-maker reach across channels →</p>
+    </div>
+
+    <div class="li-bars reveal reveal--delay-1">
+      <div class="li-bars__head">
+        <b>Decision-maker reach</b>
+        <span>Q3 · 2025</span>
+      </div>
+      <div class="li-bar">
+        <div class="li-bar__top">
+          <span class="li-bar__name"><i class="li">in</i> LinkedIn</span>
+          <span class="li-bar__pct">82%</span>
+        </div>
+        <div class="li-bar__track"><span class="li-bar__fill li-bar__fill--li" style="width:82%"></span></div>
+      </div>
+      <div class="li-bar">
+        <div class="li-bar__top">
+          <span class="li-bar__name"><i class="fb">f</i> Facebook</span>
+          <span class="li-bar__pct">34%</span>
+        </div>
+        <div class="li-bar__track"><span class="li-bar__fill li-bar__fill--gray" style="width:34%"></span></div>
+      </div>
+      <div class="li-bar">
+        <div class="li-bar__top">
+          <span class="li-bar__name"><i class="x">𝕏</i> X / Twitter</span>
+          <span class="li-bar__pct">28%</span>
+        </div>
+        <div class="li-bar__track"><span class="li-bar__fill li-bar__fill--gray" style="width:28%"></span></div>
+      </div>
+      <div class="li-bar">
+        <div class="li-bar__top">
+          <span class="li-bar__name"><i class="ig">◯</i> Instagram</span>
+          <span class="li-bar__pct">21%</span>
+        </div>
+        <div class="li-bar__track"><span class="li-bar__fill li-bar__fill--gray" style="width:21%"></span></div>
+      </div>
+      <div class="li-bar">
+        <div class="li-bar__top">
+          <span class="li-bar__name"><i class="yt">▶</i> YouTube</span>
+          <span class="li-bar__pct">42%</span>
+        </div>
+        <div class="li-bar__track"><span class="li-bar__fill li-bar__fill--gray" style="width:42%"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SERVICE STACK ─────────── -->
+<section class="li-services">
+  <div class="container">
+    <header class="li-services__head reveal">
+      <span class="eyebrow">What we run</span>
+      <h2>Six LinkedIn programs, one growth engine.</h2>
+      <p>Each program is led by a senior B2B strategist and runs inside your LinkedIn Business Manager — you keep ownership of every asset.</p>
+    </header>
+
+    <div class="li-stack">
+      <div class="li-stack__row reveal">
+        <div class="li-stack__num">01</div>
+        <div class="li-stack__body">
+          <h3>Company Page Management</h3>
+          <p>Daily content scheduling, brand-voice maintenance, follower growth, and engagement triage — your Company Page becomes a magnet for the audience you want.</p>
+        </div>
+        <a href="#cta" class="li-stack__cta">Explore <span class="arrow">→</span></a>
+      </div>
+      <div class="li-stack__row reveal">
+        <div class="li-stack__num">02</div>
+        <div class="li-stack__body">
+          <h3>Thought Leadership Content</h3>
+          <p>Ghostwritten founder &amp; executive posts that win attention — opinionated, evidence-based, and engineered to spark conversation in your category.</p>
+        </div>
+        <a href="#cta" class="li-stack__cta">Explore <span class="arrow">→</span></a>
+      </div>
+      <div class="li-stack__row reveal">
+        <div class="li-stack__num">03</div>
+        <div class="li-stack__body">
+          <h3>Sponsored Content &amp; Ads</h3>
+          <p>Single image, document, video and carousel ads — creative-first, optimised for the audiences that match your ICP. Pixel + CRM-attributed.</p>
+        </div>
+        <a href="#cta" class="li-stack__cta">Explore <span class="arrow">→</span></a>
+      </div>
+      <div class="li-stack__row reveal">
+        <div class="li-stack__num">04</div>
+        <div class="li-stack__body">
+          <h3>Account-Based Marketing (ABM)</h3>
+          <p>Target a defined list of accounts with sequenced creative across LinkedIn, programmatic display, and InMail. Sales gets warm hand-raises, not cold lists.</p>
+        </div>
+        <a href="#cta" class="li-stack__cta">Explore <span class="arrow">→</span></a>
+      </div>
+      <div class="li-stack__row reveal">
+        <div class="li-stack__num">05</div>
+        <div class="li-stack__body">
+          <h3>Lead Gen Forms &amp; InMail</h3>
+          <p>Native pre-filled lead forms and personalised conversation ads — the fastest path from feed scroll to inbox conversation we know of.</p>
+        </div>
+        <a href="#cta" class="li-stack__cta">Explore <span class="arrow">→</span></a>
+      </div>
+      <div class="li-stack__row reveal">
+        <div class="li-stack__num">06</div>
+        <div class="li-stack__body">
+          <h3>Employee Advocacy</h3>
+          <p>Turn your team into your most credible brand voice. We build the program, the content library, and the incentive structure that makes advocacy sustainable.</p>
+        </div>
+        <a href="#cta" class="li-stack__cta">Explore <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PERSONAS ─────────── -->
+<section class="li-personas">
+  <div class="container">
+    <header class="li-personas__head reveal">
+      <span class="eyebrow">Who we reach</span>
+      <h2>The four buyers who actually sign the deal.</h2>
+      <p>Every campaign is built around a clear buying group — what they care about, what they fear, and the message that moves them.</p>
+    </header>
+
+    <div class="li-personas__grid">
+      <div class="li-persona li-persona--ceo reveal">
+        <div class="li-persona__top">
+          <div class="li-persona__avatar">CEO</div>
+          <div>
+            <b>The Founder / CEO</b>
+            <span>Strategy &amp; vision</span>
+          </div>
+        </div>
+        <h4>What they care about</h4>
+        <p>Growth velocity, runway, category leadership. They want a partner who speaks their language without the buzzwords.</p>
+        <div class="li-persona__tags">
+          <span class="li-persona__tag">Growth</span>
+          <span class="li-persona__tag">Vision</span>
+          <span class="li-persona__tag">Trust</span>
+        </div>
+      </div>
+      <div class="li-persona li-persona--cmo reveal reveal--delay-1">
+        <div class="li-persona__top">
+          <div class="li-persona__avatar">CMO</div>
+          <div>
+            <b>The CMO / VP Marketing</b>
+            <span>Pipeline &amp; brand</span>
+          </div>
+        </div>
+        <h4>What they care about</h4>
+        <p>Attribution, MQL quality, brand health, and a marketing partner who can defend numbers to the board.</p>
+        <div class="li-persona__tags">
+          <span class="li-persona__tag">Pipeline</span>
+          <span class="li-persona__tag">Attribution</span>
+          <span class="li-persona__tag">ROI</span>
+        </div>
+      </div>
+      <div class="li-persona li-persona--sales reveal reveal--delay-2">
+        <div class="li-persona__top">
+          <div class="li-persona__avatar">VP</div>
+          <div>
+            <b>VP Sales / Revenue</b>
+            <span>Pipeline &amp; quota</span>
+          </div>
+        </div>
+        <h4>What they care about</h4>
+        <p>Sales-ready leads, ICP fit, opportunity velocity. They want LinkedIn to feed the top of their funnel reliably.</p>
+        <div class="li-persona__tags">
+          <span class="li-persona__tag">SQLs</span>
+          <span class="li-persona__tag">Quota</span>
+          <span class="li-persona__tag">Velocity</span>
+        </div>
+      </div>
+      <div class="li-persona li-persona--ops reveal reveal--delay-3">
+        <div class="li-persona__top">
+          <div class="li-persona__avatar">DIR</div>
+          <div>
+            <b>Director / Dept. Head</b>
+            <span>Execution &amp; delivery</span>
+          </div>
+        </div>
+        <h4>What they care about</h4>
+        <p>Operational fit, ease of use, risk mitigation, vendor consolidation. They evaluate, they don't just approve.</p>
+        <div class="li-persona__tags">
+          <span class="li-persona__tag">Fit</span>
+          <span class="li-persona__tag">Risk</span>
+          <span class="li-persona__tag">Stack</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── HORIZONTAL SCROLL PROCESS ─────────── -->
+<section class="li-process" id="process">
+  <div class="container">
+    <header class="li-process__head reveal">
+      <div>
+        <span class="eyebrow">Our 5-step process</span>
+        <h2>How a typical engagement runs.</h2>
+      </div>
+      <div class="li-process__hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Scroll →
+      </div>
+    </header>
+
+    <div class="li-process__rail" tabindex="0">
+      <div class="li-process__step">
+        <div class="li-process__num">01</div>
+        <em>WEEK 1</em>
+        <h4>Account &amp; ICP audit</h4>
+        <p>Deep dive into your existing LinkedIn presence, audience health, pixel setup, and ICP definitions. We surface gaps before doing anything else.</p>
+      </div>
+      <div class="li-process__step">
+        <div class="li-process__num">02</div>
+        <em>WEEK 1–2</em>
+        <h4>Audience mapping</h4>
+        <p>We translate your ICP into LinkedIn audience filters — company size, seniority, function, intent signals. Multiple tiers, each with a distinct message track.</p>
+      </div>
+      <div class="li-process__step">
+        <div class="li-process__num">03</div>
+        <em>WEEK 2–3</em>
+        <h4>Content strategy</h4>
+        <p>Editorial calendar, ad creative briefs, thought leadership tracks, and lead magnet planning — all approved before launch.</p>
+      </div>
+      <div class="li-process__step">
+        <div class="li-process__num">04</div>
+        <em>WEEK 3 onward</em>
+        <h4>Campaign launch</h4>
+        <p>Sponsored content, Lead Gen Forms, InMail, retargeting — all live and feeding into your CRM with full attribution from day one.</p>
+      </div>
+      <div class="li-process__step">
+        <div class="li-process__num">05</div>
+        <em>ONGOING</em>
+        <h4>Pipeline reporting</h4>
+        <p>Live dashboards, weekly insight emails, monthly executive reviews. Every metric tied back to pipeline and revenue, not vanity engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── ABM WORKFLOW DIAGRAM ─────────── -->
+<section class="li-abm">
+  <div class="container">
+    <header class="li-abm__head reveal">
+      <span class="eyebrow">ABM workflow</span>
+      <h2>From target list to signed deal — visualised.</h2>
+      <p>Our Account-Based Marketing motion sequences four stages so your sales team gets warm hand-raises from named accounts, not cold form-fills.</p>
+    </header>
+
+    <div class="li-abm__flow reveal">
+      <div class="li-abm__stage li-abm__stage--1">
+        <span class="li-abm__stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span>
+        <span>Stage 01</span>
+        <b>Identify accounts</b>
+        <p>Build a target list of 100–500 named accounts that match your ICP &amp; intent signals.</p>
+      </div>
+
+      <div class="li-abm__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+
+      <div class="li-abm__stage li-abm__stage--2">
+        <span class="li-abm__stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/></svg></span>
+        <span>Stage 02</span>
+        <b>Engagement layer</b>
+        <p>Sequence sponsored content, video, and thought leadership to warm every buying-group member.</p>
+      </div>
+
+      <div class="li-abm__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+
+      <div class="li-abm__stage li-abm__stage--3">
+        <span class="li-abm__stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H4z"/><path d="M8 20h8M12 16v4"/></svg></span>
+        <span>Stage 03</span>
+        <b>Conversion layer</b>
+        <p>Lead Gen Forms, InMail, and gated assets convert engaged accounts into known contacts.</p>
+      </div>
+
+      <div class="li-abm__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+
+      <div class="li-abm__stage li-abm__stage--4">
+        <span class="li-abm__stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <span>Stage 04</span>
+        <b>Sales handoff</b>
+        <p>Qualified, warmed-up accounts flow directly into your CRM with full context for your AE team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── INDUSTRIES MASONRY ─────────── -->
+<section class="li-industries">
+  <div class="container">
+    <header class="li-industries__head reveal">
+      <span class="eyebrow">Industries we power</span>
+      <h2>Built for ambitious B2B teams.</h2>
+      <p>Eight industries where we've shipped repeatable LinkedIn playbooks that move pipeline — fast.</p>
+    </header>
+
+    <div class="li-industries__grid reveal">
+      <div class="li-ind li-ind--dark li-ind--wide">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div>
+        <h4>SaaS &amp; Cloud</h4>
+        <p>From Series A to enterprise — pipeline-first programs tuned to MQL → SQL velocity.</p>
+      </div>
+      <div class="li-ind">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg></div>
+        <h4>Fintech</h4>
+        <p>Compliance-aware creative, education-led demand.</p>
+      </div>
+      <div class="li-ind li-ind--blue">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6l-8-4z"/></svg></div>
+        <h4>Cybersecurity</h4>
+        <p>Trust-first programs for CISOs &amp; security teams.</p>
+      </div>
+
+      <div class="li-ind">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h4>Healthcare</h4>
+        <p>HCP targeting, KOL programs.</p>
+      </div>
+      <div class="li-ind">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21V12M15 21V12"/></svg></div>
+        <h4>Manufacturing</h4>
+        <p>Distributor &amp; OEM lead gen.</p>
+      </div>
+      <div class="li-ind li-ind--dark">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/></svg></div>
+        <h4>Professional Services</h4>
+        <p>Founder-led growth, advisory positioning.</p>
+      </div>
+
+      <div class="li-ind li-ind--wide">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h4>Enterprise Software</h4>
+        <p>Long-cycle ABM programs that nurture multi-stakeholder buying groups across 6–18 month deal cycles.</p>
+      </div>
+      <div class="li-ind">
+        <div class="li-ind__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11v6c0 2 4 3 6 3s6-1 6-3v-6"/></svg></div>
+        <h4>EdTech &amp; Training</h4>
+        <p>L&amp;D buyer targeting, certifications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BIG BOLD STATS ─────────── -->
+<section class="li-bigstats">
+  <div class="container">
+    <header class="li-bigstats__head reveal">
+      <span class="eyebrow">By the numbers</span>
+      <h2>Outcomes we've shipped on LinkedIn.</h2>
+    </header>
+
+    <div class="li-bigstats__grid reveal">
+      <div class="li-bigstat">
+        <b>12k+</b>
+        <h3>Qualified leads</h3>
+        <span>generated across client accounts</span>
+      </div>
+      <div class="li-bigstat">
+        <b>720+</b>
+        <h3>Exec meetings</h3>
+        <span>booked direct from campaigns</span>
+      </div>
+      <div class="li-bigstat">
+        <b>4.8×</b>
+        <h3>Lower CPL</h3>
+        <span>vs. cold-outbound benchmarks</span>
+      </div>
+      <div class="li-bigstat">
+        <b>180+</b>
+        <h3>B2B accounts</h3>
+        <span>managed across nine industries</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NUMBERED Q&A ─────────── -->
+<section class="li-faq">
+  <div class="container">
+    <header class="li-faq__head reveal">
+      <span class="eyebrow">Common questions</span>
+      <h2>What teams typically want to know.</h2>
+      <p>Eight quick answers. Have something specific in mind? We'll respond within one business day.</p>
+    </header>
+
+    <div class="li-faq__list">
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">01</div>
+        <div class="li-faq__body">
+          <h4>How much ad spend do I need to make LinkedIn worth it?</h4>
+          <p>For paid campaigns we recommend a minimum of ₹2.5L/mo (~$3K). Below that, audience pools are too tight and learning phases take too long. Organic-first engagements start much lower.</p>
+        </div>
+      </div>
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">02</div>
+        <div class="li-faq__body">
+          <h4>How long before we see meetings booked?</h4>
+          <p>Most accounts see the first qualified meetings within 30–45 days. ABM programs typically take 6–8 weeks to fully prime, then run consistently from there.</p>
+        </div>
+      </div>
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">03</div>
+        <div class="li-faq__body">
+          <h4>Do you write the thought leadership content?</h4>
+          <p>Yes. Our senior B2B writers ghost-write founder &amp; executive posts based on long-form interviews. You approve every piece before it ships — your voice, our craft.</p>
+        </div>
+      </div>
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">04</div>
+        <div class="li-faq__body">
+          <h4>Who owns the ad account &amp; data?</h4>
+          <p>You always own your LinkedIn Business Manager, Insight Tag, and every creative asset. We work inside your account so you can pause or switch us out without losing a single data point.</p>
+        </div>
+      </div>
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">05</div>
+        <div class="li-faq__body">
+          <h4>Do you integrate with our CRM?</h4>
+          <p>Yes — HubSpot, Salesforce, Pipedrive, and most modern CRMs. Lead Gen Forms sync directly so your sales team gets fresh leads in their pipeline within minutes.</p>
+        </div>
+      </div>
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">06</div>
+        <div class="li-faq__body">
+          <h4>What does reporting look like?</h4>
+          <p>A live dashboard updated daily, a weekly summary email, and a deep monthly review with your senior strategist. Every metric mapped to pipeline and revenue.</p>
+        </div>
+      </div>
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">07</div>
+        <div class="li-faq__body">
+          <h4>Do you handle Employee Advocacy too?</h4>
+          <p>Yes — we set up the program, build the content library, train your team, and run the incentive structure that keeps advocacy alive past month two.</p>
+        </div>
+      </div>
+      <div class="li-faq__item reveal">
+        <div class="li-faq__num">08</div>
+        <div class="li-faq__body">
+          <h4>Can I cancel anytime?</h4>
+          <p>Yes — 30 days notice. No annual lock-ins, no surprise fees. If we're not delivering, you shouldn't be paying us. We earn next month's retainer every month.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CTA — inline form ─────────── -->
+<section class="li-cta" id="cta">
+  <div class="li-cta__shell reveal">
+    <span class="eyebrow" style="color:#cbe0ff">Ready to book the boardroom?</span>
+    <h2>Send your work email — we'll send back a free playbook.</h2>
+    <p>Drop your work email below. Within 48 hours you'll get a custom LinkedIn audit + 90-day playbook tailored to your ICP — completely free.</p>
+    <form class="li-cta__form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks ✓'">
+      <input type="email" placeholder="your.name@company.com" required aria-label="Work email">
+      <button type="submit">Get the playbook <span class="arrow">→</span></button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="brand"><img src="img/LOGO/logo.png" alt="MCKBytes logo"></a>
+        <p>A digital studio building premium B2B growth programs for ambitious teams across SaaS, fintech and enterprise software.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="linkedin-marketing-agency.html">LinkedIn Marketing</a></li>
+          <li><a href="facebook-marketing-agency.html">Facebook Marketing</a></li>
+          <li><a href="social-media-marketing-agency.html">Social Media</a></li>
+          <li><a href="performance-marketing-bangalore.html">Performance Marketing</a></li>
+          <li><a href="#">SEO &amp; Content</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="index.html#work">Selected work</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__sub">
+      <span>© <span id="yr"></span> MCKBytes Studio. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Nav scroll state */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('nav--scrolled', window.scrollY > 12);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* Reveal */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

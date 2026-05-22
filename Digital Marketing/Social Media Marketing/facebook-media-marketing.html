@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0b0b10" />
+<title>Facebook Marketing Agency — MCKBytes</title>
+<meta name="description" content="MCKBytes is a Facebook marketing agency that builds full-funnel Meta ad campaigns engineered for revenue. Strategy, creative, optimization, scale." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+:root{
+  --brand:#C8102E; --brand-2:#ff3b5c; --brand-soft:rgba(200,16,46,.08);
+  --accent:#0a84ff; --accent-2:#30d158; --gold:#f59e0b;
+  --fb:#1877f2; --fb-2:#4267b2;
+  --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45; --muted:#6b6c78;
+  --line:#e8e9ee; --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#eef0f4;
+  --r:16px; --r-lg:22px; --r-xl:32px;
+  --fs-display: clamp(2.4rem, 5vw + 1rem, 5rem);
+  --fs-h1: clamp(2rem, 3.2vw + 1rem, 3.4rem);
+  --fs-h2: clamp(1.6rem, 1.5vw + 1rem, 2.4rem);
+  --container:1240px; --gutter:clamp(20px, 4vw, 48px);
+  --section-y:clamp(72px, 8.5vw, 130px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --t:.38s var(--ease); --nav-h:72px;
+}
+[data-theme="dark"]{
+  --ink:#f0f0f5; --ink-2:#c8c9d2; --ink-3:#9a9baa;
+  --muted:#6b6c78; --line:rgba(255,255,255,.1);
+  --paper:#0d0e14; --paper-2:#14151e; --paper-3:#1c1d28;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;padding-top:var(--nav-h);font-family:"Sora",system-ui,-apple-system,sans-serif;font-size:1.1rem;line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{font-family:"Sora";font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:0 0 .4em;color:var(--ink)}
+p{margin:0 0 1em;color:var(--ink-3)}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:var(--section-y) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+
+/* Buttons */
+.btn{--bg:var(--ink);--fg:#fff;display:inline-flex;align-items:center;gap:.55rem;padding:.92rem 1.5rem;border-radius:999px;background:var(--bg);color:var(--fg);font-weight:600;font-size:.95rem;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);white-space:nowrap;position:relative;isolation:isolate;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease)}
+.btn:hover::before{transform:translateX(100%)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,17,26,.18)}
+.btn .arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--primary{--bg:var(--brand);--fg:#fff;box-shadow:0 8px 22px rgba(200,16,46,.3)}
+.btn--primary:hover{--bg:#a8001f}
+.btn--ghost{--bg:transparent;--fg:var(--ink);border:1px solid var(--line);padding:calc(.92rem - 1px) calc(1.5rem - 1px)}
+.btn--ghost:hover{--bg:var(--paper-2)}
+.btn--light{--bg:rgba(255,255,255,.08);--fg:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
+.btn--light:hover{--bg:rgba(255,255,255,.16)}
+
+/* NAV (shared) */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);transition:background .35s var(--ease)}
+.nav--scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 rgba(15,17,26,.04),0 10px 30px -10px rgba(15,17,26,.12)}
+.nav__inner{display:flex;align-items:center;height:var(--nav-h);gap:clamp(14px,2vw,32px)}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Sora";font-weight:800;font-size:1.1rem;flex-shrink:0}
+.brand img{height:36px;width:auto}
+.nav__links{display:inline-flex;align-items:center;gap:2px;margin-left:auto}
+.nav__item{position:relative;display:flex}
+.nav__link{display:inline-flex;align-items:center;gap:6px;height:var(--nav-h);padding:0 clamp(10px,1.2vw,16px);font-size:.95rem;font-weight:500;color:var(--ink-3);cursor:pointer;position:relative;transition:color .25s var(--ease);white-space:nowrap;background:transparent;border:0}
+.nav__link:hover,.nav__link.is-active{color:var(--ink)}
+.nav__link::after{content:"";position:absolute;left:clamp(10px,1.2vw,16px);right:clamp(10px,1.2vw,16px);bottom:16px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));opacity:0;transform:scaleX(.4);transition:opacity .3s var(--ease),transform .35s var(--ease)}
+.nav__link:hover::after,.nav__link.is-active::after{opacity:1;transform:scaleX(1)}
+.nav__caret{width:11px;height:11px;opacity:.55;flex-shrink:0}
+.nav__cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav__menu{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--paper);align-items:center;justify-content:center}
+.nav__menu svg{width:20px;height:20px}
+@media (max-width:1200px){.nav__link{padding:0 10px;font-size:.9rem}}
+@media (max-width:1080px){.nav__cta .btn--ghost{display:none}}
+@media (max-width:980px){.nav__links{display:none}.nav__menu{display:inline-flex}}
+
+/* =========================================================
+   ─── FB HERO  — Ads Manager interface mockup
+   ========================================================= */
+.fb-hero{
+  position:relative;
+  padding: clamp(40px,5vw,80px) 0 clamp(60px,7vw,110px);
+  background: var(--paper);
+  overflow:hidden; isolation:isolate;
+}
+.fb-hero::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(700px 480px at 90% 10%, rgba(24,119,242,.12), transparent 60%),
+    radial-gradient(700px 480px at 5% 110%, rgba(200,16,46,.08), transparent 60%);
+}
+.fb-hero__grid{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(15,17,26,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15,17,26,.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 50%, transparent 85%);
+}
+.fb-hero__inner{
+  position:relative; z-index:1;
+  display:grid; grid-template-columns: 1.1fr .9fr;
+  gap: clamp(36px,5vw,72px);
+  align-items:center;
+}
+@media(max-width:980px){.fb-hero__inner{grid-template-columns:1fr;gap:60px}}
+
+.fb-hero__badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 14px;border-radius:999px;
+  background: linear-gradient(120deg, rgba(24,119,242,.12), rgba(24,119,242,.04));
+  border:1px solid rgba(24,119,242,.3);
+  color:var(--fb); font-size:.82rem; font-weight:600;
+  margin-bottom:22px;
+}
+.fb-hero__badge svg{width:16px;height:16px}
+
+.fb-hero h1{font-size:var(--fs-display);letter-spacing:-.045em;line-height:1.02;margin:0 0 22px}
+.fb-hero h1 em{font-style:normal;background:linear-gradient(120deg, var(--brand) 0%, #ff5872 60%, var(--brand-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fb-hero__lead{font-size:1.14rem;line-height:1.65;color:var(--ink-3);max-width:54ch;margin-bottom:30px}
+.fb-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+
+.fb-hero__metas{display:flex;gap:24px 40px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line)}
+.fb-hero__meta b{display:block;font-family:"Sora";font-weight:800;font-size:1.6rem;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.fb-hero__meta span{font-size:.86rem;color:var(--muted)}
+
+/* Ads Manager Interface Mockup */
+.adsmgr{
+  position:relative;
+  background:#fff;
+  border-radius:18px;
+  box-shadow: 0 30px 80px -20px rgba(15,17,26,.25), 0 8px 24px rgba(24,119,242,.12);
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+.adsmgr__topbar{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 16px;
+  background:#f7f7fa;
+  border-bottom:1px solid var(--line);
+}
+.adsmgr__dots{display:flex;gap:6px}
+.adsmgr__dots span{width:10px;height:10px;border-radius:50%}
+.adsmgr__dots span:nth-child(1){background:#ff5f57}
+.adsmgr__dots span:nth-child(2){background:#febc2e}
+.adsmgr__dots span:nth-child(3){background:#28c840}
+.adsmgr__url{
+  margin-left:auto; padding:5px 12px;
+  background:#fff; border:1px solid var(--line);
+  border-radius:6px; font-family:"JetBrains Mono",monospace;
+  font-size:.72rem; color:var(--ink-3);
+}
+.adsmgr__url::before{content:"🔒  ";font-size:.9em}
+.adsmgr__body{padding:18px;background:#fff}
+
+.adsmgr__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.adsmgr__title{font-size:1.04rem;font-weight:700;color:#0b0b10;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.adsmgr__title::before{
+  content:""; width:22px;height:22px;border-radius:6px;
+  background: linear-gradient(135deg, var(--fb), var(--fb-2));
+}
+.adsmgr__chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.7rem;font-weight:600;color:#0a7a3a;
+  padding:4px 10px; border-radius:999px;
+  background:rgba(48,209,88,.14); border:1px solid rgba(48,209,88,.3);
+}
+.adsmgr__chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#3ed27a;box-shadow:0 0 0 3px rgba(62,210,122,.2);animation:dotPulse 2s infinite}
+@keyframes dotPulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.adsmgr__metrics{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  margin-bottom:16px;
+}
+.adsmgr__metric{
+  background:#f7f7fa;border:1px solid var(--line);
+  border-radius:10px;padding:12px;
+}
+.adsmgr__metric span{display:block;font-size:.7rem;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+.adsmgr__metric b{display:block;font-size:1.18rem;font-weight:800;color:#0b0b10;letter-spacing:-.02em;line-height:1}
+.adsmgr__metric u{display:inline-block;text-decoration:none;color:#0a7a3a;font-size:.7rem;font-weight:700;margin-top:4px;font-family:"JetBrains Mono",monospace}
+
+/* Campaign rows */
+.adsmgr__rows{display:flex;flex-direction:column;gap:8px}
+.adsmgr__row{
+  display:grid; grid-template-columns: 24px 1fr auto;
+  gap:12px; align-items:center;
+  padding:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  transition:background .25s;
+}
+.adsmgr__row:hover{background:#fafafd}
+.adsmgr__row-toggle{
+  width:22px;height:14px;border-radius:999px;
+  background:linear-gradient(90deg, var(--fb), var(--fb-2));
+  position:relative; flex-shrink:0;
+}
+.adsmgr__row-toggle::after{content:"";position:absolute;top:1px;right:1px;width:12px;height:12px;border-radius:50%;background:#fff}
+.adsmgr__row-info b{display:block;font-size:.84rem;font-weight:600;color:#0b0b10;line-height:1.2}
+.adsmgr__row-info span{display:block;font-size:.7rem;color:#888;margin-top:2px}
+.adsmgr__row-stat{text-align:right}
+.adsmgr__row-stat b{display:block;font-size:.92rem;font-weight:700;color:#0b0b10;font-family:"JetBrains Mono"}
+.adsmgr__row-stat span{display:block;font-size:.66rem;color:#0a7a3a;font-weight:600;font-family:"JetBrains Mono"}
+.adsmgr__row-stat span.down{color:#c8102e}
+
+/* Floating live indicator */
+.adsmgr__live{
+  position:absolute;top:-12px;right:18px;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 12px; border-radius:999px;
+  background:#0b0b14; color:#fff;
+  font-size:.72rem;font-weight:600;
+  box-shadow:0 12px 28px -10px rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.1);
+}
+.adsmgr__live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand-2);box-shadow:0 0 12px var(--brand-2);animation:dotPulse 2s infinite}
+
+/* =========================================================
+   ─── RADIAL COUNTERS  — 4 big stats with circular meters
+   ========================================================= */
+.fb-counters{padding: var(--section-y) 0; background: var(--paper-2)}
+.fb-counters__head{text-align:center;margin-bottom:56px}
+.fb-counters__head h2{font-size:var(--fs-h1);max-width:24ch;margin:.4em auto 0}
+.fb-counters__grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+@media(max-width:900px){.fb-counters__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.fb-counters__grid{grid-template-columns:1fr}}
+
+.fb-cnt{
+  position:relative;
+  padding: 32px 28px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:22px;
+  text-align:center;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+  overflow:hidden;
+}
+.fb-cnt:hover{transform:translateY(-5px);box-shadow:0 24px 50px -16px rgba(15,17,26,.15);border-color:rgba(24,119,242,.3)}
+.fb-cnt__ring{
+  width:100px; height:100px;
+  border-radius:50%;
+  margin:0 auto 18px;
+  position:relative;
+  display:grid;place-items:center;
+  background: conic-gradient(var(--fb) 0% var(--pct), rgba(24,119,242,.1) var(--pct) 100%);
+}
+.fb-cnt__ring::after{
+  content:"";position:absolute;inset:8px;
+  border-radius:50%;background:var(--paper);
+}
+.fb-cnt__ring svg{width:30px;height:30px;color:var(--fb);position:relative;z-index:1}
+.fb-cnt b{display:block;font-family:"Sora";font-size:2.2rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--ink);margin-bottom:6px}
+.fb-cnt h3{font-size:.96rem;font-weight:700;margin:0 0 4px;color:var(--ink-2)}
+.fb-cnt span{display:block;font-size:.85rem;color:var(--muted)}
+
+/* =========================================================
+   ─── FUNNEL  — Visual full-funnel diagram
+   ========================================================= */
+.fb-funnel{padding: var(--section-y) 0; background: var(--paper)}
+.fb-funnel__inner{
+  display:grid;grid-template-columns: 1fr 1fr;
+  gap: clamp(40px,5vw,80px); align-items:center;
+}
+@media(max-width:880px){.fb-funnel__inner{grid-template-columns:1fr}}
+.fb-funnel__copy h2{font-size:var(--fs-h1);max-width:14ch;letter-spacing:-.035em;margin:.3em 0}
+.fb-funnel__copy p{color:var(--ink-3);font-size:1.04rem;line-height:1.65;max-width:42ch}
+
+.fb-funnel__diagram{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  position:relative;
+}
+.fb-funnel__band{
+  position:relative;
+  display:grid;grid-template-columns: 1fr 1fr;
+  align-items:center;gap:16px;
+  padding:18px 24px;
+  border-radius:14px;
+  color:#fff;
+  width:100%; max-width:520px;
+  box-shadow: 0 14px 30px -12px rgba(15,17,26,.18);
+  transition: transform .4s var(--ease);
+}
+.fb-funnel__band:hover{transform:translateX(6px)}
+.fb-funnel__band:nth-child(1){background:linear-gradient(135deg,#ff8c42,#ff5e1a); width:100%}
+.fb-funnel__band:nth-child(2){background:linear-gradient(135deg,#5b9eff,var(--fb)); width:86%}
+.fb-funnel__band:nth-child(3){background:linear-gradient(135deg,#b985ff,#8b5cf6); width:72%}
+.fb-funnel__band:nth-child(4){background:linear-gradient(135deg,var(--brand-2),var(--brand)); width:58%}
+.fb-funnel__band b{display:block;font-size:1rem;font-weight:700;letter-spacing:-.01em}
+.fb-funnel__band span{font-size:.82rem;color:rgba(255,255,255,.78);line-height:1.4}
+.fb-funnel__band em{display:block;font-style:normal;text-align:right;font-family:"JetBrains Mono";font-weight:700;font-size:1.2rem;letter-spacing:-.02em;line-height:1}
+.fb-funnel__band i{display:block;text-align:right;font-style:normal;font-size:.72rem;color:rgba(255,255,255,.7);font-family:"JetBrains Mono"}
+
+/* =========================================================
+   ─── AUDIENCE LAYERS  — concentric circles
+   ========================================================= */
+.fb-audience{padding:var(--section-y) 0;background:linear-gradient(180deg,var(--paper-2) 0%, var(--paper) 100%)}
+.fb-audience__head{text-align:center;margin-bottom:54px}
+.fb-audience__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.fb-audience__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+.fb-audience__inner{
+  display:grid;grid-template-columns: 1fr 1fr;
+  gap: clamp(40px,5vw,80px); align-items:center;
+}
+@media(max-width:880px){.fb-audience__inner{grid-template-columns:1fr}}
+
+.fb-rings{
+  position:relative;
+  aspect-ratio:1/1;
+  max-width:480px;margin:0 auto;
+  display:grid;place-items:center;
+}
+.fb-ring{
+  position:absolute;border-radius:50%;
+  display:grid;place-items:center;
+  font-family:"Sora";font-weight:700;font-size:.86rem;
+  letter-spacing:-.005em;color:#fff;
+  transition: transform .5s var(--ease);
+  cursor:default;
+}
+.fb-ring:hover{transform:scale(1.04)}
+.fb-ring--1{inset:0;background:radial-gradient(circle at 30% 30%, rgba(24,119,242,.15), rgba(24,119,242,.06));border:2px dashed rgba(24,119,242,.4)}
+.fb-ring--2{inset:14%;background:linear-gradient(135deg,rgba(24,119,242,.2),rgba(24,119,242,.1));border:1px solid rgba(24,119,242,.3)}
+.fb-ring--3{inset:30%;background:linear-gradient(135deg,#5b9eff,var(--fb));box-shadow:inset 0 0 0 2px rgba(255,255,255,.15),0 14px 30px -10px rgba(24,119,242,.4)}
+.fb-ring--4{inset:48%;background:linear-gradient(135deg,var(--brand-2),var(--brand));box-shadow:inset 0 0 0 2px rgba(255,255,255,.2),0 14px 30px -10px rgba(200,16,46,.5)}
+.fb-ring__label{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  text-align:center; padding:0 12px;
+  pointer-events:none;
+}
+.fb-ring--1 .fb-ring__label{transform:translate(-50%,calc(-50% - 145px));color:var(--ink)}
+.fb-ring--2 .fb-ring__label{transform:translate(-50%,calc(-50% - 95px));color:var(--ink)}
+.fb-ring--3 .fb-ring__label{transform:translate(-50%,calc(-50% - 50px));color:#fff}
+.fb-ring--4 .fb-ring__label{color:#fff}
+.fb-ring__label em{display:block;font-style:normal;font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;opacity:.75;margin-top:2px}
+
+.fb-audience__legend{display:flex;flex-direction:column;gap:14px}
+.fb-leg{
+  display:grid;grid-template-columns:48px 1fr;gap:16px;
+  padding:18px 22px;background:var(--paper);
+  border:1px solid var(--line);border-radius:14px;
+  transition: transform .35s var(--ease),box-shadow .35s,border-color .35s;
+}
+.fb-leg:hover{transform:translateX(4px);box-shadow:0 12px 30px -12px rgba(15,17,26,.12);border-color:rgba(24,119,242,.3)}
+.fb-leg__dot{
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;font-weight:800;font-family:"Sora";font-size:.96rem;
+}
+.fb-leg--cold .fb-leg__dot{background:linear-gradient(135deg,#8eb6f6,#5b9eff)}
+.fb-leg--warm .fb-leg__dot{background:linear-gradient(135deg,#5b9eff,var(--fb))}
+.fb-leg--hot .fb-leg__dot{background:linear-gradient(135deg,#ff8c42,#e63956)}
+.fb-leg--buyer .fb-leg__dot{background:linear-gradient(135deg,var(--brand-2),var(--brand))}
+.fb-leg h4{font-size:1rem;margin:0 0 4px;letter-spacing:-.01em}
+.fb-leg p{font-size:.9rem;color:var(--muted);margin:0;line-height:1.5}
+
+/* =========================================================
+   ─── TABS  — Campaign types switcher
+   ========================================================= */
+.fb-tabs{padding:var(--section-y) 0;background:var(--paper-2)}
+.fb-tabs__head{text-align:center;margin-bottom:36px}
+.fb-tabs__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.fb-tabs__head p{color:var(--muted);max-width:56ch;margin:1em auto 0}
+
+.fb-tabs__nav{
+  display:inline-flex;flex-wrap:wrap;gap:6px;
+  padding:6px;border-radius:999px;
+  background:var(--paper);border:1px solid var(--line);
+  margin: 0 auto 36px;
+  justify-content:center;
+}
+.fb-tabs__nav-wrap{display:flex;justify-content:center;margin-bottom:32px}
+.fb-tabs__btn{
+  padding:10px 20px;border-radius:999px;
+  font-weight:600;font-size:.92rem;color:var(--ink-3);
+  transition: background .25s var(--ease), color .25s var(--ease);
+  white-space:nowrap;
+}
+.fb-tabs__btn:hover{color:var(--ink)}
+.fb-tabs__btn.is-active{
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color:#fff;
+  box-shadow: 0 6px 16px -4px rgba(200,16,46,.4);
+}
+.fb-tabs__panels{position:relative}
+.fb-tabs__panel{display:none}
+.fb-tabs__panel.is-active{display:block;animation: tabFade .4s var(--ease-out)}
+@keyframes tabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.fb-tabs__grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+@media(max-width:880px){.fb-tabs__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.fb-tabs__grid{grid-template-columns:1fr}}
+
+.fb-tabcard{
+  padding:24px 22px;background:var(--paper);
+  border:1px solid var(--line);border-radius:16px;
+  transition: transform .4s var(--ease),box-shadow .4s,border-color .4s;
+  position:relative;overflow:hidden;
+}
+.fb-tabcard:hover{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(15,17,26,.14);border-color:rgba(24,119,242,.3)}
+.fb-tabcard__icon{
+  width:40px;height:40px;border-radius:11px;
+  background:linear-gradient(135deg, rgba(24,119,242,.14), rgba(24,119,242,.04));
+  border:1px solid rgba(24,119,242,.25);
+  color:var(--fb);display:grid;place-items:center;
+  margin-bottom:14px;
+  transition:transform .4s var(--ease);
+}
+.fb-tabcard:hover .fb-tabcard__icon{transform:rotate(-6deg) scale(1.05);background:var(--fb);color:#fff;border-color:var(--fb)}
+.fb-tabcard__icon svg{width:20px;height:20px}
+.fb-tabcard h4{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.fb-tabcard p{font-size:.88rem;color:var(--ink-3);margin:0;line-height:1.55}
+
+/* =========================================================
+   ─── PROCESS  — snake flow (zig-zag horizontal)
+   ========================================================= */
+.fb-process{padding:var(--section-y) 0;background:var(--paper)}
+.fb-process__head{text-align:center;margin-bottom:56px}
+.fb-process__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+
+.fb-snake{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  position:relative;
+}
+@media(max-width:980px){.fb-snake{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.fb-snake{grid-template-columns:1fr}}
+
+.fb-snake__card{
+  position:relative;
+  padding:24px 22px 24px;
+  background: var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:16px;
+  transition: transform .4s var(--ease),box-shadow .4s,border-color .4s,background .4s;
+}
+.fb-snake__card:hover{transform:translateY(-4px);background:var(--paper);box-shadow:0 18px 40px -14px rgba(15,17,26,.14);border-color:rgba(200,16,46,.3)}
+.fb-snake__card:nth-child(odd){margin-top:20px}
+@media(max-width:980px){.fb-snake__card:nth-child(odd){margin-top:0}}
+
+.fb-snake__num{
+  display:inline-grid;place-items:center;
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#fff; font-weight:800; font-family:"Sora"; font-size:.96rem;
+  margin-bottom:14px;
+  box-shadow: 0 8px 18px -6px rgba(200,16,46,.4);
+}
+.fb-snake__card h4{font-size:1.08rem;margin:0 0 8px;letter-spacing:-.015em}
+.fb-snake__card p{font-size:.9rem;color:var(--ink-3);margin:0;line-height:1.55}
+
+/* Connector arrows between cards on desktop */
+.fb-snake__card:not(:last-child)::after{
+  content:"→";
+  position:absolute; right:-16px; top:50%;
+  transform:translateY(-50%);
+  color:var(--brand); font-weight:700; font-size:1.2rem;
+  display:none;
+}
+@media(min-width:981px){.fb-snake__card:not(:last-child)::after{display:block}}
+
+/* =========================================================
+   ─── BEFORE / AFTER  — two split panels
+   ========================================================= */
+.fb-results{padding:var(--section-y) 0;background:var(--paper-2)}
+.fb-results__head{text-align:center;margin-bottom:48px}
+.fb-results__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.fb-results__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+.fb-result{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:clamp(28px,4vw,48px);
+  margin-bottom:18px;
+}
+.fb-result:last-child{margin-bottom:0}
+.fb-result__head{
+  display:flex; align-items:center; gap:14px;
+  margin-bottom:24px;
+  padding-bottom:20px;
+  border-bottom:1px dashed var(--line);
+}
+.fb-result__pill{
+  font-size:.74rem;font-family:"JetBrains Mono";letter-spacing:.06em;
+  padding:5px 12px;border-radius:999px;
+  background:var(--paper-2);color:var(--ink-3);
+  border:1px solid var(--line);
+}
+.fb-result__head h3{font-size:1.3rem;margin:0;letter-spacing:-.02em}
+
+.fb-result__split{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:stretch;
+}
+@media(max-width:780px){.fb-result__split{grid-template-columns:1fr;gap:14px}}
+
+.fb-result__col{
+  padding:24px 26px;
+  border-radius:16px;
+  position:relative;
+}
+.fb-result__col--before{background:var(--paper-2);border:1px solid var(--line)}
+.fb-result__col--after{background:linear-gradient(160deg,#0b0b14,#1a0e16);color:#fff;position:relative;overflow:hidden}
+.fb-result__col--after::after{content:"";position:absolute;top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(255,59,92,.3),transparent 70%);filter:blur(40px);pointer-events:none}
+
+.fb-result__col em{
+  display:inline-block;font-style:normal;
+  font-family:"JetBrains Mono";font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.fb-result__col--before em{color:var(--muted)}
+.fb-result__col--after em{color:#ff8fa3}
+.fb-result__col strong{
+  display:block;font-family:"Sora";font-weight:800;
+  font-size:clamp(2.2rem,3vw + 1rem,3rem);
+  letter-spacing:-.04em;line-height:1;
+  margin-bottom:10px;
+}
+.fb-result__col--before strong{color:var(--ink-2)}
+.fb-result__col--after strong{
+  background:linear-gradient(180deg,#fff,rgba(255,255,255,.6));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.fb-result__col b{display:block;font-size:.96rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.fb-result__col--after b{color:#fff}
+.fb-result__col p{font-size:.88rem;line-height:1.5;color:var(--ink-3);margin:0}
+.fb-result__col--after p{color:rgba(255,255,255,.7)}
+
+.fb-result__arrow{
+  display:grid;place-items:center;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  align-self:center;
+  box-shadow:0 10px 22px -8px rgba(200,16,46,.45);
+}
+.fb-result__arrow svg{width:22px;height:22px}
+@media(max-width:780px){.fb-result__arrow{transform:rotate(90deg);margin:0 auto}}
+
+/* =========================================================
+   ─── PRICING — 3 tiers
+   ========================================================= */
+.fb-pricing{padding:var(--section-y) 0;background:var(--paper)}
+.fb-pricing__head{text-align:center;margin-bottom:54px}
+.fb-pricing__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.fb-pricing__head p{color:var(--muted);max-width:54ch;margin:1em auto 0}
+
+.fb-pricing__grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  max-width:1080px;margin:0 auto;
+}
+@media(max-width:880px){.fb-pricing__grid{grid-template-columns:1fr}}
+
+.fb-tier{
+  position:relative;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:36px 32px;
+  display:flex;flex-direction:column;
+  transition:transform .4s var(--ease),box-shadow .4s,border-color .4s;
+}
+.fb-tier:hover{transform:translateY(-6px);box-shadow:0 24px 56px -18px rgba(15,17,26,.15)}
+.fb-tier--featured{
+  background:linear-gradient(160deg,#0b0b14 0%,#1a0e16 100%);
+  color:#fff;border-color:transparent;
+  box-shadow: 0 26px 70px -18px rgba(200,16,46,.45);
+  transform:translateY(-12px);
+}
+.fb-tier--featured:hover{transform:translateY(-18px)}
+.fb-tier--featured::before{
+  content:"Most popular";
+  position:absolute;top:18px;right:18px;
+  font-size:.72rem;font-weight:700;font-family:"JetBrains Mono";letter-spacing:.06em;
+  padding:5px 12px;border-radius:999px;
+  background:linear-gradient(135deg,var(--brand-2),var(--brand));
+  color:#fff;
+  box-shadow:0 6px 14px -4px rgba(200,16,46,.5);
+}
+.fb-tier__name{
+  font-family:"JetBrains Mono";font-size:.82rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brand);font-weight:600;margin-bottom:14px;
+}
+.fb-tier--featured .fb-tier__name{color:var(--brand-2)}
+.fb-tier h3{font-size:1.5rem;margin:0 0 6px;letter-spacing:-.02em}
+.fb-tier--featured h3{color:#fff}
+.fb-tier__sub{font-size:.92rem;color:var(--ink-3);margin:0 0 24px;min-height:42px}
+.fb-tier--featured .fb-tier__sub{color:rgba(255,255,255,.7)}
+.fb-tier__price{
+  font-family:"Sora";font-weight:800;
+  font-size:2.4rem;letter-spacing:-.04em;line-height:1;
+  margin-bottom:24px;
+}
+.fb-tier--featured .fb-tier__price{background:linear-gradient(180deg,#fff 30%,rgba(255,255,255,.6));-webkit-background-clip:text;background-clip:text;color:transparent}
+.fb-tier__price sup{font-size:.6em;font-weight:600;margin-right:4px;letter-spacing:0}
+.fb-tier__price span{font-family:"Sora";font-size:.9rem;font-weight:500;color:var(--muted);letter-spacing:0}
+.fb-tier--featured .fb-tier__price span{color:rgba(255,255,255,.55);-webkit-text-fill-color:rgba(255,255,255,.55)}
+.fb-tier__list{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:10px;flex:1}
+.fb-tier__list li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:var(--ink-2);line-height:1.5}
+.fb-tier--featured .fb-tier__list li{color:rgba(255,255,255,.86)}
+.fb-tier__list li svg{
+  width:20px;height:20px;flex-shrink:0;
+  padding:4px;border-radius:50%;
+  background:rgba(200,16,46,.1);color:var(--brand);
+  border:1px solid rgba(200,16,46,.18);margin-top:1px;
+}
+.fb-tier--featured .fb-tier__list li svg{background:rgba(255,59,92,.18);color:#ff8fa3;border-color:rgba(255,59,92,.32)}
+.fb-tier__cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:13px 22px;
+  border-radius:12px;font-weight:700;font-size:.95rem;
+  transition:transform .3s var(--ease),box-shadow .3s,background .3s;
+}
+.fb-tier:not(.fb-tier--featured) .fb-tier__cta{background:var(--paper-2);color:var(--ink);border:1px solid var(--line)}
+.fb-tier:not(.fb-tier--featured) .fb-tier__cta:hover{background:var(--paper-3)}
+.fb-tier--featured .fb-tier__cta{background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff;box-shadow:0 10px 22px -6px rgba(200,16,46,.5)}
+.fb-tier--featured .fb-tier__cta:hover{transform:translateY(-2px);box-shadow:0 16px 32px -6px rgba(200,16,46,.6)}
+
+/* =========================================================
+   ─── FAQ  — 2-column grid (not accordion)
+   ========================================================= */
+.fb-faq{padding:var(--section-y) 0;background:var(--paper-2)}
+.fb-faq__head{text-align:center;margin-bottom:54px}
+.fb-faq__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.fb-faq__head p{color:var(--muted);max-width:50ch;margin:1em auto 0}
+
+.fb-faq__grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
+}
+@media(max-width:780px){.fb-faq__grid{grid-template-columns:1fr}}
+.fb-faq__card{
+  padding:26px 28px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  transition:transform .4s var(--ease),box-shadow .4s,border-color .4s;
+}
+.fb-faq__card:hover{transform:translateY(-3px);box-shadow:0 14px 32px -12px rgba(15,17,26,.12);border-color:rgba(200,16,46,.3)}
+.fb-faq__card h4{
+  font-size:1.08rem;margin:0 0 12px;letter-spacing:-.01em;
+  display:flex;align-items:flex-start;gap:10px;
+}
+.fb-faq__card h4 i{
+  display:inline-grid;place-items:center;flex-shrink:0;
+  width:26px;height:26px;border-radius:8px;
+  background:linear-gradient(135deg,rgba(200,16,46,.14),rgba(200,16,46,.04));
+  border:1px solid rgba(200,16,46,.2);
+  color:var(--brand);font-style:normal;font-weight:700;font-size:.84rem;
+  font-family:"JetBrains Mono";margin-top:1px;
+}
+.fb-faq__card p{font-size:.96rem;color:var(--ink-3);line-height:1.65;margin:0}
+
+/* =========================================================
+   ─── FINAL CTA
+   ========================================================= */
+.fb-cta{padding: clamp(60px,8vw,120px) 0; background:var(--paper)}
+.fb-cta__shell{
+  position:relative;
+  background: linear-gradient(135deg, var(--fb) 0%, #1f4dff 50%, var(--brand) 120%);
+  border-radius:clamp(24px,3vw,36px);
+  padding: clamp(40px,6vw,80px) clamp(28px,5vw,72px);
+  margin: 0 var(--gutter);
+  color:#fff; overflow:hidden;
+  display:grid;grid-template-columns:1.4fr .6fr;
+  gap:40px;align-items:center;
+}
+@media(max-width:900px){.fb-cta__shell{grid-template-columns:1fr}}
+.fb-cta__shell::after{
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(circle at 90% 0%, rgba(255,255,255,.18), transparent 40%), radial-gradient(circle at 0% 100%, rgba(200,16,46,.18), transparent 40%);
+  pointer-events:none;
+}
+.fb-cta__shell::before{
+  content:""; position:absolute; inset:0;
+  background-image: linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+  pointer-events:none;
+}
+.fb-cta__shell > *{position:relative;z-index:1}
+.fb-cta h2{color:#fff;font-size:var(--fs-h1);max-width:18ch;margin:.2em 0;letter-spacing:-.035em}
+.fb-cta p{color:rgba(255,255,255,.86);max-width:50ch;margin:.5em 0 0;font-size:1.04rem}
+.fb-cta__actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:900px){.fb-cta__actions{justify-content:flex-start}}
+
+/* Footer */
+.footer{margin-top:var(--section-y);position:relative;background:radial-gradient(900px 360px at 85% 0%, rgba(24,119,242,.18), transparent 60%),linear-gradient(180deg, #0c0d14 0%, #08090f 100%);color:rgba(255,255,255,.72);padding:0 0 24px}
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding:72px 0 40px}
+@media(max-width:780px){.footer__grid{grid-template-columns:1fr 1fr;gap:36px;padding:56px 0 32px}}
+@media(max-width:480px){.footer__grid{grid-template-columns:1fr}}
+.footer__brand .brand img{height:44px;filter:brightness(0) invert(1)}
+.footer__brand p{color:rgba(255,255,255,.62);font-size:.95rem;margin-top:14px;max-width:38ch;line-height:1.6}
+.footer h4{color:rgba(255,255,255,.78);font-family:"JetBrains Mono";font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-weight:500}
+.footer h4::before{content:"";width:14px;height:1px;background:var(--brand-2)}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer ul a{color:rgba(255,255,255,.68);font-size:.95rem;transition:color .25s,padding .25s}
+.footer ul a:hover{color:#fff;padding-left:6px}
+.footer__sub{border-top:1px solid rgba(255,255,255,.08);padding:22px 0 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.55)}
+.footer__legal{display:flex;gap:20px;flex-wrap:wrap}
+.footer__legal a{color:rgba(255,255,255,.6)}.footer__legal a:hover{color:#fff}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal--delay-1{transition-delay:.08s}
+.reveal--delay-2{transition-delay:.16s}
+.reveal--delay-3{transition-delay:.24s}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+
+<!-- ─────────── HERO — Ads Manager mockup ─────────── -->
+<section class="fb-hero">
+  <div class="fb-hero__grid"></div>
+  <div class="container fb-hero__inner">
+    <div>
+      <span class="fb-hero__badge reveal">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-7H8v-2.88h2.44V9.85c0-2.41 1.43-3.74 3.62-3.74 1.05 0 2.15.19 2.15.19v2.36h-1.21c-1.19 0-1.56.74-1.56 1.5v1.8h2.66l-.43 2.88h-2.23v7A10 10 0 0 0 22 12z"/></svg>
+        Meta &amp; Facebook Marketing Partners
+      </span>
+      <h1 class="reveal reveal--delay-1">
+        Facebook ads that print <em>pipeline.</em>
+      </h1>
+      <p class="fb-hero__lead reveal reveal--delay-2">
+        We design, launch and scale Facebook &amp; Instagram advertising campaigns engineered for revenue — strategy, creative, optimization, attribution. Measured every week, not every quarter.
+      </p>
+      <div class="fb-hero__cta reveal reveal--delay-2">
+        <a href="#cta" class="btn btn--primary">Start your campaign <span class="arrow">→</span></a>
+        <a href="#pricing" class="btn btn--ghost">See pricing</a>
+      </div>
+      <div class="fb-hero__metas reveal reveal--delay-3">
+        <div class="fb-hero__meta"><b>₹40Cr</b><span>Ad spend managed</span></div>
+        <div class="fb-hero__meta"><b>3.6×</b><span>Avg. ROAS</span></div>
+        <div class="fb-hero__meta"><b>22%</b><span>Avg. CPL reduction</span></div>
+      </div>
+    </div>
+
+    <!-- Ads Manager Interface -->
+    <div class="adsmgr reveal reveal--delay-2" aria-hidden="true">
+      <span class="adsmgr__live">LIVE · Campaign Manager</span>
+      <div class="adsmgr__topbar">
+        <div class="adsmgr__dots"><span></span><span></span><span></span></div>
+        <span class="adsmgr__url">business.facebook.com/adsmanager</span>
+      </div>
+      <div class="adsmgr__body">
+        <div class="adsmgr__header">
+          <span class="adsmgr__title">Campaigns · Q3 Performance</span>
+          <span class="adsmgr__chip">3 active</span>
+        </div>
+        <div class="adsmgr__metrics">
+          <div class="adsmgr__metric">
+            <span>Spend</span>
+            <b>₹4.8L</b>
+            <u>↑ 12%</u>
+          </div>
+          <div class="adsmgr__metric">
+            <span>ROAS</span>
+            <b>4.8×</b>
+            <u>↑ 38%</u>
+          </div>
+          <div class="adsmgr__metric">
+            <span>CPL</span>
+            <b>₹128</b>
+            <u>↓ 19%</u>
+          </div>
+        </div>
+        <div class="adsmgr__rows">
+          <div class="adsmgr__row">
+            <span class="adsmgr__row-toggle"></span>
+            <div class="adsmgr__row-info">
+              <b>Cold prospecting — lookalikes 1%</b>
+              <span>Conversion · 8 ad sets</span>
+            </div>
+            <div class="adsmgr__row-stat">
+              <b>3.4×</b>
+              <span>ROAS</span>
+            </div>
+          </div>
+          <div class="adsmgr__row">
+            <span class="adsmgr__row-toggle"></span>
+            <div class="adsmgr__row-info">
+              <b>Mid-funnel · Engaged viewers 30d</b>
+              <span>Conversion · 6 ad sets</span>
+            </div>
+            <div class="adsmgr__row-stat">
+              <b>5.2×</b>
+              <span>ROAS</span>
+            </div>
+          </div>
+          <div class="adsmgr__row">
+            <span class="adsmgr__row-toggle"></span>
+            <div class="adsmgr__row-info">
+              <b>Retargeting · Cart abandoners</b>
+              <span>Catalog Sales · 4 ad sets</span>
+            </div>
+            <div class="adsmgr__row-stat">
+              <b>8.6×</b>
+              <span>ROAS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── RADIAL COUNTERS ─────────── -->
+<section class="fb-counters">
+  <div class="container">
+    <header class="fb-counters__head reveal">
+      <span class="eyebrow">By the numbers</span>
+      <h2>The result of nine years running Facebook ads.</h2>
+    </header>
+
+    <div class="fb-counters__grid">
+      <div class="fb-cnt reveal" style="--pct:88%">
+        <div class="fb-cnt__ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <b>2.4B+</b>
+        <h3>Impressions delivered</h3>
+        <span>across Meta &amp; Instagram</span>
+      </div>
+      <div class="fb-cnt reveal reveal--delay-1" style="--pct:78%">
+        <div class="fb-cnt__ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12H3M21 6H3M21 18H3"/></svg>
+        </div>
+        <b>₹40Cr+</b>
+        <h3>Ad spend managed</h3>
+        <span>with revenue attribution</span>
+      </div>
+      <div class="fb-cnt reveal reveal--delay-2" style="--pct:92%">
+        <div class="fb-cnt__ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+        </div>
+        <b>3.6×</b>
+        <h3>Average ROAS</h3>
+        <span>across all client accounts</span>
+      </div>
+      <div class="fb-cnt reveal reveal--delay-3" style="--pct:72%">
+        <div class="fb-cnt__ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3.3-6.95"/><path d="M21 3v9h-9"/></svg>
+        </div>
+        <b>22%</b>
+        <h3>Avg. CPL reduction</h3>
+        <span>vs. previous benchmarks</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FUNNEL ─────────── -->
+<section class="fb-funnel">
+  <div class="container fb-funnel__inner">
+    <div class="fb-funnel__copy reveal">
+      <span class="eyebrow">Full-funnel approach</span>
+      <h2>Every stage. Every audience. Engineered.</h2>
+      <p>We don't run a single "buy now" campaign and hope. We run the entire funnel — awareness pulling top-of-funnel audiences in, retargeting closing them at the bottom. Spend follows performance, channel-by-channel.</p>
+      <p style="margin:0">The four bands on the right show the typical share of monthly spend across each funnel stage for a healthy account.</p>
+    </div>
+
+    <div class="fb-funnel__diagram reveal reveal--delay-1">
+      <div class="fb-funnel__band">
+        <div><b>Awareness</b><span>Reach, video views, brand recall</span></div>
+        <div><em>22%</em><i>of spend</i></div>
+      </div>
+      <div class="fb-funnel__band">
+        <div><b>Consideration</b><span>Traffic, engagement, lead capture</span></div>
+        <div><em>28%</em><i>of spend</i></div>
+      </div>
+      <div class="fb-funnel__band">
+        <div><b>Conversion</b><span>Sales, sign-ups, app installs</span></div>
+        <div><em>36%</em><i>of spend</i></div>
+      </div>
+      <div class="fb-funnel__band">
+        <div><b>Retention</b><span>Retargeting, lookalikes, LTV</span></div>
+        <div><em>14%</em><i>of spend</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── AUDIENCE LAYERS ─────────── -->
+<section class="fb-audience">
+  <div class="container">
+    <header class="fb-audience__head reveal">
+      <span class="eyebrow">Audience strategy</span>
+      <h2>Four layers of audience — sequenced for revenue.</h2>
+      <p>Every audience needs a different message. We sequence creative to match exactly where someone is in their relationship with your brand — from never-heard-of-you cold prospects to ready-to-buy retargeting pools.</p>
+    </header>
+
+    <div class="fb-audience__inner">
+      <div class="fb-rings reveal" aria-hidden="true">
+        <div class="fb-ring fb-ring--1">
+          <span class="fb-ring__label"><b>Cold</b><em>Never heard of you</em></span>
+        </div>
+        <div class="fb-ring fb-ring--2">
+          <span class="fb-ring__label"><b>Warm</b><em>Engaged with content</em></span>
+        </div>
+        <div class="fb-ring fb-ring--3">
+          <span class="fb-ring__label"><b>Hot</b><em>Visited &amp; interacted</em></span>
+        </div>
+        <div class="fb-ring fb-ring--4">
+          <span class="fb-ring__label"><b>Buyer</b></span>
+        </div>
+      </div>
+
+      <div class="fb-audience__legend">
+        <div class="fb-leg fb-leg--cold reveal">
+          <div class="fb-leg__dot">C</div>
+          <div>
+            <h4>Cold prospecting</h4>
+            <p>Interest-based, lookalike 1–5%, and broad targeting with strong creative hooks. The widest top of the funnel.</p>
+          </div>
+        </div>
+        <div class="fb-leg fb-leg--warm reveal reveal--delay-1">
+          <div class="fb-leg__dot">W</div>
+          <div>
+            <h4>Warm engagement</h4>
+            <p>Video viewers 25–75%, post engagers, profile visitors. They know you — now we deepen the relationship.</p>
+          </div>
+        </div>
+        <div class="fb-leg fb-leg--hot reveal reveal--delay-2">
+          <div class="fb-leg__dot">H</div>
+          <div>
+            <h4>Hot intent</h4>
+            <p>Site visitors 30d, product viewers, ATC. We close them with offers, social proof, and urgency.</p>
+          </div>
+        </div>
+        <div class="fb-leg fb-leg--buyer reveal reveal--delay-3">
+          <div class="fb-leg__dot">B</div>
+          <div>
+            <h4>Existing buyers</h4>
+            <p>Upsell, cross-sell, LTV expansion, win-back. Your most valuable audience, treated like it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── TABS — Campaign types ─────────── -->
+<section class="fb-tabs">
+  <div class="container">
+    <header class="fb-tabs__head reveal">
+      <span class="eyebrow">Campaign objectives</span>
+      <h2>Every Meta campaign type, mapped to a business goal.</h2>
+      <p>We pick the campaign objective based on what you actually need to move — not what's trendy in last week's case study.</p>
+    </header>
+
+    <div class="fb-tabs__nav-wrap reveal">
+      <div class="fb-tabs__nav" role="tablist">
+        <button class="fb-tabs__btn is-active" data-tab="awareness" type="button">Awareness</button>
+        <button class="fb-tabs__btn" data-tab="consideration" type="button">Consideration</button>
+        <button class="fb-tabs__btn" data-tab="conversion" type="button">Conversion</button>
+        <button class="fb-tabs__btn" data-tab="loyalty" type="button">Loyalty</button>
+      </div>
+    </div>
+
+    <div class="fb-tabs__panels">
+      <!-- Awareness -->
+      <div class="fb-tabs__panel is-active" data-panel="awareness">
+        <div class="fb-tabs__grid">
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h4>Reach</h4><p>Maximise unique impressions across your target audience at the lowest CPM.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 3-6 3z"/></svg></div><h4>Video Views</h4><p>Build remarketing pools through long-watched video — Reels, in-feed, Stories.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg></div><h4>Brand Awareness</h4><p>Optimised for ad recall lift — the only metric Meta lets you actually buy.</p></div>
+        </div>
+      </div>
+      <!-- Consideration -->
+      <div class="fb-tabs__panel" data-panel="consideration">
+        <div class="fb-tabs__grid">
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><h4>Traffic</h4><p>Drive site visits, blog reads, app store visits — top of consideration.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3.3-6.95L21 6"/></svg></div><h4>Engagement</h4><p>Post engagement, event responses, group joins — fuel for organic reach.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16v12H4z"/><path d="M8 20h8M12 16v4"/></svg></div><h4>Lead Generation</h4><p>Native Meta lead forms with CRM sync — lowest-friction lead capture there is.</p></div>
+        </div>
+      </div>
+      <!-- Conversion -->
+      <div class="fb-tabs__panel" data-panel="conversion">
+        <div class="fb-tabs__grid">
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><h4>Conversions</h4><p>Optimised for purchase, sign-up, or any custom conversion event in your pixel.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M3 3h3l2.5 12h11l1.5-9H6"/></svg></div><h4>Catalog Sales</h4><p>Dynamic product ads — show the right product to the right person automatically.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 21V7l9-5 9 5v14"/></svg></div><h4>Store Visits</h4><p>Multi-location campaigns that drive footfall — measured with offline conversions.</p></div>
+        </div>
+      </div>
+      <!-- Loyalty -->
+      <div class="fb-tabs__panel" data-panel="loyalty">
+        <div class="fb-tabs__grid">
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg></div><h4>App Promotion</h4><p>Installs, in-app purchases, and re-engagement — every stage of the app journey.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3.3-6.95"/><path d="M21 3v9h-9"/></svg></div><h4>Retargeting</h4><p>Bring back cart abandoners, lapsed buyers, and form starters — highest-ROI ads we run.</p></div>
+          <div class="fb-tabcard"><div class="fb-tabcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3v-7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg></div><h4>Messages</h4><p>Click-to-Messenger / WhatsApp campaigns — let buyers ask questions before they buy.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PROCESS — snake flow ─────────── -->
+<section class="fb-process">
+  <div class="container">
+    <header class="fb-process__head reveal">
+      <span class="eyebrow">Our 5-step process</span>
+      <h2>From audit to scale — predictable every time.</h2>
+    </header>
+
+    <div class="fb-snake">
+      <div class="fb-snake__card reveal">
+        <div class="fb-snake__num">1</div>
+        <h4>Audit</h4>
+        <p>Deep account audit, pixel health check, creative analysis. We surface what's broken before we fix it.</p>
+      </div>
+      <div class="fb-snake__card reveal reveal--delay-1">
+        <div class="fb-snake__num">2</div>
+        <h4>Strategy</h4>
+        <p>Funnel design, audience mapping, budget allocation, KPI framework — all approved before launch.</p>
+      </div>
+      <div class="fb-snake__card reveal reveal--delay-2">
+        <div class="fb-snake__num">3</div>
+        <h4>Creative</h4>
+        <p>15–20 ad creatives produced in-house per launch. Native vertical, hook-first, brand-consistent.</p>
+      </div>
+      <div class="fb-snake__card reveal reveal--delay-3">
+        <div class="fb-snake__num">4</div>
+        <h4>Launch &amp; Test</h4>
+        <p>Multivariate testing across audiences, creatives and placements. Winners scale, losers pause.</p>
+      </div>
+      <div class="fb-snake__card reveal reveal--delay-3">
+        <div class="fb-snake__num">5</div>
+        <h4>Scale</h4>
+        <p>Budget scaling on proven winners, lookalike expansion, and creative refresh cycles every two weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BEFORE / AFTER RESULTS ─────────── -->
+<section class="fb-results">
+  <div class="container">
+    <header class="fb-results__head reveal">
+      <span class="eyebrow">Real client results</span>
+      <h2>What changes when we take over your account.</h2>
+      <p>Two recent transformations from accounts that came to us mid-quarter. Numbers from Meta Ads Manager and verified GA4.</p>
+    </header>
+
+    <div class="fb-result reveal">
+      <div class="fb-result__head">
+        <span class="fb-result__pill">D2C · 2024</span>
+        <h3>Beauty brand · 90 days after handoff</h3>
+      </div>
+      <div class="fb-result__split">
+        <div class="fb-result__col fb-result__col--before">
+          <em>Before MCKBytes</em>
+          <strong>₹450</strong>
+          <b>Cost per lead</b>
+          <p>Single broad audience, one ad creative, no funnel structure, 1.8× ROAS plateauing.</p>
+        </div>
+        <div class="fb-result__arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="fb-result__col fb-result__col--after">
+          <em>With MCKBytes — 90 days</em>
+          <strong>₹180</strong>
+          <b>Cost per lead</b>
+          <p>Three-tier funnel, 18 creatives in rotation, weekly refresh cycle, ROAS up to 5.6×.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fb-result reveal">
+      <div class="fb-result__head">
+        <span class="fb-result__pill">SaaS · 2025</span>
+        <h3>B2B SaaS · 120 days after handoff</h3>
+      </div>
+      <div class="fb-result__split">
+        <div class="fb-result__col fb-result__col--before">
+          <em>Before MCKBytes</em>
+          <strong>2.1×</strong>
+          <b>ROAS</b>
+          <p>Conversion-only campaigns, no top-of-funnel, fatigued retargeting pools, $87 CPL.</p>
+        </div>
+        <div class="fb-result__arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="fb-result__col fb-result__col--after">
+          <em>With MCKBytes — 120 days</em>
+          <strong>5.8×</strong>
+          <b>ROAS</b>
+          <p>Awareness + lead gen + retargeting layers, 4 audience tiers, CPL down to $38.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PRICING ─────────── -->
+<section class="fb-pricing" id="pricing">
+  <div class="container">
+    <header class="fb-pricing__head reveal">
+      <span class="eyebrow">Engagement plans</span>
+      <h2>Three plans. Senior team on every one.</h2>
+      <p>Transparent monthly retainers. No annual lock-ins. Cancel anytime with 30 days notice.</p>
+    </header>
+
+    <div class="fb-pricing__grid">
+      <div class="fb-tier reveal">
+        <span class="fb-tier__name">Starter</span>
+        <h3>Launch</h3>
+        <p class="fb-tier__sub">For brands spending ₹50K–₹2L/mo on Meta ads.</p>
+        <div class="fb-tier__price"><sup>₹</sup>35,000<span>/mo</span></div>
+        <ul class="fb-tier__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Up to 2 campaigns running</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>8 creative variations / month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Weekly optimization</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance review</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Email + Slack support</li>
+        </ul>
+        <a href="#cta" class="fb-tier__cta">Get started <span class="arrow">→</span></a>
+      </div>
+
+      <div class="fb-tier fb-tier--featured reveal reveal--delay-1">
+        <span class="fb-tier__name">Growth</span>
+        <h3>Scale</h3>
+        <p class="fb-tier__sub">For brands spending ₹2L–₹10L/mo on Meta ads.</p>
+        <div class="fb-tier__price"><sup>₹</sup>75,000<span>/mo</span></div>
+        <ul class="fb-tier__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Unlimited campaigns</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>20 creative variations / month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Daily optimization &amp; testing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Bi-weekly strategy calls</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Server-side attribution setup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Dedicated senior strategist</li>
+        </ul>
+        <a href="#cta" class="fb-tier__cta">Get started <span class="arrow">→</span></a>
+      </div>
+
+      <div class="fb-tier reveal reveal--delay-2">
+        <span class="fb-tier__name">Enterprise</span>
+        <h3>Custom</h3>
+        <p class="fb-tier__sub">For brands spending ₹10L+/mo or with multi-region needs.</p>
+        <div class="fb-tier__price">Talk to us</div>
+        <ul class="fb-tier__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Everything in Growth, plus:</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Multi-market &amp; multi-language</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Dedicated pod (4 specialists)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Custom BI dashboards</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Quarterly executive reviews</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>SLA-backed response times</li>
+        </ul>
+        <a href="#cta" class="fb-tier__cta">Contact sales <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FAQ — 2-col grid ─────────── -->
+<section class="fb-faq">
+  <div class="container">
+    <header class="fb-faq__head reveal">
+      <span class="eyebrow">Common questions</span>
+      <h2>Everything you'd ask on a discovery call.</h2>
+      <p>Still have something specific in mind? Reach out — we'll respond within one business day.</p>
+    </header>
+
+    <div class="fb-faq__grid">
+      <div class="fb-faq__card reveal">
+        <h4><i>Q</i>How long before we see results?</h4>
+        <p>Most accounts see a measurable lift within 30–45 days. The first 2 weeks are pixel setup, audience research, and creative production. Weeks 3–6 are testing and identifying winners. From week 6 onward, we scale what works.</p>
+      </div>
+      <div class="fb-faq__card reveal reveal--delay-1">
+        <h4><i>Q</i>Do you require a minimum ad spend?</h4>
+        <p>Our Starter plan suits brands spending ₹50K/mo upward. Below that, the math rarely works — there's not enough data to optimize meaningfully. We're happy to recommend a different starting point if needed.</p>
+      </div>
+      <div class="fb-faq__card reveal">
+        <h4><i>Q</i>Who owns the ad account &amp; assets?</h4>
+        <p>You always own your Meta Business Manager, ad account, pixel data, and every creative asset. We work inside your account so you can pause or replace us without losing a single data point.</p>
+      </div>
+      <div class="fb-faq__card reveal reveal--delay-1">
+        <h4><i>Q</i>Do you handle creative production?</h4>
+        <p>Yes. Our in-house studio shoots, edits, designs, and writes every ad — typically 15–20 creative variations per month, all on-brand, all platform-native. No outsourcing.</p>
+      </div>
+      <div class="fb-faq__card reveal">
+        <h4><i>Q</i>What reporting do we get?</h4>
+        <p>Live dashboards updated daily, weekly summary emails, and a deep monthly review call with your senior strategist. Every metric tied to revenue, not vanity.</p>
+      </div>
+      <div class="fb-faq__card reveal reveal--delay-1">
+        <h4><i>Q</i>Can I cancel anytime?</h4>
+        <p>Yes — 30 days notice. No annual contracts, no lock-ins. If we're not delivering, you shouldn't be paying us. We earn the next month's retainer every month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FINAL CTA ─────────── -->
+<section class="fb-cta" id="cta">
+  <div class="fb-cta__shell reveal">
+    <div>
+      <span class="eyebrow" style="color:#cbe0ff">Let's run your first campaign</span>
+      <h2>Free Facebook ads audit, within 48 hours.</h2>
+      <p>Send us your ad account and we'll come back with a written audit, top 5 quick-win opportunities, and a 90-day plan — no strings attached.</p>
+    </div>
+    <div class="fb-cta__actions">
+      <a href="mailto:hello@mckbytes.com" class="btn" style="--bg:#fff;--fg:#0b0b10">Get free audit</a>
+      <a href="#" class="btn btn--light">Book a call <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="brand"><img src="img/LOGO/logo.png" alt="MCKBytes logo"></a>
+        <p>A digital studio building premium brand presence, performance marketing and social engines for ambitious teams.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="facebook-marketing-agency.html">Facebook Marketing</a></li>
+          <li><a href="social-media-marketing-agency.html">Social Media</a></li>
+          <li><a href="performance-marketing-bangalore.html">Performance Marketing</a></li>
+          <li><a href="#">SEO</a></li>
+          <li><a href="#">PPC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="index.html#work">Selected work</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__sub">
+      <span>© <span id="yr"></span> MCKBytes Studio. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Nav scroll state */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('nav--scrolled', window.scrollY > 12);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* Reveal */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Tabs */
+document.querySelectorAll('.fb-tabs__btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.fb-tabs__btn').forEach(b => b.classList.toggle('is-active', b === btn));
+    document.querySelectorAll('.fb-tabs__panel').forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+  });
+});
+</script>
+</body>
+</html>

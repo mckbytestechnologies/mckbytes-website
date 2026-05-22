@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0b0b10"/>
+<title>Careers — MCKBytes Digital Agency</title>
+<meta name="description" content="Join MCKBytes — a modern digital marketing & engineering studio. Open roles across Meta Ads, WordPress, Design, Video, UI/UX, Python, Backend and more."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --brand:#C8102E; --brand-2:#ff3b5c; --brand-soft:rgba(200,16,46,.08);
+  --accent:#0a84ff; --accent-2:#30d158; --gold:#f59e0b;
+  --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45;
+  --muted:#6b6c78; --line:#e8e9ee;
+  --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#eef0f4;
+  --r:16px; --r-lg:22px; --r-xl:32px;
+  --sh1:0 1px 2px rgba(15,17,26,.04),0 2px 6px rgba(15,17,26,.04);
+  --sh2:0 10px 30px rgba(15,17,26,.08);
+  --sh3:0 30px 80px rgba(15,17,26,.18);
+  --fs-display:clamp(2.6rem,5.5vw + 1rem,5.4rem);
+  --fs-h1:clamp(2rem,3.4vw + 1rem,3.6rem);
+  --fs-h2:clamp(1.5rem,1.4vw + 1rem,2.25rem);
+  --fs-h3:clamp(1.15rem,.6vw + 1rem,1.45rem);
+  --fs-body:1.1rem;
+  --container:1240px; --gutter:clamp(20px,4vw,48px);
+  --sy:clamp(68px,8.5vw,130px);
+  --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.16,1,.3,1);
+  --t:.38s var(--ease);
+  --nav-h:72px;
+}
+[data-theme="dark"] {
+  --ink:#f0f0f5; --ink-2:#c8c9d2; --ink-3:#9a9baa; --muted:#6b6c78;
+  --line:rgba(255,255,255,.1); --paper:#0d0e14; --paper-2:#14151e; --paper-3:#1c1d28;
+  --sh1:0 1px 2px rgba(0,0,0,.3),0 2px 6px rgba(0,0,0,.2);
+  --sh2:0 10px 30px rgba(0,0,0,.35); --sh3:0 30px 80px rgba(0,0,0,.5);
+  --brand-soft:rgba(200,16,46,.15);
+}
+
+/* ═══════════════════════════════════════════
+   RESET / BASE
+═══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;padding-top:var(--nav-h);font-family:"Sora",system-ui,sans-serif;font-size:var(--fs-body);line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .45s var(--ease),color .45s var(--ease)}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{font-family:"Sora",sans-serif;font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:0 0 .4em;color:var(--ink);transition:color .45s var(--ease)}
+p{margin:0 0 1em;color:var(--ink-3)}
+ul{margin:0;padding:0;list-style:none}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:var(--sy) 0}
+
+/* ═══════════════════════════════════════════
+   EYEBROW
+═══════════════════════════════════════════ */
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+.eyebrow--light{color:var(--brand-2)}
+.eyebrow--light::before{background:var(--brand-2)}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn{--bg:var(--ink);--fg:#fff;display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.5rem;border-radius:999px;background:var(--bg);color:var(--fg);font-weight:600;font-size:.95rem;letter-spacing:-.005em;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);position:relative;white-space:nowrap;overflow:hidden;isolation:isolate}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease);z-index:-1}
+.btn:hover::before{transform:translateX(100%)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.btn:active{transform:translateY(0)}
+.btn .arrow{display:inline-block;transition:transform .4s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--primary{--bg:var(--brand);--fg:#fff;box-shadow:0 8px 22px rgba(200,16,46,.28)}
+.btn--primary:hover{--bg:#a8001f;box-shadow:0 14px 32px rgba(200,16,46,.4)}
+.btn--ghost{--bg:transparent;--fg:var(--ink);border:1.5px solid var(--line);padding:calc(.9rem - 1.5px) calc(1.5rem - 1.5px)}
+.btn--ghost:hover{--bg:var(--paper-2);border-color:rgba(200,16,46,.3)}
+.btn--outline-white{--bg:transparent;--fg:#fff;border:1.5px solid rgba(255,255,255,.25);padding:calc(.9rem - 1.5px) calc(1.5rem - 1.5px)}
+.btn--outline-white:hover{--bg:rgba(255,255,255,.1)}
+.btn--lg{padding:1.15rem 2rem;font-size:1.04rem}
+
+/* ═══════════════════════════════════════════
+   THEME SWITCHER
+═══════════════════════════════════════════ */
+.theme-switcher{position:relative;display:flex;align-items:center;width:52px;height:28px;border-radius:999px;background:var(--paper-3);border:1px solid var(--line);cursor:pointer;transition:background var(--t),border-color var(--t);outline:none;flex-shrink:0}
+.theme-switcher__knob{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#fff,#e0e0e8);box-shadow:0 1px 4px rgba(0,0,0,.2);transition:transform .4s var(--ease-out),background .4s var(--ease)}
+[data-theme="dark"] .theme-switcher__knob{transform:translateX(24px);background:linear-gradient(135deg,#1a1b2e,#2d2f4a)}
+.theme-switcher__sun,.theme-switcher__moon{position:absolute;transition:opacity .3s var(--ease);pointer-events:none}
+.theme-switcher__sun{left:7px;font-size:12px;opacity:1;color:#f5a623}
+.theme-switcher__moon{right:7px;font-size:11px;opacity:.35;color:#fff}
+[data-theme="dark"] .theme-switcher__sun{opacity:.35}
+[data-theme="dark"] .theme-switcher__moon{opacity:1}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);transition:background .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+[data-theme="dark"] .nav{background:rgba(13,14,20,.85);border-bottom-color:rgba(255,255,255,.06)}
+.nav--scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 rgba(15,17,26,.04),0 10px 30px -10px rgba(15,17,26,.12)}
+[data-theme="dark"] .nav--scrolled{background:rgba(13,14,20,.96)}
+.nav__inner{display:flex;align-items:center;height:var(--nav-h);gap:clamp(14px,2vw,32px)}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Sora",sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-.02em;flex-shrink:0}
+.brand img{height:36px;width:auto;transition:filter var(--t)}
+[data-theme="dark"] .brand img{filter:brightness(0) invert(1)}
+.nav__links{display:inline-flex;align-items:center;gap:2px;margin-left:auto}
+.nav__item{position:relative;display:flex;align-items:stretch}
+.nav__link{display:inline-flex;align-items:center;gap:6px;height:var(--nav-h);padding:0 clamp(10px,1.2vw,16px);font-size:.93rem;font-weight:500;color:var(--ink-3);cursor:pointer;position:relative;transition:color .25s var(--ease);white-space:nowrap;border:0;background:transparent}
+.nav__link:hover,.nav__link.is-active{color:var(--ink)}
+.nav__link::after{content:"";position:absolute;left:clamp(10px,1.2vw,16px);right:clamp(10px,1.2vw,16px);bottom:16px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));opacity:0;transform:scaleX(.4);transform-origin:center;transition:opacity .3s var(--ease),transform .35s var(--ease)}
+.nav__link:hover::after,.nav__link.is-active::after{opacity:1;transform:scaleX(1)}
+.nav__caret{width:11px;height:11px;opacity:.55;transition:transform .35s var(--ease);flex-shrink:0}
+.nav__item--has-menu:hover .nav__caret,.nav__link[aria-expanded="true"] .nav__caret{transform:rotate(180deg);opacity:1}
+.nav__panel{position:absolute;top:100%;left:50%;transform:translate(-50%,8px);min-width:540px;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh3);padding:16px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .35s var(--ease-out),visibility .28s;z-index:10;margin-top:6px}
+[data-theme="dark"] .nav__panel{background:var(--paper-2)}
+.nav__item--has-menu:hover .nav__panel,.nav__panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+.nav__item--has-menu::after{content:"";position:absolute;top:100%;left:0;right:0;height:14px}
+.nav__panel--mega{min-width:720px;padding:10px}
+.nav__panel--sm{min-width:300px;padding:10px}
+.nav__panel-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px}
+.nav__panel--sm .nav__panel-grid{grid-template-columns:1fr}
+.nav__panel-link{display:flex;gap:12px;padding:14px;border-radius:12px;transition:background .25s var(--ease);align-items:flex-start}
+.nav__panel-link:hover{background:var(--paper-2)}
+[data-theme="dark"] .nav__panel-link:hover{background:rgba(255,255,255,.05)}
+.nav__panel-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--paper-2),var(--paper-3));border:1px solid var(--line);display:grid;place-items:center;color:var(--brand);flex-shrink:0;transition:transform .35s var(--ease)}
+.nav__panel-link:hover .nav__panel-icon{transform:rotate(-6deg) scale(1.05)}
+.nav__panel-icon svg{width:19px;height:19px}
+.nav__panel-text b{display:block;color:var(--ink);font-size:.96rem;font-weight:700;margin-bottom:2px}
+.nav__panel-text span{color:var(--muted);font-size:.82rem;line-height:1.45}
+.nav__panel-foot{margin-top:6px;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(135deg,rgba(200,16,46,.06),rgba(10,132,255,.05));border-radius:12px;font-size:.88rem}
+.nav__panel-foot a{color:var(--brand);font-weight:600;display:inline-flex;gap:6px;align-items:center}
+.nav__cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav__menu{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--paper);align-items:center;justify-content:center;transition:background var(--t)}
+.nav__menu svg{width:20px;height:20px}
+@media(max-width:1080px){.nav__cta .btn--ghost{display:none}}
+@media(max-width:980px){.nav__links{display:none}.nav__menu{display:inline-flex}}
+@media(max-width:480px){:root{--nav-h:64px}.brand img{height:30px}.theme-switcher{display:none}}
+
+/* DRAWER */
+.drawer{position:fixed;inset:0;background:rgba(11,11,16,.55);backdrop-filter:blur(8px);z-index:60;display:none;opacity:0;transition:opacity .3s var(--ease)}
+.drawer.open{display:block;opacity:1}
+.drawer__panel{position:absolute;top:0;right:0;bottom:0;width:min(420px,92vw);background:var(--paper);padding:24px;display:flex;flex-direction:column;gap:4px;transform:translateX(100%);transition:transform .4s var(--ease-out);overflow-y:auto}
+.drawer.open .drawer__panel{transform:translateX(0)}
+.drawer__close{align-self:flex-end;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;margin-bottom:8px;cursor:pointer}
+.drawer__group{border-bottom:1px solid var(--line)}
+.drawer__group > button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 12px;font-size:1.08rem;font-weight:600;color:var(--ink)}
+.drawer__group > button svg{transition:transform .35s var(--ease)}
+.drawer__group.open > button svg{transform:rotate(180deg)}
+.drawer__group .drawer__sub{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease-out)}
+.drawer__group.open .drawer__sub{grid-template-rows:1fr}
+.drawer__sub > div{overflow:hidden}
+.drawer__sub a{display:flex;align-items:center;gap:12px;font-size:.98rem;font-weight:500;padding:10px 12px;color:var(--ink-3);transition:color .2s,background .2s;border-radius:8px}
+.drawer__sub a:hover{color:var(--ink);background:var(--paper-2)}
+
+/* ═══════════════════════════════════════════
+   REVEAL
+═══════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal--delay-1{transition-delay:.1s}.reveal--delay-2{transition-delay:.2s}.reveal--delay-3{transition-delay:.3s}.reveal--delay-4{transition-delay:.4s}.reveal--delay-5{transition-delay:.5s}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ═══════════════════════════════════════════
+   ─── HERO ───
+═══════════════════════════════════════════ */
+.careers-hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:#07080f;
+  padding:clamp(72px,10vw,130px) 0 clamp(80px,10vw,140px);
+  color:#fff;
+}
+.careers-hero__noise{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size:200px 200px; opacity:.55;
+}
+.careers-hero__glow{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 900px 600px at 85% -10%, rgba(200,16,46,.22) 0%, transparent 65%),
+    radial-gradient(ellipse 700px 500px at -5% 80%, rgba(10,132,255,.14) 0%, transparent 65%);
+}
+.careers-hero__grid{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(to right,rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,#000 30%,transparent 80%);
+}
+.careers-hero__inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+@media(max-width:960px){.careers-hero__inner{grid-template-columns:1fr;gap:50px}}
+
+/* Copy side */
+.careers-hero__badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.3);
+  border-radius:999px;padding:8px 16px;margin-bottom:28px;
+}
+.careers-hero__badge-dot{width:8px;height:8px;border-radius:50%;background:#ff3b5c;box-shadow:0 0 0 3px rgba(255,59,92,.2);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.careers-hero__badge span{font-family:"JetBrains Mono";font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:500}
+.careers-hero h1{
+  font-size:var(--fs-display);letter-spacing:-.045em;color:#fff;
+  line-height:.97;margin-bottom:28px;
+}
+.careers-hero h1 .grad{
+  background:linear-gradient(120deg,#fff 20%,var(--brand-2) 60%,#ff8fa3 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.careers-hero__lead{font-size:1.15rem;color:rgba(255,255,255,.65);max-width:50ch;line-height:1.7;margin-bottom:36px}
+.careers-hero__cta{display:flex;gap:14px;flex-wrap:wrap}
+.careers-hero__stats{
+  display:flex;gap:32px;margin-top:44px;padding-top:36px;
+  border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap;
+}
+.careers-hero__stat b{display:block;font-size:2rem;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1}
+.careers-hero__stat span{font-size:.82rem;color:rgba(255,255,255,.5);margin-top:4px;display:block}
+
+/* Visual side — role ticker */
+.careers-hero__visual{position:relative;display:flex;flex-direction:column;gap:16px}
+@media(max-width:960px){.careers-hero__visual{display:none}}
+.role-ticker{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:20px 24px;display:flex;align-items:center;gap:16px;
+  transition:background .3s,border-color .3s;
+  animation:slideRight .6s var(--ease-out) both;
+}
+.role-ticker:hover{background:rgba(255,255,255,.08);border-color:rgba(200,16,46,.3)}
+.role-ticker:nth-child(1){animation-delay:.1s}
+.role-ticker:nth-child(2){animation-delay:.2s;margin-left:24px}
+.role-ticker:nth-child(3){animation-delay:.3s}
+.role-ticker:nth-child(4){animation-delay:.4s;margin-left:24px}
+.role-ticker:nth-child(5){animation-delay:.5s}
+@keyframes slideRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+.role-ticker__icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  display:grid;place-items:center;color:var(--brand-2);
+  background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.2);
+}
+.role-ticker__icon svg{width:20px;height:20px}
+.role-ticker__name{font-weight:700;font-size:.96rem;color:#fff;margin-bottom:2px}
+.role-ticker__type{font-family:"JetBrains Mono";font-size:.72rem;letter-spacing:.08em;color:rgba(255,255,255,.45);text-transform:uppercase}
+.role-ticker__pill{
+  margin-left:auto;padding:4px 12px;border-radius:999px;
+  background:rgba(48,209,88,.12);border:1px solid rgba(48,209,88,.25);
+  font-family:"JetBrains Mono";font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:#30d158;white-space:nowrap;flex-shrink:0;
+}
+
+/* ═══════════════════════════════════════════
+   ─── VALUES BAND ───
+═══════════════════════════════════════════ */
+.values-band{
+  background:var(--paper-2);border-block:1px solid var(--line);
+  padding:clamp(56px,7vw,100px) 0;
+  transition:background var(--t),border-color var(--t);
+}
+.values-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  margin-top:52px;background:var(--line);border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line);
+}
+@media(max-width:900px){.values-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.values-grid{grid-template-columns:1fr}}
+.value-item{
+  background:var(--paper);padding:36px 30px;
+  transition:background var(--t);position:relative;overflow:hidden;
+}
+.value-item::before{
+  content:"";position:absolute;top:0;left:0;width:3px;height:0;
+  background:linear-gradient(180deg,var(--brand),var(--brand-2));
+  border-radius:0 0 3px 3px;
+  transition:height .5s var(--ease-out);
+}
+.value-item:hover::before{height:100%}
+.value-item__num{
+  font-family:"JetBrains Mono";font-size:.75rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:18px;
+  display:block;font-weight:600;
+}
+.value-item__icon{
+  width:52px;height:52px;border-radius:16px;margin-bottom:20px;
+  background:linear-gradient(135deg,var(--paper-2),var(--paper-3));
+  border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--brand);
+  transition:transform .4s var(--ease);
+}
+.value-item:hover .value-item__icon{transform:rotate(-8deg) scale(1.08)}
+.value-item__icon svg{width:24px;height:24px}
+.value-item h3{font-size:1.18rem;margin-bottom:10px}
+.value-item p{font-size:.92rem;color:var(--muted);margin:0;line-height:1.6}
+
+/* ═══════════════════════════════════════════
+   ─── SECTION HEADER ───
+═══════════════════════════════════════════ */
+.section-head{margin-bottom:56px}
+.section-head__top{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:0}
+.section-head h2{font-size:var(--fs-h1);max-width:20ch;margin:.5em 0 0}
+.section-head__sub{max-width:50ch;color:var(--muted);font-size:1rem;margin-top:16px;line-height:1.7}
+
+/* ═══════════════════════════════════════════
+   ─── FILTER BAR ───
+═══════════════════════════════════════════ */
+.filter-bar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-bottom:40px;padding:16px 20px;
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:14px;transition:background var(--t),border-color var(--t);
+}
+.filter-bar__label{font-family:"JetBrains Mono";font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:4px;white-space:nowrap}
+.filter-pill{
+  padding:7px 16px;border-radius:999px;font-size:.83rem;font-weight:600;
+  border:1.5px solid var(--line);background:var(--paper);color:var(--ink-3);
+  cursor:pointer;transition:all .25s var(--ease);
+}
+.filter-pill:hover{border-color:rgba(200,16,46,.35);color:var(--ink);background:var(--paper)}
+.filter-pill.active{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 4px 14px rgba(200,16,46,.3)}
+
+/* ═══════════════════════════════════════════
+   ─── ROLE CARDS ───
+═══════════════════════════════════════════ */
+.roles-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+}
+@media(max-width:860px){.roles-grid{grid-template-columns:1fr}}
+
+.role-card{
+  position:relative;
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:24px;padding:32px;
+  display:flex;flex-direction:column;gap:0;
+  transition:transform .45s var(--ease-out),box-shadow .45s,border-color .35s,background var(--t);
+  overflow:hidden;
+}
+.role-card::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--brand),var(--brand-2),var(--accent));
+  opacity:0;transition:opacity .45s var(--ease);
+}
+.role-card:hover{transform:translateY(-6px);box-shadow:var(--sh2);border-color:rgba(200,16,46,.2)}
+.role-card:hover::after{opacity:1}
+
+/* Top row */
+.role-card__top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.role-card__icon{
+  width:56px;height:56px;flex-shrink:0;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--paper-2),var(--paper-3));
+  border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--brand);
+  transition:transform .45s var(--ease),background .35s;
+}
+.role-card:hover .role-card__icon{transform:rotate(-8deg) scale(1.05);background:linear-gradient(135deg,rgba(200,16,46,.08),rgba(200,16,46,.04));border-color:rgba(200,16,46,.2)}
+.role-card__icon svg{width:26px;height:26px}
+.role-card__badges{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.role-card__type{
+  font-family:"JetBrains Mono";font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;border-radius:999px;font-weight:600;
+  background:var(--brand-soft);color:var(--brand);border:1px solid rgba(200,16,46,.18);
+}
+.role-card__type--contract{
+  background:rgba(10,132,255,.08);color:var(--accent);border-color:rgba(10,132,255,.2);
+}
+.role-card__open{
+  font-family:"JetBrains Mono";font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;
+  background:rgba(48,209,88,.08);color:var(--accent-2);border:1px solid rgba(48,209,88,.2);
+}
+
+/* Content */
+.role-card h3{font-size:1.28rem;letter-spacing:-.025em;margin-bottom:8px;line-height:1.2}
+.role-card__meta{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  font-family:"JetBrains Mono";font-size:.73rem;letter-spacing:.06em;
+  color:var(--muted);margin-bottom:18px;
+}
+.role-card__meta-item{display:flex;align-items:center;gap:5px}
+.role-card__meta-item svg{width:13px;height:13px;opacity:.7}
+.role-card__desc{font-size:.95rem;color:var(--ink-3);line-height:1.65;margin-bottom:22px;flex:1}
+
+/* Skill tags */
+.role-card__tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
+.role-tag{
+  font-size:.77rem;font-weight:600;
+  padding:5px 12px;border-radius:999px;
+  background:var(--paper-2);border:1px solid var(--line);
+  color:var(--ink-2);letter-spacing:.01em;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.role-card:hover .role-tag{border-color:rgba(200,16,46,.15)}
+
+/* Apply CTA */
+.role-card__cta{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:20px;border-top:1px solid var(--line);
+  margin-top:auto;
+}
+.role-card__exp{font-size:.8rem;color:var(--muted);font-family:"JetBrains Mono";letter-spacing:.04em}
+.role-card__exp b{color:var(--ink);font-weight:700}
+
+/* ═══════════════════════════════════════════
+   ─── PERKS SECTION ───
+═══════════════════════════════════════════ */
+.perks-section{
+  background:linear-gradient(165deg,#07080f 0%,#0d0e16 100%);
+  color:#fff;padding:var(--sy) 0;
+  position:relative;overflow:hidden;isolation:isolate;
+}
+.perks-section::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(800px 400px at 100% 0%,rgba(200,16,46,.18),transparent 60%),
+    radial-gradient(700px 500px at 0% 100%,rgba(10,132,255,.12),transparent 60%);
+  pointer-events:none;
+}
+.perks-section__grid-bg{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(to right,rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 80%);
+}
+.perks-section > .container{position:relative;z-index:1}
+.perks-section .eyebrow{color:var(--brand-2)}
+.perks-section .eyebrow::before{background:var(--brand-2)}
+.perks-section .section-head h2{color:#fff}
+.perks-section .section-head__sub{color:rgba(255,255,255,.55)}
+
+.perks-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+@media(max-width:900px){.perks-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.perks-grid{grid-template-columns:1fr}}
+
+.perk-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:32px 28px;
+  transition:background .4s,border-color .4s,transform .4s var(--ease);
+}
+.perk-card:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);transform:translateY(-4px)}
+.perk-card__icon{
+  width:52px;height:52px;border-radius:14px;margin-bottom:20px;
+  background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.2);
+  display:grid;place-items:center;color:var(--brand-2);
+  font-size:24px;
+  transition:transform .4s var(--ease);
+}
+.perk-card:hover .perk-card__icon{transform:rotate(-6deg) scale(1.08)}
+.perk-card h4{font-size:1.12rem;color:#fff;margin-bottom:10px}
+.perk-card p{font-size:.92rem;color:rgba(255,255,255,.55);margin:0;line-height:1.65}
+
+/* ═══════════════════════════════════════════
+   ─── PROCESS (How we hire) ───
+═══════════════════════════════════════════ */
+.hire-process{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  position:relative;margin-top:60px;
+}
+@media(max-width:900px){.hire-process{grid-template-columns:repeat(2,1fr);gap:24px}}
+@media(max-width:520px){.hire-process{grid-template-columns:1fr}}
+.hire-process::before{
+  content:"";position:absolute;top:36px;left:12%;right:12%;height:2px;
+  background:linear-gradient(90deg,var(--brand),var(--accent));border-radius:999px;z-index:0;
+}
+@media(max-width:900px){.hire-process::before{display:none}}
+.hire-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1}
+.hire-step__num{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--line);
+  display:grid;place-items:center;
+  font-family:"JetBrains Mono";font-weight:700;font-size:1rem;color:var(--brand);
+  margin-bottom:22px;position:relative;z-index:1;
+  transition:background var(--t),border-color .3s,box-shadow .3s,transform .4s var(--ease);
+}
+.hire-step:hover .hire-step__num{background:var(--brand);color:#fff;border-color:var(--brand);transform:scale(1.12);box-shadow:0 8px 24px rgba(200,16,46,.3)}
+.hire-step h4{font-size:1.05rem;margin-bottom:8px}
+.hire-step p{font-size:.9rem;color:var(--muted);margin:0;line-height:1.6}
+
+/* ═══════════════════════════════════════════
+   ─── CTA (APPLY) BAND ───
+═══════════════════════════════════════════ */
+.apply-band{position:relative;margin:var(--sy) 0}
+.apply-band__shell{
+  position:relative;
+  margin:0 var(--gutter);
+  padding:clamp(52px,6vw,90px) clamp(32px,5vw,80px);
+  border-radius:clamp(24px,3vw,40px);overflow:hidden;isolation:isolate;
+  background:#07080f;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 40px 100px -20px rgba(200,16,46,.3);
+}
+.apply-band__shell::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 500px at 90% -10%,rgba(200,16,46,.22),transparent 60%),
+    radial-gradient(800px 500px at 10% 110%,rgba(10,132,255,.12),transparent 60%);
+  pointer-events:none;z-index:0;
+}
+.apply-band__grid-bg{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(to right,rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse at 50% 50%,#000 40%,transparent 80%);
+}
+.apply-band__inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(48px,5vw,80px);align-items:center;
+}
+@media(max-width:900px){.apply-band__inner{grid-template-columns:1fr;gap:44px}}
+.apply-band__copy .eyebrow{color:var(--brand-2)}
+.apply-band__copy .eyebrow::before{background:var(--brand-2)}
+.apply-band h2{
+  font-size:clamp(2rem,3.2vw + 1rem,3.4rem);letter-spacing:-.04em;
+  font-weight:800;line-height:1.02;color:#fff;max-width:16ch;
+  margin:.4em 0 .6em;
+}
+.apply-band h2 em{
+  font-style:normal;
+  background:linear-gradient(120deg,var(--brand-2),#ff8fa3);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.apply-band__lead{color:rgba(255,255,255,.6);font-size:1.05rem;line-height:1.7;max-width:46ch;margin-bottom:32px}
+.apply-band__btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.apply-band__trust{
+  display:flex;flex-wrap:wrap;gap:16px 32px;
+  padding-top:28px;border-top:1px solid rgba(255,255,255,.1);
+}
+.apply-band__trust-item{display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.55)}
+.apply-band__trust-item svg{width:18px;height:18px;color:var(--brand-2);flex-shrink:0}
+.apply-band__trust-item b{color:rgba(255,255,255,.88);font-weight:600;display:block;line-height:1.2}
+
+/* Application card */
+.apply-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;padding:clamp(28px,3vw,40px);
+  backdrop-filter:blur(20px);
+  position:relative;overflow:hidden;
+}
+.apply-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--brand),var(--brand-2),var(--accent));
+  border-radius:24px 24px 0 0;
+}
+.apply-card__head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.apply-card__dot{width:10px;height:10px;border-radius:50%;background:#30d158;box-shadow:0 0 0 4px rgba(48,209,88,.18);animation:blink 2s ease-in-out infinite}
+.apply-card__head b{font-size:.94rem;color:#fff;font-weight:600}
+.apply-card__head span{font-size:.78rem;color:rgba(255,255,255,.4);margin-left:auto;font-family:"JetBrains Mono"}
+.apply-card h3{color:#fff;font-size:1.4rem;letter-spacing:-.025em;margin-bottom:24px;line-height:1.25;font-weight:700}
+.lf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:480px){.lf-row{grid-template-columns:1fr}}
+.lf-field{margin-bottom:14px;position:relative}
+.lf-field label{display:block;font-size:.77rem;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:8px;letter-spacing:.01em}
+.lf-field input,.lf-field select,.lf-field textarea{
+  width:100%;padding:13px 16px;font-family:inherit;font-size:.94rem;
+  color:#fff;background:rgba(255,255,255,.05);
+  border:1.5px solid rgba(255,255,255,.1);border-radius:12px;outline:none;
+  transition:background .25s,border-color .25s,box-shadow .25s;
+  -webkit-appearance:none;appearance:none;
+}
+.lf-field input::placeholder,.lf-field textarea::placeholder{color:rgba(255,255,255,.25)}
+.lf-field input:focus,.lf-field select:focus,.lf-field textarea:focus{
+  background:rgba(255,255,255,.08);border-color:var(--brand);box-shadow:0 0 0 4px rgba(200,16,46,.18);
+}
+.lf-field select{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='rgba(255,255,255,0.35)' stroke-width='1.5'><path d='M3 4.5l3 3 3-3'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:38px;
+}
+.lf-field select option{background:#1a1b28;color:#fff}
+.lf-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.lf-chip{
+  font-size:.8rem;padding:7px 14px;
+  background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);
+  border-radius:999px;color:rgba(255,255,255,.6);cursor:pointer;
+  transition:all .25s var(--ease);font-weight:600;
+}
+.lf-chip:hover{border-color:rgba(200,16,46,.45);color:#fff;background:rgba(200,16,46,.1)}
+.lf-chip.active{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 4px 14px rgba(200,16,46,.35)}
+.lf-submit{
+  width:100%;margin-top:8px;padding:16px 22px;font-size:1rem;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#ff3b5c 0%,var(--brand) 50%,#8a0e23 100%);
+  border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  cursor:pointer;transition:transform .3s,box-shadow .3s;border:0;
+  box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 8px 20px -4px rgba(200,16,46,.5);
+  position:relative;overflow:hidden;
+}
+.lf-submit::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease)}
+.lf-submit:hover{transform:translateY(-2px);box-shadow:0 14px 30px -4px rgba(200,16,46,.6)}
+.lf-submit:hover::after{transform:translateX(100%)}
+.lf-foot{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:.79rem;color:rgba(255,255,255,.35)}
+.lf-foot svg{width:13px;height:13px}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.footer{
+  position:relative;
+  background:radial-gradient(900px 360px at 85% 0%,rgba(200,16,46,.18),transparent 60%),
+             radial-gradient(700px 300px at 0% 0%,rgba(10,132,255,.12),transparent 60%),
+             linear-gradient(180deg,#0c0d14 0%,#08090f 100%);
+  color:rgba(255,255,255,.72);padding:0 0 24px;overflow:hidden;isolation:isolate;
+}
+.footer::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(to right,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 80%);
+  pointer-events:none;z-index:0;
+}
+.footer .container{position:relative;z-index:1}
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:48px;padding:80px 0 48px}
+@media(max-width:1080px){.footer__grid{grid-template-columns:1.6fr 1fr 1fr 1fr}.footer__col-hide{display:none}}
+@media(max-width:780px){.footer__grid{grid-template-columns:1fr 1fr;gap:36px;padding:56px 0 32px}}
+@media(max-width:480px){.footer__grid{grid-template-columns:1fr}}
+.footer h4{color:rgba(255,255,255,.78);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.22em;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.footer h4::before{content:"";width:14px;height:1px;background:#ff3b5c}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.footer ul a{color:rgba(255,255,255,.68);font-size:.98rem;transition:color .25s,padding .25s;display:inline-flex;align-items:center}
+.footer ul a:hover{color:#fff;padding-left:6px}
+.footer__brand .brand img{height:44px;filter:brightness(0) invert(1)}
+.footer__brand p{color:rgba(255,255,255,.62);font-size:.96rem;margin-top:16px;max-width:38ch;line-height:1.6}
+.footer__contact{margin-top:20px;display:flex;flex-direction:column;gap:6px;font-size:.96rem;color:rgba(255,255,255,.6)}
+.footer__contact a{color:rgba(255,255,255,.9)}
+.footer__contact a:hover{color:#fff}
+.footer__chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:7px 13px;border-radius:999px;background:rgba(28,142,77,.12);border:1px solid rgba(28,142,77,.28);color:#7ddca0;font-size:.76rem;font-weight:500;font-family:"JetBrains Mono";letter-spacing:.04em}
+.footer__chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#3ed27a;box-shadow:0 0 0 3px rgba(62,210,122,.18);animation:blink 2s ease infinite}
+.footer__sub{border-top:1px solid rgba(255,255,255,.08);padding:22px 0 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.55)}
+.footer__legal{display:flex;gap:20px;flex-wrap:wrap}
+.footer__legal a{color:rgba(255,255,255,.6);transition:color .25s}
+.footer__legal a:hover{color:#fff}
+.socials{display:flex;gap:8px}
+.socials a{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;transition:background .25s,transform .25s,border-color .25s,box-shadow .25s}
+.socials a:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.18);transform:translateY(-3px);box-shadow:0 8px 20px rgba(200,16,46,.18)}
+.socials svg{width:17px;height:17px;fill:#fff}
+
+/* hidden cards via filter */
+.role-card.hidden{display:none}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="../index.html" class="brand" aria-label="MCKBytes home">
+      <img src="https://www.mckbytes.com/wp-content/uploads/2024/02/Mckbytes-logo-digital-marketing-3.png" alt="MCKBytes logo">
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <div class="nav__item nav__item--has-menu">
+        <button class="nav__link" aria-expanded="false" aria-haspopup="true">
+          <span>Digital Marketing</span>
+          <svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg>
+        </button>
+        <div class="nav__panel nav__panel--mega" role="menu">
+          <div class="nav__panel-grid">
+            <a href="seo.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span><span class="nav__panel-text"><b>SEO</b><span>Rank higher, capture organic demand</span></span></a>
+            <a href="smo.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span><span class="nav__panel-text"><b>SMO</b><span>Social media optimization</span></span></a>
+            <a href="ppc.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l7 17 2.5-7L20 10 3 3z"/></svg></span><span class="nav__panel-text"><b>PPC</b><span>Pay-per-click with measurable ROI</span></span></a>
+            <a href="content-writing.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 22l4.6-1.6L20 6l-2-2L4.6 17.4 2 22z"/></svg></span><span class="nav__panel-text"><b>Content Writing</b><span>SEO-optimised content that converts</span></span></a>
+            <a href="email-marketing.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="nav__panel-text"><b>Email Marketing</b><span>Lifecycle campaigns that convert</span></span></a>
+          </div>
+          <div class="nav__panel-foot"><span style="color:var(--muted)">Need a tailored marketing strategy?</span><a href="#apply">Talk to our team <span>→</span></a></div>
+        </div>
+      </div>
+      <div class="nav__item nav__item--has-menu">
+        <button class="nav__link" aria-expanded="false"><span>Design</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+        <div class="nav__panel nav__panel--sm"><div class="nav__panel-grid">
+          <a href="logo-design.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg></span><span class="nav__panel-text"><b>Logo Design</b><span>Distinctive marks that scale</span></span></a>
+          <a href="branding.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg></span><span class="nav__panel-text"><b>Branding</b><span>Identity systems built to last</span></span></a>
+        </div></div>
+      </div>
+      <div class="nav__item nav__item--has-menu">
+        <button class="nav__link" aria-expanded="false"><span>Technology</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+        <div class="nav__panel nav__panel--sm"><div class="nav__panel-grid">
+          <a href="web-development.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span><span class="nav__panel-text"><b>Web Development</b><span>Fast, accessible websites</span></span></a>
+          <a href="app-development.html" class="nav__panel-link"><span class="nav__panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg></span><span class="nav__panel-text"><b>App Development</b><span>iOS, Android & cross-platform</span></span></a>
+        </div></div>
+      </div>
+      <a href="about.html" class="nav__link">About</a>
+      <a href="careers.html" class="nav__link is-active">Careers</a>
+    </nav>
+
+    <div class="nav__cta">
+      <button class="theme-switcher" id="themeSwitcher" aria-label="Toggle dark mode">
+        <span class="theme-switcher__sun" aria-hidden="true">☀</span>
+        <span class="theme-switcher__moon" aria-hidden="true">☾</span>
+        <span class="theme-switcher__knob" aria-hidden="true"></span>
+      </button>
+      <a href="#apply" class="btn btn--primary">Join Us <span class="arrow">→</span></a>
+      <button class="nav__menu" aria-label="Open menu" id="menuBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drawer__panel">
+    <button class="drawer__close" id="drawerClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18L18 6"/></svg></button>
+    <div class="drawer__group" data-drawer-group>
+      <button>Digital Marketing<svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub"><div><a href="seo.html">SEO</a><a href="ppc.html">PPC</a><a href="content-writing.html">Content Writing</a></div></div>
+    </div>
+    <div class="drawer__group" data-drawer-group>
+      <button>Technology<svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub"><div><a href="web-development.html">Web Dev</a><a href="app-development.html">App Dev</a></div></div>
+    </div>
+    <a href="about.html" style="padding:14px 12px;font-size:1.08rem;font-weight:600;border-bottom:1px solid var(--line);color:var(--ink)">About</a>
+    <a href="careers.html" style="padding:14px 12px;font-size:1.08rem;font-weight:600;color:var(--brand)">Careers</a>
+    <a href="#apply" class="btn btn--primary" style="margin-top:16px;justify-content:center">Join Us →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<main>
+
+<!-- HERO -->
+<section class="careers-hero" id="top">
+  <div class="careers-hero__noise"></div>
+  <div class="careers-hero__glow"></div>
+  <div class="careers-hero__grid"></div>
+  <div class="container careers-hero__inner">
+
+    <div>
+      <div class="careers-hero__badge reveal">
+        <span class="careers-hero__badge-dot"></span>
+        <span>8 positions open · Q3 2025</span>
+      </div>
+      <h1 class="reveal reveal--delay-1">
+        Build bold work<br>with a team that<br>
+        <span class="grad">gives a damn.</span>
+      </h1>
+      <p class="careers-hero__lead reveal reveal--delay-2">
+        MCKBytes is a digital marketing & engineering studio where senior practitioners do the work — no layers, no middlemen. We're hiring people who bring craft, initiative, and a hunger to grow.
+      </p>
+      <div class="careers-hero__cta reveal reveal--delay-3">
+        <a href="#roles" class="btn btn--primary btn--lg">See open roles <span class="arrow">→</span></a>
+        <a href="#culture" class="btn btn--outline-white btn--lg">Our culture</a>
+      </div>
+      <div class="careers-hero__stats reveal reveal--delay-4">
+        <div class="careers-hero__stat"><b>40+</b><span>Global clients</span></div>
+        <div class="careers-hero__stat"><b>9 yrs</b><span>Of craft</span></div>
+        <div class="careers-hero__stat"><b>100%</b><span>Remote-first</span></div>
+        <div class="careers-hero__stat"><b>1 yr+</b><span>Min. experience</span></div>
+      </div>
+    </div>
+
+    <!-- Animated role ticker -->
+    <div class="careers-hero__visual" aria-hidden="true">
+      <div class="role-ticker">
+        <div class="role-ticker__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l7 17 2.5-7L20 10 3 3z"/></svg></div>
+        <div><div class="role-ticker__name">Meta Ads Specialist</div><div class="role-ticker__type">Digital Marketing · Full-time</div></div>
+        <span class="role-ticker__pill">Open</span>
+      </div>
+      <div class="role-ticker">
+        <div class="role-ticker__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div><div class="role-ticker__name">WordPress Developer</div><div class="role-ticker__type">Engineering · Full-time</div></div>
+        <span class="role-ticker__pill">Open</span>
+      </div>
+      <div class="role-ticker">
+        <div class="role-ticker__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L7 19"/></svg></div>
+        <div><div class="role-ticker__name">Graphic Designer</div><div class="role-ticker__type">Design · Full-time</div></div>
+        <span class="role-ticker__pill">Open</span>
+      </div>
+      <div class="role-ticker">
+        <div class="role-ticker__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8l6 4-6 4z"/></svg></div>
+        <div><div class="role-ticker__name">Video Editor</div><div class="role-ticker__type">Production · Contract/FT</div></div>
+        <span class="role-ticker__pill">Open</span>
+      </div>
+      <div class="role-ticker">
+        <div class="role-ticker__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div><div class="role-ticker__name">UI/UX Designer</div><div class="role-ticker__type">Design · Full-time</div></div>
+        <span class="role-ticker__pill">Open</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES BAND -->
+<section class="values-band" id="culture">
+  <div class="container">
+    <div style="max-width:640px">
+      <span class="eyebrow reveal">How we work</span>
+      <h2 class="reveal reveal--delay-1" style="font-size:var(--fs-h1);margin:.4em 0 .5em">Four values that shape everything.</h2>
+      <p class="reveal reveal--delay-2" style="font-size:1.05rem;color:var(--muted);max-width:52ch;line-height:1.7">We're not a factory. We're a studio — and studios have standards. These four principles guide every project, every hire, every decision.</p>
+    </div>
+    <div class="values-grid reveal reveal--delay-2">
+      <div class="value-item">
+        <span class="value-item__num">01</span>
+        <div class="value-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg></div>
+        <h3>Craft first</h3>
+        <p>We hold work to a standard most agencies skip. Quality isn't a checklist — it's a mindset that shows in every pixel, every line of code, every campaign brief.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-item__num">02</span>
+        <div class="value-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Radical ownership</h3>
+        <p>Every team member owns their domain end-to-end. We don't pass problems around — we solve them, communicate proactively, and iterate relentlessly.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-item__num">03</span>
+        <div class="value-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Bias for speed</h3>
+        <p>We ship, learn, and iterate — in that order. Decisions made with 70% of the information, executed fast and refined in production, outperform plans perfected in meetings.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-item__num">04</span>
+        <div class="value-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Grow or stagnate</h3>
+        <p>The industry moves fast. We invest in learning — talks, budget, tools, feedback loops. If you aren't growing, you're falling behind. We choose growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN ROLES -->
+<section class="section" id="roles">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__top">
+        <div>
+          <span class="eyebrow reveal">Current openings</span>
+          <h2 class="reveal reveal--delay-1">8 roles across<br>three departments.</h2>
+        </div>
+        <p class="section-head__sub reveal reveal--delay-2">Remote-first · Full-time &amp; Contract · Minimum 1 year of professional experience required for all positions.</p>
+      </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar reveal">
+      <span class="filter-bar__label">Filter by:</span>
+      <button class="filter-pill active" data-filter="all">All roles</button>
+      <button class="filter-pill" data-filter="marketing">Marketing</button>
+      <button class="filter-pill" data-filter="design">Design</button>
+      <button class="filter-pill" data-filter="engineering">Engineering</button>
+    </div>
+
+    <div class="roles-grid" id="rolesGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- PERKS -->
+<section class="perks-section section" id="perks">
+  <div class="perks-section__grid-bg"></div>
+  <div class="container">
+    <div class="section-head" style="max-width:600px">
+      <span class="eyebrow eyebrow--light reveal">Why join us</span>
+      <h2 class="reveal reveal--delay-1">Perks that actually matter.</h2>
+      <p class="section-head__sub reveal reveal--delay-2">We built the kind of environment we'd want to work in — remote by default, generous on growth, obsessed with output not hours.</p>
+    </div>
+    <div class="perks-grid">
+      <div class="perk-card reveal">
+        <div class="perk-card__icon">🏡</div>
+        <h4>Fully remote</h4>
+        <p>Work from anywhere. Async-first structure with regular live syncs. No mandatory 9–5, no location requirements.</p>
+      </div>
+      <div class="perk-card reveal reveal--delay-1">
+        <div class="perk-card__icon">📈</div>
+        <h4>Growth budget</h4>
+        <p>Annual learning stipend — courses, books, conferences. We invest in you because it pays dividends for everyone.</p>
+      </div>
+      <div class="perk-card reveal reveal--delay-2">
+        <div class="perk-card__icon">⚖️</div>
+        <h4>Outcome-driven hours</h4>
+        <p>We measure output, not clock-time. Nail your deliverables, work when you're sharpest. Simple as that.</p>
+      </div>
+      <div class="perk-card reveal">
+        <div class="perk-card__icon">❤️</div>
+        <h4>Health &amp; wellbeing</h4>
+        <p>Health coverage support, mental health days, and a leadership team that genuinely asks "are you okay?"</p>
+      </div>
+      <div class="perk-card reveal reveal--delay-1">
+        <div class="perk-card__icon">🚀</div>
+        <h4>Equity &amp; bonuses</h4>
+        <p>Performance bonuses, project incentives, and an equity pathway for long-term team members. Own what you help build.</p>
+      </div>
+      <div class="perk-card reveal reveal--delay-2">
+        <div class="perk-card__icon">🎨</div>
+        <h4>Real creative freedom</h4>
+        <p>No committee approvals for your own domain. Propose it, own it, ship it. We hire experts and let them be experts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE HIRE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head" style="max-width:600px">
+      <span class="eyebrow reveal">The process</span>
+      <h2 class="reveal reveal--delay-1">How we hire — honestly.</h2>
+      <p class="section-head__sub reveal reveal--delay-2">Four steps. No trick questions, no pointless rounds. We respect your time and move fast.</p>
+    </div>
+    <div class="hire-process">
+      <div class="hire-step reveal">
+        <div class="hire-step__num">01</div>
+        <h4>Application</h4>
+        <p>Email your resume and a short note (why MCKBytes, what you bring). Portfolio welcome for creative roles.</p>
+      </div>
+      <div class="hire-step reveal reveal--delay-1">
+        <div class="hire-step__num">02</div>
+        <h4>Intro Call</h4>
+        <p>30-minute conversation with a lead. We discuss your experience, interests, and answer every question you have about us.</p>
+      </div>
+      <div class="hire-step reveal reveal--delay-2">
+        <div class="hire-step__num">03</div>
+        <h4>Skills Task</h4>
+        <p>A focused, paid task (2–4 hours). Real work from our stack so you know what you're signing up for. We review it in 48 hrs.</p>
+      </div>
+      <div class="hire-step reveal reveal--delay-3">
+        <div class="hire-step__num">04</div>
+        <h4>Offer &amp; Onboard</h4>
+        <p>Offer letter within 5 days. Onboarding is structured, mentored, and designed to get you shipping work in week one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY CTA -->
+<section class="apply-band" id="apply">
+  <div class="apply-band__shell reveal">
+    <div class="apply-band__grid-bg"></div>
+    <div class="apply-band__inner">
+      <div class="apply-band__copy">
+        <span class="eyebrow eyebrow--light">Ready to make an impact?</span>
+        <h2>Come build something <em>remarkable.</em></h2>
+        <p class="apply-band__lead">
+          Tell us who you are, what you're great at, and why MCKBytes. We respond to every application within 5 business days — from a real person, not an ATS bot.
+        </p>
+        <div class="apply-band__btns">
+          <a href="mailto:careers@mckbytes.com?subject=Application%20for%20%5BRole%5D" class="btn btn--primary btn--lg">Apply via email <span class="arrow">→</span></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn--outline-white btn--lg">Find us on LinkedIn</a>
+        </div>
+        <div class="apply-band__trust">
+          <div class="apply-band__trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <div><b>5-day response guarantee</b>Real reply, not automated rejection.</div>
+          </div>
+          <div class="apply-band__trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <div><b>Paid skills task</b>We value your time from day one.</div>
+          </div>
+          <div class="apply-band__trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <div><b>1 year minimum</b>All roles require proven experience.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Application form -->
+      <div class="apply-card reveal reveal--delay-1">
+        <div class="apply-card__head">
+          <span class="apply-card__dot"></span>
+          <b>Send your application</b>
+          <span>5 min · no spam</span>
+        </div>
+        <h3>We'd love to hear from you.</h3>
+        <div class="lf-row">
+          <div class="lf-field"><label for="af-name">Full name</label><input id="af-name" type="text" placeholder="Jane Doe" required></div>
+          <div class="lf-field"><label for="af-email">Email address</label><input id="af-email" type="email" placeholder="jane@domain.com" required></div>
+        </div>
+        <div class="lf-field">
+          <label>Which role interests you?</label>
+          <div class="lf-chips">
+            <button type="button" class="lf-chip" data-chip>Meta Ads</button>
+            <button type="button" class="lf-chip" data-chip>WordPress</button>
+            <button type="button" class="lf-chip" data-chip>Graphic Design</button>
+            <button type="button" class="lf-chip" data-chip>Video Editor</button>
+            <button type="button" class="lf-chip" data-chip>UI/UX</button>
+            <button type="button" class="lf-chip" data-chip>Python Dev</button>
+            <button type="button" class="lf-chip" data-chip>Backend Dev</button>
+            <button type="button" class="lf-chip" data-chip>Full Stack</button>
+          </div>
+        </div>
+        <div class="lf-field">
+          <label for="af-exp">Years of experience</label>
+          <select id="af-exp">
+            <option value="">Select experience</option>
+            <option>1–2 years</option>
+            <option>3–5 years</option>
+            <option>5–8 years</option>
+            <option>8+ years</option>
+          </select>
+        </div>
+        <div class="lf-field">
+          <label for="af-portfolio">Portfolio / LinkedIn URL</label>
+          <input id="af-portfolio" type="url" placeholder="https://yourportfolio.com">
+        </div>
+        <button type="button" class="lf-submit" id="applyBtn">
+          Submit Application <span style="transition:transform .35s var(--ease);display:inline-block" id="applyArrow">→</span>
+        </button>
+        <p id="apply-success" hidden style="margin:16px 0 0;color:#30d158;font-size:.92rem;text-align:center;font-weight:600;letter-spacing:-.01em">
+          ✓ Application received — we'll be in touch within 5 business days.
+        </p>
+        <div class="lf-foot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <span>Your data is handled with care and never sold.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand reveal">
+        <a href="../index.html" class="brand">
+          <img src="https://www.mckbytes.com/wp-content/uploads/2024/02/Mckbytes-logo-digital-marketing-3.png" alt="MCKBytes logo">
+        </a>
+        <p>A digital marketing &amp; engineering studio building premium products with senior teams and accountable craft.</p>
+        <div class="footer__contact">
+          <a href="mailto:careers@mckbytes.com">careers@mckbytes.com</a>
+          <span>Remote · Global</span>
+        </div>
+        <span class="footer__chip">Hiring for Q3 2025</span>
+      </div>
+      <div class="reveal reveal--delay-1">
+        <h4>Open Roles</h4>
+        <ul>
+          <li><a href="#roles">Meta Ads Specialist</a></li>
+          <li><a href="#roles">WordPress Developer</a></li>
+          <li><a href="#roles">Graphic Designer</a></li>
+          <li><a href="#roles">Video Editor</a></li>
+          <li><a href="#roles">UI/UX Designer</a></li>
+          <li><a href="#roles">Backend Developer</a></li>
+        </ul>
+      </div>
+      <div class="reveal reveal--delay-2">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="#culture">Culture</a></li>
+          <li><a href="#perks">Perks</a></li>
+          <li><a href="#apply">Apply</a></li>
+          <li><a href="../index.html#work">Our work</a></li>
+        </ul>
+      </div>
+      <div class="reveal reveal--delay-3">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="seo.html">SEO</a></li>
+          <li><a href="content-writing.html">Content Writing</a></li>
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="branding.html">Branding</a></li>
+          <li><a href="../index.html#contact">Get Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer__col-hide reveal reveal--delay-4">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Dribbble</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__sub reveal">
+      <span>© <span id="yr"></span> MCKBytes Studio. All rights reserved.</span>
+      <div class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div>
+      <div class="socials" aria-label="Social">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.16 4.16 0 0 1 3.74-2.05c4 0 4.74 2.63 4.74 6.06V21h-4v-5.27c0-1.26-.02-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.79V21h-4V9Z"/></svg></a>
+        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2H21l-6.52 7.45L22 22h-6.83l-4.78-6.27L4.8 22H2l7-8L1.5 2h6.97l4.32 5.71L18.244 2Zm-1.2 18h1.65L7.06 4H5.31l11.73 16Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="Dribbble"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.6 4.6a8.5 8.5 0 0 1 1.9 5.3c-.3-.06-3.3-.67-6.3-.3-.07-.16-.13-.33-.2-.5a30 30 0 0 0-.6-1.3c3.3-1.4 4.8-3.3 5.2-3.2Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── Year ─── */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ─── Theme ─── */
+(function(){
+  const root=document.documentElement, btn=document.getElementById('themeSwitcher');
+  const saved=localStorage.getItem('mck-theme');
+  if(saved) root.setAttribute('data-theme',saved);
+  btn?.addEventListener('click',()=>{
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('mck-theme',next);
+  });
+})();
+
+/* ─── Sticky nav ─── */
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>navEl.classList.toggle('nav--scrolled',window.scrollY>12),{passive:true});
+
+/* ─── Reveal ─── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ─── Drawer ─── */
+const drawer=document.getElementById('drawer');
+document.getElementById('menuBtn')?.addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('drawerClose')?.addEventListener('click',()=>drawer.classList.remove('open'));
+drawer?.addEventListener('click',e=>{if(e.target===drawer)drawer.classList.remove('open')});
+drawer?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+drawer?.querySelectorAll('[data-drawer-group] > button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const g=btn.parentElement;
+    drawer.querySelectorAll('[data-drawer-group]').forEach(x=>{if(x!==g)x.classList.remove('open')});
+    g.classList.toggle('open');
+  });
+});
+
+/* ─── Nav dropdowns ─── */
+const navItems=document.querySelectorAll('.nav__item--has-menu');
+navItems.forEach(item=>{
+  const trigger=item.querySelector('.nav__link');
+  const panel=item.querySelector('.nav__panel');
+  if(!trigger||!panel) return;
+  trigger.addEventListener('click',e=>{
+    e.preventDefault();
+    const isOpen=panel.classList.contains('open');
+    navItems.forEach(o=>{o.querySelector('.nav__panel')?.classList.remove('open');o.querySelector('.nav__link')?.setAttribute('aria-expanded','false')});
+    if(!isOpen){panel.classList.add('open');trigger.setAttribute('aria-expanded','true')}
+  });
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav__item--has-menu'))
+    navItems.forEach(o=>{o.querySelector('.nav__panel')?.classList.remove('open');o.querySelector('.nav__link')?.setAttribute('aria-expanded','false')});
+});
+
+/* ─── Roles data ─── */
+const roles=[
+  {
+    title:"Social Media Ads Specialist (Meta)",
+    dept:"marketing", type:"full-time",
+    exp:"1+ years",
+    desc:"Plan, execute, and optimise Meta ad campaigns across Instagram & Facebook. You'll own ROAS targets, creative testing frameworks, and audience strategy from brief to reporting.",
+    tags:["Meta Ads Manager","Facebook Pixel","A/B Testing","Analytics","Audience Targeting"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7 17 2.5-7L20 10 3 3z"/></svg>`
+  },
+  {
+    title:"WordPress Developer",
+    dept:"engineering", type:"full-time",
+    exp:"1+ years",
+    desc:"Build custom themes, performance-optimised sites, and scalable WooCommerce stores. Deep experience with ACF, REST API, and page builders is essential.",
+    tags:["PHP","JavaScript","REST API","WooCommerce","ACF","MySQL"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>`
+  },
+  {
+    title:"Graphic Designer",
+    dept:"design", type:"full-time",
+    exp:"1+ years",
+    desc:"Create brand assets, performance ad creatives, social media visuals, and print collateral. Your work sets the visual standard across all client touchpoints.",
+    tags:["Adobe Illustrator","Photoshop","Figma","Branding","Social Creatives"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L7 19"/></svg>`
+  },
+  {
+    title:"Video Editor",
+    dept:"design", type:"contract",
+    exp:"1+ years",
+    desc:"Edit short-form ads, brand films, reels, and motion graphics that perform on every platform. Fast turnarounds and a strong storytelling instinct are non-negotiable.",
+    tags:["Premiere Pro","After Effects","DaVinci Resolve","Motion Graphics","Reels/Shorts"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8l6 4-6 4z"/></svg>`
+  },
+  {
+    title:"UI/UX Designer",
+    dept:"design", type:"full-time",
+    exp:"1+ years",
+    desc:"Design conversion-focused interfaces for web and mobile products. You'll own user flows, wireframes, prototypes, and pixel-perfect handoff — end to end.",
+    tags:["Figma","User Research","Prototyping","Design Systems","Accessibility"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`
+  },
+  {
+    title:"Python Developer",
+    dept:"engineering", type:"full-time",
+    exp:"1+ years",
+    desc:"Build scalable backends, data pipelines, and automation workflows. Strong Django/FastAPI background and comfort with cloud-native deployments required.",
+    tags:["Python","Django / FastAPI","PostgreSQL","AWS / GCP","Docker"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>`
+  },
+  {
+    title:"Backend Developer",
+    dept:"engineering", type:"full-time",
+    exp:"1+ years",
+    desc:"Design robust APIs, microservices, and database architectures. Deep knowledge of security, performance, and distributed systems. Node.js or Go preferred.",
+    tags:["Node.js / Go","REST & GraphQL","MongoDB / Postgres","Docker","Redis"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`
+  },
+  {
+    title:"Full Stack Engineer",
+    dept:"engineering", type:"full-time",
+    exp:"1+ years",
+    desc:"End-to-end feature ownership across React frontends and Node/Python backends. You'll work across multiple client products simultaneously with a small, senior team.",
+    tags:["React","Node.js","Tailwind CSS","MongoDB","Cloud Deploy"],
+    icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a4 4 0 0 1 .5-7.95A6 6 0 0 1 16 8a4.5 4.5 0 0 1 4 7"/><path d="M12 13v8m0-8l-3 3m3-3l3 3"/></svg>`
+  }
+];
+
+/* Render */
+function renderRoles(filter='all'){
+  const grid=document.getElementById('rolesGrid');
+  grid.innerHTML='';
+  const filtered=filter==='all'?roles:roles.filter(r=>r.dept===filter);
+  filtered.forEach((role,i)=>{
+    const isContract=role.type==='contract';
+    const card=document.createElement('div');
+    card.className='role-card reveal';
+    card.style.transitionDelay=`${i*.06}s`;
+    card.innerHTML=`
+      <div class="role-card__top">
+        <div class="role-card__icon">${role.icon}</div>
+        <div class="role-card__badges">
+          <span class="role-card__type ${isContract?'role-card__type--contract':''}">${isContract?'Contract':'Full-time'}</span>
+          <span class="role-card__open">Hiring</span>
+        </div>
+      </div>
+      <h3>${role.title}</h3>
+      <div class="role-card__meta">
+        <span class="role-card__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Min. ${role.exp} experience
+        </span>
+        <span class="role-card__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M8 5V3m8 2V3"/></svg>
+          Remote · Global
+        </span>
+      </div>
+      <p class="role-card__desc">${role.desc}</p>
+      <div class="role-card__tags">${role.tags.map(t=>`<span class="role-tag">${t}</span>`).join('')}</div>
+      <div class="role-card__cta">
+        <span class="role-card__exp">Requires <b>${role.exp}</b> min.</span>
+        <a href="mailto:careers@mckbytes.com?subject=Application for ${encodeURIComponent(role.title)}&body=Hi MCKBytes team,%0A%0AI'm applying for the ${encodeURIComponent(role.title)} position.%0A%0AMy experience:%0A%0APortfolio/LinkedIn:" class="btn btn--ghost" style="font-size:.88rem;padding:.7rem 1.2rem">Apply now <span class="arrow">→</span></a>
+      </div>`;
+    grid.appendChild(card);
+    // re-observe for reveal
+    io.observe(card);
+  });
+}
+renderRoles();
+
+/* Filter pills */
+document.querySelectorAll('.filter-pill').forEach(pill=>{
+  pill.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    renderRoles(pill.dataset.filter);
+  });
+});
+
+/* Chips */
+document.querySelectorAll('[data-chip]').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('active')));
+
+/* Form submit */
+document.getElementById('applyBtn')?.addEventListener('click',()=>{
+  const name=document.getElementById('af-name').value.trim();
+  const email=document.getElementById('af-email').value.trim();
+  if(!name||!email){
+    document.getElementById('af-name').focus();
+    return;
+  }
+  document.getElementById('applyBtn').style.display='none';
+  document.getElementById('apply-success').hidden=false;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1607 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0b0b10" />
+<title>Social Media Marketing Agency — MCKBytes</title>
+<meta name="description" content="MCKBytes is a social media marketing agency that turns followers into customers. Full-funnel social strategy, content production, paid social, and community ops." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   TOKENS  (shared brand)
+   ========================================================= */
+:root{
+  --brand:#C8102E; --brand-2:#ff3b5c; --brand-soft:rgba(200,16,46,.08);
+  --accent:#0a84ff; --accent-2:#30d158; --gold:#f59e0b;
+  --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45; --muted:#6b6c78;
+  --line:#e8e9ee; --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#eef0f4;
+  --r:16px; --r-lg:22px; --r-xl:32px;
+  --fs-display: clamp(2.4rem, 5vw + 1rem, 5rem);
+  --fs-h1: clamp(2rem, 3.2vw + 1rem, 3.4rem);
+  --fs-h2: clamp(1.6rem, 1.5vw + 1rem, 2.4rem);
+  --container:1240px;
+  --gutter:clamp(20px, 4vw, 48px);
+  --section-y:clamp(72px, 8.5vw, 130px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --t:.38s var(--ease);
+  --nav-h:72px;
+}
+[data-theme="dark"]{
+  --ink:#f0f0f5; --ink-2:#c8c9d2; --ink-3:#9a9baa;
+  --muted:#6b6c78; --line:rgba(255,255,255,.1);
+  --paper:#0d0e14; --paper-2:#14151e; --paper-3:#1c1d28;
+}
+
+/* Reset */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0; padding-top:var(--nav-h);
+  font-family:"Sora",system-ui,-apple-system,sans-serif;
+  font-size:1.1rem; line-height:1.65;
+  color:var(--ink); background:var(--paper);
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{font-family:"Sora";font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:0 0 .4em;color:var(--ink)}
+p{margin:0 0 1em;color:var(--ink-3)}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:var(--section-y) 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:"JetBrains Mono",monospace;font-size:.78rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+
+/* Buttons */
+.btn{
+  --bg:var(--ink); --fg:#fff;
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.92rem 1.5rem;border-radius:999px;
+  background:var(--bg);color:var(--fg);
+  font-weight:600;font-size:.95rem;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease);
+  white-space:nowrap; position:relative; isolation:isolate; overflow:hidden;
+}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);transform:translateX(-100%);transition:transform .7s var(--ease)}
+.btn:hover::before{transform:translateX(100%)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,17,26,.18)}
+.btn .arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--primary{--bg:var(--brand);--fg:#fff;box-shadow:0 8px 22px rgba(200,16,46,.3)}
+.btn--primary:hover{--bg:#a8001f;box-shadow:0 14px 32px rgba(200,16,46,.45)}
+.btn--ghost{--bg:transparent;--fg:var(--ink);border:1px solid var(--line);padding:calc(.92rem - 1px) calc(1.5rem - 1px)}
+.btn--ghost:hover{--bg:var(--paper-2)}
+.btn--light{--bg:rgba(255,255,255,.08);--fg:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
+.btn--light:hover{--bg:rgba(255,255,255,.16)}
+
+/* Nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);transition:background .35s var(--ease),box-shadow .35s var(--ease)}
+[data-theme="dark"] .nav{background:rgba(13,14,20,.85);border-bottom-color:rgba(255,255,255,.06)}
+.nav--scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 rgba(15,17,26,.04),0 10px 30px -10px rgba(15,17,26,.12)}
+[data-theme="dark"] .nav--scrolled{background:rgba(13,14,20,.96)}
+.nav__inner{display:flex;align-items:center;height:var(--nav-h);gap:clamp(14px,2vw,32px)}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Sora";font-weight:800;font-size:1.1rem;flex-shrink:0}
+.brand img{height:36px;width:auto;transition:filter .35s}
+[data-theme="dark"] .brand img{filter:brightness(0) invert(1)}
+.nav__links{display:inline-flex;align-items:center;gap:2px;margin-left:auto}
+.nav__item{position:relative;display:flex}
+.nav__link{display:inline-flex;align-items:center;gap:6px;height:var(--nav-h);padding:0 clamp(10px,1.2vw,16px);font-size:.95rem;font-weight:500;color:var(--ink-3);cursor:pointer;position:relative;transition:color .25s var(--ease);white-space:nowrap;background:transparent;border:0}
+.nav__link:hover,.nav__link.is-active{color:var(--ink)}
+.nav__link::after{content:"";position:absolute;left:clamp(10px,1.2vw,16px);right:clamp(10px,1.2vw,16px);bottom:16px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));opacity:0;transform:scaleX(.4);transition:opacity .3s var(--ease),transform .35s var(--ease)}
+.nav__link:hover::after,.nav__link.is-active::after{opacity:1;transform:scaleX(1)}
+.nav__caret{width:11px;height:11px;opacity:.55;transition:transform .35s var(--ease);flex-shrink:0}
+.nav__cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav__menu{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--paper);align-items:center;justify-content:center}
+.nav__menu svg{width:20px;height:20px}
+@media (max-width:1200px){.nav__link{padding:0 10px;font-size:.9rem}}
+@media (max-width:1080px){.nav__cta .btn--ghost{display:none}}
+@media (max-width:980px){.nav__links{display:none}.nav__menu{display:inline-flex}}
+
+/* =========================================================
+   ─── SM HERO  — Phone mockup with floating social cards
+   ========================================================= */
+.sm-hero{
+  position:relative;
+  padding: clamp(40px,5vw,80px) 0 clamp(60px,7vw,110px);
+  background: var(--paper);
+  overflow:hidden;
+  isolation:isolate;
+}
+.sm-hero__bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(700px 480px at 90% 10%, rgba(255,59,92,.10), transparent 60%),
+    radial-gradient(700px 480px at 5% 110%, rgba(102,16,242,.08), transparent 60%);
+}
+.sm-hero__inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns: 1.1fr .9fr;
+  gap:clamp(36px,5vw,72px);
+  align-items:center;
+}
+@media(max-width:980px){.sm-hero__inner{grid-template-columns:1fr;gap:60px}}
+
+.sm-hero__chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 12px 6px 8px;
+  border-radius:999px;
+  background: linear-gradient(120deg, rgba(255,59,92,.12), rgba(200,16,46,.04));
+  border:1px solid rgba(200,16,46,.25);
+  color:var(--brand);font-size:.78rem;font-weight:600;
+  margin-bottom:22px;
+}
+.sm-hero__chip i{
+  display:inline-grid;place-items:center;
+  width:22px;height:22px;border-radius:999px;
+  background:var(--brand);color:#fff;font-style:normal;font-size:11px;font-weight:700;
+}
+
+.sm-hero h1{
+  font-size:var(--fs-display);
+  letter-spacing:-.045em;line-height:1.02;margin:0 0 22px;
+}
+.sm-hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg, var(--brand) 0%, #ff5872 40%, #b56eff 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sm-hero__lead{
+  font-size:1.14rem;line-height:1.65;color:var(--ink-3);
+  max-width:54ch;margin-bottom:30px;
+}
+.sm-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px}
+.sm-hero__strip{
+  display:flex; align-items:center; gap:28px; flex-wrap:wrap;
+  padding-top:24px; border-top:1px solid var(--line);
+}
+.sm-hero__strip-avatars{display:flex;align-items:center}
+.sm-hero__strip-avatars span{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),#3a3b45);
+  border:2px solid var(--paper);
+  margin-left:-12px; display:grid; place-items:center;
+  color:#fff; font-size:.78rem; font-weight:700; font-family:"Sora";
+}
+.sm-hero__strip-avatars span:first-child{margin-left:0}
+.sm-hero__strip-text b{display:block;font-size:.96rem;font-weight:700;color:var(--ink)}
+.sm-hero__strip-text span{font-size:.84rem;color:var(--muted)}
+
+/* Phone mockup */
+.sm-phone-stage{
+  position:relative;
+  display:flex;justify-content:center;align-items:center;
+  min-height:560px;
+}
+.sm-phone{
+  position:relative; z-index:2;
+  width:280px; height:560px;
+  background: linear-gradient(160deg, #1a1b22 0%, #0b0b10 100%);
+  border-radius:42px;
+  padding:14px;
+  box-shadow: 0 30px 80px -16px rgba(0,0,0,.4), inset 0 0 0 2px rgba(255,255,255,.06);
+}
+.sm-phone__notch{
+  position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  width:90px;height:24px;border-radius:0 0 14px 14px;
+  background:#0b0b10;
+  z-index:3;
+}
+.sm-phone__screen{
+  position:relative;width:100%;height:100%;
+  background: linear-gradient(180deg, #fff 0%, #f0f0f7 100%);
+  border-radius:30px;
+  overflow:hidden;
+  padding:36px 14px 14px;
+}
+.sm-post{
+  background:#fff;border-radius:14px;
+  border:1px solid #ebebef;
+  margin-bottom:10px; padding:12px;
+  box-shadow: 0 4px 12px rgba(15,17,26,.05);
+  animation: postSlide 1s var(--ease-out) backwards;
+}
+.sm-post:nth-child(1){animation-delay:.2s}
+.sm-post:nth-child(2){animation-delay:.4s}
+.sm-post:nth-child(3){animation-delay:.6s}
+@keyframes postSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sm-post__head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.sm-post__avatar{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;color:#fff;font-weight:700;font-size:.65rem;font-family:"Sora";
+}
+.sm-post__head b{font-size:.74rem;color:#0b0b10;font-weight:600;display:block;line-height:1.1}
+.sm-post__head span{font-size:.62rem;color:#9aa;display:block;line-height:1.1}
+.sm-post__body{
+  height:96px;border-radius:8px;
+  background:linear-gradient(135deg, var(--brand) 0%, #ff5872 50%, #b56eff 100%);
+  position:relative; overflow:hidden;
+}
+.sm-post__body--blue{background:linear-gradient(135deg,#0a84ff,#22d3ee)}
+.sm-post__body--green{background:linear-gradient(135deg,#30d158,#0a84ff)}
+.sm-post__body::after{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sm-post__actions{display:flex;gap:14px;margin-top:8px}
+.sm-post__action{display:inline-flex;align-items:center;gap:4px;font-size:.62rem;color:#666;font-weight:600}
+.sm-post__action svg{width:11px;height:11px}
+
+/* Floating notification cards (around the phone) */
+.sm-notif{
+  position:absolute; z-index:3;
+  display:flex; align-items:center; gap:10px;
+  background:#fff;
+  border:1px solid #ebebef;
+  border-radius:14px;
+  padding:10px 14px;
+  box-shadow: 0 18px 40px -10px rgba(0,0,0,.18);
+  animation: floatY 8s ease-in-out infinite;
+}
+[data-theme="dark"] .sm-notif{background:#14151e;border-color:rgba(255,255,255,.12);color:#fff}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.sm-notif--like{top:14%;left:-2%;animation-delay:-1s}
+.sm-notif--comment{top:48%;right:-4%;animation-delay:-3s}
+.sm-notif--share{bottom:8%;left:-4%;animation-delay:-5s}
+.sm-notif__icon{
+  width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;flex-shrink:0;
+}
+.sm-notif__icon--pink{background:linear-gradient(135deg,#ff5872,var(--brand))}
+.sm-notif__icon--blue{background:linear-gradient(135deg,#0a84ff,#1f4dff)}
+.sm-notif__icon--green{background:linear-gradient(135deg,#30d158,#16a34a)}
+.sm-notif__icon svg{width:16px;height:16px}
+.sm-notif b{display:block;font-size:.78rem;font-weight:700;color:#0b0b10;line-height:1.15;white-space:nowrap}
+[data-theme="dark"] .sm-notif b{color:#fff}
+.sm-notif span{display:block;font-size:.7rem;color:#888;line-height:1.15;white-space:nowrap}
+
+@media(max-width:480px){
+  .sm-phone{width:220px;height:440px}
+  .sm-notif--like{left:0}
+  .sm-notif--comment{right:0}
+  .sm-notif--share{left:0}
+}
+
+/* =========================================================
+   ─── TICKER  — horizontal scrolling stats bar
+   ========================================================= */
+.sm-ticker{
+  position:relative;
+  padding: 26px 0;
+  background: #0b0b14;
+  color:#fff;
+  border-block: 1px solid rgba(255,255,255,.06);
+  overflow:hidden;
+}
+.sm-ticker__track{
+  display:flex; gap:48px; align-items:center;
+  width:max-content;
+  animation: tickerScroll 35s linear infinite;
+}
+@keyframes tickerScroll{to{transform:translateX(-50%)}}
+.sm-ticker__item{
+  display:inline-flex;align-items:center;gap:14px;
+  white-space:nowrap;
+}
+.sm-ticker__item b{
+  font-family:"Sora";font-weight:800;font-size:1.6rem;
+  letter-spacing:-.03em;
+  background:linear-gradient(120deg,#fff,#a8a8b5);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sm-ticker__item span{color:rgba(255,255,255,.5);font-size:.9rem;font-weight:500}
+.sm-ticker__item::after{
+  content:""; width:6px; height:6px; border-radius:50%;
+  background:var(--brand-2);
+  box-shadow: 0 0 12px var(--brand-2);
+  margin-left:24px;
+}
+
+/* =========================================================
+   ─── MANIFESTO BAND  — opinionated intro
+   ========================================================= */
+.sm-manifesto{padding: var(--section-y) 0; background: var(--paper)}
+.sm-manifesto__inner{
+  display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1.4fr);
+  gap: clamp(36px, 5vw, 80px);
+  align-items:start;
+}
+@media(max-width:880px){.sm-manifesto__inner{grid-template-columns:1fr;gap:30px}}
+.sm-manifesto h2{
+  font-size:var(--fs-h1); letter-spacing:-.04em; line-height:1.02;
+  max-width:14ch; margin:.2em 0 0;
+}
+.sm-manifesto h2 b{
+  color:var(--brand); font-weight:inherit;
+}
+.sm-manifesto__body p{font-size:1.08rem;line-height:1.7;max-width:62ch}
+.sm-manifesto__body p:first-child::first-letter{
+  font-family:"Sora";font-weight:800;
+  font-size:3.4rem; line-height:.8;
+  float:left; padding: 4px 12px 0 0;
+  color:var(--brand);
+}
+
+/* =========================================================
+   ─── PLATFORMS GRID  — colorful tiles
+   ========================================================= */
+.sm-platforms{ padding: var(--section-y) 0; background: var(--paper-2); transition: background .35s }
+.sm-platforms__head{text-align:center;margin-bottom:48px}
+.sm-platforms__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.sm-platforms__head p{max-width:60ch;margin:1em auto 0;color:var(--muted)}
+
+.sm-platforms-grid{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+@media(max-width:880px){.sm-platforms-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.sm-platforms-grid{grid-template-columns:1fr}}
+
+.sm-plat{
+  position:relative;
+  padding: 28px 24px;
+  border-radius: 18px;
+  color:#fff;
+  overflow:hidden;
+  isolation:isolate;
+  transition: transform .45s var(--ease-out), box-shadow .45s;
+  min-height: 200px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.sm-plat:hover{transform:translateY(-6px); box-shadow: 0 24px 50px -14px rgba(15,17,26,.3)}
+.sm-plat::after{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+  opacity:.6;
+}
+.sm-plat__icon{
+  width:48px; height:48px; border-radius:12px;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.28);
+  display:grid;place-items:center; color:#fff;
+  margin-bottom:24px;
+  backdrop-filter: blur(8px);
+}
+.sm-plat__icon svg{width:24px;height:24px}
+.sm-plat h3{color:#fff;font-size:1.18rem;letter-spacing:-.015em;margin:0 0 4px}
+.sm-plat p{color:rgba(255,255,255,.82);font-size:.86rem;margin:0;line-height:1.45}
+
+.sm-plat--fb{background:linear-gradient(135deg,#1877f2,#0c54b9)}
+.sm-plat--ig{background:linear-gradient(135deg,#f58529,#dd2a7b 50%,#8134af 100%)}
+.sm-plat--li{background:linear-gradient(135deg,#0a66c2,#003a73)}
+.sm-plat--x{background:linear-gradient(135deg,#1a1a1a,#000000)}
+.sm-plat--yt{background:linear-gradient(135deg,#ff5057,#c1121f)}
+.sm-plat--tt{background:linear-gradient(135deg,#25f4ee,#0f0f0f 60%,#fe2c55 100%)}
+.sm-plat--th{background:linear-gradient(135deg,#363636,#1a1a1a)}
+.sm-plat--pn{background:linear-gradient(135deg,#e60023,#a8001a)}
+
+/* =========================================================
+   ─── SERVICES  — alternating editorial splits
+   ========================================================= */
+.sm-services{padding: var(--section-y) 0; background: var(--paper)}
+.sm-services__head{text-align:center;margin-bottom:60px}
+.sm-services__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+.sm-services__head p{max-width:58ch;margin:1em auto 0;color:var(--muted)}
+
+.sm-svc{
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 80px);
+  align-items:center;
+  padding: clamp(36px, 5vw, 70px) 0;
+  border-top:1px dashed var(--line);
+}
+.sm-svc:first-of-type{border-top:0}
+.sm-svc--reverse .sm-svc__media{order:-1}
+@media(max-width:880px){
+  .sm-svc{grid-template-columns:1fr;gap:30px}
+  .sm-svc--reverse .sm-svc__media{order:0}
+}
+
+.sm-svc__num{
+  font-family:"JetBrains Mono"; font-size:.86rem; font-weight:600;
+  color:var(--brand); letter-spacing:.08em; display:inline-block; margin-bottom:14px;
+}
+.sm-svc h3{font-size:clamp(1.6rem,1.5vw + 1rem,2.2rem);letter-spacing:-.035em;line-height:1.1;margin:0 0 16px}
+.sm-svc__copy p{font-size:1.04rem;line-height:1.65;color:var(--ink-3);margin:0 0 18px;max-width:46ch}
+.sm-svc__list{list-style:none;padding:0;margin:0;display:grid;gap:10px;max-width:42ch}
+.sm-svc__list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:.96rem;color:var(--ink-2);
+}
+.sm-svc__list li svg{
+  width:20px;height:20px;flex-shrink:0;
+  padding:3px;border-radius:50%;
+  background:rgba(200,16,46,.1);color:var(--brand);
+  border:1px solid rgba(200,16,46,.18);
+}
+
+/* Visual block per service */
+.sm-svc__media{
+  position:relative; aspect-ratio: 5/4;
+  border-radius:24px; overflow:hidden;
+  background: linear-gradient(160deg, var(--paper-2), var(--paper-3));
+  border:1px solid var(--line);
+  display:grid;place-items:center;
+}
+.sm-svc__media-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right, rgba(15,17,26,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15,17,26,.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+}
+.sm-svc__media-orb{
+  position:absolute; width:200px; height:200px; border-radius:50%;
+  filter: blur(40px); opacity:.55;
+}
+.sm-svc__media-orb--a{top:-40px;right:-40px;background:radial-gradient(circle,var(--brand-2),transparent 70%)}
+.sm-svc__media-orb--b{bottom:-40px;left:-40px;background:radial-gradient(circle,var(--accent),transparent 70%)}
+.sm-svc__media-glass{
+  position:relative; z-index:1;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:16px; padding: 20px 24px;
+  box-shadow: 0 24px 60px -16px rgba(15,17,26,.2);
+  min-width: 70%;
+}
+[data-theme="dark"] .sm-svc__media-glass{background:rgba(20,21,30,.85);border-color:rgba(255,255,255,.12)}
+.sm-svc__media-glass b{display:block;font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.sm-svc__media-glass strong{display:block;font-family:"Sora";font-weight:800;font-size:2rem;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.sm-svc__media-glass em{display:block;font-style:normal;color:var(--accent-2);font-size:.8rem;font-weight:600;margin-top:6px;font-family:"JetBrains Mono"}
+.sm-svc__media-glass .bars{display:flex;align-items:flex-end;gap:5px;height:54px;margin-top:14px}
+.sm-svc__media-glass .bars span{
+  flex:1;border-radius:4px 4px 0 0;
+  background:linear-gradient(180deg,var(--brand-2),rgba(200,16,46,.4));
+}
+
+/* =========================================================
+   ─── ZIGZAG PROCESS  — vertical timeline w/ alternating cards
+   ========================================================= */
+.sm-process{padding: var(--section-y) 0; background: var(--paper-2)}
+.sm-process__head{text-align:center;margin-bottom:60px}
+.sm-process__head h2{font-size:var(--fs-h1);max-width:20ch;margin:.4em auto 0}
+.sm-process__head p{max-width:58ch;margin:1em auto 0;color:var(--muted)}
+
+.sm-process__rail{position:relative;display:flex;flex-direction:column;gap:24px}
+.sm-process__rail::before{
+  content:""; position:absolute;
+  top:0;bottom:0; left:50%; width:2px;
+  background: linear-gradient(180deg, transparent 0%, var(--brand) 10%, var(--brand-2) 50%, var(--accent) 90%, transparent 100%);
+  border-radius:999px;
+  transform:translateX(-50%);
+}
+@media(max-width:880px){.sm-process__rail::before{left:24px}}
+
+.sm-pstep{
+  position:relative; display:grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items:center;
+}
+@media(max-width:880px){
+  .sm-pstep{grid-template-columns:80px 1fr;padding-left:0}
+}
+
+.sm-pstep__node{
+  width:60px;height:60px;border-radius:50%;
+  background:var(--paper);
+  border:2px solid var(--brand);
+  color:var(--brand);
+  display:grid;place-items:center;
+  font-family:"Sora";font-weight:800;font-size:1.06rem;
+  position:relative; z-index:1;
+  margin: 0 auto;
+  box-shadow: 0 0 0 6px var(--paper-2), 0 10px 24px -8px rgba(200,16,46,.3);
+  transition: transform .4s var(--ease), background .4s var(--ease), color .4s var(--ease);
+}
+.sm-pstep:hover .sm-pstep__node{
+  transform: scale(1.08);
+  background:var(--brand); color:#fff;
+}
+@media(max-width:880px){.sm-pstep__node{margin:0}}
+
+.sm-pstep__card{
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:18px; padding: 24px 26px;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+}
+.sm-pstep__card:hover{transform:translateY(-4px);box-shadow:0 16px 36px -14px rgba(15,17,26,.15);border-color:rgba(200,16,46,.25)}
+
+.sm-pstep:nth-child(odd) .sm-pstep__card{grid-column:1;text-align:right}
+.sm-pstep:nth-child(even) .sm-pstep__card{grid-column:3}
+.sm-pstep__node{grid-column:2;grid-row:1}
+@media(max-width:880px){
+  .sm-pstep__card,
+  .sm-pstep:nth-child(odd) .sm-pstep__card,
+  .sm-pstep:nth-child(even) .sm-pstep__card{grid-column:2;text-align:left}
+  .sm-pstep__node{grid-column:1;grid-row:1}
+}
+
+.sm-pstep__card em{
+  display:inline-block; font-style:normal;
+  color:var(--brand); font-weight:600; font-size:.78rem;
+  font-family:"JetBrains Mono"; letter-spacing:.08em;
+  margin-bottom:8px;
+}
+.sm-pstep__card h4{font-size:1.18rem;margin:0 0 8px;letter-spacing:-.015em}
+.sm-pstep__card p{font-size:.96rem;color:var(--ink-3);margin:0;line-height:1.55}
+
+/* =========================================================
+   ─── COMPARISON  — Old vs New
+   ========================================================= */
+.sm-compare{padding: var(--section-y) 0; background: var(--paper)}
+.sm-compare__head{text-align:center;margin-bottom:48px}
+.sm-compare__head h2{font-size:var(--fs-h1);max-width:22ch;margin:.4em auto 0}
+
+.sm-compare__grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+}
+@media(max-width:780px){.sm-compare__grid{grid-template-columns:1fr}}
+.sm-compare__col{
+  padding: clamp(28px, 4vw, 44px);
+  border-radius:22px;
+}
+.sm-compare__col--old{
+  background:var(--paper-2);
+  border:1px dashed var(--line);
+}
+.sm-compare__col--new{
+  background: linear-gradient(160deg, #0b0b14 0%, #1a0e16 100%);
+  color:#fff;
+  position:relative; overflow:hidden;
+}
+.sm-compare__col--new::after{
+  content:""; position:absolute; top:-80px;right:-80px;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,59,92,.3), transparent 70%);
+  filter:blur(40px); pointer-events:none;
+}
+.sm-compare__pill{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:999px;
+  font-size:.78rem;font-weight:600; letter-spacing:.04em;
+  margin-bottom:18px;
+}
+.sm-compare__col--old .sm-compare__pill{background:var(--paper-3);color:var(--muted)}
+.sm-compare__col--new .sm-compare__pill{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.16)}
+.sm-compare h3{font-size:1.5rem;margin:0 0 22px;letter-spacing:-.02em}
+.sm-compare__col--new h3{color:#fff}
+.sm-compare ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.sm-compare li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:.98rem;line-height:1.5;
+}
+.sm-compare__col--old li{color:var(--ink-3)}
+.sm-compare__col--new li{color:rgba(255,255,255,.86)}
+.sm-compare li svg{
+  width:22px;height:22px;flex-shrink:0;
+  padding:4px;border-radius:50%; margin-top:1px;
+}
+.sm-compare__col--old li svg{background:rgba(15,17,26,.08);color:var(--muted)}
+.sm-compare__col--new li svg{background:rgba(48,209,88,.18);color:#7ddca0;border:1px solid rgba(48,209,88,.32)}
+
+/* =========================================================
+   ─── INDUSTRIES  — horizontal scroll chips
+   ========================================================= */
+.sm-industries{padding: var(--section-y) 0; background: var(--paper-2); overflow:hidden}
+.sm-industries__head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:36px}
+.sm-industries__head h2{font-size:var(--fs-h1);max-width:18ch;margin:.4em 0 0}
+.sm-industries__head p{color:var(--muted);max-width:42ch;margin:0;font-size:1rem}
+
+.sm-industries__rail{
+  display:flex; gap:14px;
+  padding: 4px 0 24px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+.sm-industries__rail::-webkit-scrollbar{height:6px}
+.sm-industries__rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+.sm-industry{
+  scroll-snap-align:start;
+  flex: 0 0 260px;
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:18px; padding: 22px 22px;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .4s;
+}
+.sm-industry:hover{transform:translateY(-4px);box-shadow:0 14px 34px -14px rgba(15,17,26,.14);border-color:rgba(200,16,46,.3);background:var(--paper)}
+.sm-industry__icon{
+  width:42px; height:42px; border-radius:12px;
+  display:grid;place-items:center; margin-bottom:14px;
+  color:#fff;
+}
+.sm-industry__icon--red{background:linear-gradient(135deg,#ff5872,#c8102e)}
+.sm-industry__icon--blue{background:linear-gradient(135deg,#5b9eff,#2563eb)}
+.sm-industry__icon--green{background:linear-gradient(135deg,#5cd97e,#16a34a)}
+.sm-industry__icon--purple{background:linear-gradient(135deg,#b985ff,#8b5cf6)}
+.sm-industry__icon--orange{background:linear-gradient(135deg,#ff8c42,#ff5e1a)}
+.sm-industry__icon--teal{background:linear-gradient(135deg,#5dd5cc,#2bb3aa)}
+.sm-industry__icon--pink{background:linear-gradient(135deg,#ff8fbf,#ec4899)}
+.sm-industry__icon--yellow{background:linear-gradient(135deg,#ffcf5c,#e8a93c);color:#5a3d00}
+.sm-industry__icon svg{width:20px;height:20px}
+.sm-industry h4{font-size:1.04rem;margin:0 0 4px;letter-spacing:-.015em}
+.sm-industry p{font-size:.88rem;color:var(--muted);margin:0;line-height:1.45}
+
+/* =========================================================
+   ─── WHY US ACCORDION
+   ========================================================= */
+.sm-why{padding: var(--section-y) 0; background: var(--paper)}
+.sm-why__inner{
+  display:grid; grid-template-columns: minmax(0, .9fr) minmax(0,1.4fr);
+  gap: clamp(36px, 5vw, 80px); align-items:start;
+}
+@media(max-width:980px){.sm-why__inner{grid-template-columns:1fr}}
+.sm-why__sticky{position:sticky; top: calc(var(--nav-h) + 24px)}
+@media(max-width:980px){.sm-why__sticky{position:static}}
+.sm-why__sticky h2{font-size:var(--fs-h1);max-width:14ch;margin:.3em 0;letter-spacing:-.035em}
+.sm-why__sticky p{color:var(--ink-3);font-size:1.04rem;line-height:1.65;max-width:40ch}
+
+.sm-accordion{display:flex;flex-direction:column;gap:10px}
+.sm-acc-item{
+  background:var(--paper-2); border:1px solid var(--line);
+  border-radius:16px; overflow:hidden;
+  transition: border-color .35s, background .35s;
+}
+.sm-acc-item.is-open{border-color:rgba(200,16,46,.35); background: var(--paper)}
+.sm-acc-item__btn{
+  width:100%; padding: 22px 26px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; text-align:left; cursor:pointer;
+  font-size:1.08rem; font-weight:700;
+  color:var(--ink); letter-spacing:-.01em;
+}
+.sm-acc-item__btn span{display:flex;align-items:center;gap:14px}
+.sm-acc-item__num{
+  font-family:"JetBrains Mono";font-weight:600;
+  font-size:.86rem; color:var(--brand);
+  letter-spacing:.06em;
+  width:34px;
+}
+.sm-acc-item__toggle{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--paper); border:1px solid var(--line);
+  display:grid;place-items:center; flex-shrink:0;
+  transition: background .3s, border-color .3s, transform .35s var(--ease);
+}
+.sm-acc-item__toggle svg{width:14px;height:14px;color:var(--ink-3);transition:transform .35s var(--ease)}
+.sm-acc-item.is-open .sm-acc-item__toggle{background:var(--brand);border-color:var(--brand)}
+.sm-acc-item.is-open .sm-acc-item__toggle svg{color:#fff;transform:rotate(180deg)}
+.sm-acc-item__panel{
+  display:grid; grid-template-rows: 0fr;
+  transition: grid-template-rows .45s var(--ease-out);
+}
+.sm-acc-item.is-open .sm-acc-item__panel{grid-template-rows:1fr}
+.sm-acc-item__panel > div{overflow:hidden}
+.sm-acc-item__panel p{
+  padding: 0 26px 24px;
+  margin:0; color:var(--ink-3); font-size:.98rem; line-height:1.7;
+  max-width:60ch;
+}
+
+/* =========================================================
+   ─── BIG QUOTE  — editorial spotlight
+   ========================================================= */
+.sm-quote{
+  padding: var(--section-y) 0;
+  background: linear-gradient(160deg, #0b0b14 0%, #15121d 60%, #1a0e16 100%);
+  color:#fff; overflow:hidden; position:relative;
+}
+.sm-quote::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+  pointer-events:none;
+}
+.sm-quote::after{
+  content:""; position:absolute;
+  top:-150px;right:-100px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,59,92,.4), transparent 70%);
+  filter:blur(60px); pointer-events:none;
+}
+.sm-quote__inner{position:relative;z-index:1;text-align:center;max-width:880px;margin:0 auto}
+.sm-quote__mark{
+  font-family:"Sora"; font-weight:800;
+  font-size: clamp(6rem, 12vw, 12rem);
+  line-height:.5; color:var(--brand-2);
+  display:block; margin-bottom:-20px;
+}
+.sm-quote__body{
+  font-family:"Sora"; font-weight:500;
+  font-size: clamp(1.5rem, 2.2vw + 1rem, 2.8rem);
+  letter-spacing:-.025em; line-height:1.25;
+  color:#fff; margin:0 0 38px;
+}
+.sm-quote__author{display:inline-flex;align-items:center;gap:14px}
+.sm-quote__avatar{
+  width:54px;height:54px;border-radius:50%;
+  background:linear-gradient(135deg, var(--brand-2), var(--brand));
+  display:grid;place-items:center; color:#fff;
+  font-weight:700; font-family:"Sora"; font-size:1.04rem;
+}
+.sm-quote__author b{display:block;font-size:1.04rem;color:#fff;text-align:left}
+.sm-quote__author span{display:block;font-size:.9rem;color:rgba(255,255,255,.6);text-align:left}
+
+/* =========================================================
+   ─── FINAL CTA
+   ========================================================= */
+.sm-cta{padding: clamp(60px,8vw,120px) 0; background:var(--paper)}
+.sm-cta__shell{
+  position:relative;
+  background: linear-gradient(135deg, var(--brand) 0%, #8a0e23 60%, #1a1b22 100%);
+  border-radius:clamp(24px,3vw,36px);
+  padding: clamp(40px,6vw,80px) clamp(28px,5vw,72px);
+  margin: 0 var(--gutter);
+  color:#fff; overflow:hidden;
+  text-align:center;
+}
+.sm-cta__shell::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(255,255,255,.16), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(255,255,255,.08), transparent 40%);
+  pointer-events:none;
+}
+.sm-cta__shell::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 80%);
+  pointer-events:none;
+}
+.sm-cta__shell > *{position:relative;z-index:1}
+.sm-cta h2{color:#fff;font-size:var(--fs-h1);max-width:22ch;margin:.2em auto;letter-spacing:-.035em}
+.sm-cta p{color:rgba(255,255,255,.84);max-width:60ch;margin:.5em auto 30px;font-size:1.06rem}
+.sm-cta__actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+/* Footer (compact reuse) */
+.footer{
+  margin-top:var(--section-y); position:relative;
+  background:
+    radial-gradient(900px 360px at 85% 0%, rgba(200,16,46,.18), transparent 60%),
+    linear-gradient(180deg, #0c0d14 0%, #08090f 100%);
+  color:rgba(255,255,255,.72); padding:0 0 24px;
+}
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding:72px 0 40px}
+@media(max-width:780px){.footer__grid{grid-template-columns:1fr 1fr;gap:36px;padding:56px 0 32px}}
+@media(max-width:480px){.footer__grid{grid-template-columns:1fr}}
+.footer__brand .brand img{height:44px;filter:brightness(0) invert(1)}
+.footer__brand p{color:rgba(255,255,255,.62);font-size:.95rem;margin-top:14px;max-width:38ch;line-height:1.6}
+.footer h4{color:rgba(255,255,255,.78);font-family:"JetBrains Mono",monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-weight:500}
+.footer h4::before{content:"";width:14px;height:1px;background:var(--brand-2)}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer ul a{color:rgba(255,255,255,.68);font-size:.95rem;transition:color .25s,padding .25s}
+.footer ul a:hover{color:#fff;padding-left:6px}
+.footer__sub{border-top:1px solid rgba(255,255,255,.08);padding:22px 0 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.55)}
+.footer__legal{display:flex;gap:20px;flex-wrap:wrap}
+.footer__legal a{color:rgba(255,255,255,.6)}.footer__legal a:hover{color:#fff}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal--delay-1{transition-delay:.08s}
+.reveal--delay-2{transition-delay:.16s}
+.reveal--delay-3{transition-delay:.24s}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="brand" aria-label="MCKBytes home">
+      <img src="img/LOGO/logo.png" alt="MCKBytes logo">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <div class="nav__item"><button class="nav__link is-active"><span>Digital Marketing</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Design</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Production</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Technology</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+      <div class="nav__item"><button class="nav__link"><span>Resources</span><svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button></div>
+    </nav>
+    <div class="nav__cta">
+      <a href="#cta" class="btn btn--primary">Get Quote</a>
+      <button class="nav__menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────────── HERO ─────────── -->
+<section class="sm-hero">
+  <div class="sm-hero__bg"></div>
+  <div class="container sm-hero__inner">
+    <div>
+      <span class="sm-hero__chip reveal">
+        <i>✦</i>
+        Social media marketing, done right.
+      </span>
+      <h1 class="reveal reveal--delay-1">
+        Turn scrolling into <em>spending.</em>
+      </h1>
+      <p class="sm-hero__lead reveal reveal--delay-2">
+        We don't post for likes — we post to build pipelines. MCKBytes runs full-funnel social media marketing for brands that want measurable revenue from every platform, every post, every comment.
+      </p>
+      <div class="sm-hero__cta reveal reveal--delay-2">
+        <a href="#cta" class="btn btn--primary">Start a project <span class="arrow">→</span></a>
+        <a href="#process" class="btn btn--ghost">See our process</a>
+      </div>
+      <div class="sm-hero__strip reveal reveal--delay-3">
+        <div class="sm-hero__strip-avatars">
+          <span>AR</span>
+          <span style="background:linear-gradient(135deg,#0a84ff,#1a1b22)">DK</span>
+          <span style="background:linear-gradient(135deg,#30d158,#1a1b22)">SP</span>
+          <span style="background:linear-gradient(135deg,#b985ff,#8b5cf6)">+</span>
+        </div>
+        <div class="sm-hero__strip-text">
+          <b>320+ brands managed</b>
+          <span>D2C · SaaS · Finance · Lifestyle · Hospitality</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone stage -->
+    <div class="sm-phone-stage reveal reveal--delay-2" aria-hidden="true">
+      <div class="sm-phone">
+        <span class="sm-phone__notch"></span>
+        <div class="sm-phone__screen">
+          <div class="sm-post">
+            <div class="sm-post__head">
+              <div class="sm-post__avatar">M</div>
+              <div>
+                <b>mckbytes</b>
+                <span>2h · Sponsored</span>
+              </div>
+            </div>
+            <div class="sm-post__body"></div>
+            <div class="sm-post__actions">
+              <span class="sm-post__action"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 6.5-7 11-7 11z"/></svg> 12.4k</span>
+              <span class="sm-post__action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3.3-6.95L21 6"/></svg> 842</span>
+              <span class="sm-post__action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg> 1.2k</span>
+            </div>
+          </div>
+          <div class="sm-post">
+            <div class="sm-post__head">
+              <div class="sm-post__avatar" style="background:linear-gradient(135deg,#0a84ff,#22d3ee)">A</div>
+              <div>
+                <b>atlas.bank</b>
+                <span>6h · Reel</span>
+              </div>
+            </div>
+            <div class="sm-post__body sm-post__body--blue"></div>
+            <div class="sm-post__actions">
+              <span class="sm-post__action"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 6.5-7 11-7 11z"/></svg> 28k</span>
+              <span class="sm-post__action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3.3-6.95L21 6"/></svg> 1.4k</span>
+            </div>
+          </div>
+          <div class="sm-post">
+            <div class="sm-post__head">
+              <div class="sm-post__avatar" style="background:linear-gradient(135deg,#30d158,#0a84ff)">N</div>
+              <div>
+                <b>nimbus.ai</b>
+                <span>1d · Carousel</span>
+              </div>
+            </div>
+            <div class="sm-post__body sm-post__body--green"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating notifications -->
+      <div class="sm-notif sm-notif--like">
+        <span class="sm-notif__icon sm-notif__icon--pink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 6.5-7 11-7 11z"/></svg></span>
+        <div>
+          <b>+248 likes</b>
+          <span>in last 5 minutes</span>
+        </div>
+      </div>
+      <div class="sm-notif sm-notif--comment">
+        <span class="sm-notif__icon sm-notif__icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3.3-6.95L21 6"/></svg></span>
+        <div>
+          <b>Reply in 12 min</b>
+          <span>Community team is live</span>
+        </div>
+      </div>
+      <div class="sm-notif sm-notif--share">
+        <span class="sm-notif__icon sm-notif__icon--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg></span>
+        <div>
+          <b>+38% reach</b>
+          <span>vs. last 30 days</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── TICKER ─────────── -->
+<section class="sm-ticker" aria-label="Highlights">
+  <div class="sm-ticker__track">
+    <div class="sm-ticker__item"><b>50M+</b><span>impressions delivered</span></div>
+    <div class="sm-ticker__item"><b>4.2×</b><span>avg. engagement lift</span></div>
+    <div class="sm-ticker__item"><b>320+</b><span>brands managed</span></div>
+    <div class="sm-ticker__item"><b>24 / 7</b><span>community ops</span></div>
+    <div class="sm-ticker__item"><b>8</b><span>platforms covered</span></div>
+    <div class="sm-ticker__item"><b>4.9 / 5</b><span>client rating</span></div>
+    <div class="sm-ticker__item"><b>50M+</b><span>impressions delivered</span></div>
+    <div class="sm-ticker__item"><b>4.2×</b><span>avg. engagement lift</span></div>
+    <div class="sm-ticker__item"><b>320+</b><span>brands managed</span></div>
+    <div class="sm-ticker__item"><b>24 / 7</b><span>community ops</span></div>
+    <div class="sm-ticker__item"><b>8</b><span>platforms covered</span></div>
+    <div class="sm-ticker__item"><b>4.9 / 5</b><span>client rating</span></div>
+  </div>
+</section>
+
+<!-- ─────────── MANIFESTO ─────────── -->
+<section class="sm-manifesto">
+  <div class="container sm-manifesto__inner">
+    <div class="reveal">
+      <span class="eyebrow">Our point of view</span>
+      <h2>Social isn't a megaphone — it's a <b>relationship.</b></h2>
+    </div>
+    <div class="sm-manifesto__body reveal reveal--delay-1">
+      <p>Most agencies treat social media like a billboard — schedule a calendar, push some pixels, count vanity metrics. We think that's a waste of your audience's attention. Social media is where buyers form opinions about your brand, ask their hardest questions, and decide whether you're worth their money.</p>
+      <p>At MCKBytes, every post we publish has a job: build trust, drive recall, or close revenue. Our creators, strategists and community ops team work as one unit — so your social presence sounds like one consistent voice, even at scale. The result is a feed that actually compounds over time, instead of restarting every quarter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PLATFORMS ─────────── -->
+<section class="sm-platforms">
+  <div class="container">
+    <header class="sm-platforms__head reveal">
+      <span class="eyebrow">Where we work</span>
+      <h2>Native expertise on every major platform.</h2>
+      <p>Algorithms differ. Audiences differ. Creative differs. We don't run one strategy across eight platforms — we run eight native strategies tuned to each.</p>
+    </header>
+
+    <div class="sm-platforms-grid">
+      <div class="sm-plat sm-plat--ig reveal">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+        <div>
+          <h3>Instagram</h3>
+          <p>Reels, carousels, creator collabs, shop integration.</p>
+        </div>
+      </div>
+      <div class="sm-plat sm-plat--li reveal reveal--delay-1">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.16 4.16 0 0 1 3.74-2.05c4 0 4.74 2.63 4.74 6.06V21h-4v-5.27c0-1.26-.02-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.79V21h-4V9Z"/></svg></div>
+        <div>
+          <h3>LinkedIn</h3>
+          <p>Thought leadership, employer brand, ABM-grade ads.</p>
+        </div>
+      </div>
+      <div class="sm-plat sm-plat--tt reveal reveal--delay-2">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.93a8.16 8.16 0 0 0 4.77 1.52V7a4.85 4.85 0 0 1-1.84-.31Z"/></svg></div>
+        <div>
+          <h3>TikTok</h3>
+          <p>Short-form storytelling, creator partnerships, virality.</p>
+        </div>
+      </div>
+      <div class="sm-plat sm-plat--yt reveal reveal--delay-3">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.5-5.2c-.3-1-1-1.7-2-2C18.8 4.5 12 4.5 12 4.5s-6.8 0-8.5.3c-1 .3-1.7 1-2 2C1 8.5 1 12 1 12s0 3.5.5 5.2c.3 1 1 1.7 2 2 1.7.3 8.5.3 8.5.3s6.8 0 8.5-.3c1-.3 1.7-1 2-2 .5-1.7.5-5.2.5-5.2zM10 15.5v-7l6 3.5-6 3.5z"/></svg></div>
+        <div>
+          <h3>YouTube</h3>
+          <p>Long-form, Shorts, SEO-optimised channel growth.</p>
+        </div>
+      </div>
+      <div class="sm-plat sm-plat--fb reveal">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-7H8v-2.88h2.44V9.85c0-2.41 1.43-3.74 3.62-3.74 1.05 0 2.15.19 2.15.19v2.36h-1.21c-1.19 0-1.56.74-1.56 1.5v1.8h2.66l-.43 2.88h-2.23v7A10 10 0 0 0 22 12z"/></svg></div>
+        <div>
+          <h3>Facebook</h3>
+          <p>Community groups, paid social, retargeting at scale.</p>
+        </div>
+      </div>
+      <div class="sm-plat sm-plat--x reveal reveal--delay-1">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.52 7.45L22 22h-6.83l-4.78-6.27L4.8 22H2l7-8L1.5 2h6.97l4.32 5.71L18.244 2Z"/></svg></div>
+        <div>
+          <h3>X / Twitter</h3>
+          <p>Real-time relevance, threads, brand newsroom.</p>
+        </div>
+      </div>
+      <div class="sm-plat sm-plat--pn reveal reveal--delay-2">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.2 9.3-.1-.8-.2-2 0-2.9.2-.7 1-4.5 1-4.5s-.3-.5-.3-1.3c0-1.2.7-2.1 1.6-2.1.8 0 1.1.6 1.1 1.3 0 .8-.5 2-.8 3.1-.2 1 .5 1.7 1.4 1.7 1.7 0 3.1-1.8 3.1-4.4 0-2.3-1.7-3.9-4-3.9-2.8 0-4.4 2.1-4.4 4.2 0 .8.3 1.7.7 2.2.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2-2.5-2-4 0-3.2 2.4-6.2 6.8-6.2 3.6 0 6.4 2.6 6.4 6 0 3.6-2.3 6.5-5.4 6.5-1 0-2-.5-2.4-1.2 0 0-.5 2-.7 2.5-.3 1-1 2.3-1.4 3.1.9.3 1.9.4 2.9.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></div>
+        <div>
+          <h3>Pinterest</h3>
+          <p>Visual discovery, evergreen pins, commerce intent.</p>
+        </div>
+      </div>
+      <div class="sm-plat sm-plat--th reveal reveal--delay-3">
+        <div class="sm-plat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm3.5 13c-1 1.5-3 2-4.5 1.2-1.5-.8-2.5-3-2.5-5.2 0-2.5 1.5-4.5 3.5-4.5s3.5 2 3.5 4.5"/></svg></div>
+        <div>
+          <h3>Threads</h3>
+          <p>Conversational presence, community building, IG-linked growth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SERVICES (alternating splits) ─────────── -->
+<section class="sm-services" id="services">
+  <div class="container">
+    <header class="sm-services__head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Eight services. One unified social engine.</h2>
+      <p>From audit to attribution, every layer of your social presence is owned by senior specialists working in lockstep.</p>
+    </header>
+
+    <!-- Service 01 -->
+    <article class="sm-svc reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">01 / Strategy</span>
+        <h3>Social strategy &amp; brand positioning.</h3>
+        <p>We start with a market audit, a competitive scan, and an audience deep-dive. From there we build a positioning playbook: voice, pillars, audience segments, and the metrics that prove the strategy works.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Audit, listening, competitive benchmarking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Voice, pillars, audience segments</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>KPI &amp; measurement framework</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--a"></div>
+        <div class="sm-svc__media-glass">
+          <b>Audience clusters</b>
+          <strong>6 segments</strong>
+          <em>↑ 2.4× engagement</em>
+          <div class="bars">
+            <span style="height:42%"></span>
+            <span style="height:68%"></span>
+            <span style="height:55%"></span>
+            <span style="height:88%"></span>
+            <span style="height:72%"></span>
+            <span style="height:96%"></span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Service 02 reverse -->
+    <article class="sm-svc sm-svc--reverse reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">02 / Creative</span>
+        <h3>Content production &amp; creative studio.</h3>
+        <p>An in-house studio shoots, edits, designs and writes — so you get scroll-stopping creative without the agency lag. Every asset is platform-native: vertical, captioned, optimised for each algorithm.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Reels, Shorts, TikToks, carousels</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Studio photography &amp; on-location shoots</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Brand voice copy &amp; caption library</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--b"></div>
+        <div class="sm-svc__media-glass">
+          <b>Content velocity</b>
+          <strong>120 / mo</strong>
+          <em>across 4 channels</em>
+          <div class="bars">
+            <span style="height:62%"></span>
+            <span style="height:78%"></span>
+            <span style="height:55%"></span>
+            <span style="height:90%"></span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Service 03 -->
+    <article class="sm-svc reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">03 / Community</span>
+        <h3>Community management &amp; customer care.</h3>
+        <p>Real humans, in your tone, replying within minutes. We run inbox, comment moderation, escalation flows, and proactive engagement — so your audience feels heard, not ignored.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Live community ops, 7 days a week</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Inbox triage, escalation, sentiment alerts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Proactive engagement &amp; UGC sourcing</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--a"></div>
+        <div class="sm-svc__media-glass">
+          <b>Avg. response time</b>
+          <strong>12 min</strong>
+          <em>↓ from 6 hours</em>
+        </div>
+      </div>
+    </article>
+
+    <!-- Service 04 reverse -->
+    <article class="sm-svc sm-svc--reverse reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">04 / Paid Social</span>
+        <h3>Paid social advertising.</h3>
+        <p>Full-funnel paid social across Meta, TikTok, LinkedIn and X. Creative testing, audience modelling, conversion tracking — built to deliver predictable CPA and scaled ROAS month over month.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Creative testing &amp; iteration loops</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Lookalike &amp; custom audiences</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Pixel + server-side attribution</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--b"></div>
+        <div class="sm-svc__media-glass">
+          <b>ROAS — Q3</b>
+          <strong>4.8×</strong>
+          <em>↑ 38% vs prior</em>
+          <div class="bars">
+            <span style="height:48%"></span>
+            <span style="height:62%"></span>
+            <span style="height:78%"></span>
+            <span style="height:96%"></span>
+            <span style="height:88%"></span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Service 05 -->
+    <article class="sm-svc reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">05 / Influencer</span>
+        <h3>Influencer &amp; creator partnerships.</h3>
+        <p>From micro-creators with tight communities to high-reach personalities, we source, brief and manage partnerships that perform — measured on conversion, not just impressions.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Discovery, vetting, contracts, briefs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Whitelisting &amp; spark code amplification</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Performance tracked to revenue</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--a"></div>
+        <div class="sm-svc__media-glass">
+          <b>Creator network</b>
+          <strong>240+ vetted</strong>
+          <em>across 12 verticals</em>
+        </div>
+      </div>
+    </article>
+
+    <!-- Service 06 reverse -->
+    <article class="sm-svc sm-svc--reverse reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">06 / Commerce</span>
+        <h3>Social commerce &amp; shoppable content.</h3>
+        <p>We turn your feed into a storefront. Product catalogs, shoppable posts, livestream commerce, and post-purchase retargeting — every touchpoint engineered to convert.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Catalog &amp; shop setup across IG, FB, TikTok</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Livestream &amp; shoppable Reels</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Cross-channel cart attribution</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--b"></div>
+        <div class="sm-svc__media-glass">
+          <b>Social-attributed revenue</b>
+          <strong>₹18 Cr</strong>
+          <em>last 12 months</em>
+        </div>
+      </div>
+    </article>
+
+    <!-- Service 07 -->
+    <article class="sm-svc reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">07 / Analytics</span>
+        <h3>Analytics, listening &amp; reporting.</h3>
+        <p>Live dashboards, weekly insights, monthly executive reviews. Social listening tools flag sentiment shifts the moment they happen, so you stay ahead of every conversation.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Live cross-channel dashboards</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sentiment &amp; share-of-voice tracking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Monthly insights review with senior leads</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--a"></div>
+        <div class="sm-svc__media-glass">
+          <b>Mentions tracked</b>
+          <strong>14k / mo</strong>
+          <em>89% positive sentiment</em>
+        </div>
+      </div>
+    </article>
+
+    <!-- Service 08 reverse -->
+    <article class="sm-svc sm-svc--reverse reveal">
+      <div class="sm-svc__copy">
+        <span class="sm-svc__num">08 / Crisis</span>
+        <h3>Crisis &amp; reputation management.</h3>
+        <p>When things go sideways online, every minute matters. We build crisis playbooks before you need them, monitor 24/7, and run real-time response when sentiment shifts.</p>
+        <ul class="sm-svc__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Pre-built crisis playbooks &amp; comms drafts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>24/7 monitoring &amp; alerts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sentiment recovery campaigns</li>
+        </ul>
+      </div>
+      <div class="sm-svc__media">
+        <div class="sm-svc__media-grid"></div>
+        <div class="sm-svc__media-orb sm-svc__media-orb--b"></div>
+        <div class="sm-svc__media-glass">
+          <b>Response window</b>
+          <strong>&lt; 15 min</strong>
+          <em>SLA, every channel</em>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─────────── PROCESS — vertical zigzag ─────────── -->
+<section class="sm-process" id="process">
+  <div class="container">
+    <header class="sm-process__head reveal">
+      <span class="eyebrow">Our 6-step process</span>
+      <h2>From listening to scaling — predictable, transparent, fast.</h2>
+      <p>Every engagement follows the same six-step loop. We share what's happening at every step, no black-box reports, no surprise pivots.</p>
+    </header>
+
+    <div class="sm-process__rail">
+
+      <div class="sm-pstep reveal">
+        <div class="sm-pstep__card">
+          <em>WEEK 1</em>
+          <h4>01. Listen</h4>
+          <p>Audit your social presence, analyse competitors, listen to your audience. We surface the conversations you're missing and the gaps you can own.</p>
+        </div>
+        <div class="sm-pstep__node">01</div>
+      </div>
+
+      <div class="sm-pstep reveal">
+        <div class="sm-pstep__card">
+          <em>WEEK 1–2</em>
+          <h4>02. Strategy</h4>
+          <p>A complete strategy doc — positioning, voice, content pillars, KPIs, channel mix. Approved by your team before we touch a single post.</p>
+        </div>
+        <div class="sm-pstep__node">02</div>
+      </div>
+
+      <div class="sm-pstep reveal">
+        <div class="sm-pstep__card">
+          <em>WEEK 2–4</em>
+          <h4>03. Create</h4>
+          <p>Our in-house studio shoots, edits, designs. Reels, carousels, shorts, photography — all platform-native, all on-brand, ready to publish.</p>
+        </div>
+        <div class="sm-pstep__node">03</div>
+      </div>
+
+      <div class="sm-pstep reveal">
+        <div class="sm-pstep__card">
+          <em>ONGOING</em>
+          <h4>04. Distribute</h4>
+          <p>Calendar-driven publishing across organic and paid, optimised for each platform's algorithm. Spend follows performance, not gut feel.</p>
+        </div>
+        <div class="sm-pstep__node">04</div>
+      </div>
+
+      <div class="sm-pstep reveal">
+        <div class="sm-pstep__card">
+          <em>ONGOING</em>
+          <h4>05. Engage</h4>
+          <p>Live community ops, real humans replying in minutes. Inbox triage, escalation flows, proactive engagement — your audience never waits.</p>
+        </div>
+        <div class="sm-pstep__node">05</div>
+      </div>
+
+      <div class="sm-pstep reveal">
+        <div class="sm-pstep__card">
+          <em>WEEKLY + MONTHLY</em>
+          <h4>06. Measure</h4>
+          <p>Live dashboards, weekly insights, monthly executive reviews. We share what worked, what didn't, and what we'd do differently next.</p>
+        </div>
+        <div class="sm-pstep__node">06</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── OLD vs NEW ─────────── -->
+<section class="sm-compare">
+  <div class="container">
+    <header class="sm-compare__head reveal">
+      <span class="eyebrow">The difference</span>
+      <h2>Most agencies post on social. We engineer it.</h2>
+    </header>
+
+    <div class="sm-compare__grid">
+      <div class="sm-compare__col sm-compare__col--old reveal">
+        <span class="sm-compare__pill">Most agencies</span>
+        <h3>Calendar + post + report.</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Generic templates recycled across clients</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Junior account managers, monthly check-ins</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Vanity metrics — likes, follower counts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Delayed responses, ticket-style support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>One strategy duplicated across all platforms</li>
+        </ul>
+      </div>
+      <div class="sm-compare__col sm-compare__col--new reveal reveal--delay-1">
+        <span class="sm-compare__pill">MCKBytes</span>
+        <h3>Engineered for outcomes.</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Custom creative built around your brand voice</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Senior strategist + creator on every account</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Outcome metrics — pipeline, revenue, CAC</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Real humans, in your tone, replying in &lt; 15 min</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Eight native strategies, eight native voices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── INDUSTRIES — horizontal scroll ─────────── -->
+<section class="sm-industries">
+  <div class="container">
+    <header class="sm-industries__head reveal">
+      <div>
+        <span class="eyebrow">Industries we serve</span>
+        <h2>Trusted across nine industries.</h2>
+      </div>
+      <p>Scroll to explore — our playbooks are tuned to each industry's audience, compliance and conversion patterns.</p>
+    </header>
+
+    <div class="sm-industries__rail reveal" tabindex="0">
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M3 3h3l2.5 12h11l1.5-9H6"/></svg></div>
+        <h4>D2C &amp; E-commerce</h4>
+        <p>Shoppable feeds, retargeting, social commerce, creator-led sales.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div>
+        <h4>SaaS &amp; Tech</h4>
+        <p>Thought leadership, demand gen, founder content, LinkedIn engines.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h4>Healthcare</h4>
+        <p>Trust-first storytelling, doctor-led content, compliance-aware.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg></div>
+        <h4>Fintech</h4>
+        <p>Education-led growth, compliance-safe creative, conversion ads.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l9-5 9 5v14"/><path d="M9 21V12h6v9"/></svg></div>
+        <h4>Hospitality</h4>
+        <p>Destination storytelling, UGC engines, booking-driver campaigns.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11v6c0 2 4 3 6 3s6-1 6-3v-6"/></svg></div>
+        <h4>Education</h4>
+        <p>Student-creator content, parent trust-building, admissions funnels.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Lifestyle &amp; Beauty</h4>
+        <p>Trend-led Reels, creator drops, viral product launches.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+        <h4>Real Estate</h4>
+        <p>Property walk-throughs, neighbourhood content, lead capture flows.</p>
+      </div>
+      <div class="sm-industry">
+        <div class="sm-industry__icon sm-industry__icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg></div>
+        <h4>B2B Services</h4>
+        <p>LinkedIn-first programs, account-based social, sales enablement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── WHY US — Accordion ─────────── -->
+<section class="sm-why">
+  <div class="container sm-why__inner">
+    <div class="sm-why__sticky reveal">
+      <span class="eyebrow">Why MCKBytes</span>
+      <h2>The reasons brands stay with us for years.</h2>
+      <p>We're not a posting agency — we're a growth partner. Here's what makes the difference, in five points.</p>
+    </div>
+
+    <div class="sm-accordion">
+      <div class="sm-acc-item is-open" data-acc>
+        <button class="sm-acc-item__btn" type="button">
+          <span><i class="sm-acc-item__num">01</i>Senior creator + strategist on every account.</span>
+          <span class="sm-acc-item__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+        </button>
+        <div class="sm-acc-item__panel">
+          <div>
+            <p>Every engagement is led by a senior content strategist paired with a principal creator. No juniors learning on your brand. Your point of contact is always someone who's shipped social work at scale across multiple industries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm-acc-item" data-acc>
+        <button class="sm-acc-item__btn" type="button">
+          <span><i class="sm-acc-item__num">02</i>We make the content — not just the calendar.</span>
+          <span class="sm-acc-item__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+        </button>
+        <div class="sm-acc-item__panel">
+          <div>
+            <p>We have a full in-house production studio — photographers, videographers, editors, designers, and copywriters all under one roof. That means scroll-stopping creative without the typical agency lag of outsourcing every asset.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm-acc-item" data-acc>
+        <button class="sm-acc-item__btn" type="button">
+          <span><i class="sm-acc-item__num">03</i>Real-time community ops, 7 days a week.</span>
+          <span class="sm-acc-item__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+        </button>
+        <div class="sm-acc-item__panel">
+          <div>
+            <p>Our community team replies in under 15 minutes — in your brand's voice — across every channel. Inbox triage, sentiment monitoring, escalation flows, proactive engagement — your audience never feels ignored.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm-acc-item" data-acc>
+        <button class="sm-acc-item__btn" type="button">
+          <span><i class="sm-acc-item__num">04</i>Native to platform algorithms.</span>
+          <span class="sm-acc-item__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+        </button>
+        <div class="sm-acc-item__panel">
+          <div>
+            <p>Each platform has its own audience and its own algorithm. We don't run one strategy across eight platforms — we run eight native strategies. Reels look like Reels, LinkedIn posts read like LinkedIn, TikTok feels like TikTok.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm-acc-item" data-acc>
+        <button class="sm-acc-item__btn" type="button">
+          <span><i class="sm-acc-item__num">05</i>Measurable outcomes, not vanity metrics.</span>
+          <span class="sm-acc-item__toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></span>
+        </button>
+        <div class="sm-acc-item__panel">
+          <div>
+            <p>We measure social against pipeline, revenue and CAC — not follower counts. Live dashboards track every metric that matters, and our monthly reviews always start with the same question: "What did we move on the business?"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BIG QUOTE ─────────── -->
+<section class="sm-quote">
+  <div class="container">
+    <div class="sm-quote__inner reveal">
+      <span class="sm-quote__mark">"</span>
+      <blockquote class="sm-quote__body">
+        Within a quarter, MCKBytes turned our dormant Instagram into our second-largest revenue channel. The team didn't just post — they built a system that compounds. We've never had so much clarity on what social actually returns.
+      </blockquote>
+      <div class="sm-quote__author">
+        <div class="sm-quote__avatar">PS</div>
+        <div>
+          <b>Priya Sharma</b>
+          <span>Head of Growth · Northwind Studio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FINAL CTA ─────────── -->
+<section class="sm-cta" id="cta">
+  <div class="sm-cta__shell reveal">
+    <span class="eyebrow" style="color:#ffd1d8">Let's build your social engine</span>
+    <h2>Stop chasing trends. Start owning the conversation.</h2>
+    <p>Tell us about your brand and we'll come back within one business day with a tailored social roadmap, content samples, and the senior team we'd assign to your account.</p>
+    <div class="sm-cta__actions">
+      <a href="mailto:hello@mckbytes.com" class="btn" style="--bg:#fff;--fg:#0b0b10">hello@mckbytes.com</a>
+      <a href="#" class="btn btn--light">Book a strategy call <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="brand"><img src="img/LOGO/logo.png" alt="MCKBytes logo"></a>
+        <p>A digital studio building premium brand presence, performance marketing and social engines for ambitious teams.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="social-media-marketing-agency.html">Social Media Marketing</a></li>
+          <li><a href="performance-marketing-bangalore.html">Performance Marketing</a></li>
+          <li><a href="#">SEO</a></li>
+          <li><a href="#">Content &amp; Production</a></li>
+          <li><a href="#">PPC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="index.html#work">Selected work</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__sub">
+      <span>© <span id="yr"></span> MCKBytes Studio. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Nav scroll state */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('nav--scrolled', window.scrollY > 12);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* Reveal */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Accordion */
+document.querySelectorAll('[data-acc]').forEach(item=>{
+  const btn = item.querySelector('.sm-acc-item__btn');
+  btn.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('is-open');
+    document.querySelectorAll('[data-acc].is-open').forEach(i=> i.classList.remove('is-open'));
+    if (!isOpen) item.classList.add('is-open');
+  });
+});
+</script>
+</body>
+</html>

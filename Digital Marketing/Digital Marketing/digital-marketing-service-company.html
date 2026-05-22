@@ -1,0 +1,1596 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Digital Marketing Services — MCKBytes Technology</title>
+<meta name="description" content="MCKBytes Technology offers premium digital marketing services including SEO, SMM, Email Marketing, ORM, Web Analytics, and Influencer Marketing."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #C8102E;
+  --brand-2: #ff3b5c;
+  --brand-soft: rgba(200,16,46,.08);
+  --accent: #0a84ff;
+  --ink: #0b0b10;
+  --ink-2: #1a1b22;
+  --ink-3: #3a3b45;
+  --muted: #6b6c78;
+  --line: #e8e9ee;
+  --paper: #ffffff;
+  --paper-2: #f7f7fa;
+  --paper-3: #eef0f4;
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --shadow-1: 0 1px 2px rgba(15,17,26,.04), 0 2px 6px rgba(15,17,26,.04);
+  --shadow-2: 0 10px 30px rgba(15,17,26,.08);
+  --shadow-3: 0 30px 80px rgba(15,17,26,.18);
+  --container: 1240px;
+  --gutter: clamp(20px,4vw,48px);
+  --section-y: clamp(64px,8vw,120px);
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --t: .35s var(--ease);
+}
+[data-theme="dark"] {
+  --ink: #f0f0f5;
+  --ink-2: #c8c9d2;
+  --ink-3: #9a9baa;
+  --muted: #6b6c78;
+  --line: rgba(255,255,255,.1);
+  --paper: #0d0e14;
+  --paper-2: #14151e;
+  --paper-3: #1c1d28;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.2);
+  --shadow-2: 0 10px 30px rgba(0,0,0,.35);
+  --shadow-3: 0 30px 80px rgba(0,0,0,.5);
+  --brand-soft: rgba(200,16,46,.15);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Sora",system-ui,sans-serif;
+  font-size:2.15rem;
+  line-height:1.7;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background .45s var(--ease),color .45s var(--ease);
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{
+  font-family:"Sora",sans-serif;
+  font-weight:800;
+  letter-spacing:-.035em;
+  line-height:1.06;
+  margin:0 0 .4em;
+  color:var(--ink);
+  transition:color .45s var(--ease);
+}
+p{margin:0 0 1.2em;color:var(--ink-3);font-size:1.18rem;line-height:1.72;transition:color .45s var(--ease)}
+/* Big P override */
+.lead-p{font-size:1.35rem;line-height:1.75;color:var(--ink-3);max-width:68ch}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--brand);
+  font-weight: 500;
+}
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--brand) }
+.section { padding: var(--section-y) 0 }
+.section--tight { padding: calc(var(--section-y) * .7) 0 }
+
+
+
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --brand:#C8102E; --brand-2:#ff3b5c;
+  --ink:#0b0b10; --ink-2:#1a1b22; --ink-3:#3a3b45;
+  --muted:#6b6c78; --line:#e8e9ee;
+  --paper:#ffffff; --paper-2:#f7f7fa; --paper-3:#f0f1f5;
+  --shadow-nav:0 2px 0 rgba(15,17,26,.06),0 8px 32px -8px rgba(15,17,26,.12);
+  --shadow-drop:0 24px 60px -10px rgba(15,17,26,.14),0 4px 16px rgba(15,17,26,.06);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --nav-h:68px;
+  --container:1320px;
+  --gutter:clamp(20px,4vw,48px);
+}
+[data-theme="dark"] {
+  --ink:#f0f0f5; --ink-2:#c8c9d2; --ink-3:#9a9baa; --muted:#6b6c78;
+  --line:rgba(255,255,255,.09); --paper:#0d0e14; --paper-2:#13141c; --paper-3:#1a1b26;
+  --shadow-nav:0 2px 0 rgba(0,0,0,.3),0 8px 32px -8px rgba(0,0,0,.4);
+  --shadow-drop:0 24px 60px -10px rgba(0,0,0,.55),0 4px 16px rgba(0,0,0,.3);
+}
+
+
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+img{display:block;max-width:100%;height:auto}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+
+/* ═══════════════════════════════════════
+   NAV SHELL
+═══════════════════════════════════════ */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:200;
+  height:var(--nav-h);
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+  transition:background .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.nav.scrolled{box-shadow:var(--shadow-nav)}
+[data-theme="dark"] .nav{background:var(--paper-2)}
+
+.nav__inner{
+  display:flex;align-items:center;height:100%;
+  gap:0;
+}
+
+/* ─── Brand ─── */
+.nav__brand{
+  display:inline-flex;align-items:center;gap:10px;
+  flex-shrink:0;margin-right:8px;
+  font-family:"Sora",sans-serif;font-weight:800;font-size:1.12rem;letter-spacing:-.02em;
+}
+.nav__brand img{height:34px;width:auto;transition:filter .35s var(--ease)}
+[data-theme="dark"] .nav__brand img{filter:brightness(0) invert(1)}
+
+/* ─── Primary links ─── */
+.nav__menu{
+  display:flex;align-items:stretch;
+  flex:1;margin-left:8px;gap:0;
+  height:100%;
+}
+
+.nav__item{
+  position:relative;display:flex;align-items:stretch;
+}
+
+.nav__trigger{
+  display:inline-flex;align-items:center;gap:5px;
+  height:100%;
+  padding:0 15px;
+  font-size:.875rem;font-weight:500;
+  color:var(--ink-3);
+  white-space:nowrap;
+  background:transparent;border:0;cursor:pointer;
+  position:relative;
+  transition:color .22s var(--ease);
+}
+.nav__trigger:hover{color:var(--ink)}
+/* Active underline */
+.nav__trigger::after{
+  content:"";
+  position:absolute;left:15px;right:15px;bottom:0;
+  height:2px;border-radius:2px 2px 0 0;
+  /* background:linear-gradient(90deg,var(--brand),var(--brand-2)); */
+  transform:scaleX(0);transform-origin:center;
+  transition:transform .3s var(--ease);
+}
+.nav__item:hover .nav__trigger::after,
+.nav__item.open .nav__trigger::after{transform:scaleX(1)}
+.nav__item:hover .nav__trigger,
+.nav__item.open .nav__trigger{color:var(--ink)}
+
+/* Caret */
+.nav__caret{
+  width:14px;height:14px;flex-shrink:0;
+  transition:transform .3s var(--ease);
+  opacity:.5;
+}
+.nav__item:hover .nav__caret,
+.nav__item.open .nav__caret{transform:rotate(180deg);opacity:.9}
+
+/* ─── Right cluster ─── */
+.nav__right{
+  display:flex;align-items:center;gap:12px;
+  margin-left:auto;flex-shrink:0;padding-left:16px;
+}
+.nav__contact{
+  display:flex;flex-direction:column;gap:0;
+  font-size:.73rem;line-height:1.35;text-align:right;
+  color:var(--muted);
+}
+.nav__contact a{color:var(--ink-2);font-weight:600;font-size:.73rem;transition:color .2s}
+.nav__contact a:hover{color:var(--brand)}
+
+.btn-quote{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:.56rem 1.2rem;
+  font-family:"Sora",sans-serif;font-weight:700;font-size:.82rem;
+  letter-spacing:.01em;text-transform:uppercase;
+  color:#fff;
+  background:var(--brand);
+  border:2px solid var(--brand);
+  border-radius:6px;
+  white-space:nowrap;
+  transition:background .25s,border-color .25s,transform .25s,box-shadow .25s;
+  box-shadow:0 4px 14px rgba(200,16,46,.28);
+}
+.btn-quote:hover{background:#a8001f;border-color:#a8001f;transform:translateY(-1px);box-shadow:0 8px 20px rgba(200,16,46,.38)}
+
+/* Theme toggle */
+.theme-btn{
+  width:36px;height:36px;border-radius:8px;
+  border:1px solid var(--line);background:var(--paper-3);
+  display:grid;place-items:center;
+  transition:background .25s,border-color .25s;font-size:15px;
+}
+.theme-btn:hover{background:var(--paper-2)}
+
+/* Mobile hamburger */
+.nav__hamburger{
+  display:none;width:40px;height:40px;border-radius:8px;
+  border:1px solid var(--line);background:var(--paper);
+  align-items:center;justify-content:center;
+}
+.nav__hamburger svg{width:20px;height:20px}
+@media(max-width:1040px){.nav__menu{display:none}.nav__hamburger{display:inline-flex}}
+@media(max-width:720px){.nav__contact{display:none}}
+@media(max-width:480px){:root{--nav-h:60px}.nav__brand img{height:28px}}
+
+/* ═══════════════════════════════════════
+   MEGA DROPDOWN
+═══════════════════════════════════════ */
+.mega{
+  position:fixed;
+  top:var(--nav-h);
+  left:0;right:0;
+  background:var(--paper);
+  border-top:2px solid var(--brand);
+  box-shadow:var(--shadow-drop);
+  z-index:199;
+
+  /* Hidden state */
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(-8px);
+  transition:
+    opacity .28s var(--ease),
+    transform .32s var(--ease-out),
+    visibility .28s;
+}
+/* Show when nav item hovered or open */
+.nav__item:hover .mega,
+.nav__item.open .mega{
+  opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+}
+[data-theme="dark"] .mega{background:var(--paper-2)}
+
+.mega__inner{
+  padding:32px var(--gutter) 36px;
+  max-width:var(--container);
+  margin:0 auto;
+}
+
+/* 4-column service grid */
+.mega__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+}
+@media(max-width:1100px){.mega__grid{grid-template-columns:repeat(2,1fr)}}
+
+/* each column */
+.mega__col{
+  padding:22px 24px 26px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  position:relative;
+  transition:background .25s;
+}
+.mega__col:nth-child(4n){border-right:0}
+.mega__col:nth-last-child(-n+4){border-bottom:0}
+@media(max-width:1100px){
+  .mega__col:nth-child(2n){border-right:0}
+  .mega__col:nth-last-child(-n+2){border-bottom:0}
+  .mega__col:nth-child(odd):not(:nth-last-child(-n+2)){border-bottom:1px solid var(--line)}
+  .mega__col:nth-child(even):not(:nth-last-child(-n+2)){border-bottom:1px solid var(--line)}
+}
+
+/* Group header */
+.mega__group-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.mega__group-icon{
+  width:42px;height:42px;border-radius:10px;
+  display:grid;place-items:center;flex-shrink:0;
+  font-size:0;/* icon is SVG */
+}
+.mega__group-icon svg{width:22px;height:22px}
+/* Icon color themes */
+.mega__group-icon--orange{background:linear-gradient(135deg,#ff8c42,#f97316);color:#fff}
+.mega__group-icon--purple{background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff}
+.mega__group-icon--teal{background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff}
+.mega__group-icon--yellow{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.mega__group-icon--blue{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff}
+.mega__group-icon--red{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}
+.mega__group-icon--green{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff}
+.mega__group-icon--pink{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff}
+.mega__group-icon--indigo{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff}
+.mega__group-icon--cyan{background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff}
+.mega__group-icon--brand{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+.mega__group-icon--slate{background:linear-gradient(135deg,#64748b,#475569);color:#fff}
+
+.mega__group-title{
+  font-family:"Sora",sans-serif;font-weight:700;font-size:.98rem;
+  color:var(--ink);letter-spacing:-.015em;line-height:1.2;
+}
+
+/* Link list */
+.mega__links{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:1px;
+}
+.mega__link{
+  display:block;
+  padding:6px 8px;
+  font-size:.845rem;color:var(--ink-3);font-weight:400;
+  border-radius:6px;
+  transition:color .18s,background .18s,padding-left .2s var(--ease);
+}
+.mega__link:hover{
+  color:var(--brand);
+  background:var(--paper-2);
+  padding-left:14px;
+}
+[data-theme="dark"] .mega__link:hover{background:rgba(255,255,255,.06)}
+
+/* Footer strip inside mega */
+.mega__footer{
+  margin-top:20px;
+  padding:14px 20px;
+  background:linear-gradient(135deg,rgba(200,16,46,.05),rgba(10,132,255,.04));
+  border:1px solid var(--line);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  flex-wrap:wrap;
+}
+.mega__footer-text{font-size:.84rem;color:var(--muted)}
+.mega__footer-cta{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.84rem;font-weight:700;color:var(--brand);
+  transition:gap .25s var(--ease);
+}
+.mega__footer-cta:hover{gap:11px}
+
+/* ═══════════════════════════════════════
+   MOBILE DRAWER
+═══════════════════════════════════════ */
+.drawer{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(11,11,16,.55);backdrop-filter:blur(8px);
+  display:none;opacity:0;transition:opacity .3s var(--ease);
+}
+.drawer.open{display:block;opacity:1}
+.drawer__panel{
+  position:absolute;top:0;right:0;bottom:0;
+  width:min(400px,90vw);background:var(--paper);
+  padding:24px;overflow-y:auto;
+  transform:translateX(100%);
+  transition:transform .4s var(--ease-out);
+  display:flex;flex-direction:column;gap:6px;
+}
+.drawer.open .drawer__panel{transform:translateX(0)}
+[data-theme="dark"] .drawer__panel{background:var(--paper-2)}
+.drawer__close{
+  align-self:flex-end;width:42px;height:42px;border-radius:10px;
+  border:1px solid var(--line);display:grid;place-items:center;
+  margin-bottom:8px;cursor:pointer;
+}
+.drawer__group{border-bottom:1px solid var(--line)}
+.drawer__group > button{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:13px 10px;font-size:1rem;font-weight:600;color:var(--ink);
+}
+.drawer__group > button svg{width:14px;height:14px;transition:transform .3s var(--ease)}
+.drawer__group.open > button svg{transform:rotate(180deg)}
+.drawer__sub{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease-out)}
+.drawer__group.open .drawer__sub{grid-template-rows:1fr}
+.drawer__sub > div{overflow:hidden}
+.drawer__sub-section{padding:8px 10px 12px}
+.drawer__sub-section h5{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--brand);margin-bottom:8px;font-family:"JetBrains Mono"}
+.drawer__sub a{display:block;padding:6px 0;font-size:.9rem;color:var(--ink-3);transition:color .2s}
+.drawer__sub a:hover{color:var(--brand)}
+
+
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  padding:calc(var(--section-y) + 72px) 0 var(--section-y);
+  overflow:hidden;isolation:isolate;
+  background:var(--paper);
+  transition:background var(--t);
+}
+.hero__bg{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 500px at 90% -10%,rgba(200,16,46,.1) 0%,transparent 60%),
+    radial-gradient(700px 400px at -5% 60%,rgba(10,132,255,.07) 0%,transparent 60%);
+  transition:opacity .45s;
+}
+[data-theme="dark"] .hero__bg{background:radial-gradient(900px 500px at 90% -10%,rgba(200,16,46,.17) 0%,transparent 60%),radial-gradient(700px 400px at -5% 60%,rgba(10,132,255,.12) 0%,transparent 60%)}
+.hero__grid{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(to right,rgba(15,17,26,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(15,17,26,.04) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse at 50% 30%,#000 50%,transparent 80%);
+}
+[data-theme="dark"] .hero__grid{background-image:linear-gradient(to right,rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.03) 1px,transparent 1px)}
+.hero__inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;
+}
+@media(max-width:960px){.hero__inner{grid-template-columns:1fr;gap:44px}}
+.hero h1{
+  font-size:clamp(5.8rem,5.5vw+1rem,5.6rem);
+  letter-spacing:-.04em;margin-bottom:24px;
+}
+.hero h1 .accent{
+  background:linear-gradient(135deg,var(--brand) 0%,#ff5872 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero h1 .stroke{-webkit-text-stroke:1.5px var(--ink);color:transparent;transition:-webkit-text-stroke-color .45s}
+.hero__lead{font-size:1.28rem;color:var(--ink-3);max-width:55ch;line-height:1.68;margin-bottom:32px}
+.hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.hero__stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  border-top:1px solid var(--line);padding-top:26px;max-width:520px;
+  transition:border-color var(--t);
+}
+.hero__stats div b{font-size:1.7rem;font-weight:800;color:var(--ink);display:block}
+.hero__stats div span{font-size:.88rem;color:var(--muted)}
+
+/* Hero form card */
+.hero__form-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;
+  box-shadow:var(--shadow-2);
+  transition:background var(--t),border-color var(--t),box-shadow var(--t);
+}
+[data-theme="dark"] .hero__form-card{background:var(--paper-2);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.hero__form-card h3{font-size:1.5rem;margin-bottom:6px}
+.hero__form-card .sub{font-size:1rem;color:var(--muted);margin-bottom:28px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-family:"JetBrains Mono",monospace}
+.form-group input,
+.form-group textarea{
+  width:100%;padding:.8rem 1rem;
+  border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--paper-2);color:var(--ink);font-family:"Sora",sans-serif;font-size:1rem;
+  transition:border-color .25s,box-shadow .25s,background var(--t),color var(--t);
+  outline:none;resize:none;
+}
+.form-group input:focus,
+.form-group textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(200,16,46,.12)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.form-row{grid-template-columns:1fr}}
+
+/* ── INTRO STRIP ── */
+.intro-strip{
+  background:var(--paper-2);
+  border-block:1px solid var(--line);
+  padding:clamp(44px,6vw,80px) 0;
+  transition:background var(--t),border-color var(--t);
+}
+.intro-strip__inner{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start}
+@media(max-width:900px){.intro-strip__inner{grid-template-columns:1fr;gap:36px}}
+.intro-strip h2{font-size:clamp(2rem,3vw+1rem,3.2rem);margin:.4em 0 0}
+.intro-strip .eyebrow{margin-bottom:14px}
+
+/* ── SERVICES SECTION ── */
+.services-section{padding:var(--section-y) 0}
+.services-section .section-head{
+  display:flex;align-items:end;justify-content:space-between;gap:40px;
+  margin-bottom:56px;flex-wrap:wrap;
+}
+.services-section .section-head h2{font-size:clamp(2.2rem,3.5vw+.5rem,3.5rem);max-width:18ch;margin:.4em 0 0}
+.services-section .section-head p{max-width:44ch;color:var(--muted);margin:0;font-size:1.12rem}
+
+/* Service cards grid */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:960px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.services-grid{grid-template-columns:1fr}}
+
+.svc-card{
+  position:relative;
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:36px 30px 32px;
+  overflow:hidden;
+  transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out),border-color .5s var(--ease),background var(--t);
+}
+.svc-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-3);border-color:transparent}
+.svc-card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;
+  background:linear-gradient(155deg,var(--brand),transparent 45%,transparent 55%,var(--accent));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .5s var(--ease);pointer-events:none;
+}
+.svc-card:hover::before{opacity:1}
+/* Card number badge */
+.svc-card__num{
+  position:absolute;top:24px;right:24px;
+  font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:600;
+  letter-spacing:.1em;color:var(--brand);opacity:.45;
+}
+.svc-card__icon{
+  width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--paper-2),var(--paper-3));
+  display:grid;place-items:center;
+  margin-bottom:24px;color:var(--brand);border:1px solid var(--line);
+  transition:transform .5s var(--ease),background var(--t);
+}
+.svc-card:hover .svc-card__icon{transform:rotate(-8deg) scale(1.08)}
+.svc-card__icon svg{width:26px;height:26px}
+.svc-card h3{font-size:1.28rem;margin-bottom:12px}
+/* Big paragraph text in cards */
+.svc-card p{font-size:1.1rem;line-height:1.7;margin-bottom:20px;color:var(--ink-3)}
+.svc-card__list{list-style:none;padding:0;margin:0 0 24px;font-size:1.03rem;color:var(--muted)}
+.svc-card__list li{padding:7px 0;border-top:1px dashed var(--line);display:flex;align-items:flex-start;gap:8px}
+.svc-card__list li::before{content:"→";color:var(--brand);font-weight:700;flex-shrink:0;margin-top:1px}
+.svc-card__cta{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.93rem;font-weight:700;color:var(--brand);
+  border-bottom:1px solid transparent;transition:border-color .25s;
+  padding-bottom:2px;
+}
+.svc-card__cta .arrow{transition:transform .35s var(--ease)}
+.svc-card:hover .svc-card__cta{border-color:var(--brand)}
+.svc-card:hover .svc-card__cta .arrow{transform:translateX(5px)}
+
+/* ── METRICS DARK STRIP ── */
+.metrics-band{
+  background:
+    radial-gradient(700px 400px at 100% 0%,rgba(200,16,46,.2),transparent 60%),
+    radial-gradient(600px 450px at 0% 100%,rgba(10,132,255,.16),transparent 60%),
+    #0a0b12;
+  color:#fff;
+  border-radius:var(--radius-xl);
+  padding:clamp(44px,6vw,88px);
+  margin:0 var(--gutter);
+  position:relative;overflow:hidden;
+}
+.metrics-band::after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(to right,rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse at 50% 50%,#000 30%,transparent 75%);
+  pointer-events:none;
+}
+.metrics-band>*{position:relative;z-index:1}
+.metrics-band .eyebrow{color:var(--brand-2)}
+.metrics-band .eyebrow::before{background:var(--brand-2)}
+.metrics-band h2{color:#fff;font-size:clamp(2rem,3.5vw+.5rem,3.2rem);max-width:20ch;margin:.4em 0 .6em}
+.metrics-band p{color:rgba(255,255,255,.72);max-width:56ch;font-size:1.12rem}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+@media(max-width:900px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+.metric-box{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  padding:26px;border-radius:var(--radius);backdrop-filter:blur(8px);
+  transition:background .4s,border-color .4s,transform .4s var(--ease);
+}
+.metric-box:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);transform:translateY(-4px)}
+.metric-box b{
+  font-family:"Sora";font-size:2.7rem;font-weight:800;
+  letter-spacing:-.04em;line-height:1;display:block;margin-bottom:8px;
+  background:linear-gradient(180deg,#fff 30%,rgba(255,255,255,.5));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.metric-box span{color:rgba(255,255,255,.62);font-size:1rem}
+
+/* ── CTA BAND ── */
+.cta-band{
+  background:linear-gradient(135deg,var(--brand) 0%,#8a0e23 50%,#1a1b22 100%);
+  border-radius:var(--radius-xl);
+  padding:clamp(44px,6vw,84px);
+  margin:0 var(--gutter);
+  color:#fff;position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1.4fr .6fr;gap:40px;align-items:center;
+}
+@media(max-width:900px){.cta-band{grid-template-columns:1fr}}
+.cta-band h2{color:#fff;font-size:clamp(1.8rem,3vw+.5rem,3rem);max-width:16ch;margin:.2em 0 0}
+.cta-band p{color:rgba(255,255,255,.8);max-width:50ch;margin:1em 0 0;font-size:1.12rem}
+.cta-band__actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+@media(max-width:900px){.cta-band__actions{justify-content:flex-start}}
+.cta-band::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0%,rgba(255,255,255,.18),transparent 30%),radial-gradient(circle at 0% 100%,rgba(255,255,255,.1),transparent 40%);pointer-events:none}
+
+/* ── FOOTER ── */
+.footer{
+  margin-top:var(--section-y);
+  background:radial-gradient(900px 360px at 85% 0%,rgba(200,16,46,.18),transparent 60%),radial-gradient(700px 300px at 0% 0%,rgba(10,132,255,.12),transparent 60%),linear-gradient(180deg,#0c0d14 0%,#08090f 100%);
+  color:rgba(255,255,255,.72);padding:0 0 24px;overflow:hidden;isolation:isolate;position:relative;
+}
+.footer::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 80%);pointer-events:none;z-index:0}
+.footer__bg-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;user-select:none;z-index:0;overflow:hidden}
+.footer__bg-mark span{font-family:"Sora";font-weight:800;font-size:clamp(8rem,26vw,28rem);letter-spacing:-.06em;line-height:.85;white-space:nowrap;background:linear-gradient(180deg,rgba(200,16,46,.04) 0%,rgba(200,16,46,.08) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.04)}
+.footer .container{position:relative;z-index:1}
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding:80px 0 48px}
+@media(max-width:900px){.footer__grid{grid-template-columns:1fr 1fr;gap:36px;padding:56px 0 32px}}
+@media(max-width:480px){.footer__grid{grid-template-columns:1fr}}
+.footer h4{color:rgba(255,255,255,.78);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.22em;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.footer h4::before{content:"";width:14px;height:1px;background:var(--brand-2)}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.footer ul a{color:rgba(255,255,255,.68);font-size:.98rem;transition:color .25s var(--ease),padding .25s var(--ease);display:inline-flex;align-items:center;gap:6px}
+.footer ul a:hover{color:#fff;padding-left:6px}
+.footer ul a::before{content:"";width:0;height:1px;background:var(--brand-2);transition:width .25s var(--ease)}
+.footer ul a:hover::before{width:10px;margin-right:6px}
+.footer__brand p{color:rgba(255,255,255,.62);font-size:.96rem;margin-top:16px;max-width:36ch;line-height:1.6}
+.footer__contact{margin-top:18px;display:flex;flex-direction:column;gap:6px;font-size:.95rem;color:rgba(255,255,255,.6)}
+.footer__contact a{color:rgba(255,255,255,.9);transition:color .25s}
+.footer__contact a:hover{color:#fff}
+.footer__chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:7px 13px;border-radius:999px;background:rgba(28,142,77,.12);border:1px solid rgba(28,142,77,.28);color:#7ddca0;font-size:.76rem;font-weight:500;font-family:"JetBrains Mono";letter-spacing:.04em}
+.footer__chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#3ed27a;box-shadow:0 0 0 3px rgba(62,210,122,.18);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.footer__sub{border-top:1px solid rgba(255,255,255,.08);padding:22px 0 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.55)}
+.footer__legal{display:flex;gap:20px;flex-wrap:wrap}
+.footer__legal a{color:rgba(255,255,255,.6);transition:color .25s}
+.footer__legal a:hover{color:#fff}
+.socials{display:flex;gap:8px}
+.socials a{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;transition:background .25s,transform .25s,box-shadow .25s}
+.socials a:hover{background:rgba(255,255,255,.1);transform:translateY(-3px);box-shadow:0 8px 20px rgba(200,16,46,.18)}
+.socials svg{width:17px;height:17px;fill:#fff}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal--d1{transition-delay:.08s}.reveal--d2{transition-delay:.16s}.reveal--d3{transition-delay:.24s}.reveal--d4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ── DRAWER ── */
+.drawer{position:fixed;inset:0;background:rgba(11,11,16,.5);backdrop-filter:blur(8px);z-index:60;display:none;opacity:0;transition:opacity .3s var(--ease)}
+.drawer.open{display:block;opacity:1}
+.drawer__panel{position:absolute;top:0;right:0;bottom:0;width:min(380px,88vw);background:var(--paper);padding:24px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .4s var(--ease-out)}
+.drawer.open .drawer__panel{transform:translateX(0)}
+.drawer__close{align-self:flex-end;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center}
+.drawer a{padding:14px 12px;font-size:1.08rem;font-weight:600;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+
+
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+
+    <!-- Brand -->
+    <!-- Brand -->
+    <a href="/index.html" class="nav__brand" aria-label="MCKBytes home">
+      <img src="/img/LOGO/logo.png" alt="MCKBytes">
+    </a>
+
+    <!-- Primary nav items -->
+    <nav class="nav__menu" aria-label="Primary navigation">
+
+      <!-- ── DIGITAL MARKETING ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">
+          Digital Marketing
+          <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" role="region" aria-label="Digital Marketing submenu">
+          <div class="mega__inner">
+            <div class="mega__grid">
+              <!-- Col 1 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                  </span>
+                  <span class="mega__group-title">Digital Marketing</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="/Digital Marketing/Digital Marketing/digital-marketing-service-company.html" class="mega__link">Digital Marketing</a></li>
+
+                  <li><a href="/Digital Marketing/Digital Marketing/creative-agency.html" class="mega__link">Creative Advertising</a></li>
+
+                  <li><a href="/Digital Marketing/Digital Marketing/email-marketing-services-in-vellore.html" class="mega__link">Email Marketing</a></li>
+
+                  <li><a href="/Digital Marketing/Digital Marketing/b2b-marketing-companies-in-vellore.html" class="mega__link">B2B Marketing</a></li>
+
+                  <li><a href="/Digital Marketing/Digital Marketing/b2b-lead-generation-companies-in-vellore.html" class="mega__link">B2B Lead Generation</a></li>
+
+                  <li><a href="/Digital Marketing/Digital Marketing/orm-online-reputation-management-services-vellore-india.html" class="mega__link">Online Reputation Management</a></li>
+                </ul>
+              </div>
+              <!-- Col 2 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7 17 2.5-7L20 10 3 3z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Brand Performance</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="/Digital Marketing/Brand Performance/performance-marketing-vellore.html" class="mega__link">Performance Marketing</a></li>
+                  <li><a href="/Digital Marketing/Brand Performance/performance-marketing-vellore.html" class="mega__link">PCC Services</a></li>
+                  <li><a href="/Digital Marketing/Brand Performance/performance-marketing-vellore.html" class="mega__link">Media Buying</a></li>
+                </ul>
+              </div>
+              <!-- Col 3 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3v-7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Social Media</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="/Digital Marketing/Social Media Marketing/social-media-marketing.html" class="mega__link">Social Media Marketing</a></li>
+                  <li><a href="/Digital Marketing/Social Media Marketing/social-media-marketing.html" class="mega__link">Instagram Marketing</a></li>
+                  <li><a href="/Digital Marketing/Social Media Marketing/facebook-media-marketing.html" class="mega__link">Facebook Marketing</a></li>
+                  <li><a href="/Digital Marketing/Social Media Marketing/linked-in.html" class="mega__link">LinkedIn Marketing</a></li>
+                  <li><a href="/Digital Marketing/Social Media Marketing/social-media-marketing.html" class="mega__link">Twitter / X Marketing</a></li>
+                  <li><a href="/Digital Marketing/Social Media Marketing/social-media-marketing.html" class="mega__link">YouTube Marketing</a></li>
+                </ul>
+              </div>
+              <!-- Col 4 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--yellow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                  </span>
+                  <span class="mega__group-title">Email & Analytics</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="email-marketing.html" class="mega__link">Email Marketing</a></li>
+                  <li><a href="email-marketing.html#automation" class="mega__link">Email Automation</a></li>
+                  <li><a href="analytics.html" class="mega__link">Website Analytics</a></li>
+                  <li><a href="orms.html" class="mega__link">ORMS</a></li>
+                  <li><a href="digital-marketing.html" class="mega__link">Digital Marketing</a></li>
+                  <li><a href="digital-marketing.html#strategy" class="mega__link">Marketing Strategy</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">Not sure which service fits? Our team will map the right strategy.</span>
+              <a href="index.html#contact" class="mega__footer-cta">Get a free consultation <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DESIGN ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">
+          Design
+          <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" role="region" aria-label="Design submenu">
+          <div class="mega__inner">
+            <div class="mega__grid">
+              <!-- Col 1 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Logo & Branding</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="logo-design.html" class="mega__link">Logo Design</a></li>
+                  <li><a href="branding.html" class="mega__link">Brand Identity</a></li>
+                  <li><a href="branding.html#guidelines" class="mega__link">Brand Guidelines</a></li>
+                  <li><a href="branding.html#stationery" class="mega__link">Stationery Design</a></li>
+                </ul>
+              </div>
+              <!-- Col 2 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--indigo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L7 19"/></svg>
+                  </span>
+                  <span class="mega__group-title">Graphic Design</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="graphic-design.html" class="mega__link">Graphic Design</a></li>
+                  <li><a href="graphic-design.html#social" class="mega__link">Social Media Creatives</a></li>
+                  <li><a href="graphic-design.html#ads" class="mega__link">Ad Creatives</a></li>
+                  <li><a href="brochure-design.html" class="mega__link">Brochure Design</a></li>
+                  <li><a href="brochure-design.html#catalogue" class="mega__link">Catalogue Design</a></li>
+                </ul>
+              </div>
+              <!-- Col 3 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </span>
+                  <span class="mega__group-title">UI / UX Design</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="ui-ux.html" class="mega__link">UI/UX Design</a></li>
+                  <li><a href="ui-ux.html#wireframe" class="mega__link">Wireframing</a></li>
+                  <li><a href="ui-ux.html#prototype" class="mega__link">Prototyping</a></li>
+                  <li><a href="ui-ux.html#design-system" class="mega__link">Design Systems</a></li>
+                </ul>
+              </div>
+              <!-- Col 4 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8l6 4-6 4z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Print & Media</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="print-design.html" class="mega__link">Print Design</a></li>
+                  <li><a href="print-design.html#banner" class="mega__link">Banner & Hoarding</a></li>
+                  <li><a href="print-design.html#packaging" class="mega__link">Packaging Design</a></li>
+                  <li><a href="print-design.html#presentation" class="mega__link">Presentation Design</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">Looking for end-to-end brand identity? We handle it all.</span>
+              <a href="index.html#contact" class="mega__footer-cta">Talk to a designer <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CONTENT ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">
+          Content
+          <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" role="region" aria-label="Content submenu">
+          <div class="mega__inner">
+            <div class="mega__grid">
+              <!-- Col 1 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l4.6-1.6L20 6l-2-2L4.6 17.4 2 22z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Content Writing</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="content-writing.html" class="mega__link">Content Writing</a></li>
+                  <li><a href="content-writing.html#blog" class="mega__link">Blog Writing</a></li>
+                  <li><a href="content-writing.html#seo" class="mega__link">SEO Content</a></li>
+                  <li><a href="content-writing.html#web" class="mega__link">Website Copywriting</a></li>
+                  <li><a href="content-writing.html#technical" class="mega__link">Technical Writing</a></li>
+                </ul>
+              </div>
+              <!-- Col 2 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--yellow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h11v18H5a2 2 0 0 1-2-2V5z"/><path d="M16 3v18M8 7h4M8 11h4"/></svg>
+                  </span>
+                  <span class="mega__group-title">Video & Animation</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="video-production.html" class="mega__link">Video Production</a></li>
+                  <li><a href="video-production.html#explainer" class="mega__link">Explainer Videos</a></li>
+                  <li><a href="video-production.html#reels" class="mega__link">Reels & Short-form</a></li>
+                  <li><a href="video-production.html#animation" class="mega__link">Animation Services</a></li>
+                  <li><a href="video-production.html#motion" class="mega__link">Motion Graphics</a></li>
+                </ul>
+              </div>
+              <!-- Col 3 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="4"/></svg>
+                  </span>
+                  <span class="mega__group-title">Photography</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="photography.html" class="mega__link">Photography Services</a></li>
+                  <li><a href="photography.html#product" class="mega__link">Product Photography</a></li>
+                  <li><a href="photography.html#corporate" class="mega__link">Corporate Photography</a></li>
+                  <li><a href="photography.html#edit" class="mega__link">Photo Editing</a></li>
+                </ul>
+              </div>
+              <!-- Col 4 -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--brand">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                  </span>
+                  <span class="mega__group-title">Strategy & PR</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="content-strategy.html" class="mega__link">Content Strategy</a></li>
+                  <li><a href="copywriting.html" class="mega__link">Ad Copywriting</a></li>
+                  <li><a href="orms.html" class="mega__link">Online Reputation (ORM)</a></li>
+                  <li><a href="pr.html" class="mega__link">PR & Press Releases</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">From brief to publish — we manage the entire content pipeline.</span>
+              <a href="content-writing.html" class="mega__footer-cta">Explore content services <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRODUCTION ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">
+          Production
+          <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" role="region" aria-label="Production submenu">
+          <div class="mega__inner">
+            <div class="mega__grid" style="grid-template-columns:repeat(2,1fr)">
+              <!-- Col 1 -->
+              <div class="mega__col" style="border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Creative Services</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="creative-services.html" class="mega__link">Custom Creative Services</a></li>
+                  <li><a href="creative-services.html#campaign" class="mega__link">Campaign Production</a></li>
+                  <li><a href="creative-services.html#events" class="mega__link">Event Coverage</a></li>
+                  <li><a href="creative-services.html#influencer" class="mega__link">Influencer Collaboration</a></li>
+                </ul>
+              </div>
+              <!-- Col 2 -->
+              <div class="mega__col" style="border-right:0;border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 8l6 4-6 4z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Video & Media</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="video-production.html" class="mega__link">Photography & Videography</a></li>
+                  <li><a href="video-production.html#corporate" class="mega__link">Corporate Films</a></li>
+                  <li><a href="video-production.html#product" class="mega__link">Product Shoots</a></li>
+                  <li><a href="video-production.html#drone" class="mega__link">Drone Footage</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">End-to-end production from storyboard to delivery.</span>
+              <a href="index.html#contact" class="mega__footer-cta">Start a project <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TECHNOLOGY ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">
+          Technology
+          <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" role="region" aria-label="Technology submenu">
+          <div class="mega__inner">
+            <div class="mega__grid">
+              <!-- Col 1 — Website Dev -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                  </span>
+                  <span class="mega__group-title">Website Development</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="web-development.html" class="mega__link">Website Development</a></li>
+                  <li><a href="web-development.html#ecommerce" class="mega__link">Ecommerce Website</a></li>
+                  <li><a href="web-development.html#wordpress" class="mega__link">WordPress Website</a></li>
+                  <li><a href="web-development.html#magento" class="mega__link">Magento Website</a></li>
+                  <li><a href="web-development.html#maintenance" class="mega__link">Website Maintenance</a></li>
+                </ul>
+              </div>
+              <!-- Col 2 — Mobile App -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg>
+                  </span>
+                  <span class="mega__group-title">Mobile App Development</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="app-development.html" class="mega__link">Mobile App Development</a></li>
+                  <li><a href="app-development.html#ios" class="mega__link">iOS App Development</a></li>
+                  <li><a href="app-development.html#android" class="mega__link">Android App Development</a></li>
+                  <li><a href="app-development.html#crossplatform" class="mega__link">Cross Platform Mobile App</a></li>
+                  <li><a href="app-development.html#flutter" class="mega__link">Flutter App Development</a></li>
+                  <li><a href="app-development.html#hybrid" class="mega__link">Hybrid Mobile App</a></li>
+                  <li><a href="app-development.html#native" class="mega__link">Native App Development</a></li>
+                  <li><a href="app-development.html#aso" class="mega__link">App Store Optimisation</a></li>
+                </ul>
+              </div>
+              <!-- Col 3 — Technologies -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                  </span>
+                  <span class="mega__group-title">Technologies</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="web-development.html#angular" class="mega__link">AngularJS Development</a></li>
+                  <li><a href="web-development.html#django" class="mega__link">Django Development</a></li>
+                  <li><a href="web-development.html#java" class="mega__link">Java Development</a></li>
+                  <li><a href="web-development.html#nodejs" class="mega__link">NodeJS Development</a></li>
+                  <li><a href="web-development.html#python" class="mega__link">Python Development</a></li>
+                  <li><a href="web-development.html#react" class="mega__link">ReactJS Development</a></li>
+                  <li><a href="web-development.html#api" class="mega__link">Rest API Development</a></li>
+                  <li><a href="web-development.html#vuejs" class="mega__link">VueJS Development</a></li>
+                </ul>
+              </div>
+              <!-- Col 4 — Innovative -->
+              <div class="mega__col">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--yellow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Innovative Technologies</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="ai.html" class="mega__link">Artificial Intelligence</a></li>
+                  <li><a href="blockchain.html" class="mega__link">Blockchain</a></li>
+                  <li><a href="iot.html" class="mega__link">IoT Application</a></li>
+                  <li><a href="rpa.html" class="mega__link">Robotic Process Automation</a></li>
+                </ul>
+
+                <!-- Second group in same col -->
+                <div class="mega__group-head" style="margin-top:20px;padding-top:16px;border-top:1px dashed var(--line)">
+                  <span class="mega__group-icon mega__group-icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a4 4 0 0 1 .5-7.95A6 6 0 0 1 16 8a4.5 4.5 0 0 1 4 7"/><path d="M12 13v8m0-8l-3 3m3-3l3 3"/></svg>
+                  </span>
+                  <span class="mega__group-title">Cloud Services</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="cloud.html" class="mega__link">Cloud Consulting</a></li>
+                  <li><a href="cloud.html#aws" class="mega__link">AWS Managed Services</a></li>
+                  <li><a href="cloud.html#azure" class="mega__link">Azure Managed Services</a></li>
+                  <li><a href="cloud.html#gcp" class="mega__link">GCP Managed Services</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Second row of tech groups -->
+            <div class="mega__grid" style="margin-top:2px;grid-template-columns:repeat(4,1fr)">
+              <div class="mega__col" style="border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--slate">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Development & Design</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="full-stack.html" class="mega__link">Full Stack</a></li>
+                </ul>
+              </div>
+              <div class="mega__col" style="border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6l-8-4z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Custom Solutions</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="custom-solutions.html" class="mega__link">Custom Web App</a></li>
+                  <li><a href="custom-solutions.html#enterprise" class="mega__link">Enterprise Web App</a></li>
+                  <li><a href="custom-solutions.html#design" class="mega__link">Website & App Design</a></li>
+                </ul>
+              </div>
+              <div class="mega__col" style="border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                  </span>
+                  <span class="mega__group-title">Data Consulting</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="data-consulting.html" class="mega__link">Big Data Consulting</a></li>
+                  <li><a href="data-consulting.html#science" class="mega__link">Data Science Consulting</a></li>
+                </ul>
+              </div>
+              <div class="mega__col" style="border-right:0;border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M3 3h3l2.5 12h11l1.5-9H6"/></svg>
+                  </span>
+                  <span class="mega__group-title">E-commerce</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="ecommerce.html" class="mega__link">E-commerce Development</a></li>
+                  <li><a href="ecommerce.html#shopify" class="mega__link">Shopify Development</a></li>
+                  <li><a href="ecommerce.html#headless" class="mega__link">Headless Commerce</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mega__footer">
+              <span class="mega__footer-text">Need a custom tech solution? Talk to our engineering team.</span>
+              <a href="index.html#contact" class="mega__footer-cta">Get a tech consultation <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RESOURCES ── -->
+      <div class="nav__item" data-nav-item>
+        <button class="nav__trigger" aria-expanded="false">
+          Resources
+          <svg class="nav__caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" role="region" aria-label="Resources submenu">
+          <div class="mega__inner">
+            <div class="mega__grid" style="grid-template-columns:repeat(4,1fr)">
+              <div class="mega__col" style="border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M12 12v4"/></svg>
+                  </span>
+                  <span class="mega__group-title">About Us</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="about.html" class="mega__link">Our Story</a></li>
+                  <li><a href="about.html#team" class="mega__link">The Team</a></li>
+                  <li><a href="about.html#mission" class="mega__link">Mission & Values</a></li>
+                  <li><a href="careers.html" class="mega__link">Careers</a></li>
+                </ul>
+              </div>
+              <div class="mega__col" style="border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h11v18H5a2 2 0 0 1-2-2V5z"/><path d="M16 3v18M8 7h4M8 11h4"/></svg>
+                  </span>
+                  <span class="mega__group-title">Blog & Insights</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="blog.html" class="mega__link">All Articles</a></li>
+                  <li><a href="blog.html#seo" class="mega__link">SEO Tips</a></li>
+                  <li><a href="blog.html#marketing" class="mega__link">Marketing Guides</a></li>
+                  <li><a href="blog.html#tech" class="mega__link">Tech Insights</a></li>
+                </ul>
+              </div>
+              <div class="mega__col" style="border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--brand">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8a3 3 0 0 1 3-3h11v14a3 3 0 0 1-3 3H5z"/></svg>
+                  </span>
+                  <span class="mega__group-title">Case Studies</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="case-studies.html" class="mega__link">All Case Studies</a></li>
+                  <li><a href="case-studies.html#fintech" class="mega__link">Fintech</a></li>
+                  <li><a href="case-studies.html#healthcare" class="mega__link">Healthcare</a></li>
+                  <li><a href="case-studies.html#ecommerce" class="mega__link">E-commerce</a></li>
+                </ul>
+              </div>
+              <div class="mega__col" style="border-right:0;border-bottom:0">
+                <div class="mega__group-head">
+                  <span class="mega__group-icon mega__group-icon--slate">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  </span>
+                  <span class="mega__group-title">Legal</span>
+                </div>
+                <ul class="mega__links">
+                  <li><a href="privacy.html" class="mega__link">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="mega__link">Terms & Conditions</a></li>
+                  <li><a href="cookies.html" class="mega__link">Cookie Policy</a></li>
+                  <li><a href="sitemap.html" class="mega__link">Sitemap</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mega__footer">
+              <span class="mega__footer-text">Can't find what you're looking for?</span>
+              <a href="index.html#contact" class="mega__footer-cta">Contact us directly <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </nav><!-- /nav__menu -->
+
+    <!-- Right cluster -->
+    <div class="nav__right">
+      <a href="index.html#contact" class="btn-quote">GET QUOTE</a>
+      <button class="theme-btn" id="themeSwitcher" aria-label="Toggle dark mode" title="Toggle theme">
+        <span id="themeIcon">☀</span>
+      </button>
+      <button class="nav__hamburger" id="menuBtn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════ MOBILE DRAWER ═══════════════════ -->
+<div class="drawer" id="drawer">
+  <div class="drawer__panel">
+    <button class="drawer__close" id="drawerClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18L18 6"/></svg>
+    </button>
+
+    <div class="drawer__group" data-drawer-group>
+      <button>Digital Marketing <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub"><div>
+        <div class="drawer__sub-section"><h5>SEO</h5><a href="seo.html">SEO Overview</a><a href="seo.html#on-page">On-Page SEO</a><a href="seo.html#technical">Technical SEO</a><a href="seo.html#local">Local SEO</a></div>
+        <div class="drawer__sub-section"><h5>Paid Ads</h5><a href="ppc.html">PPC Management</a><a href="ppc.html#google">Google Ads</a><a href="ppc.html#meta">Meta Ads</a></div>
+        <div class="drawer__sub-section"><h5>Social</h5><a href="smo.html">SMO Services</a><a href="smo.html#instagram">Instagram</a><a href="smo.html#facebook">Facebook</a></div>
+        <div class="drawer__sub-section"><h5>Email & Analytics</h5><a href="email-marketing.html">Email Marketing</a><a href="analytics.html">Analytics</a></div>
+      </div></div>
+    </div>
+
+    <div class="drawer__group" data-drawer-group>
+      <button>Design <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub"><div>
+        <div class="drawer__sub-section"><h5>Branding</h5><a href="logo-design.html">Logo Design</a><a href="branding.html">Brand Identity</a></div>
+        <div class="drawer__sub-section"><h5>Graphics</h5><a href="graphic-design.html">Graphic Design</a><a href="brochure-design.html">Brochure Design</a></div>
+        <div class="drawer__sub-section"><h5>Digital</h5><a href="ui-ux.html">UI/UX Design</a></div>
+      </div></div>
+    </div>
+
+    <div class="drawer__group" data-drawer-group>
+      <button>Content <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub"><div>
+        <div class="drawer__sub-section"><h5>Writing</h5><a href="content-writing.html">Content Writing</a><a href="content-writing.html#blog">Blog Writing</a></div>
+        <div class="drawer__sub-section"><h5>Video</h5><a href="video-production.html">Video Production</a><a href="video-production.html#animation">Animation</a></div>
+      </div></div>
+    </div>
+
+    <div class="drawer__group" data-drawer-group>
+      <button>Technology <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub"><div>
+        <div class="drawer__sub-section"><h5>Web</h5><a href="web-development.html">Web Development</a><a href="web-development.html#wordpress">WordPress</a><a href="web-development.html#ecommerce">Ecommerce</a></div>
+        <div class="drawer__sub-section"><h5>Mobile</h5><a href="app-development.html">App Development</a><a href="app-development.html#ios">iOS</a><a href="app-development.html#android">Android</a></div>
+        <div class="drawer__sub-section"><h5>Cloud & AI</h5><a href="cloud.html">Cloud Services</a><a href="ai.html">Artificial Intelligence</a></div>
+      </div></div>
+    </div>
+
+    <div class="drawer__group" data-drawer-group>
+      <button>Resources <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg></button>
+      <div class="drawer__sub"><div>
+        <div class="drawer__sub-section"><h5>Company</h5><a href="about.html">About Us</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
+        <div class="drawer__sub-section"><h5>Legal</h5><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div>
+      </div></div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:.8rem;color:var(--muted)">Sales: <a href="tel:+919008504821" style="color:var(--ink);font-weight:600">+91 9008504821</a></div>
+      <div style="font-size:.8rem;color:var(--muted)">Careers: <a href="tel:+918296906211" style="color:var(--ink);font-weight:600">+91 8296906211</a></div>
+      <a href="index.html#contact" class="btn-quote" style="justify-content:center;margin-top:8px">GET QUOTE</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero__bg"></div>
+  <div class="hero__grid"></div>
+  <div class="container hero__inner">
+    <div>
+      <span class="eyebrow reveal">Digital Marketing Services</span>
+      <h1 class="reveal reveal--d1">
+        Elevate Your<br><span class="accent">Digital Presence</span><br>& Drive Growth.
+      </h1>
+      <p class="hero__lead reveal reveal--d2">
+        MCKBytes Technology offers a comprehensive suite of digital marketing solutions designed to elevate your brand's online presence — from SEO and SMM to content, analytics, and influencer campaigns.
+      </p>
+      <div class="hero__cta reveal reveal--d3">
+        <a href="#services" class="btn btn--primary">Explore Services <span class="arrow">→</span></a>
+        <a href="#contact" class="btn btn--ghost">Book a Call</a>
+      </div>
+      <div class="hero__stats reveal reveal--d4">
+        <div><b>120+</b><span>Campaigns run</span></div>
+        <div><b>6</b><span>Core services</span></div>
+        <div><b>9 yrs</b><span>Of expertise</span></div>
+      </div>
+    </div>
+    <!-- Contact Form -->
+    <div class="hero__form-card reveal reveal--d2" id="contact">
+      <h3>Start Your Campaign</h3>
+      <p class="sub">We'll get back to you within one business day.</p>
+      <form onsubmit="return false">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name"/>
+          </div>
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@company.com"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Tell us about your project…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Send Message <span class="arrow">→</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTRO STRIP ── -->
+<div class="intro-strip">
+  <div class="container intro-strip__inner">
+    <div>
+      <span class="eyebrow reveal">Who We Are</span>
+      <h2 class="reveal reveal--d1">Steady Growth for Your Business</h2>
+    </div>
+    <div class="reveal reveal--d2">
+      <p class="lead-p">
+        Mckbytes Technology, the Best Digital Marketing Services Company, offers a comprehensive suite of solutions designed to elevate your brand's online presence. Their expert services encompass Search Engine Optimization (SEO) to boost website visibility, Social Media Marketing (SMM) to drive engagement across platforms, and eye-catching Social Media Poster Design for impactful content.
+      </p>
+      <p class="lead-p">
+        The company also excels in Animation Video Design, creating captivating visuals for various purposes, while their Graphic Design Services ensure visually appealing brand communication. With their diverse expertise and innovative strategies, Mckbytes Technology empowers businesses to thrive in the digital landscape, providing tailored solutions that meet each client's unique needs and goals.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVICES SECTION ── -->
+<section class="section services-section" id="services">
+  <div class="container">
+    <header class="section-head reveal">
+      <div>
+        <span class="eyebrow">What We Do</span>
+        <h2>Six pillars of digital growth.</h2>
+      </div>
+      <p>Every service is crafted for measurable outcomes — more traffic, deeper engagement, stronger brand equity.</p>
+    </header>
+
+    <div class="services-grid">
+
+      <!-- SEO -->
+      <article class="svc-card reveal">
+        <span class="svc-card__num">01</span>
+        <div class="svc-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg>
+        </div>
+        <h3>SEO</h3>
+        <p>SEO is the most effective tool for causing traffic acceleration on any website. Our SEO experts can boost the search engine ranking of your website through rigorous analysis and continuous optimization.</p>
+        <ul class="svc-card__list">
+          <li>Analyzing potential areas of improvement including content and current SEO rankings</li>
+          <li>Fabricating a comprehensive SEO strategy including web copy improvements, content suggestions, keywords</li>
+          <li>Implementing and assisting the SEO strategy end-to-end</li>
+          <li>Providing continual assistance including regular site reviews and guidance</li>
+        </ul>
+        <a href="page2-seo-services.html" class="svc-card__cta">Learn more <span class="arrow">→</span></a>
+      </article>
+
+      <!-- SMM -->
+      <article class="svc-card reveal reveal--d1">
+        <span class="svc-card__num">02</span>
+        <div class="svc-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </div>
+        <h3>SMM</h3>
+        <p>SMM or social media marketing is revolutionizing the social media world. Businesses today need a smart social media marketing strategy for boosting traffic and customer conversions across all platforms.</p>
+        <ul class="svc-card__list">
+          <li>Crafting SMM services for Facebook, Twitter, LinkedIn, Snapchat, Pinterest, YouTube & more</li>
+          <li>Reviewing current social media status and identifying areas of improvement</li>
+          <li>Fabricating comprehensive SMM strategy with content input, budgeting, and audience targeting</li>
+          <li>Providing continual assistance including channel monitoring and community management</li>
+        </ul>
+        <a href="#contact" class="svc-card__cta">Learn more <span class="arrow">→</span></a>
+      </article>
+
+      <!-- Email Marketing -->
+      <article class="svc-card reveal reveal--d2">
+        <span class="svc-card__num">03</span>
+        <div class="svc-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <h3>Email Marketing</h3>
+        <p>PPC and email channels have become top methods for targeting and attracting customers. We have an expert team that provides full assistance from end to end with campaigns built to convert.</p>
+        <ul class="svc-card__list">
+          <li>Emailer Management & Content Writing</li>
+          <li>Email Database building and maintenance</li>
+          <li>Automated and Bulk Email campaigns</li>
+          <li>Promotional Email sequences that drive action</li>
+        </ul>
+        <a href="#contact" class="svc-card__cta">Learn more <span class="arrow">→</span></a>
+      </article>
+
+      <!-- ORM -->
+      <article class="svc-card reveal">
+        <span class="svc-card__num">04</span>
+        <div class="svc-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>ORM Services</h3>
+        <p>Elevate and safeguard your online image with our holistic ORM services. Build trust, unleash growth opportunities, and uphold a positive brand image with our proactive approach to reputation management.</p>
+        <ul class="svc-card__list">
+          <li>Track Digital Feedback & Feedback Oversight</li>
+          <li>Repair Reputation & Suppress Negative Content</li>
+          <li>Brand Protection and Individual Reputation management</li>
+        </ul>
+        <a href="#contact" class="svc-card__cta">Learn more <span class="arrow">→</span></a>
+      </article>
+
+      <!-- Web Analytics -->
+      <article class="svc-card reveal reveal--d1">
+        <span class="svc-card__num">05</span>
+        <div class="svc-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        </div>
+        <h3>Web Analytics</h3>
+        <p>Unlock the power of web analytics for your internet marketing strategy. Web analytics provides valuable insights that go beyond just tracking website traffic — enabling smarter, data-driven decisions.</p>
+        <ul class="svc-card__list">
+          <li>Analytics Consulting and Strategy planning</li>
+          <li>Complete Implementation and integration</li>
+          <li>Ongoing optimization of marketing and website performance</li>
+        </ul>
+        <a href="#contact" class="svc-card__cta">Learn more <span class="arrow">→</span></a>
+      </article>
+
+      <!-- Influencer Marketing -->
+      <article class="svc-card reveal reveal--d2">
+        <span class="svc-card__num">06</span>
+        <div class="svc-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1 3-6Z"/></svg>
+        </div>
+        <h3>Influencer Marketing</h3>
+        <p>Digitalization has brought the world closer than ever before, expanding your reach to a broader audience and fostering business growth through authentic, high-impact influencer partnerships.</p>
+        <ul class="svc-card__list">
+          <li>Boost your brand's recognition and awareness</li>
+          <li>Establish reliability, confidence, and trust</li>
+          <li>Accelerated expansion with fervent following</li>
+          <li>Cost-effective campaigns with high ROI</li>
+        </ul>
+        <a href="#contact" class="svc-card__cta">Learn more <span class="arrow">→</span></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── METRICS BAND ── -->
+<section class="section--tight">
+  <div class="metrics-band reveal">
+    <span class="eyebrow">By The Numbers</span>
+    <h2>Results that speak for themselves.</h2>
+    <p>Every engagement is measured against business KPIs — traffic, conversions, brand reach, and ROI.</p>
+    <div class="metrics-grid">
+      <div class="metric-box reveal"><b>3.5×</b><span>Avg. traffic lift within 6 months</span></div>
+      <div class="metric-box reveal reveal--d1"><b>98%</b><span>Client retention rate</span></div>
+      <div class="metric-box reveal reveal--d2"><b>40+</b><span>Industries served globally</span></div>
+      <div class="metric-box reveal reveal--d3"><b>9 yrs</b><span>Of trusted digital expertise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section class="section--tight">
+  <div class="cta-band reveal">
+    <div>
+      <span class="eyebrow" style="color:#ffd1d8">Let's Grow</span>
+      <h2>Ready to dominate your digital market?</h2>
+      <p>Tell us about your brand and we'll come back within one business day with a tailored strategy.</p>
+    </div>
+    <div class="cta-band__actions">
+      <a href="mailto:hello@mckbytes.com" class="btn" style="--bg:#fff;--fg:#0b0b10">hello@mckbytes.com</a>
+      <a href="#contact" class="btn" style="--bg:rgba(255,255,255,.12);--fg:#fff;border:1px solid rgba(255,255,255,.2)">Book a Call <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer__bg-mark" aria-hidden="true"><span>MCKBytes</span></div>
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand reveal">
+        <a href="index.html" class="brand" style="display:inline-flex">
+          <span class="brand__mark"><span>M</span></span>
+          <span class="brand__name" style="color:#fff">MCK<b style="color:var(--brand-2)">Bytes</b></span>
+        </a>
+        <p>A digital marketing studio empowering businesses with data-driven strategies and premium execution.</p>
+        <div class="footer__contact">
+          <a href="mailto:hello@mckbytes.com">hello@mckbytes.com</a>
+          <span>Remote · Global</span>
+        </div>
+        <span class="footer__chip">Accepting Q3 engagements</span>
+      </div>
+      <div class="reveal reveal--d1">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">SEO</a></li>
+          <li><a href="#services">Social Media Marketing</a></li>
+          <li><a href="#services">Email Marketing</a></li>
+          <li><a href="#services">ORM Services</a></li>
+          <li><a href="#services">Web Analytics</a></li>
+          <li><a href="#services">Influencer Marketing</a></li>
+        </ul>
+      </div>
+      <div class="reveal reveal--d2">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="page2-seo-services.html">SEO Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="reveal reveal--d3">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__sub reveal">
+      <span>© <span id="yr"></span> MCKBytes Technology. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2H21l-6.52 7.45L22 22h-6.83l-4.78-6.27L4.8 22H2l7-8L1.5 2h6.97l4.32 5.71L18.244 2Zm-1.2 18h1.65L7.06 4H5.31l11.73 16Z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.16 4.16 0 0 1 3.74-2.05c4 0 4.74 2.63 4.74 6.06V21h-4v-5.27c0-1.26-.02-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.79V21h-4V9Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+// Theme
+(function(){
+  const root=document.documentElement,btn=document.getElementById('themeSwitcher');
+  const saved=localStorage.getItem('mck-theme');
+  if(saved)root.setAttribute('data-theme',saved);
+  btn.addEventListener('click',()=>{
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);localStorage.setItem('mck-theme',next);
+  });
+})();
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('nav--scrolled',window.scrollY>12),{passive:true});
+// Reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// Drawer
+const drawer=document.getElementById('drawer');
+document.getElementById('menuBtn').addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));
+drawer.addEventListener('click',e=>{if(e.target===drawer)drawer.classList.remove('open')});
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+</script>
+</body>
+</html>
