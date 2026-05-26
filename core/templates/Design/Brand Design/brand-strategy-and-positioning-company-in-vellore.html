@@ -880,64 +880,6 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════════
-     7. PRICING
-═══════════════════════════════════════════ -->
-<section class="section" id="pricing">
-  <div class="container">
-    <div style="max-width:560px;margin-bottom:0">
-      <span class="eyebrow reveal">Transparent Pricing</span>
-      <h2 class="reveal d1" style="font-size:var(--fs-h1);margin:.4em 0 .5em">Fixed scope. Fixed price.</h2>
-      <p class="reveal d2" style="font-size:1.02rem;color:var(--muted);line-height:1.7;max-width:52ch">Strategic clarity at competitive rates. Choose a package or talk to us for a custom scope.</p>
-    </div>
-    <div class="pricing-grid">
-
-      <div class="price-card reveal">
-        <h3>Strategy Sprint</h3>
-        <div class="price-card__price">₹49,000<span> / 2 weeks</span></div>
-        <p class="price-card__desc">Focused strategic clarity for startups and early-stage businesses needing direction.</p>
-        <ul class="price-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Positioning workshop</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Customer & competitive analysis</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Value proposition development</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Messaging framework</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Strategy summary deck</li>
-        </ul>
-        <a href="{% url 'core:contact' %}" class="btn btn--ghost">Start a sprint <span class="arrow">→</span></a>
-      </div>
-
-      <div class="price-card price-card--popular reveal d1">
-        <span class="price-card__badge">Most Popular</span>
-        <h3>Complete Strategy</h3>
-        <div class="price-card__price">₹99,000<span> / 6 weeks</span></div>
-        <p class="price-card__desc">Comprehensive brand strategy for established businesses needing deep strategic work.</p>
-        <ul class="price-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Market research & analysis</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Competitive positioning matrix</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Full positioning & messaging platform</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Comprehensive strategy playbook</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Activation roadmap + KPIs</li>
-        </ul>
-        <a href="{% url 'core:contact' %}" class="btn btn--primary">Start a project <span class="arrow">→</span></a>
-      </div>
-
-      <div class="price-card reveal d2">
-        <h3>Strategic Advisory</h3>
-        <div class="price-card__price">Custom<span> / monthly</span></div>
-        <p class="price-card__desc">Ongoing strategic partnership for scaling businesses needing advisory support.</p>
-        <ul class="price-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Quarterly strategy reviews</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Competitive monitoring & alerts</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Board-ready materials</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>On-call strategic advice</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Team workshops & alignment</li>
-        </ul>
-        <a href="{% url 'core:contact' %}" class="btn btn--ghost">Talk to us <span class="arrow">→</span></a>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 <!-- ═══════════════════════════════════════════
@@ -1061,6 +1003,7 @@
 
 
 <!-- ═══════════ FOOTER (injected) ═══════════ -->
+{% include 'include/sub_footer.html' %}
 {% include 'include/footer.html' %}
 
   <!-- ═══════════════════════════════════════════

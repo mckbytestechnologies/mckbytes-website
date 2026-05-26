@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Creative Advertising Agency in Vellore — BrandStory</title>
-  <meta name="description" content="BrandStory is a creative advertising agency in Vellore building brand identity, campaigns, print, OOH, digital and TV advertising that gets noticed." />
+  <title>Creative Advertising Agency — BrandStory</title>
+  <meta name="description" content="BrandStory is a creative advertising agency building brand identity, campaigns, print, OOH, digital and TV advertising that gets noticed." />
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="/css/style.css">
@@ -1134,6 +1134,8 @@
       </div>
     </section>
 
+    {% include 'include/form.html' %}
+    
     <!-- ─────────── FAQ ─────────── -->
     <section class="ca-section ca-faq" id="faqs">
       <div class="ca-container">
@@ -1183,7 +1185,7 @@
       <div class="ca-cta__shell ca-reveal">
         <span class="ca-cta__stamp">★ NOW BOOKING · Q4 2025</span>
         <h2>Ready to fuel your<br><em>sales pipeline</em> with quality leads?</h2>
-        <p>Partner with Mckbytes Technologies, the leading B2B lead generation company in Vellore, and experience a transformation in your sales pipeline. Contact us today for a free consultation.</p>
+        <p>Partner with Mckbytes Technologies, the leading B2B lead generation company, and experience a transformation in your sales pipeline. Contact us today for a free consultation.</p>
         <div class="ca-cta__actions">
           <a href="mailto:info@mckbytes.com" class="ca-btn" style="--bg:#fa0505;--fg:#0b0b10">info@mckbytes.com</a>
           <a href="{% url 'core:contact' %}" class="ca-btn ca-btn--light">Book a free consultation <span class="arrow">→</span></a>
@@ -1196,7 +1198,8 @@
 
 
   <!-- ================= FOOTER ================= -->
-  {% include 'include/footer.html' %}
+  {% include 'include/sub_footer.html' %}
+{% include 'include/footer.html' %}
 
 
 

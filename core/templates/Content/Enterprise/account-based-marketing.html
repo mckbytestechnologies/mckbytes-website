@@ -1252,35 +1252,95 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
 .partner-logo span{font-family:"Sora";font-weight:800;font-size:.88rem;color:var(--muted);letter-spacing:-.01em;transition:color .3s}
 .partner-logo:hover span{color:var(--ink)}
 
-/* FOOTER (copied from component for standalone) */
-.footer{margin-top:var(--section-y);position:relative;background:radial-gradient(900px 360px at 85% 0%,rgba(200,16,46,.18),transparent 60%),radial-gradient(700px 300px at 0% 0%,rgba(10,132,255,.12),transparent 60%),linear-gradient(180deg,#0c0d14 0%,#08090f 100%);color:rgba(255,255,255,.72);padding:0 0 24px;overflow:hidden;isolation:isolate}
-.footer::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 80%);pointer-events:none;z-index:0}
-.footer .container{position:relative;z-index:1}
-.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:48px;padding:80px 0 48px}
-@media(max-width:1080px){.footer__grid{grid-template-columns:1.6fr 1fr 1fr 1fr}.footer__col-hide-md{display:none}}
-@media(max-width:780px){.footer__grid{grid-template-columns:1fr 1fr;gap:36px;padding:56px 0 32px}}
-@media(max-width:480px){.footer__grid{grid-template-columns:1fr}}
-.footer h4{color:rgba(255,255,255,.78);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.22em;margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.footer h4::before{content:"";width:14px;height:1px;background:#ff3b5c}
-.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
-.footer ul a{color:rgba(255,255,255,.68);font-size:.98rem;transition:color .25s,padding .25s;display:inline-flex;align-items:center}
-.footer ul a:hover{color:#fff;padding-left:6px}
-.footer__brand .brand{font-size:1.18rem}
-.footer__brand .brand img{height:44px;filter:brightness(0) invert(1)}
-.footer__brand p{color:rgba(255,255,255,.62);font-size:.96rem;margin-top:16px;max-width:38ch;line-height:1.6}
-.footer__contact{margin-top:20px;display:flex;flex-direction:column;gap:6px;font-size:.96rem;color:rgba(255,255,255,.6)}
-.footer__contact a{color:rgba(255,255,255,.9);transition:color .25s}
-.footer__chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:7px 13px;border-radius:999px;background:rgba(28,142,77,.12);border:1px solid rgba(28,142,77,.28);color:#7ddca0;font-size:.76rem;font-weight:500;font-family:"JetBrains Mono";letter-spacing:.04em}
-.footer__chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#3ed27a;box-shadow:0 0 0 3px rgba(62,210,122,.18);animation:fpulse 2s ease infinite}
-@keyframes fpulse{0%,100%{opacity:1}50%{opacity:.5}}
-.footer__sub{border-top:1px solid rgba(255,255,255,.08);padding:22px 0 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.55)}
-.footer__legal{display:flex;gap:20px;flex-wrap:wrap}
-.footer__legal a{color:rgba(255,255,255,.6);transition:color .25s}
-.footer__legal a:hover{color:#fff}
-.socials{display:flex;gap:8px}
-.socials a{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;transition:background .25s,transform .25s,border-color .25s,box-shadow .25s}
-.socials a:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.18);transform:translateY(-3px);box-shadow:0 8px 20px rgba(200,16,46,.18)}
-.socials svg{width:17px;height:17px;fill:#fff}
+
+/* FOOTER */
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:500}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--brand)}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  margin-top: var(--section-y); position: relative;
+  background:
+    radial-gradient(900px 360px at 85% 0%, rgba(200,16,46,.18), transparent 60%),
+    radial-gradient(700px 300px at 0% 0%, rgba(10,132,255,.12), transparent 60%),
+    linear-gradient(180deg, #0c0d14 0%, #08090f 100%);
+  color: rgba(255,255,255,.72);
+  padding: 0 0 24px; overflow: hidden; isolation: isolate;
+}
+.footer::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 80%);
+  pointer-events: none; z-index: 0;
+}
+.footer .container { position: relative; z-index: 1 }
+.footer__grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 48px;
+  padding: 80px 0 48px;
+}
+@media (max-width: 1080px) {
+  .footer__grid { grid-template-columns: 1.6fr 1fr 1fr 1fr }
+  .footer__col-hide-md { display: none }
+}
+@media (max-width: 780px) { .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; padding: 56px 0 32px } }
+@media (max-width: 480px) { .footer__grid { grid-template-columns: 1fr } }
+.footer h4 {
+  color: rgba(255,255,255,.78); font-family: "JetBrains Mono", monospace;
+  font-size: .72rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: .22em; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.footer h4::before { content: ""; width: 14px; height: 1px; background: var(--brand-2) }
+.footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px }
+.footer ul a {
+  color: rgba(255,255,255,.68); font-size: .98rem;
+  transition: color .25s var(--ease), padding .25s var(--ease);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.footer ul a:hover { color: #fff; padding-left: 6px }
+.footer ul a::before { content: ""; width: 0; height: 1px; background: var(--brand-2); transition: width .25s var(--ease) }
+.footer ul a:hover::before { width: 10px; margin-right: 6px }
+.footer__brand .brand { font-size: 1.18rem }
+.footer__brand .brand img { height: 44px; filter: brightness(0) invert(1) }
+.footer__brand p { color: rgba(255,255,255,.62); font-size: .96rem; margin-top: 16px; max-width: 38ch; line-height: 1.6 }
+.footer__contact { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; font-size: .96rem; color: rgba(255,255,255,.6) }
+.footer__contact a { color: rgba(255,255,255,.9); transition: color .25s }
+.footer__contact a:hover { color: #fff }
+.footer__chip {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  padding: 7px 13px; border-radius: 999px;
+  background: rgba(28,142,77,.12); border: 1px solid rgba(28,142,77,.28);
+  color: #7ddca0; font-size: .76rem; font-weight: 500; font-family: "JetBrains Mono"; letter-spacing: .04em;
+}
+.footer__chip::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: #3ed27a; box-shadow: 0 0 0 3px rgba(62,210,122,.18);
+  animation: pulse 2s var(--ease) infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .5 } }
+.footer__sub {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 22px 0 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  flex-wrap: wrap; font-size: .84rem; color: rgba(255,255,255,.55);
+}
+.footer__legal { display: flex; gap: 20px; flex-wrap: wrap }
+.footer__legal a { color: rgba(255,255,255,.6); transition: color .25s }
+.footer__legal a:hover { color: #fff }
+.socials { display: flex; gap: 8px }
+.socials a {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  display: grid; place-items: center;
+  transition: background .25s var(--ease), transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.socials a:hover { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(200,16,46,.18) }
+.socials svg { width: 17px; height: 17px; fill: #fff }
 </style>
 </head>
 <body>
@@ -1302,7 +1362,7 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
         accounts with <span class="stroke">precision</span>.
       </h1>
       <p class="hero__lead reveal reveal--delay-2">
-        Businesses are constantly looking for innovative ways to reach their target audience and drive revenue growth. One strategy that has gained significant attention is Account-Based Marketing (ABM). As a leading ABM agency in Vellore, Mckbytes is here to help you understand the power of ABM and how it can transform your marketing efforts.
+        Businesses are constantly looking for innovative ways to reach their target audience and drive revenue growth. One strategy that has gained significant attention is Account-Based Marketing (ABM). As a leading ABM agency, Mckbytes is here to help you understand the power of ABM and how it can transform your marketing efforts.
       </p>
       <div class="hero__cta reveal reveal--delay-3">
         <a href="{% url 'core:contact' %}" class="btn btn--primary">Start a project <span class="arrow">→</span></a>
@@ -1317,7 +1377,7 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
     <div class="hero__visual reveal reveal--delay-2">
       <div class="hero__image-wrap">
         <img class="hero__image"
-          src="https://www.mckbytes.com/wp-content/uploads/2023/03/digital-marketing-service.png"
+          src="https://i.pinimg.com/736x/56/ea/ff/56eaffec80a40a6d2014f8b9210f201b.jpg"
           alt="MCKBytes ABM services" loading="eager"/>
         <div class="hero__badge hero__badge--tl">
           <span class="hero__badge-dot"></span>
@@ -1340,49 +1400,38 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
 </section>
 
 <!-- ============================== MARQUEE ============================== -->
-<div class="marquee reveal" aria-label="Trusted by">
+<div class="marquee reveal" aria-label="Our Services">
   <div class="marquee__track">
-    <span class="marquee__item">Atlas Bank</span>
-    <span class="marquee__item">Helix Labs</span>
-    <span class="marquee__item">Nimbus AI</span>
-    <span class="marquee__item">Voltage</span>
-    <span class="marquee__item">Polaris</span>
-    <span class="marquee__item">Quantum</span>
-    <span class="marquee__item">Northwind</span>
-    <span class="marquee__item">Atlas Bank</span>
-    <span class="marquee__item">Helix Labs</span>
-    <span class="marquee__item">Nimbus AI</span>
-    <span class="marquee__item">Voltage</span>
-    <span class="marquee__item">Polaris</span>
-    <span class="marquee__item">Quantum</span>
-    <span class="marquee__item">Northwind</span>
+    <span class="marquee__item">Graphic Design</span>
+    <span class="marquee__item">Video Editing</span>
+    <span class="marquee__item">Web Development</span>
+    <span class="marquee__item">SEO Optimization</span>
+    <span class="marquee__item">Social Media Management</span>
+    <span class="marquee__item">Google Ads</span>
+    <span class="marquee__item">Meta Ads</span>
+    <span class="marquee__item">Brand Strategy</span>
+    <span class="marquee__item">UI/UX Design</span>
+    <span class="marquee__item">E-Commerce Solutions</span>
+    <span class="marquee__item">Content Creation</span>
+    <span class="marquee__item">Digital Marketing</span>
+
+    <!-- Duplicate for smooth infinite scroll -->
+    <span class="marquee__item">Graphic Design</span>
+    <span class="marquee__item">Video Editing</span>
+    <span class="marquee__item">Web Development</span>
+    <span class="marquee__item">SEO Optimization</span>
+    <span class="marquee__item">Social Media Management</span>
+    <span class="marquee__item">Google Ads</span>
+    <span class="marquee__item">Meta Ads</span>
+    <span class="marquee__item">Brand Strategy</span>
+    <span class="marquee__item">UI/UX Design</span>
+    <span class="marquee__item">E-Commerce Solutions</span>
+    <span class="marquee__item">Content Creation</span>
+    <span class="marquee__item">Digital Marketing</span>
   </div>
 </div>
 
-<!-- LOGOS STRIP -->
-<div class="logo-strip reveal">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:20px">
-      <span style="font-family:'JetBrains Mono';font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">Leading ABM Agency — Trusted by</span>
-    </div>
-    <div class="logo-strip__inner">
-      <span class="logo-strip__item">Atlas Bank</span>
-      <span class="logo-strip__item">Helix Labs</span>
-      <span class="logo-strip__item">Nimbus AI</span>
-      <span class="logo-strip__item">Voltage</span>
-      <span class="logo-strip__item">Polaris</span>
-      <span class="logo-strip__item">Quantum</span>
-      <span class="logo-strip__item">Northwind</span>
-      <span class="logo-strip__item">Crowdstrike</span>
-    </div>
-    <div class="trust-row" style="margin-top:24px">
-      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4M5 4h14a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg>Clutch</span>
-      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Top Rated</span>
-      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>ABM Institute</span>
-      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6l-8-4z"/></svg>Certified Partner</span>
-    </div>
-  </div>
-</div>
+
 
 <!-- STATS BAND -->
 <section class="stats-band">
@@ -1394,7 +1443,7 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
       <div class="stat-box reveal"><b>50+</b><span>ABM campaigns executed with measurable success</span></div>
       <div class="stat-box reveal reveal--delay-1"><b>3.2×</b><span>Average pipeline lift for enterprise clients</span></div>
       <div class="stat-box reveal reveal--delay-2"><b>30+</b><span>Enterprise clients across 8 industries served</span></div>
-      <div class="stat-box reveal reveal--delay-3"><b>8+ yrs</b><span>Years of specialized ABM expertise and craft</span></div>
+      <div class="stat-box reveal reveal--delay-3"><b>5 + yrs</b><span>Years of specialized ABM expertise and craft</span></div>
     </div>
   </div>
 </section>
@@ -1557,7 +1606,7 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
      position:relative;
      min-height:650px;">
   <img 
-    src="https://brandstory.in/content-writing-agency-in-bangalore/assets/images/content-writing-services/content-writing-services-5.png"
+    src="{% static 'img/person.png' %}"
     alt="ABM Strategist"
     style="
     position:relative;
@@ -1572,7 +1621,7 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
       </div>
       <div class="reveal reveal--delay-1">
         <span class="eyebrow">How Mckbytes Can Help</span>
-        <h2 style="font-size:var(--fs-h1);margin:.4em 0 .6em">Your trusted ABM partner in Vellore.</h2>
+        <h2 style="font-size:var(--fs-h1);margin:.4em 0 .6em">Your trusted ABM partner.</h2>
         <ul class="why-list">
           <li>
             <div class="why-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -1662,6 +1711,8 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
     </div>
   </div>
 </section>
+
+
 
 <!-- FAQ SECTION -->
 <section class="section" style="background:var(--paper-2);transition:background var(--t)">
@@ -1818,72 +1869,136 @@ p { margin: 0 0 1em; color: var(--ink-3); transition: color .45s var(--ease) }
 
 
 
-<!-- ============================== FOOTER ============================== -->
+
 <footer class="footer">
   <div class="container">
+
     <div class="footer__grid">
-      <div class="footer__brand reveal">
-        <a href="../index.html" class="brand">
-          <img src="https://www.mckbytes.com/wp-content/uploads/2024/02/Mckbytes-logo-digital-marketing-3.png" alt="MCKBytes logo">
+
+      <!-- Brand -->
+      <div class="footer__brand">
+        <a href="{% url 'core:home' %}" class="brand">
+          <img src="{% static 'img/LOGO/logo.png' %}" alt="MCKBytes logo">
         </a>
-        <p>A software engineering studio building premium digital products with senior teams and accountable craft.</p>
+
+        <p>
+          MCKBytes Technologies is a creative digital marketing and technology agency helping businesses grow through branding, web development, SEO, performance marketing, and creative content solutions.
+        </p>
+
         <div class="footer__contact">
           <a href="mailto:info@mckbytes.com">info@mckbytes.com</a>
-          <span>Remote · global</span>
+          <span>Vellore · India</span>
         </div>
-        <span class="footer__chip">Accepting Q3 engagements</span>
+
+        <span class="footer__chip">Available for new projects</span>
       </div>
-      <div class="reveal reveal--delay-1">
-        <h4>Content Services</h4>
-        <ul>
-          <li><a href="#">Website Content</a></li>
-          <li><a href="#">Blog &amp; Articles</a></li>
-          <li><a href="#">Whitepapers</a></li>
-          <li><a href="#">Social Media Copy</a></li>
-          <li><a href="#">Ad Copywriting</a></li>
-          <li><a href="#">Video Scripts</a></li>
-        </ul>
-      </div>
-      <div class="reveal reveal--delay-2">
-        <h4>Studio</h4>
-        <ul>
-          <li><a href="../pages/about.html">About</a></li>
-          <li><a href="../pages/blog.html">Blog</a></li>
-          <li><a href="../index.html#work">Case Studies</a></li>
-          <li><a href="../index.html#process">Process</a></li>
-          <li><a href="{% url 'core:contact' %}">Contact</a></li>
-        </ul>
-      </div>
-      <div class="reveal reveal--delay-3">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#">Content Brief Template</a></li>
-          <li><a href="#">SEO Checklist</a></li>
-          <li><a href="#">Press Kit</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms</a></li>
-        </ul>
-      </div>
-      <div class="footer__col-hide-md reveal reveal--delay-4">
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="#">Twitter / X</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Dribbble</a></li>
-        </ul>
-      </div>
+
+      <!-- Digital Marketing -->
+<div>
+  <h4>Marketing</h4>
+
+  <ul>
+    <li><a href="{% url 'core:digital_marketing' %}">Digital Marketing</a></li>
+    <li><a href="{% url 'core:seo_services' %}">SEO</a></li>
+    <li><a href="{% url 'core:ppc_services' %}">PPC Ads</a></li>
+    <li><a href="{% url 'core:social_media_marketing' %}">Social Media</a></li>
+    <li><a href="{% url 'core:performance_marketing' %}">Performance Marketing</a></li>
+    <li><a href="{% url 'core:email_marketing' %}">Email Marketing</a></li>
+  </ul>
+</div>
+
+<!-- Creative -->
+<div>
+  <h4>Creative</h4>
+
+  <ul>
+    <li><a href="{% url 'core:brand_identity' %}">Branding</a></li>
+    <li><a href="{% url 'core:logo_design' %}">Logo Design</a></li>
+    <li><a href="{% url 'core:ui_ux_design' %}">UI/UX Design</a></li>
+    <li><a href="{% url 'core:video_editing' %}">Video Editing</a></li>
+    <li><a href="{% url 'core:video_production' %}">Video Production</a></li>
+    <li><a href="{% url 'core:content_writing' %}">Content Writing</a></li>
+  </ul>
+</div>
+
+<!-- Development -->
+<div>
+  <h4>Development</h4>
+
+  <ul>
+    <li><a href="{% url 'core:web_app_development' %}">Web Development</a></li>
+    <li><a href="{% url 'core:mobile_app_development' %}">Mobile Apps</a></li>
+    <li><a href="{% url 'core:custom_web_application_development' %}">Web Applications</a></li>
+    <li><a href="{% url 'core:full_stack' %}">Full Stack</a></li>
+    <li><a href="{% url 'core:flutter_app_development' %}">Flutter</a></li>
+    <li><a href="{% url 'core:artificial_intelligence_development' %}">AI Solutions</a></li>
+  </ul>
+</div>
+
+<!-- Company -->
+<div class="footer__col-hide-md">
+  <h4>Company</h4>
+
+  <ul>
+    <li><a href="{% url 'core:about_us' %}">About</a></li>
+    <!-- <li><a href="{% url 'core:portfolio' %}">Portfolio</a></li> -->
+    <li><a href="{% url 'core:blog' %}">Blogs</a></li>
+    <li><a href="{% url 'core:careers' %}">Careers</a></li>
+    <li><a href="{% url 'core:contact' %}">Contact</a></li>
+    <li><a href="{% url 'core:privacy_policy' %}">Privacy Policy</a></li>
+  </ul>
+</div>
+
     </div>
-    <div class="footer__sub reveal">
-      <span>© <span id="yr"></span> MCKBytes Studio. All rights reserved.</span>
-      <div class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+
+    <!-- Bottom -->
+    <div class="footer__sub">
+
+      <span>
+        © <span class="footer-year"></span> MCKBytes Technologies. All rights reserved.
+      </span>
+
+      <div class="footer__legal">
+        <a href="{% url 'core:privacy_policy' %}">Privacy</a>
+        <a href="{% url 'core:teams' %}">Terms</a>
+        
+      </div>
+
+      <!-- Social -->
       <div class="socials" aria-label="Social">
-        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2H21l-6.52 7.45L22 22h-6.83l-4.78-6.27L4.8 22H2l7-8L1.5 2h6.97l4.32 5.71L18.244 2Zm-1.2 18h1.65L7.06 4H5.31l11.73 16Z"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.16 4.16 0 0 1 3.74-2.05c4 0 4.74 2.63 4.74 6.06V21h-4v-5.27c0-1.26-.02-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.79V21h-4V9Z"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="#" aria-label="Dribbble"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg></a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/mckbytes.technologies/" aria-label="Facebook">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/mckbytes_technologies/" aria-label="Instagram">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm6-1.75a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 18 5.75Z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://in.linkedin.com/company/mckbytes" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24">
+            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.16 4.16 0 0 1 3.74-2.05c4 0 4.74 2.63 4.74 6.06V21h-4v-5.27c0-1.26-.02-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.79V21h-4V9Z"/>
+          </svg>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@mckbytes_technologies" aria-label="YouTube">
+          <svg viewBox="0 0 24 24">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.75 15.5v-7l6 3.5-6 3.5Z"/>
+          </svg>
+        </a>
+
       </div>
+
     </div>
+
   </div>
 </footer>
 

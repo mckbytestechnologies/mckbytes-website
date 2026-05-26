@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Calendly widget script -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
 <style>
 /* ═══════════════════════════════════════
@@ -1014,8 +1017,8 @@ img{display:block;max-width:100%;height:auto}
               <div class="mega__col">
                 <div class="mega__group-head"><span class="mega__group-icon mega__group-icon--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8a3 3 0 0 1 3-3h11v14a3 3 0 0 1-3 3H5z"/></svg></span><span class="mega__group-title">Case Studies</span></div>
                 <ul class="mega__links">
-                  <li><a href="{% url 'core:portfolio' %}" class="mega__link">All Case Studies</a></li>
-                  <li><a href="{% url 'core:careers' %}" class="mega__link">Careers</a></li>
+                  <!-- <li><a href="{% url 'core:portfolio' %}" class="mega__link">All Case Studies</a></li> -->
+                  <li><a href="{% url 'jobs:careers' %}" class="mega__link">Careers</a></li>
                 </ul>
               </div>
               <div class="mega__col">
@@ -1047,7 +1050,11 @@ img{display:block;max-width:100%;height:auto}
 
     <!-- Right cluster -->
     <div class="nav__right">
-      <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="btn-quote">Schedule a Call</a>
+      <a href="#" 
+   onclick="Calendly.showPopupWidget('https://calendly.com/mckbytes/30min'); return false;" 
+   class="btn-quote">
+   Schedule a Call
+</a>
       <button class="theme-btn" id="themeSwitcher" aria-label="Toggle dark mode"><span id="themeIcon">☀</span></button>
       <button class="nav__hamburger" id="menuBtn" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
@@ -1146,7 +1153,11 @@ img{display:block;max-width:100%;height:auto}
     <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
       <div style="font-size:.8rem;color:var(--muted)">Sales: <a href="tel:+919008504821" style="color:var(--ink);font-weight:600">+91 9008504821</a></div>
       <div style="font-size:.8rem;color:var(--muted)">Careers: <a href="tel:+918296906211" style="color:var(--ink);font-weight:600">+91 8296906211</a></div>
-      <a href="{% url 'core:home' %}{% url 'core:contact' %}" class="btn-quote" style="justify-content:center;margin-top:8px">GET QUOTE</a>
+      <a href="#" 
+   onclick="Calendly.showPopupWidget('https://calendly.com/mckbytes/30min'); return false;" 
+   class="btn-quote">
+   Schedule a Call
+</a>
     </div>
   </div>
 </div>

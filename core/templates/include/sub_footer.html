@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MCKBytes - Sub Footer</title>
+
+  <style>
+
+
+
+    /* =========================================================
+       DEMO MAIN CONTENT
+       ========================================================= */
+
+    .main-content{
+      min-height:70vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:80px 20px;
+      text-align:center;
+    }
+
+    .main-content h1{
+      font-size:60px;
+      font-weight:800;
+      background:linear-gradient(135deg,#111827,#c8102e);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    /* =========================================================
+       SUB FOOTER
+       ========================================================= */
+
+    .sub-footer{
+      position:relative;
+      background:#ffffff;
+      padding:60px 0 50px;
+      border-top:1px solid rgba(200,16,46,0.12);
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    /* GRID BACKGROUND */
+
+    .sub-footer::before{
+      content:"";
+      position:absolute;
+      inset:0;
+
+      background-image:
+      linear-gradient(rgba(200,16,46,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,16,46,0.04) 1px, transparent 1px);
+
+      background-size:48px 48px;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    /* GLOW EFFECT */
+
+    .sub-footer::after{
+      content:"";
+      position:absolute;
+      inset:0;
+
+      background:
+      radial-gradient(circle at 20% 30%, rgba(200,16,46,0.08) 0%, transparent 25%),
+      radial-gradient(circle at 80% 70%, rgba(200,16,46,0.06) 0%, transparent 25%);
+
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .sub-footer .container{
+      position:relative;
+      z-index:2;
+      width:min(92%,1400px);
+      margin:auto;
+    }
+
+    /* =========================================================
+       TITLE
+       ========================================================= */
+
+    .sub-footer__title{
+      font-size:28px;
+      font-weight:800;
+      color:#111827;
+      margin-bottom:50px;
+      position:relative;
+      display:inline-block;
+      letter-spacing:-0.5px;
+    }
+
+    .sub-footer__title::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-12px;
+      width:70px;
+      height:4px;
+      border-radius:20px;
+      background:linear-gradient(90deg,#c8102e,#ff4d6d);
+    }
+
+    /* =========================================================
+       GRID
+       ========================================================= */
+
+    .sub-footer__grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:70px;
+    }
+
+    .sub-footer__col{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      position:relative;
+    }
+
+    /* COLUMN BORDER */
+
+    .sub-footer__col:not(:last-child){
+      border-right:1px solid rgba(200,16,46,0.10);
+      padding-right:40px;
+    }
+
+    /* =========================================================
+       LINKS
+       ========================================================= */
+
+    .sub-footer__col a{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      width:fit-content;
+
+      color:#374151;
+      font-size:15px;
+      font-weight:500;
+      line-height:1.5;
+
+      transition:all .3s ease;
+    }
+
+    /* RED SQUARE */
+
+    .sub-footer__col a::before{
+      content:"□";
+      color:#c8102e;
+      font-size:11px;
+      margin-right:10px;
+      opacity:0;
+      transform:translateX(-4px);
+
+      transition:all .3s ease;
+    }
+
+    .sub-footer__col a:hover{
+      color:#c8102e;
+      transform:translateX(6px);
+    }
+
+    .sub-footer__col a:hover::before{
+      opacity:1;
+      transform:translateX(0);
+    }
+
+    
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media(max-width:991px){
+
+      .sub-footer__grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:50px;
+      }
+
+      .sub-footer__col:not(:last-child){
+        border-right:none;
+        padding-right:0;
+      }
+
+      .main-content h1{
+        font-size:42px;
+      }
+
+    }
+
+    @media(max-width:640px){
+
+      .sub-footer{
+        padding:50px 0 40px;
+      }
+
+      .sub-footer__grid{
+        grid-template-columns:1fr;
+        gap:35px;
+      }
+
+      .sub-footer__title{
+        font-size:24px;
+        margin-bottom:35px;
+      }
+
+      .sub-footer__col{
+        gap:14px;
+      }
+
+      .sub-footer__col a{
+        font-size:14px;
+      }
+
+      .footer .container{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .main-content h1{
+        font-size:34px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+
+  <section class="sub-footer">
+
+    <div class="container">
+
+      <h2 class="sub-footer__title">
+        Related Links
+      </h2>
+
+      <div class="sub-footer__grid">
+
+        <!-- COLUMN 1 -->
+
+        <div class="sub-footer__col">
+
+          <a href="#">Digital Marketing Services Company</a>
+
+          <a href="#">PR Agency</a>
+
+          <a href="#">SEO Company</a>
+
+          <a href="#">B2B Marketing Company</a>
+
+          <a href="#">Performance Marketing Company</a>
+
+          <a href="#">Website Designing Services Company</a>
+
+        </div>
+
+        <!-- COLUMN 2 -->
+
+        <div class="sub-footer__col">
+
+          <a href="#">SEO Link Building Services</a>
+
+          <a href="#">Email Marketing Services</a>
+
+          <a href="#">Social Media Marketing Company</a>
+
+          <a href="#">PPC Company</a>
+
+          <a href="#">Creative Advertising Agency</a>
+
+        </div>
+
+        <!-- COLUMN 3 -->
+
+        <div class="sub-footer__col">
+
+          <a href="#">UI / UX Design Company</a>
+
+          <a href="#">Content Marketing Services</a>
+
+          <a href="#">Website Development Company</a>
+
+          <a href="#">Content Writing Company</a>
+
+          <a href="#">Logo Design Company</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+</body>
+</html>
