@@ -1,0 +1,17 @@
+cd /home/mckbytes-1/htdocs/www.mckbytes.com/mckbytes-website
+
+git pull origin main
+
+source mckbytes/bin/activate
+
+pip install -r requirements.txt
+
+python manage.py collectstatic --noinput
+
+python manage.py migrate
+
+systemctl restart mckbytes
+
+systemctl restart nginx
+
+gunicorn config.wsgi:application --bind 0.0.0.0:8096

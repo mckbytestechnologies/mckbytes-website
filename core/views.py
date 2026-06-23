@@ -302,7 +302,7 @@ def contact_submit(request):
         # PROFESSIONAL HTML EMAIL
         # =========================
 
-        subject = f'🚀 New Lead from MCKBytes Website - {name}'
+        subject = f'🚀 New Lead from mckbytes Website - {name}'
 
         html_content = f"""
         <!DOCTYPE html>
@@ -345,7 +345,7 @@ def contact_submit(request):
                                         font-weight:800;
                                         letter-spacing:-1px;
                                     ">
-                                        MCKBytes Technologies
+                                        mckbytes Technologies
                                     </h1>
 
                                     <p style="
@@ -503,7 +503,7 @@ def contact_submit(request):
                                 ">
 
                                     <strong style="color:#fff;">
-                                        MCKBytes Technologies
+                                        mckbytes Technologies
                                     </strong>
 
                                     <br>
@@ -512,7 +512,7 @@ def contact_submit(request):
 
                                     <br><br>
 
-                                    © 2025 MCKBytes Technologies. All Rights Reserved.
+                                    © 2025 mckbytes Technologies. All Rights Reserved.
 
                                 </td>
                             </tr>

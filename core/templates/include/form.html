@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#0b0b10"/>
-  <title>UI/UX Design Services — MCKBytes</title>
-  <meta name="description" content="MCKBytes crafts human-centred UI/UX designs that convert visitors into customers. Wireframes, prototypes, design systems, and pixel-perfect handoff."/>
+  <title>UI/UX Design Services — mckbytes</title>
+  <meta name="description" content="mckbytes crafts human-centred UI/UX designs that convert visitors into customers. Wireframes, prototypes, design systems, and pixel-perfect handoff."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,7 +105,7 @@
   .cta-band__shell{
     position:relative;margin:0 var(--gutter);
     padding:clamp(52px,6vw,90px) clamp(32px,5vw,80px);
-    border-radius:clamp(24px,3vw,40px);overflow:hidden;isolation:isolate;
+    /* border-radius:clamp(24px,3vw,40px);overflow:hidden;isolation:isolate; */
     background:#07080f;border:1px solid rgba(255,255,255,.08);
     box-shadow:0 40px 100px -20px rgba(200,16,46,.28);
   }
@@ -115,7 +115,7 @@
   @media(max-width:900px){.cta-band__inner{grid-template-columns:1fr;gap:44px}}
   .cta-band h2{font-size:clamp(2rem,3.2vw + 1rem,3.4rem);font-weight:800;letter-spacing:-.04em;color:#fff;max-width:16ch;margin:.4em 0 .6em;line-height:1.02}
   .cta-band h2 em{font-style:normal;background:linear-gradient(120deg,var(--brand-2),#ff8fa3);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .cta-band__lead{color:rgba(255,255,255,.6);font-size:1.04rem;line-height:1.72;max-width:46ch;margin-bottom:32px}
+  .cta-band__lead{color:rgb(255, 255, 255);font-size:1.04rem;line-height:1.72;max-width:46ch;margin-bottom:32px}
   .cta-band__btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
   .cta-band__trust{display:flex;flex-wrap:wrap;gap:16px 32px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
   .cta-band__trust-item{display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.52)}
@@ -143,8 +143,31 @@
   .lf-chip{font-size:.78rem;padding:7px 13px;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:999px;color:rgba(255,255,255,.6);cursor:pointer;transition:all .25s;font-weight:600}
   .lf-chip:hover{border-color:rgba(200,16,46,.45);color:#fff}
   .lf-chip.active{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 4px 14px rgba(200,16,46,.35)}
-  .lf-submit{width:100%;margin-top:6px;padding:15px 20px;font-size:.98rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#ff3b5c,var(--brand),#8a0e23);border-radius:13px;display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;border:0;transition:transform .3s,box-shadow .3s;box-shadow:0 8px 20px -4px rgba(200,16,46,.5)}
-  .lf-submit:hover{transform:translateY(-2px);box-shadow:0 14px 30px -4px rgba(200,16,46,.6)}
+.lf-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 15px 20px;
+  font-size: .98rem;
+  font-weight: 700;
+  color: #ffffff !important; /* force white text */
+  background: #C8102E !important; /* solid red - force apply */
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  border: 0;
+  transition: transform .3s, box-shadow .3s, background .3s;
+  box-shadow: 0 8px 20px -4px rgba(200, 16, 46, .5);
+}
+
+.lf-submit:hover {
+  transform: translateY(-2px);
+  background: #a8001f !important; /* darker red on hover */
+  box-shadow: 0 14px 30px -4px rgba(200, 16, 46, .6);
+  color: #ffffff !important;
+}
   .lf-foot{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:.77rem;color:rgba(255,255,255,.32)}
   .lf-foot svg{width:13px;height:13px}
 
@@ -173,7 +196,7 @@
   </h2>
 
   <p class="cta-band__lead">
-    MCKBytes Technologies helps businesses grow with modern digital solutions including 
+    mckbytes Technologies helps businesses grow with modern digital solutions including 
     web development, graphic design, video editing, SEO, social media management, 
     branding, and performance marketing. Share your project with us and our team will 
     provide a customized strategy, timeline, and transparent pricing within one business day.
@@ -184,7 +207,7 @@
       Call us now <span class="arrow">→</span>
     </a>
 
-    <a href="mailto:info@mckbytes.com" class="btn btn--outline-white btn--lg">
+    <a href="mailto:info@mckbytes.com" class="btn btn--primary btn--lg">
       Email directly
     </a>
   </div>

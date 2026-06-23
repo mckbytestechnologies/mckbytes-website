@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="theme-color" content="#0c0d14"/>
-<title>Pay-Per-Click Marketing — MCKBytes Technology | PPC Services</title>
-<meta name="description" content="MCKBytes Technology delivers full-service PPC marketing: search ads, display, app and video — multi-channel strategy, expert execution, ongoing support."/>
+<title>ppc_marketing</title>
+<meta name="description" content=" Boost your business with expert PPC marketing services from Mckbytes. Maximize ROI, increase conversions, and reach your target audience effectively.  "/>
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="/css/style.css">
@@ -132,7 +132,10 @@
 .ppc-btn:active { transform: translateY(0) }
 .ppc-btn .arrow { display: inline-block; transition: transform .4s var(--ease) }
 .ppc-btn:hover .arrow { transform: translateX(4px) }
-.ppc-btn--primary { --bg: var(--brand); --fg: #fff }
+.ppc-btn--primary { 
+    --bg: #C8102E; 
+    --fg: #fff; 
+}
 .ppc-btn--primary:hover { --bg: #a8001f }
 .ppc-btn--ghost { --bg: transparent; --fg: var(--ink); border: 1px solid var(--line); padding: calc(1rem - 1px) calc(1.45rem - 1px) }
 .ppc-btn--ghost:hover { --bg: var(--paper-2) }
@@ -731,10 +734,24 @@
     </div>
 
     <button type="submit"
-            class="ppc-btn ppc-btn--primary"
-            style="width:100%;justify-content:center">
-        Send <span class="arrow">→</span>
-    </button>
+    style="
+        width:100%;
+        padding:14px 28px;
+        border-radius:50px;
+        background:#C8102E;
+        color:#fff;
+        font-weight:700;
+        font-size:1rem;
+        border:0;
+        cursor:pointer;
+        transition:all .3s ease;
+        box-shadow:0 8px 22px rgba(200,16,46,.3);
+    "
+    onmouseover="this.style.background='#a8001f'; this.style.transform='scale(1.02)'"
+    onmouseout="this.style.background='#C8102E'; this.style.transform='scale(1)'"
+>
+    Send →
+</button>
 
 </form>
         </div>
